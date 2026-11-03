@@ -1,5 +1,6 @@
 ---
-// Zapowiedź wpisu z naszej strony: tylko tytuł, 2–4 zdania i link „Czytaj dalej na <źródło>” (dofollow, bez rel).
+// Zapowiedź wpisu z naszej strony: tylko tytuł, 2–4 zdania i link „Czytaj dalej na <źródło>” z rel="nofollow"
+// (blok polecający; link w treści wpisu zostaje bez rel — schemat Piotra 2026-10-26).
 // Zdjęcie z RSS ładuje przeglądarka z serwera źródła (nasze strony); bez zdjęcia karta jest tekstowa.
 import { dataIso, dataPoPolsku, type Polecany } from '../lib/wpisy';
 import { t, wstaw } from '../lib/tekst';
@@ -28,6 +29,6 @@ const d = wpis.data;
     </p>
     <h3 class="karta__tytul">{d.tytul}</h3>
     <p>{d.opis}</p>
-    <a class="karta__czytaj" href={d.link}>{wstaw(napis, { zrodlo: d.zrodlo })}</a>
+    <a class="karta__czytaj" href={d.link} rel="nofollow">{wstaw(napis, { zrodlo: d.zrodlo })}</a>
   </div>
 </article>

@@ -1,7 +1,7 @@
 ---
 // /polecamy/ — firmy, z którymi pracujemy (teksty.json `polecamy.firmy[]`), a pod nimi zapowiedzi ich najnowszych wpisów
 // z RSS (kolekcja `polecane`, najwyżej 12). Zastępuje dawne /z-naszych-stron/ (przekierowanie w docs/przekierowania.json).
-// Odnośnik do firmy: zwykły, bez rel (polecenie z doświadczenia, WZORZEC-MAGAZYNU §6 pkt 2). Bez logo, ocen i cen.
+// Odnośnik do firmy: rel="nofollow" (blok polecający; link w treści wpisu bez rel — schemat Piotra 2026-10-26). Bez logo, ocen i cen.
 import Bazowy from '../layouts/Bazowy.astro';
 import Okruszki from '../components/Okruszki.astro';
 import KartaPolecana from '../components/KartaPolecana.astro';
@@ -65,7 +65,7 @@ const schemat = [
             {f.coDlaNas && <p class="firma__dla-nas">{f.coDlaNas}</p>}
             {f.opis && <p>{f.opis}</p>}
             <p class="firma__strona">
-              <a class="przycisk przycisk--obrys" href={f.adres}>{wstaw(napisOdwiedz, { nazwa: f.nazwa })}</a>
+              <a class="przycisk przycisk--obrys" href={f.adres} rel="nofollow">{wstaw(napisOdwiedz, { nazwa: f.nazwa })}</a>
               <span class="firma__host">{host(f.adres)}</span>
             </p>
           </li>

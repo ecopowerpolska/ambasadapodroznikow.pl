@@ -197,7 +197,7 @@ RSS: `<category>` = nazwa działu. `llms.txt`: wpisy pogrupowane po działach.
   zrobiliśmy (słowa Piotra), bez „zaprzyjaźnionych stron”.
 - Pięć bloków firm (`polecamy.firmy[]`), każdy:
   H2 `nazwa` → akapit `coDlaNas` (co zrobili DLA NAS, czas przeszły, 1–2 zdania) → akapit `opis` (jedno zdanie,
-  z czym do nich iść) → link do strony firmy (anchor = nazwa firmy, bez `rel`) → gdy istnieje wpis-historia o tej firmie,
+  z czym do nich iść) → link do strony firmy (anchor = nazwa firmy, `rel="nofollow"` — blok polecający, schemat Piotra 2026-10-26) → gdy istnieje wpis-historia o tej firmie,
   link wewnętrzny do niego (z frontmattera wpisów: pierwszy wpis z `cel.adres` w domenie firmy).
   Bez logo, gwiazdek, cen, „lat na rynku”, list usług.
 - Pod firmami: H2 `polecamy.naglowekZapowiedzi`, wstęp `polecamy.wstepZapowiedzi`, karty z kolekcji `polecane`
