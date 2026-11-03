@@ -5,9 +5,6 @@ data: 2026-11-03
 dzial: dom
 zdjecie: "dom-pokoj-przed-po-remoncie-03-www-3000x993.webp"
 alt: "Pokój przed remontem z gołymi tynkami i ten sam pokój po remoncie z białymi drzwiami i panelami"
-cel:
-  nazwa: "Studio Agat"
-  adres: "https://studioagat.pl/nadzor-inwestorski"
 tagi: ["remont", "wyjazd", "nadzór"]
 ---
 
@@ -39,7 +36,7 @@ Ustal jeden kanał kontaktu i stałą porę raportu, na przykład codziennie o 1
 
 Raz w tygodniu umów dziesięciominutową rozmowę wideo z budowy. Telefon w ręku ekipy pokaże rzeczy, których opis nie odda. Na przykład spadek w kabinie prysznicowej idący w złą stronę. Lepiej zobaczyć go przed płytkami.
 
-Przy malowaniu wystarczy ktoś z rodziny z listą kontrolną. Przy łazience albo kuchni to za mało. Potrzebna jest osoba, która zna budowę zawodowo i może zatrzymać prace, jeśli coś idzie źle. W Warszawie taki nadzór prowadzi na przykład [Studio Agat](https://studioagat.pl/nadzor-inwestorski), firma z tej samej grupy co nasza strona. Projektant jeździ tam na budowę, a każdy etap zamyka protokół. Bez względu na to, kogo wybierzesz, ustal przed wyjazdem, kto ma prawo powiedzieć „stop”.
+Przy malowaniu wystarczy ktoś z rodziny z listą kontrolną. Przy łazience albo kuchni to za mało. Potrzebna jest osoba, która zna budowę zawodowo i może zatrzymać prace, jeśli coś idzie źle. W Warszawie taki nadzór prowadzi na przykład Studio Agat, firma z tej samej grupy co nasza strona. Projektant jeździ tam na budowę, a każdy etap zamyka protokół. Jak wyglądał nasz remont z wykończeniem i meblami, kiedy byliśmy dwa tygodnie za granicą, opisaliśmy w [osobnym tekście](/blog/remont-mieszkania-gdy-bylismy-za-granica/). Bez względu na to, kogo wybierzesz, ustal przed wyjazdem, kto ma prawo powiedzieć „stop”.
 
 ## Odbiór po powrocie
 

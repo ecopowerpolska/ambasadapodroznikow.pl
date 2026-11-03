@@ -1,4 +1,4 @@
-# Linki wychodzące do naszych stron (stan na build 2026-11-03, po nofollow na blokach polecających)
+# Linki wychodzące do naszych stron (stan na build 2026-11-03, po historii o remoncie ze Studio Agat)
 
 Zasada (skill `linkowanie-zewnetrzne`, schemat Piotra 2026-10-26, „to zrób” 2026-11-03): link do naszej witryny w treści wpisu
 stoi w zdaniu, bez `rel`; bloki polecające (przyciski firm na `/polecamy/`, karty zapowiedzi z RSS) mają `rel="nofollow"`.
@@ -12,13 +12,15 @@ mówi to wstęp `/polecamy/`, sekcja „Kogo polecamy i dlaczego” w O nas i zd
 |---|---|---|---|
 | /blog/wlasna-strona-z-podrozy/ | https://www.ecopowerpolska.pl/strona-wizytowka/ | EcoPower Polska | brak |
 | /blog/dom-na-dluzszy-wyjazd/ | https://nadihome.pl/uslugi | Nadi Home | brak |
-| /blog/remont-gdy-jestes-w-podrozy/ | https://studioagat.pl/nadzor-inwestorski | Studio Agat | brak |
+| /blog/remont-mieszkania-gdy-bylismy-za-granica/ | https://studioagat.pl/projektowanie-wnetrz | Studio Agat | brak |
 | /blog/szafa-podroznika/ | https://pan-stolarz.pl/szafy-na-wymiar | Pan Stolarz | brak |
 | /blog/podloga-pod-sprzet-wyprawowy-i-rowery/ | https://panwylewka.pl/uslugi | Pan Wylewka | brak |
 | /blog/jak-prowadzic-bloga/ | https://www.ecopowerpolska.pl/prowadzenie-strony-internetowej/ | EcoPower Polska | brak |
 
 Pozostałe wpisy (Podróże, Pasje, Zdrowie, reszta Domu i Technologii, także zaplanowane na 5–20 listopada) nie linkują
 do naszych stron. `dom-gotowy-na-gosci-z-zagranicy` stracił link do Nadi Home (firma ma już link w `dom-na-dluzszy-wyjazd`).
+Poradnik `remont-gdy-jestes-w-podrozy` stracił link do Studio Agat (nazwa firmy została bez linku) i linkuje wewnętrznie
+do historii `remont-mieszkania-gdy-bylismy-za-granica`, która niesie jedyny link do Studio Agat w treści (fakty Piotra 2026-11-03).
 
 ## `/polecamy/` (`rel="nofollow"`)
 
