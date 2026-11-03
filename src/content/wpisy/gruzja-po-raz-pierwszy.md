@@ -3,7 +3,6 @@ tytul: "Gruzja po raz pierwszy: trasa, transport, jedzenie i formalności"
 opis: "Pierwszy wyjazd do Gruzji: obowiązkowa polisa, dokumenty, Tbilisi, Kazbegi i Kachetia, marszrutki, chinkali i wino z kwewri. Co sprawdzić przed lotem."
 data: 2026-11-13
 dzial: podroze
-# ZDJECIE_DO_PODMIANY: Gruzja, cerkiew Cminda Sameba pod Kazbekiem albo stare Tbilisi
 zdjecie: "podroze-przyjaciele-wzgorza-23-www-3000x2000.webp"
 alt: "Grupa uśmiechniętych przyjaciół z plecakami wędruje po zielonych wzgórzach w górach"
 tagi: ["Gruzja", "Kaukaz", "Tbilisi"]

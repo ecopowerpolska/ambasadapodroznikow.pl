@@ -3,9 +3,6 @@ tytul: "Jak prowadzić bloga: skąd brać tematy, jak często pisać i co mierzy
 opis: "Jak prowadzić bloga o podróżach, domu albo firmie: tematy z pytań czytelników, stały rytm, budowa wpisu, zdjęcia, uczciwe daty i pomiar w Search Console."
 data: 2026-11-03
 dzial: technologia
-# ZDJECIE_DO_PODMIANY: laptop z otwartym blogiem / notatnik i kawa
-zdjecie: "podroze-segway-wycieczka-24-www-3000x2000.webp"
-alt: "Grupa turystów w kaskach jedzie na segwayach alejką podczas zwiedzania miasta"
 cel:
   nazwa: "EcoPower Polska"
   adres: "https://www.ecopowerpolska.pl/prowadzenie-strony-internetowej/"

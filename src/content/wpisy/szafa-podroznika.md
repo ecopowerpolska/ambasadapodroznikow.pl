@@ -3,7 +3,6 @@ tytul: "Szafa podróżnika: jak ją urządzić, żeby pakować się szybciej"
 opis: "Jak ułożyć szafę albo garderobę dla kogoś, kto często wyjeżdża: stała półka na rzeczy podróżne, walizka pod ręką, płytkie szuflady i światło."
 data: 2026-11-03
 dzial: dom
-# ZDJECIE_DO_PODMIANY: otwarta szafa albo garderoba z walizką i ułożonymi ubraniami
 zdjecie: "podroze-mapa-akcesoria-07-www-3000x2003.webp"
 alt: "Kapelusz, aparat, paszport i buty na starej mapie świata z napisem Travel the World"
 cel:

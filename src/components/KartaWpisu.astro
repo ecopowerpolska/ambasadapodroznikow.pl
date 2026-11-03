@@ -1,5 +1,5 @@
 ---
-// Karta wpisu: zdjęcie 3:2, linia meta (dział jako odnośnik do działu, data, czas czytania), tytuł, opis.
+// Karta wpisu: zdjęcie 3:2 (albo plansza działu, gdy wpis nie ma zdjęcia), linia meta (dział jako odnośnik do działu, data, czas czytania), tytuł, opis.
 // Tytuł jest odnośnikiem rozciągniętym na całą kartę; etykieta działu leży nad nim warstwą (z-index) i prowadzi do działu.
 import Foto from './Foto.astro';
 import { adresWpisu, czasCzytania, dataIso, dataPoPolsku, type Wpis } from '../lib/wpisy';
@@ -20,20 +20,34 @@ const { wpis, glowna = false, priorytet = false, bezDzialu = false, poziom = 3 }
 const d = wpis.data;
 const Tytul = (['h2', 'h3', 'h4'] as const)[poziom - 2];
 const minuty = czasCzytania(wpis);
+// Plansza wpisu bez zdjęcia: mały napis = dział, duży = pierwszy tag inny niż nazwa działu (np. „Roaming”), inaczej dział
+const nazwaD = nazwaDzialu(d.dzial);
+const tag = d.tagi.find((x) => x.toLocaleLowerCase('pl') !== nazwaD.toLocaleLowerCase('pl'));
+const haslo = tag ? tag.charAt(0).toLocaleUpperCase('pl') + tag.slice(1) : nazwaD;
 ---
 
 <article class:list={['karta', { 'karta--glowna': glowna }]}>
-  <div class="karta__zdjecie">
-    <Foto
-      nazwa={d.zdjecie}
-      alt={d.alt}
-      widths={glowna ? [560, 800, 1100, 1400] : [380, 600, 800]}
-      sizes={glowna
-        ? '(min-width: 56rem) 55vw, calc(100vw - 2.5rem)'
-        : '(min-width: 76rem) 24rem, (min-width: 48rem) 45vw, calc(100vw - 2.5rem)'}
-      priorytet={priorytet}
-    />
-  </div>
+  {
+    d.zdjecie ? (
+      <div class="karta__zdjecie">
+        <Foto
+          nazwa={d.zdjecie}
+          alt={d.alt}
+          widths={glowna ? [560, 800, 1100, 1400] : [380, 600, 800]}
+          sizes={glowna
+            ? '(min-width: 56rem) 55vw, calc(100vw - 2.5rem)'
+            : '(min-width: 76rem) 24rem, (min-width: 48rem) 45vw, calc(100vw - 2.5rem)'}
+          priorytet={priorytet}
+        />
+      </div>
+    ) : (
+      // Wpis bez zdjęcia: plansza w kolorze działu z jego nazwą (ozdoba; dział i tytuł są w tekście karty)
+      <div class={`karta__plansza plansza--${d.dzial}`} aria-hidden="true">
+        <span class="karta__plansza-dzial">{nazwaD}</span>
+        <span class="karta__plansza-haslo">{haslo}</span>
+      </div>
+    )
+  }
   <div class="karta__tekst">
     <p class="karta__meta">
       {!bezDzialu && <a class="karta__dzial" href={adresDzialu(d.dzial)}>{nazwaDzialu(d.dzial)}</a>}

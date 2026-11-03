@@ -29,6 +29,8 @@
 /* kontrast: #b9c9c6 na #0f3e47 tekst */
 /* kontrast: #e9b48f na #0f3e47 tekst */
 /* kontrast: #f6f0e4 na #a8452a tekst */
+/* kontrast: #e9b48f na #1a2a2e tekst */
+/* kontrast: #f6f0e4 na #4d5b5c tekst */
 
 /* skala: 0.875rem 1rem 1.125rem 1.4375rem 1.875rem 2.5rem 3.25rem */
 
@@ -573,6 +575,100 @@ main:focus {
   object-fit: cover;
 }
 
+/* Plansza wpisu bez zdjęcia (decyzja Piotra 2026-11-03: zdjęcia nie muszą być wszędzie). Ta sama ramka 3:2 co zdjęcie,
+   więc rząd siatki trzyma wysokość; tło w barwie działu z palety motywu, poziomice jak na mapie z prawego górnego rogu.
+   Pary kolorów: #f6f0e4/#0f3e47, #f6f0e4/#a8452a, #0f3e47/#e0d4b9, #e9b48f/#1a2a2e, #f6f0e4/#4d5b5c (komentarze na górze). */
+.karta__plansza {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: var(--o-2);
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  padding: var(--o-6);
+  border-radius: var(--promien-zdjecia);
+  background: var(--plansza-tlo);
+  color: var(--plansza-tekst);
+}
+
+.karta__plansza::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-radial-gradient(
+    circle at 88% 12%,
+    transparent 0 1.25rem,
+    color-mix(in srgb, currentColor 18%, transparent) 1.25rem calc(1.25rem + 1px)
+  );
+}
+
+.karta__plansza > span {
+  position: relative;
+}
+
+.karta__plansza-dzial {
+  font-family: var(--font-tekst);
+  font-size: var(--t-1);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.karta__plansza-dzial::before {
+  content: '';
+  display: block;
+  width: 2.5rem;
+  height: 3px;
+  margin-bottom: var(--o-3);
+  background: var(--plansza-kreska);
+}
+
+.karta__plansza-haslo {
+  font-family: var(--font-nagl);
+  font-size: var(--t-5);
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+}
+
+.karta--glowna .karta__plansza {
+  padding: var(--o-8);
+}
+
+.karta--glowna .karta__plansza-haslo {
+  font-size: var(--t-6);
+}
+
+.plansza--podroze {
+  --plansza-tlo: var(--morze);
+  --plansza-tekst: var(--na-morzu);
+  --plansza-kreska: var(--na-morzu-akcent);
+}
+
+.plansza--dom {
+  --plansza-tlo: var(--akcent);
+  --plansza-tekst: var(--na-morzu);
+  --plansza-kreska: var(--na-morzu);
+}
+
+.plansza--pasje {
+  --plansza-tlo: var(--powierzchnia-mocna);
+  --plansza-tekst: var(--morze);
+  --plansza-kreska: var(--akcent);
+}
+
+.plansza--technologia {
+  --plansza-tlo: var(--tekst);
+  --plansza-tekst: var(--na-morzu-akcent);
+  --plansza-kreska: var(--na-morzu-akcent);
+}
+
+.plansza--zdrowie {
+  --plansza-tlo: var(--tekst-cichy);
+  --plansza-tekst: var(--na-morzu);
+  --plansza-kreska: var(--na-morzu-akcent);
+}
+
 .karta__meta,
 .wpis__meta {
   display: flex;
@@ -806,7 +902,8 @@ main:focus {
 
 /* ══ WPIS ══ */
 .wpis__glowa {
-  max-width: var(--miara-wpisu);
+  /* + marginesy kontenera: tekst nagłówka zaczyna się na tej samej krawędzi co treść wpisu (.tresc bez marginesów) */
+  max-width: calc(var(--miara-wpisu) + 2 * var(--margines));
   margin-inline: auto;
   padding-block: var(--o-6) var(--o-8);
 }
@@ -846,6 +943,20 @@ main:focus {
   background: var(--powierzchnia-mocna);
   color: var(--tekst);
   font-size: var(--t-1);
+}
+
+/* Wpis bez zdjęcia: nagłówek zamyka cienka linia na szerokości tekstu, bez pustej ramki po zdjęciu */
+.wpis--bez-zdjecia .wpis__glowa {
+  padding-bottom: 0;
+  margin-bottom: var(--o-8);
+}
+
+.wpis--bez-zdjecia .wpis__glowa::after {
+  content: '';
+  display: block;
+  height: 1px;
+  margin-top: var(--o-8);
+  background: var(--linia);
 }
 
 .wpis__zdjecie {

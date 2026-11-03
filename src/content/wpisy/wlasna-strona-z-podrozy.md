@@ -3,13 +3,10 @@ tytul: "Własna strona z podróży: domena, hosting i pierwsze wpisy"
 opis: "Jak założyć własną stronę z podróży: domena, miejsce na pliki, narzędzie do pisania, koszty, o których się zapomina, i pierwsze wpisy, od których warto zacząć."
 data: 2026-11-03
 dzial: technologia
-# ZDJECIE_DO_PODMIANY: laptop z otwartym blogiem podróżniczym na stoliku, obok aparat albo notes z biletami
-zdjecie: "podroze-ulica-tokio-13-www-3000x2000.webp"
-alt: "Wąska ulica w Tokio z kolorowymi szyldami i neonami sklepów o zmierzchu"
 cel:
   nazwa: "EcoPower Polska"
   adres: "https://www.ecopowerpolska.pl/strona-wizytowka/"
-tagi: ["blog", "strona internetowa", "domena", "hosting"]
+tagi: ["strona internetowa", "blog", "domena", "hosting"]
 ---
 
 Własna strona z podróży to trzy rzeczy: adres, miejsce na pliki i narzędzie do pisania. Prosty blog z tekstami i zdjęciami nie potrzebuje bazy danych ani drogiego serwera. Potrzebuje za to kilku decyzji na początku, bo później trudno je zmienić. Niżej każda z nich po kolei. Na końcu: od czego zacząć pisanie.

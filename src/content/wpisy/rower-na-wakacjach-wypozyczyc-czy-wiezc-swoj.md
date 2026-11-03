@@ -3,9 +3,6 @@ tytul: "Rower na wakacjach: wypożyczyć na miejscu czy wieźć swój"
 opis: "Rower na urlopie: kiedy wieźć własny autem, pociągiem albo samolotem, a kiedy wypożyczyć na miejscu. Co sprawdzić w wypożyczalni i co wziąć z domu."
 data: 2026-11-18
 dzial: pasje
-# ZDJECIE_DO_PODMIANY: rower trekkingowy z sakwami na wiejskiej drodze albo rzędy rowerów w wypożyczalni nad morzem
-zdjecie: "podroze-park-linowy-10-www-3000x2000.webp"
-alt: "Kładki i liny parku linowego zawieszone między drzewami w zielonym lesie"
 tagi: ["rower", "wakacje", "wypożyczalnia", "transport roweru"]
 ---
 

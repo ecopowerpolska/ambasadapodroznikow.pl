@@ -3,9 +3,6 @@ tytul: "Apteczka podróżnika: co spakować i o co zapytać farmaceutę"
 opis: "Co spakować do apteczki na wyjazd: leki brane na stałe, opatrunki, środki na typowe dolegliwości, dokumenty, EKUZ i szczepienia. Dawki ustal z farmaceutą."
 data: 2026-11-03
 dzial: zdrowie
-# ZDJECIE_DO_PODMIANY: podróżna apteczka otwarta na stole, plastry, bandaż, opakowania leków obok paszportu
-zdjecie: "podroze-grupa-pod-skala-22-www-3000x2000.webp"
-alt: "Grupa turystów z plecakami idzie leśną ścieżką wzdłuż wysokiej skalnej ściany w górach"
 tagi: ["apteczka", "zdrowie w podróży", "EKUZ", "szczepienia"]
 ---
 

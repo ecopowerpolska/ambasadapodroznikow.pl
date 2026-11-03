@@ -7,6 +7,9 @@ import { opublikowane } from '../../lib/wpisy';
 import { okruszki } from '../../lib/schemat';
 
 const wpisy = await opublikowane();
+// Kandydat na LCP: pierwsza karta ze zdjęciem w pierwszym rzędzie (wpis bez zdjęcia ma planszę z CSS, bez obrazu)
+const pierwszeZdjecie = wpisy.findIndex((w) => w.data.zdjecie);
+const priorytetowy = pierwszeZdjecie >= 0 && pierwszeZdjecie < 3 ? pierwszeZdjecie : -1;
 const pozycje = [
   { nazwa: t('interfejs.okruszki_glowna'), adres: '/' },
   { nazwa: t('interfejs.okruszki_blog'), adres: '/blog/' },
@@ -24,7 +27,7 @@ const schemat = [okruszki(pozycje)];
     {
       wpisy.length > 0 ? (
         <ul class="karty">
-          {wpisy.map((w, i) => <li><KartaWpisu wpis={w} priorytet={i === 0} poziom={2} /></li>)}
+          {wpisy.map((w, i) => <li><KartaWpisu wpis={w} priorytet={i === priorytetowy} poziom={2} /></li>)}
         </ul>
       ) : (
         <p class="pusto">{t('interfejs.brakWpisow')}</p>

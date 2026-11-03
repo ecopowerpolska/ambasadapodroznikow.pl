@@ -3,9 +3,6 @@ tytul: "Kuchnia z wyjazdów: jak odtworzyć w domu smak z podróży"
 opis: "Jak ugotować w domu danie poznane w podróży: co zapisać na miejscu, jakie przyprawy przywieźć, czego nie wwieźć spoza UE i czym zastąpić brakujące składniki."
 data: 2026-11-11
 dzial: pasje
-# ZDJECIE_DO_PODMIANY: stragan z przyprawami na targu albo domowa kuchnia z garnkiem i miseczkami przypraw
-zdjecie: "podroze-smok-lampion-18-www-3000x1921.webp"
-alt: "Świecący chiński smok z lampionów na czarnym tle podczas festiwalu świateł"
 tagi: ["kuchnia", "przepisy", "przyprawy", "pamiątki"]
 ---
 

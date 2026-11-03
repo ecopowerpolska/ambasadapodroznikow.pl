@@ -3,9 +3,6 @@ tytul: "Budapeszt w trzy dni bez pośpiechu: Peszt, Buda i łaźnie"
 opis: "Trzy dni w Budapeszcie: gdzie spać, który dzień na Peszt, a który na Budę, do której łaźni iść, co zjeść poza gulaszem i jak dojechać pociągiem z Polski."
 data: 2026-11-06
 dzial: podroze
-# ZDJECIE_DO_PODMIANY: Budapeszt, Parlament nad Dunajem albo Most Łańcuchowy
-zdjecie: "weekend-uliczka-bari-07-www-2000x3000.webp"
-alt: "Wąska uliczka starego Bari we Włoszech ze straganami i spacerującymi turystami latem"
 tagi: ["Budapeszt", "Węgry", "miasto"]
 ---
 

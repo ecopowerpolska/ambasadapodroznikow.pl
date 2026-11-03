@@ -3,9 +3,6 @@ tytul: "Powrót po trzech tygodniach: co zrobić w pierwszą godzinę w domu"
 opis: "Wracasz po długim wyjeździe: co sprawdzić od progu, jak odkręcić wodę, co z lodówką, pocztą i walizką, a co spokojnie zostawić na następny dzień."
 data: 2026-11-15
 dzial: dom
-# ZDJECIE_DO_PODMIANY: walizka w przedpokoju przy otwartych drzwiach mieszkania po powrocie
-zdjecie: "weekend-wedrowka-zachod-slonca-05-www-3000x2000.webp"
-alt: "Grupa turystów z plecakami wędruje przez łąkę na wzgórzu o zachodzie słońca"
 tagi: ["dom", "powrót", "lista kontrolna"]
 ---
 

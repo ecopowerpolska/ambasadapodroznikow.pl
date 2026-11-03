@@ -3,9 +3,6 @@ tytul: "Posadzka w garażu pod rowery i sprzęt wyprawowy: o co zapytać"
 opis: "Jaka posadzka wytrzyma rowery, kajak i regały ze sprzętem w garażu? Wylewka a posadzka betonowa, dylatacje, schnięcie, wykończenie i pytania do ekipy."
 data: 2026-11-03
 dzial: dom
-# ZDJECIE_DO_PODMIANY: rowery na uchwytach ściennych w garażu z szarą betonową posadzką
-zdjecie: "podroze-plecaki-himalaje-11-www-3000x2000.webp"
-alt: "Kolorowe plecaki trekkingowe na trawie przed ośnieżonymi szczytami Annapurny w Nepalu"
 cel:
   nazwa: "Pan Wylewka"
   adres: "https://panwylewka.pl/uslugi"

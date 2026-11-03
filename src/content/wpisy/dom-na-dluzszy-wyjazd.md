@@ -3,9 +3,6 @@ tytul: "Jak przygotować dom na dłuższy wyjazd: woda, prąd, ogrzewanie"
 opis: "Dwa wieczory przed dłuższym wyjazdem: przegląd usterek, zawory, prąd, lodówka, ogrzewanie, rośliny i polisa. Lista do odhaczenia w dniu wylotu."
 data: 2026-11-03
 dzial: dom
-# ZDJECIE_DO_PODMIANY: walizka w przedpokoju przy zamykanych drzwiach mieszkania albo zakręcony zawór wody pod zlewem
-zdjecie: "podroze-drogowskaz-adventure-08-www-3000x1972.webp"
-alt: "Drogowskaz z napisem Adventure i czerwoną strzałką przy pustej drodze wśród gór"
 cel:
   nazwa: "Nadi Home"
   adres: "https://nadihome.pl/uslugi"

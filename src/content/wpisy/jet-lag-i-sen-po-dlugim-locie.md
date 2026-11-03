@@ -3,9 +3,6 @@ tytul: "Jet lag: jak szybciej wrócić do snu po długim locie"
 opis: "Jet lag po locie przez kilka stref: dlaczego lot na wschód męczy bardziej, jak przesunąć sen przed wylotem, kiedy szukać światła i czego unikać w samolocie."
 data: 2026-11-07
 dzial: zdrowie
-# ZDJECIE_DO_PODMIANY: widok z okna samolotu o świcie albo pasażer śpiący w fotelu samolotu z maską na oczach
-zdjecie: "podroze-gora-fuji-16-www-3000x1893.webp"
-alt: "Ośnieżony szczyt góry Fuji w Japonii z czerwonymi liśćmi klonu na pierwszym planie"
 tagi: ["jet lag", "sen", "długi lot", "strefy czasowe"]
 ---
 

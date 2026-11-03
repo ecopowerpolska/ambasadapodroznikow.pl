@@ -3,9 +3,8 @@ tytul: "Kręgosłup w długiej podróży: jak siedzieć w aucie i w samolocie"
 opis: "Plecy w długiej podróży autem i samolotem: ustawienie fotela, podparcie lędźwi, postoje, ruch w czasie lotu, bagaż i objawy, z którymi trzeba iść do lekarza."
 data: 2026-11-14
 dzial: zdrowie
-# ZDJECIE_DO_PODMIANY: kierowca rozciąga się przy aucie na postoju albo pasażer przechadza się przejściem w samolocie
-zdjecie: "podroze-turystka-nad-morzem-02-www-3000x2000.webp"
-alt: "Turystka z czerwonym plecakiem stoi na skale nad morzem z uniesioną ręką o zachodzie słońca"
+zdjecie: "technologia-nawigacja-w-aucie-01-www-2000x1333.webp"
+alt: "Smartfon w uchwycie na desce rozdzielczej auta z otwartą nawigacją i trasą, w tle rozmyte drzewa za szybą"
 tagi: ["kręgosłup", "podróż autem", "długi lot", "zakrzepica"]
 ---
 

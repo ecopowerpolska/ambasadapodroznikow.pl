@@ -3,9 +3,8 @@ tytul: "Internet w podróży: roaming w UE, eSIM czy karta lokalna"
 opis: "Jak mieć internet za granicą: gdzie działa roaming jak w kraju, co ze statkami i samolotami, jak działa eSIM na wyjazd i kiedy lepiej kupić kartę na miejscu."
 data: 2026-11-12
 dzial: technologia
-# ZDJECIE_DO_PODMIANY: podróżny z telefonem na lotnisku albo dworcu, ekran z ustawieniami sieci lub kartą SIM w dłoni
-zdjecie: "podroze-kanton-panorama-17-www-3000x2000.webp"
-alt: "Oświetlone wieżowce Kantonu nad Rzeką Perłową wieczorem, z odbiciami świateł w wodzie"
+zdjecie: "technologia-smartfon-mapa-swiata-02-www-3000x1914.webp"
+alt: "Smartfon z kolorowymi ikonami aplikacji leży ukośnie na ciemnej mapie świata z obiema Amerykami"
 tagi: ["roaming", "eSIM", "internet", "telefon za granicą"]
 ---
 

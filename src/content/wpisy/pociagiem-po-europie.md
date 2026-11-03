@@ -3,9 +3,6 @@ tytul: "Pociągiem po Europie: jak zaplanować trasę i nie przepłacić"
 opis: "Jak ułożyć trasę koleją po Europie: wyszukiwarki rozkładów, bilety pojedyncze czy Interrail, rezerwacje, przesiadki, nocne pociągi i przykładowa pętla z Polski."
 data: 2026-11-20
 dzial: podroze
-# ZDJECIE_DO_PODMIANY: pociąg w Europie, peron dworca albo wagon nocnego pociągu
-zdjecie: "podroze-wieza-eiffla-21-www-3000x2275.webp"
-alt: "Wieża Eiffla w Paryżu nad Sekwaną widziana między zielonymi drzewami w słoneczny dzień"
 tagi: ["kolej", "Europa", "Interrail"]
 ---
 

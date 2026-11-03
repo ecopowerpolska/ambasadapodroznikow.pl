@@ -3,9 +3,8 @@ tytul: "Mapy offline: jak nawigować bez zasięgu i bez internetu"
 opis: "Jak przygotować telefon do drogi bez zasięgu: mapy offline w Mapach Google, aplikacje na danych OpenStreetMap, GPS bez internetu, bateria i papierowa mapa."
 data: 2026-11-05
 dzial: technologia
-# ZDJECIE_DO_PODMIANY: dłoń trzyma telefon z mapą na szlaku albo na górskiej przełęczy, w tle góry
-zdjecie: "podroze-turysci-szlak-gorski-01-www-3000x2002.webp"
-alt: "Troje turystów z plecakami idzie górskim szlakiem doliną z ośnieżonymi szczytami w słońcu"
+zdjecie: "technologia-dlon-ekran-mapa-pinezka-03-www-3000x2000.webp"
+alt: "Dłoń trzyma przezroczysty ekran z planem miasta, nad którym stoi duża czerwona pinezka celu podróży"
 tagi: ["mapy offline", "nawigacja", "telefon", "góry"]
 ---
 
