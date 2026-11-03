@@ -92,21 +92,21 @@
     },
     "pasje": {
       "nazwa": "Pasje",
-      "tytulKarty": "Pasje: rower, góry i sprzęt między wyjazdami",
+      "tytulKarty": "Pasje: zdjęcia, rower i kuchnia z wyjazdów",
       "opisMeta": "Zdjęcia z podróży telefonem, rower na wakacjach i kuchnia z wyjazdów. Wpisy o tym, po co w ogóle wyjeżdżamy i jak zacząć bez drogiego sprzętu.",
       "h1": "Pasje",
       "wstep": "Pasje to powód, dla którego w ogóle się wyjeżdża. U nas to zdjęcia, rower i jedzenie. Piszemy, jak zrobić lepszy kadr samym telefonem, czy wieźć na wakacje własny rower i jak odtworzyć w domu smak z wyjazdu."
     },
     "technologia": {
       "nazwa": "Technologia",
-      "tytulKarty": "Technologia: telefon, aplikacje i strona z podróży",
+      "tytulKarty": "Technologia: mapy, internet i strona z podróży",
       "opisMeta": "Mapy offline, roaming i eSIM za granicą, własna strona z podróży. Piszemy o telefonie i programach, które naprawdę pomagają w drodze.",
       "h1": "Technologia",
       "wstep": "Telefon jest dziś mapą, biletem i aparatem naraz. Piszemy o mapach bez zasięgu, o internecie za granicą i o tym, jak założyć własną stronę z podróży. Bez testów sprzętu na zamówienie."
     },
     "zdrowie": {
       "nazwa": "Zdrowie",
-      "tytulKarty": "Zdrowie: apteczka, sen i jedzenie w drodze",
+      "tytulKarty": "Zdrowie: apteczka, sen i kręgosłup w podróży",
       "opisMeta": "Apteczka na wyjazd, sen po długim locie i kręgosłup po wielu godzinach w aucie albo w samolocie. Wpisy o zdrowiu w podróży, bez udawania lekarza.",
       "h1": "Zdrowie",
       "wstep": "Najgorszy wyjazd to ten, z którego wraca się chorym. Piszemy o apteczce, o śnie po długim locie i o kręgosłupie po całym dniu w aucie. Porady lekarza nie zastąpimy i tego nie udajemy."
