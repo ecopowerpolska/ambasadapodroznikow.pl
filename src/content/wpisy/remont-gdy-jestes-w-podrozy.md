@@ -3,9 +3,8 @@ tytul: "Remont, gdy jesteś w podróży: zakres, umowa i nadzór na odległość
 opis: "Remont pod Twoją nieobecność: jak spisać zakres, co wpisać do umowy, kto ma patrzeć ekipie na ręce i jak spokojnie odebrać prace po powrocie."
 data: 2026-11-03
 dzial: dom
-# ZDJECIE_DO_PODMIANY: remont mieszkania w toku, pusty pokój z folią na podłodze albo łazienka bez płytek
-zdjecie: "podroze-wyspa-lodz-z-lotu-12-www-3000x1994.webp"
-alt: "Biała łódź płynie po turkusowym morzu obok zielonej tropikalnej wyspy, widok z lotu ptaka"
+zdjecie: "dom-pokoj-przed-po-remoncie-03-www-3000x993.webp"
+alt: "Pokój przed remontem z gołymi tynkami i ten sam pokój po remoncie z białymi drzwiami i panelami"
 cel:
   nazwa: "Studio Agat"
   adres: "https://studioagat.pl/nadzor-inwestorski"

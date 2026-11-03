@@ -3,9 +3,8 @@ tytul: "Zdjęcia z podróży telefonem: co naprawdę poprawia kadr"
 opis: "Lepsze zdjęcia z wyjazdu telefonem bez nowego sprzętu: czysty obiektyw, światło rano i wieczorem, kadr, tryby aparatu i kopia zdjęć, zanim zgubisz telefon."
 data: 2026-11-03
 dzial: pasje
-# ZDJECIE_DO_PODMIANY: osoba robi zdjęcie telefonem w podróży, widok zza ramienia na ekran z kadrem miasta albo gór
-zdjecie: "podroze-swiatynia-kwitnaca-wisnia-14-www-3000x2000.webp"
-alt: "Czerwona japońska dzwonnica świątynna pod gałęziami kwitnącej wiśni w Kioto"
+zdjecie: "pasje-fotografowie-safari-auto-02-www-3000x2000.webp"
+alt: "Dwaj podróżni w otwartym aucie terenowym na sawannie: jeden robi zdjęcie telefonem, drugi celuje teleobiektywem"
 tagi: ["fotografia", "telefon", "zdjęcia z podróży"]
 ---
 

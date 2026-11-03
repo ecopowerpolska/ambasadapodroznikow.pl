@@ -3,9 +3,8 @@ tytul: "Dom gotowy na gości z zagranicy: co sprawdzić tydzień przed"
 opis: "Pokój gościnny, łazienka, drobne naprawy i kartka powitalna. Co sprawdzić tydzień przed przyjazdem gości z zagranicy, a czego nie zostawiać na wieczór."
 data: 2026-11-03
 dzial: dom
-# ZDJECIE_DO_PODMIANY: pokój gościnny z zasłanym łóżkiem, lampką nocną i walizką
-zdjecie: "weekend-przewodnik-turysci-mapa-01-www-3000x2001.webp"
-alt: "Przewodnik ze słuchawką i grupa uśmiechniętych turystów z mapą na ulicy starego miasta"
+zdjecie: "dom-salon-czarna-sofa-01-www-3000x2000.webp"
+alt: "Nowoczesny salon z czarną skórzaną sofą, otwartą kuchnią z wyspą i podświetloną drewnianą zabudową"
 tagi: ["goście", "dom", "przygotowania"]
 ---
 

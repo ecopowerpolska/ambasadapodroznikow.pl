@@ -3,9 +3,8 @@ tytul: "Kto zajrzy do mieszkania, gdy wyjeżdżasz: klucze, sąsiad, czujniki"
 opis: "Komu zostawić klucz na czas wyjazdu, co napisać mu na kartce, jak umówić się z sąsiadem i które czujniki naprawdę pomagają, gdy nikogo nie ma w domu."
 data: 2026-11-08
 dzial: dom
-# ZDJECIE_DO_PODMIANY: klucze do mieszkania na dłoni albo czujnik zalania na podłodze przy pralce
-zdjecie: "podroze-turysta-lornetka-jezioro-09-www-3000x2000.webp"
-alt: "Turysta z czerwonym plecakiem patrzy przez lornetkę na górskie jezioro i ośnieżone szczyty"
+zdjecie: "dom-salon-zaslony-zabudowa-02-www-3000x2000.webp"
+alt: "Minimalistyczny salon z czarną sofą, białymi zasłonami na całą ścianę i telewizorem w drewnianej zabudowie"
 tagi: ["dom", "wyjazd", "bezpieczeństwo"]
 ---
 
