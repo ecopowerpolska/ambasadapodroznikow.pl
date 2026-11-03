@@ -1,5 +1,5 @@
 ---
-// Stopka neutralna: nazwa redakcji, polityka prywatności, kanał RSS, rok. Bez nazwy spółki (jest w polityce) i bez listy naszych stron.
+// Stopka neutralna: nazwa redakcji, polityka prywatności, rok. Bez nazwy spółki (jest w polityce) i bez listy naszych stron.
 import { t, wstaw } from '../lib/tekst';
 
 // Rok BUDOWY (czas Warszawy). Codzienna przebudowa w Actions odświeża go po 1 stycznia.
@@ -12,7 +12,6 @@ const rok = new Intl.DateTimeFormat('pl-PL', { year: 'numeric', timeZone: 'Europ
     <nav aria-label={t('stopka.redakcja')}>
       <ul>
         <li><a href="/polityka-prywatnosci/">{t('stopka.polityka')}</a></li>
-        <li><a href="/rss.xml">{t('stopka.rss')}</a></li>
       </ul>
     </nav>
     <p class="stopka__prawa">{wstaw(t('stopka.prawa'), { rok })}</p>
