@@ -1,18 +1,45 @@
 {
   "marka": {
     "nazwa": "Ambasada Podróżników",
-    "haslo": "Notatnik podróżnika: jak jeździć mądrze i wracać do dobrze urządzonego domu",
-    "opisKrotki": "Notatnik redakcji o podróżach, pakowaniu, sprzęcie na szlak i domu, do którego się wraca. Proste, rzetelne wpisy, bez sprzedaży i bez reklam."
+    "haslo": "O wyjazdach i o domu, do którego z nich wracamy",
+    "opisKrotki": "Redakcja, która jeździ i urządza dom, pisze o pakowaniu, szlakach, sprzęcie, zdrowiu w drodze i o domu, który w tym czasie zostaje sam."
   },
+  "menu": [
+    {
+      "nazwa": "Podróże",
+      "adres": "/podroze/"
+    },
+    {
+      "nazwa": "Dom",
+      "adres": "/dom/"
+    },
+    {
+      "nazwa": "Pasje",
+      "adres": "/pasje/"
+    },
+    {
+      "nazwa": "Technologia",
+      "adres": "/technologia/"
+    },
+    {
+      "nazwa": "Zdrowie",
+      "adres": "/zdrowie/"
+    },
+    {
+      "nazwa": "Polecamy",
+      "adres": "/polecamy/"
+    },
+    {
+      "nazwa": "O nas",
+      "adres": "/o-nas/"
+    }
+  ],
   "interfejs": {
     "przejdzDoTresci": "Przejdź do treści",
     "marka_aria": "Ambasada Podróżników, strona główna",
     "menu_aria": "Menu główne",
     "menu_otworz": "Menu",
     "menu_zamknij": "Zamknij menu",
-    "menu_blog": "Blog",
-    "menu_zNaszychStron": "Z naszych stron",
-    "menu_oNas": "O nas",
     "okruszki_aria": "Okruszki",
     "okruszki_glowna": "Strona główna",
     "okruszki_blog": "Blog",
@@ -22,8 +49,11 @@
     "sasiedzi_aria": "Poprzedni i następny wpis",
     "poprzedni": "Poprzedni wpis",
     "nastepny": "Następny wpis",
-    "brakWpisow": "Pierwsze wpisy pojawią się tu wkrótce.",
-    "brakPolecanych": "Zapowiedzi z naszych stron pojawią się tu wkrótce."
+    "brakWpisow": "Nie ma tu jeszcze wpisów. Pierwszy jest w drodze.",
+    "brakPolecanych": "Polecane firmy nie opublikowały jeszcze nowych wpisów.",
+    "minCzytania": "{n} min czytania",
+    "wiecejZDzialu": "Więcej z działu {dzial}",
+    "podpisRedakcji": "Redakcja Ambasady Podróżników"
   },
   "stopka": {
     "redakcja": "Redakcja Ambasady Podróżników",
@@ -32,83 +62,157 @@
     "prawa": "© {rok} Redakcja Ambasady Podróżników"
   },
   "glowna": {
-    "tytulKarty": "Ambasada Podróżników: notatnik podróżnika",
-    "opisMeta": "Notatnik podróżnika: proste, rzetelne wpisy o wyjazdach, pakowaniu, sprzęcie i domu, który czeka po powrocie. Bez reklam, bez sprzedaży, z listami do zabrania.",
-    "h1": "Ambasada Podróżników. Notatnik podróżnika",
+    "tytulKarty": "Ambasada Podróżników: o wyjazdach i o domu",
+    "opisMeta": "Piszemy o wyjazdach i o domu, który przez ten czas stoi sam: pakowanie na weekend, pierwszy szlak, remont z daleka, sprzęt i zdrowie w drodze.",
+    "h1": "Ambasada Podróżników",
     "akapity": [
-      "Ambasada Podróżników to notatnik redakcji, w którym zbieramy to, czego sami szukaliśmy przed wyjazdami. Piszemy krótko i konkretnie, z listami, które można wydrukować albo zapisać w telefonie.",
-      "Strona jest dla tych, którzy jeżdżą często, i dla tych, którzy dopiero zaczynają. Znajdziesz tu teksty o pakowaniu, sprzęcie na szlak i planowaniu weekendu, a także o tym, co dzieje się w domu, kiedy Cię w nim nie ma, i jak go przygotować na powrót albo na gości.",
-      "Każdy wpis kończy się trzema rzeczami do zabrania, a gdy w tekście pojawia się firma, mówimy to wprost. Strona niczego nie sprzedaje, więc nie znajdziesz tu koszyka ani ofert."
+      "Piszemy o wyjazdach i o domu, który w tym czasie zostaje sam: jak spakować się na weekend, co zakręcić przed drogą i jak prowadzić remont z daleka."
     ],
     "najnowszeNaglowek": "Najnowsze wpisy",
     "najnowszeWszystkie": "Wszystkie wpisy",
-    "zNaszychStronNaglowek": "Z naszych stron",
-    "zNaszychStronWstep": "Zbieramy tu zapowiedzi wpisów z zaprzyjaźnionych stron o domu i wnętrzach, a całość czyta się u źródła.",
-    "zNaszychStronWszystkie": "Wszystkie zapowiedzi"
+    "naglowekDzialy": "Według tematu",
+    "zNaszychStronNaglowek": "Polecamy",
+    "zNaszychStronWstep": "Firmy, z którymi pracujemy na co dzień, też piszą. Tu są ich najnowsze wpisy.",
+    "zNaszychStronWszystkie": "Zobacz, kogo polecamy"
+  },
+  "dzialy": {
+    "podroze": {
+      "nazwa": "Podróże",
+      "tytulKarty": "Podróże: pakowanie, szlak i weekend w drodze",
+      "opisMeta": "Jak spakować się na weekend w 20 minut, co wziąć na pierwszy szlak i jak nie wozić połowy szafy. Wpisy o drodze, plecaku i bagażniku.",
+      "h1": "Podróże",
+      "wstep": "Tu jest wszystko o samym wyjeździe: pakowanie, pierwszy szlak, kilka dni w obcym mieście i pociągi po Europie. Najczęściej zaczynamy od listy, bo bez niej zawsze czegoś brakuje. Lista się zmienia, więc wpisy też."
+    },
+    "dom": {
+      "nazwa": "Dom",
+      "tytulKarty": "Dom: przed wyjazdem, po powrocie i w czasie remontu",
+      "opisMeta": "Co zakręcić przed dłuższym wyjazdem, jak przygotować pokój dla gości z zagranicy i jak prowadzić remont, kiedy nie ma Cię na miejscu.",
+      "h1": "Dom",
+      "wstep": "Z każdego wyjazdu się wraca. Przez ten czas dom stoi sam, więc piszemy, co zakręcić, komu zostawić klucze i jak prowadzić remont z daleka. Jest też o szafie, w której łatwiej się pakować, i o pokoju dla gości."
+    },
+    "pasje": {
+      "nazwa": "Pasje",
+      "tytulKarty": "Pasje: rower, góry i sprzęt między wyjazdami",
+      "opisMeta": "Zdjęcia z podróży telefonem, rower na wakacjach i kuchnia z wyjazdów. Wpisy o tym, po co w ogóle wyjeżdżamy i jak zacząć bez drogiego sprzętu.",
+      "h1": "Pasje",
+      "wstep": "Pasje to powód, dla którego w ogóle się wyjeżdża. U nas to zdjęcia, rower i jedzenie. Piszemy, jak zrobić lepszy kadr samym telefonem, czy wieźć na wakacje własny rower i jak odtworzyć w domu smak z wyjazdu."
+    },
+    "technologia": {
+      "nazwa": "Technologia",
+      "tytulKarty": "Technologia: telefon, aplikacje i strona z podróży",
+      "opisMeta": "Mapy offline, roaming i eSIM za granicą, własna strona z podróży. Piszemy o telefonie i programach, które naprawdę pomagają w drodze.",
+      "h1": "Technologia",
+      "wstep": "Telefon jest dziś mapą, biletem i aparatem naraz. Piszemy o mapach bez zasięgu, o internecie za granicą i o tym, jak założyć własną stronę z podróży. Bez testów sprzętu na zamówienie."
+    },
+    "zdrowie": {
+      "nazwa": "Zdrowie",
+      "tytulKarty": "Zdrowie: apteczka, sen i jedzenie w drodze",
+      "opisMeta": "Apteczka na wyjazd, sen po długim locie i kręgosłup po wielu godzinach w aucie albo w samolocie. Wpisy o zdrowiu w podróży, bez udawania lekarza.",
+      "h1": "Zdrowie",
+      "wstep": "Najgorszy wyjazd to ten, z którego wraca się chorym. Piszemy o apteczce, o śnie po długim locie i o kręgosłupie po całym dniu w aucie. Porady lekarza nie zastąpimy i tego nie udajemy."
+    }
+  },
+  "polecamy": {
+    "tytulKarty": "Polecamy: firmy, z którymi pracujemy",
+    "opisMeta": "Pięć firm, z którymi pracujemy na co dzień: projekt wnętrz, remont, meble na wymiar, wylewki i strony internetowe. Krótko, kto co robi.",
+    "h1": "Polecamy",
+    "wstep": "Polecamy tylko firmy, z którymi pracujemy na co dzień. Wszystkie należą do naszej grupy EcoPower Polska, tej samej, która wydaje tę stronę.",
+    "firmy": [
+      {
+        "nazwa": "Studio Agat",
+        "adres": "https://studioagat.pl/",
+        "opis": "Studio Agat z Warszawy projektuje mieszkania, domy i biura, a potem prowadzi remont aż do odbioru, razem z meblami na wymiar. Harmonogram trafia do umowy, a na budowę jeździ projektant. Przydaje się, gdy nie masz czasu stać nad ekipą.",
+        "coDlaNas": ""
+      },
+      {
+        "nazwa": "Pan Stolarz",
+        "adres": "https://pan-stolarz.pl/",
+        "opis": "Pan Stolarz robi meble na wymiar w Warszawie: kuchnie, szafy, garderoby, łóżko piętrowe albo słupek na pralkę w łazience. Przyjeżdżają zmierzyć, montują sami i w ciągu 3 miesięcy raz wracają wyregulować fronty. Kuchnię robią w 25 dni od pierwszej wpłaty.",
+        "coDlaNas": ""
+      },
+      {
+        "nazwa": "Nadi Home",
+        "adres": "https://nadihome.pl/",
+        "opis": "Nadi Home to rodzinna ekipa remontowa z Gocławia, działa od 2012 roku. Elektrykę i hydraulikę robią sami, a cenę i termin zapisują w umowie przed pierwszym dniem prac. Mają duże auta, więc pomagają kupić i przywieźć materiały.",
+        "coDlaNas": ""
+      },
+      {
+        "nazwa": "Pan Wylewka",
+        "adres": "https://panwylewka.pl/",
+        "opis": "Pan Wylewka robi wylewki i posadzki betonowe maszynowo, miksokretem, w domach, mieszkaniach i halach, także w blokach, aż do 15. piętra. Przyjeżdżają zmierzyć bez opłaty i sprzątają po sobie. Warto do nich zadzwonić, zanim zamówisz podłogę albo meble.",
+        "coDlaNas": ""
+      },
+      {
+        "nazwa": "EcoPower Polska",
+        "adres": "https://www.ecopowerpolska.pl/",
+        "opis": "EcoPower Polska z Gocławia buduje strony i sklepy internetowe dla firm, razem z domeną, pocztą i wizytówką w Google. Zrobiła strony czterech firm z tej listy. Większość spraw da się z nimi załatwić mailem i przez telefon.",
+        "coDlaNas": "Zbudowała tę stronę, razem z zapowiedziami, które co rano zbierają się tu z blogów firm z tej listy."
+      }
+    ],
+    "odwiedz": "Odwiedź {nazwa}",
+    "naglowekZapowiedzi": "Co ostatnio napisali",
+    "wstepZapowiedzi": "Najnowsze wpisy z blogów tych firm. Tu widzisz tytuł i kilka zdań, całość czytasz u nich.",
+    "czytajDalej": "Czytaj dalej na {zrodlo}"
   },
   "o-nas": {
-    "tytulKarty": "O nas: redakcja Ambasady Podróżników",
-    "opisMeta": "Kim jesteśmy i dlaczego wracamy do nazwy Ambasada Podróżników: dawne biuro wyjazdów, dziś notatnik o podróżach i domu. Zasady redakcji i tematy.",
+    "tytulKarty": "O nas: kto pisze Ambasadę Podróżników",
+    "opisMeta": "Kim jesteśmy, skąd nazwa po dawnym biurze wyjazdów, o czym piszemy w pięciu działach i kogo polecamy. Stronę wydaje EcoPower Polska Sp. z o.o.",
     "h1": "O nas",
-    "wstep": "Nazwa jest stara, notatnik nowy: piszemy o podróżach i o domu, do którego się wraca.",
+    "wstep": "Jeździmy i urządzamy dom. Piszemy o jednym i o drugim.",
     "zdjecie": "weekend-przewodnik-turysci-mapa-01-www-3000x2001.webp",
     "akapity": [
-      "Nazwę „Ambasada Podróżników” nosiło w latach 2014 do 2025 biuro wyjazdów: weekendy w Polsce, wyjazdy po Europie i dalsze podróże po świecie. Biuro zakończyło działalność, a strona, która była jego wizytówką, przez jakiś czas stała pusta. W 2026 roku nazwa wróciła w nowej formie, jako notatnik.",
-      "Nowy notatnik nie jest kontynuacją tamtej firmy i nie świadczy usług, które oferowało biuro. Wracamy do samej nazwy, która dobrze oddaje to, o co nam chodzi."
+      "Piszemy jako redakcja. Wyjeżdżamy na weekendy i na dłużej, a między wyjazdami urządzamy dom. Dlatego spotykają się tu dwa tematy: droga i miejsce, do którego się z niej wraca."
     ],
     "sekcje": [
       {
-        "naglowek": "Kto pisze",
+        "naglowek": "Skąd nazwa",
         "akapity": [
-          "Piszemy jako redakcja. To ludzie, którzy dużo jeżdżą i dużo urządzają domów, więc znamy oba końce podróży: walizkę i klucz w drzwiach."
+          "Od 2014 do 2025 roku nazwę „Ambasada Podróżników” nosiło biuro wyjazdów. Organizowało weekendy w Polsce, wyjazdy po Europie i dalsze podróże. To nie była nasza firma. Biuro zakończyło działalność, a w 2026 roku nazwa wróciła, tym razem jako notatnik o podróżach i domu.",
+          "Wyjazdów nie organizujemy i nie prowadzimy spraw dawnego biura. Wzięliśmy samą nazwę, bo dobrze mówi, o co nam chodzi."
         ]
       },
       {
         "naglowek": "O czym piszemy",
         "akapity": [
-          "Obok pakowania, szlaków i planowania weekendu znajdziesz tu teksty o remoncie w czasie wyjazdu, o przygotowaniu domu na dłuższą nieobecność, o szafie, w której łatwo się pakować, i o pokoju dla gości. Staramy się pisać prosto i sprawdzać fakty. Liczby podajemy tylko wtedy, gdy znamy ich źródło albo wynikają z powszechnej wiedzy. Ceny usług zostawiamy firmom, bo zmieniają się szybciej niż nasze wpisy."
+          "Mamy pięć działów. Podróże to pakowanie, szlak, miasta na kilka dni i kolej. Dom to wszystko, co dzieje się pod naszą nieobecność: woda, prąd, goście i remont prowadzony z daleka. Pasje to zdjęcia, rower i kuchnia przywieziona z wyjazdu. Technologia to mapy offline, internet za granicą i własna strona z podróży. Zdrowie to apteczka, sen po długim locie i kręgosłup w drodze.",
+          "Cen usług nie podajemy. Zmieniają się szybciej niż nasze wpisy."
         ]
       },
       {
-        "naglowek": "Zasada polecania",
+        "naglowek": "Kogo polecamy i dlaczego",
         "akapity": [
-          "W tekście wskazujemy najwyżej jedną firmę, i tylko taką, z którą współpracujemy. Robimy to jednym zdaniem tam, gdzie pomaga w temacie wpisu, a nie w formie reklamy czy zestawienia. Zaprzyjaźnione strony o domu i wnętrzach zapowiadamy w zakładce „Z naszych stron”, a całość czyta się u źródła."
+          "Polecamy tylko firmy, z którymi pracujemy na co dzień: Studio Agat, Pan Stolarz, Nadi Home, Pan Wylewka i EcoPower Polska. Wszystkie należą do naszej grupy EcoPower Polska, więc nie udajemy, że to niezależna opinia.",
+          "Płatnych wpisów nie bierzemy i nie publikujemy tekstów napisanych przez firmy. Jeśli we wpisie pada nazwa firmy, to jedna i w jednym zdaniu, tam gdzie naprawdę pasuje do tematu."
         ]
       },
       {
-        "naglowek": "Czego tu nie ma",
+        "naglowek": "Kto wydaje stronę",
         "akapity": [
-          "Strona nie prowadzi sprzedaży, nie ma sklepu, koszyka ani formularza kontaktowego. Jest notatnikiem, który się czyta. Informacje o danych osobowych znajdziesz w [polityce prywatności](/polityka-prywatnosci/)."
+          "Stronę wydaje EcoPower Polska Sp. z o.o. z Warszawy. Nie ma tu sklepu, kont, komentarzy ani formularza. Jak obchodzimy się z danymi, opisuje polityka prywatności, do której link jest w stopce."
         ]
       }
     ]
   },
   "blog": {
-    "tytulKarty": "Blog: wpisy o podróżach, pakowaniu i domu",
-    "opisMeta": "Wszystkie wpisy z notatnika Ambasady Podróżników: pakowanie, sprzęt na szlak, dom na czas wyjazdu i goście z zagranicy. Od najnowszych do najstarszych.",
-    "h1": "Blog",
-    "wstep": "Wpisy o podróżach i o domu, do którego się wraca, od najnowszych. Każdy kończy się krótką listą rzeczy do zabrania."
-  },
-  "z-naszych-stron": {
-    "tytulKarty": "Z naszych stron: wpisy o domu i wnętrzach",
-    "opisMeta": "Zapowiedzi wpisów z zaprzyjaźnionych stron o remontach, wnętrzach, meblach na wymiar i podłogach. Całość czytasz u źródła, po kliknięciu w tytuł wpisu.",
-    "h1": "Z naszych stron",
-    "wstep": "Zbieramy tu zapowiedzi wpisów z zaprzyjaźnionych stron o domu i wnętrzach: tytuł, krótki opis i zdjęcie. Całość czyta się u źródła, po kliknięciu w link do oryginału."
+    "tytulKarty": "Wszystkie wpisy | Ambasada Podróżników",
+    "opisMeta": "Wszystkie wpisy od najnowszego: podróże, dom, pasje, technologia i zdrowie. Pakowanie, pierwszy szlak, dom na czas wyjazdu i sprzęt w drodze.",
+    "h1": "Wszystkie wpisy",
+    "wstep": "Wszystko, co napisaliśmy, od najnowszego wpisu. Jeśli wolisz jeden temat, wybierz dział w menu."
   },
   "polityka": {
     "tytulKarty": "Polityka prywatności | Ambasada Podróżników",
-    "opisMeta": "Polityka prywatności ambasadapodroznikow.pl: administrator, hosting na GitHub Pages, zdjęcia zapowiedzi z naszych stron, brak cookies i analityki, Twoje prawa.",
+    "opisMeta": "Polityka prywatności ambasadapodroznikow.pl: kto jest administratorem, hosting na GitHub Pages, zdjęcia w zapowiedziach, brak cookies i analityki.",
     "h1": "Polityka prywatności",
-    "lead": "Ten serwis nie ustawia własnych plików cookies, nie ma analityki ani reklam, kont i formularzy. Niżej opisujemy, jakie dane technicznie przetwarzają hosting i serwery stron, z których pokazujemy zapowiedzi.",
+    "lead": "Ta strona nie ustawia własnych plików cookies, nie ma analityki, reklam, kont ani formularzy. Niżej piszemy, jakie dane technicznie widzą hosting i serwery firm, których zapowiedzi pokazujemy.",
     "dataAktualizacji": "2026-11-03",
     "administratorNaglowek": "Administrator danych",
     "administratorWstep": "Administratorem danych osobowych jest:",
     "sekcje": [
       {
         "id": "zakres",
-        "naglowek": "Jaki to serwis",
+        "naglowek": "Jaka to strona",
         "akapity": [
-          "Serwis ambasadapodroznikow.pl jest statyczną stroną z wpisami do czytania. Nie ma kont użytkowników, komentarzy, sklepu ani newslettera i nie zbiera od odwiedzających danych, które sami by wpisali."
+          "ambasadapodroznikow.pl to statyczna strona z wpisami do czytania. Nie ma kont, komentarzy, sklepu ani newslettera. Nie zbiera danych, które ktoś musiałby sam wpisać."
         ],
         "lista": [],
         "akapityPo": []
@@ -117,8 +221,8 @@
         "id": "hosting",
         "naglowek": "Hosting na GitHub Pages",
         "akapity": [
-          "Serwis jest opublikowany na GitHub Pages. Dostawcą hostingu jest GitHub Inc., która w ramach usługi może przetwarzać adresy IP odwiedzających i podstawowe dane techniczne zapytań, takie jak data, przeglądarka i adres żądanej strony, w dziennikach serwera. Robi to na własnych zasadach, opisanych w jej polityce prywatności.",
-          "Podstawą przetwarzania po stronie administratora jest uzasadniony interes (art. 6 ust. 1 lit. f RODO), czyli udostępnienie serwisu i zapewnienie jego bezpieczeństwa."
+          "Strona stoi na GitHub Pages, usłudze firmy GitHub Inc. GitHub może zapisywać w dziennikach serwera adresy IP odwiedzających i podstawowe dane techniczne zapytań: datę, przeglądarkę i adres otwieranej strony. Robi to na własnych zasadach, opisanych w swojej polityce prywatności.",
+          "Podstawą przetwarzania po stronie administratora jest uzasadniony interes (art. 6 ust. 1 lit. f RODO): udostępnienie strony i dbanie o jej bezpieczeństwo."
         ],
         "lista": [],
         "akapityPo": []
@@ -127,16 +231,16 @@
         "id": "cookies",
         "naglowek": "Pliki cookies i analityka",
         "akapity": [
-          "Serwis nie ustawia własnych plików cookies, nie używa analityki, nie ładuje skryptów reklamowych ani narzędzi śledzących. Dlatego nie wyświetlamy okna zgody. Twoja przeglądarka może zapisywać technicznie niezbędne dane zgodnie z własnymi ustawieniami."
+          "Strona nie ustawia własnych plików cookies, nie używa analityki, nie ładuje reklam ani skryptów śledzących. Dlatego nie pokazujemy okna zgody. Przeglądarka może sama zapisywać dane potrzebne technicznie, zgodnie ze swoimi ustawieniami."
         ],
         "lista": [],
         "akapityPo": []
       },
       {
         "id": "zapowiedzi",
-        "naglowek": "Zdjęcia zapowiedzi z naszych stron",
+        "naglowek": "Zdjęcia w zapowiedziach polecanych firm",
         "akapity": [
-          "W zakładce [Z naszych stron](/z-naszych-stron/) i na stronie głównej pokazujemy zapowiedzi wpisów z zaprzyjaźnionych stron. Zdjęcia do tych zapowiedzi przeglądarka pobiera bezpośrednio z serwerów tych stron, a nie z naszego hostingu. Przy pobraniu ich serwer może odnotować adres IP i podstawowe dane techniczne zapytania. Są to serwery następujących stron:"
+          "W zakładce [Polecamy](/polecamy/) i na stronie głównej pokazujemy zapowiedzi wpisów z blogów firm, które polecamy. Zdjęcia do tych zapowiedzi przeglądarka pobiera prosto z serwerów tych firm, nie z naszego hostingu. Ich serwer może przy tym zapisać adres IP i podstawowe dane techniczne zapytania. Chodzi o serwery tych stron:"
         ],
         "lista": [
           "studioagat.pl",
@@ -146,14 +250,14 @@
           "panwylewka.pl"
         ],
         "akapityPo": [
-          "Zapowiedzi nie ustawiają cookies ani nie uruchamiają skryptów z tych stron. Samo kliknięcie linku do oryginału przenosi Cię na stronę z jej własną polityką prywatności i własnym administratorem."
+          "Zapowiedzi nie ustawiają cookies i nie uruchamiają skryptów tych stron. Kliknięcie w link do oryginału przenosi Cię na stronę, która ma własną politykę prywatności i własnego administratora."
         ]
       },
       {
         "id": "linki",
         "naglowek": "Linki do innych stron",
         "akapity": [
-          "We wpisach znajdują się odnośniki do zewnętrznych serwisów. Po kliknięciu przechodzisz na stronę, która ma własną politykę prywatności. Zapoznaj się z nią, zanim zostawisz tam jakiekolwiek dane."
+          "We wpisach są linki do innych stron. Po kliknięciu trafiasz na stronę z własną polityką prywatności. Przeczytaj ją, zanim zostawisz tam swoje dane."
         ],
         "lista": [],
         "akapityPo": []
@@ -162,8 +266,8 @@
         "id": "prawa",
         "naglowek": "Twoje prawa",
         "akapity": [
-          "Przysługuje Ci prawo dostępu do danych (art. 15 RODO), sprostowania (art. 16), usunięcia (art. 17), ograniczenia przetwarzania (art. 18), powiadomienia o sprostowaniu, usunięciu lub ograniczeniu (art. 19), przenoszenia danych (art. 20), sprzeciwu wobec przetwarzania (art. 21) oraz prawo, by nie podlegać decyzji opartej wyłącznie na zautomatyzowanym przetwarzaniu (art. 22).",
-          "Możesz skontaktować się z administratorem pod adresem {email} albo złożyć skargę do Prezesa Urzędu Ochrony Danych Osobowych. Ponieważ serwis nie zbiera danych poza dziennikami hostingu i serwerów stron, z których pokazujemy zapowiedzi, część praw wykonasz bezpośrednio wobec ich administratorów."
+          "Masz prawo dostępu do danych (art. 15 RODO), ich sprostowania (art. 16), usunięcia (art. 17), ograniczenia przetwarzania (art. 18), powiadomienia o sprostowaniu, usunięciu lub ograniczeniu (art. 19), przenoszenia danych (art. 20) i sprzeciwu wobec przetwarzania (art. 21). Masz też prawo nie podlegać decyzji opartej wyłącznie na zautomatyzowanym przetwarzaniu (art. 22).",
+          "Napisz do administratora na adres {email} albo złóż skargę do Prezesa Urzędu Ochrony Danych Osobowych. Strona sama nie zbiera danych poza dziennikami hostingu i serwerów polecanych firm, więc część praw wykonasz bezpośrednio wobec ich administratorów."
         ],
         "lista": [],
         "akapityPo": []
@@ -172,7 +276,7 @@
         "id": "zmiany",
         "naglowek": "Zmiany polityki",
         "akapity": [
-          "Politykę zmieniamy, gdy zmienia się sposób działania serwisu. Aktualna wersja obowiązuje od 3 listopada 2026 roku."
+          "Politykę zmieniamy, gdy zmienia się sposób działania strony. Ta wersja obowiązuje od 3 listopada 2026 roku."
         ],
         "lista": [],
         "akapityPo": []
@@ -181,10 +285,10 @@
   },
   "e404": {
     "tytulKarty": "Nie ma takiej strony | Ambasada Podróżników",
-    "opisMeta": "Strony, której szukasz, nie ma pod tym adresem. Wróć na stronę główną albo zajrzyj do wpisów na blogu.",
-    "h1": "Nie znaleźliśmy tej strony",
-    "tekst": "Adres mógł się zmienić albo zawierać literówkę. Wróć na stronę główną albo przejrzyj wpisy na blogu.",
+    "opisMeta": "Pod tym adresem nie ma strony. Mogła się przenieść albo w adresie jest literówka. Wróć na stronę główną albo przejrzyj wszystkie wpisy.",
+    "h1": "Nie ma tu takiej strony",
+    "tekst": "Adres mógł się zmienić albo ma literówkę. Jeśli szukasz dawnego biura wyjazdów Ambasada Podróżników, ono już nie działa.",
     "glowna": "Wróć na stronę główną",
-    "blog": "Zobacz blog"
+    "blog": "Zobacz wszystkie wpisy"
   }
 }

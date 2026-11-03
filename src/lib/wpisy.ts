@@ -1,4 +1,5 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
+import type { Dzial } from './dzialy';
 
 export type Wpis = CollectionEntry<'wpisy'>;
 export type Polecany = CollectionEntry<'polecane'>;
@@ -15,6 +16,35 @@ export async function opublikowane(): Promise<Wpis[]> {
     console.info(`[wpisy] oczekuje na datę publikacji: ${wszystkie.length - gotowe.length}`);
   }
   return gotowe.sort((a, b) => b.data.data.getTime() - a.data.data.getTime());
+}
+
+/** Opublikowane wpisy jednego działu, od najnowszego. */
+export async function zDzialu(dzial: Dzial): Promise<Wpis[]> {
+  return (await opublikowane()).filter((w) => w.data.dzial === dzial);
+}
+
+/**
+ * „Więcej z działu”: najnowsze inne wpisy tego działu; gdy działowi brakuje do kompletu, dobiera najnowsze z całej strony
+ * (WZORZEC-MAGAZYNU §3.5 pkt 7). `wszystkie` = wynik opublikowane().
+ */
+export function wiecejZDzialu(wpis: Wpis, wszystkie: Wpis[], ile = 3): Wpis[] {
+  const inne = wszystkie.filter((w) => w.id !== wpis.id);
+  const zDzialu = inne.filter((w) => w.data.dzial === wpis.data.dzial).slice(0, ile);
+  if (zDzialu.length >= 2 || zDzialu.length === inne.length) return zDzialu;
+  const dobrane = inne.filter((w) => !zDzialu.includes(w)).slice(0, ile - zDzialu.length);
+  return [...zDzialu, ...dobrane];
+}
+
+/** Czas czytania w minutach: słowa treści ÷ 200, w górę, najmniej 1. Liczone z surowego Markdownu bez znaczników. */
+export function czasCzytania(wpis: Wpis): number {
+  const tekst = (wpis.body ?? '')
+    .replace(/```[\s\S]*?```/g, ' ')
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+    .replace(/<[^>]*>/g, ' ')
+    .replace(/[#>*_`|~]+/g, ' ');
+  const slowa = tekst.split(/\s+/).filter((s) => /[\p{L}\p{N}]/u.test(s)).length;
+  return Math.max(1, Math.ceil(slowa / 200));
 }
 
 export async function polecane(): Promise<Polecany[]> {

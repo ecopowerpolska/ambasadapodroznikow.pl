@@ -1,51 +1,53 @@
 ---
-tytul: "Szafa podróżnika: jak urządzić garderobę, by pakować się szybciej"
-opis: "Jak ułożyć szafę i garderobę dla kogoś, kto dużo podróżuje: strefa walizek, szuflady na akcesoria, światło i układ, który skraca pakowanie."
-data: 2026-10-11
+tytul: "Szafa podróżnika: jak ją urządzić, żeby pakować się szybciej"
+opis: "Jak ułożyć szafę albo garderobę dla kogoś, kto często wyjeżdża: stała półka na rzeczy podróżne, walizka pod ręką, płytkie szuflady i światło."
+data: 2026-11-03
+dzial: dom
+# ZDJECIE_DO_PODMIANY: otwarta szafa albo garderoba z walizką i ułożonymi ubraniami
 zdjecie: "podroze-mapa-akcesoria-07-www-3000x2003.webp"
 alt: "Kapelusz, aparat, paszport i buty na starej mapie świata z napisem Travel the World"
 cel:
   nazwa: "Pan Stolarz"
-  adres: "https://pan-stolarz.pl/"
+  adres: "https://pan-stolarz.pl/szafy-na-wymiar"
 tagi: ["szafa", "garderoba", "pakowanie"]
 ---
 
-Kto pakuje się w pół godziny, ten zwykle ma szafę urządzoną gorzej, niż mógłby, i na tym traci najwięcej czasu.
+Pakowanie na tygodniowy wyjazd zajmuje zwykle mniej czasu niż szukanie rzeczy do spakowania. Adapter leży w szufladzie w kuchni, kurtka przeciwdeszczowa w piwnicy. Kosmetyczka? Pod umywalką. Szafa ułożona pod wyjazdy skraca to do kilkunastu minut.
 
-## Jedna strefa dla rzeczy podróżnych
+## Jedna półka na wszystko, co jeździ
 
-Pierwszy krok jest prawie darmowy: wydziel w szafie osobne miejsce na wszystko, co jeździ z Tobą. Dolna półka na ciepłe skarpety i bieliznę techniczną, szuflada na kosmetyczkę i ładowarki, pojemnik na adaptery do gniazdek, a obok wieszak z kurtką przeciwdeszczową. Jeśli sprzęt podróżny leży w trzech różnych pokojach, pakowanie zawsze zaczyna się od szukania.
+Pierwszy krok nic nie kosztuje. Wydziel w szafie jedną półkę albo jedną szufladę na rzeczy, które jeżdżą z Tobą: bieliznę termoaktywną, ciepłe skarpety, chustę, czapkę, pokrowce na buty. Obok powieś kurtkę przeciwdeszczową. Jeśli te rzeczy leżą w trzech pokojach, każde pakowanie zaczyna się od szukania.
 
-Dobrze działa też zasada „stałego zestawu”. Jeden plecak lub torba ma w środku rzeczy, które nigdy z niej nie wychodzą: zapasowy kabel, miniaturowe kosmetyki, apteczka, składana torba na zakupy. Po powrocie uzupełniasz braki i odstawiasz torbę na jej miejsce. Przed wyjazdem pozostaje dorzucić ubrania.
+Drugi krok to stała torba. W małej torbie albo kosmetyczce trzymasz zestaw, który nigdy z niej nie wychodzi: zapasowy kabel do telefonu, adapter do gniazdek, powerbank, miniaturowe kosmetyki, plastry, składaną torbę na zakupy. Po powrocie uzupełniasz braki. Torba wraca na tę samą półkę. Przed kolejnym wyjazdem dorzucasz już tylko ubrania.
 
-Jeśli masz miejsce, zostaw przy szafie niski stojak lub wnękę na walizkę. Walizka stojąca w szafie zamiast na strychu jest otwarta przez cały tydzień przed wyjazdem, a po drodze trafiają do niej rzeczy, o których pamiętasz. Wyciągnięcie jej z komórki dzień przed wylotem to najczęstszy powód nocnego pakowania.
+Trzeci krok: walizka w szafie, nie na pawlaczu. Jeśli stoi pod ręką, tydzień przed wyjazdem leży otwarta, a Ty wrzucasz do niej rzeczy, kiedy o nich pomyślisz. Wyciąganie walizki z piwnicy wieczorem przed lotem kończy się pakowaniem o północy. Znasz to.
 
-## Układ, który skraca drogę do ubrań
+## Wysokość ma znaczenie
 
-Garderoba nie musi być osobnym pokojem. Opisy rodzajów, które widzimy na stronach stolarzy, wymieniają garderobę typu walk-in, czyli osobne pomieszczenie z przejściem pośrodku, wnękę schowaną za drzwiami, układ otwarty bez drzwi i garderobę wydzieloną w sypialni drzwiami przesuwnymi. Dla osoby, która często pakuje walizkę, najlepiej sprawdza się układ z jednym otwartym polem na wysokości wzroku, gdzie wiszą zestawy na najbliższy wyjazd.
+Najwyżej trafiają rzeczy sezonowe i walizki, których używasz kilka razy w roku. Na wysokości oczu wisi to, co nosisz teraz, i zestawy na najbliższy wyjazd. Nisko stoją buty, plecaki i ciężkie torby. Taki układ działa i w szafie przesuwnej, i w osobnej garderobie.
 
-Liczy się też wysokość. Rzeczy sezonowe i walizki trafiają wysoko, bieżące zestawy na wysokość oczu, a obuwie i ciężkie torby nisko. Przy dwóch osobach w jednej garderobie każda dostaje własną strefę, żeby nie przekładać cudzych rzeczy.
+Jeśli w jednej szafie mieszkają rzeczy dwóch osób, każda dostaje własną kolumnę. Inaczej pakowanie zamienia się w przekładanie cudzych swetrów.
 
-Szafę wnękową w przedpokoju można potraktować jak punkt startowy: kurtki, buty, plecak i torba z dokumentami w jednym miejscu, tuż przy drzwiach.
+Przedpokój to dobre miejsce na punkt startowy. Kurtki, buty, plecak dzienny i teczka z dokumentami w jednej szafie przy drzwiach oznaczają, że przy wyjściu niczego nie szukasz. Paszport też ma tam swoją kieszeń.
 
-## Wnętrze: drążki, kosze i szuflady
+## Wnętrze: płytkie szuflady i pionowe ubrania
 
-Wyposażenie wnętrza ma mniejsze znaczenie niż ułożenie, ale kilka elementów naprawdę ułatwia pakowanie. Wysuwany wieszak na spodnie pokazuje wszystkie pary naraz, kosze na prowadnicach na swetry i bieliznę pozwalają zobaczyć wszystko bez wyciągania stosu, a płytkie szuflady z przegródkami przydają się na biżuterię, paski, okulary i drobne akcesoria. Pantograf, czyli drążek opuszczany z góry, ratuje wysokie szafy, do których inaczej trzeba by sięgać po krzesło.
+Głęboka szuflada zamienia się w stos. To, co leży na dnie, znika na pół roku. Płytkie szuflady z przegródkami mieszczą paski, okulary, ładowarki i biżuterię tak, że wszystko widać naraz.
 
-Dobrze, gdy szuflady są płytkie, bo głębokie zamieniają się w stos, w którym ginie to, co leży na dnie. Złożone ubrania ustawiaj pionowo jak książki, nie jedno na drugim. Widać wtedy każdą rzecz bez burzenia reszty.
+Złożone koszulki i swetry ustawiaj pionowo, jak książki na półce. Widzisz każdą rzecz. Wyjmujesz jedną bez burzenia reszty. Kosze na prowadnicach działają podobnie: wysuwasz i patrzysz z góry.
 
-Rzeczy o różnych porach roku trzymaj osobno. Ubrania zimowe, lekkie letnie i sprzęt górski można podpisać na pudłach lub pojemnikach. Po zmianie pory roku zamieniasz się miejscami, nic nie pakujesz od zera.
+W wysokiej szafie przydaje się pantograf, czyli drążek opuszczany na wysokość ręki. Bez niego po rzeczy z góry sięgasz z krzesła. Rzeczy na inną porę roku trzymaj w podpisanych pudłach. Zamieniasz je miejscami dwa razy w roku.
 
-## Światło, wymiary i kto to zrobi
+## Miejsce na sprzęt, który nie jest ubraniem
 
-Szafa bez światła jest szafą, w której zawsze szukasz ubrań przy latarce telefonu. Taśma LED nad drążkiem z czujnikiem zapala się, gdy otwierasz drzwi, i w garderobie bez okna robi dużą różnicę. Zasilanie najlepiej zaplanować zanim ściany zostaną pomalowane.
+Śpiwór, karimata, kijki trekkingowe i namiot nie mieszczą się na wieszaku, a trzymane w piwnicy wilgotnieją. Śpiwór puchowy najlepiej leży luźno, w dużym worku z bawełny, a nie ściśnięty w worku kompresyjnym. Potrzebuje więc wysokiej, płytkiej półki. Kijki i karimata stoją pionowo w wąskiej kolumnie przy bocznej ścianie szafy.
 
-Jeśli myślisz o garderobie lub szafie robionej pod wymiar, a nie o gotowym meblu, szukaj wykonawcy, który mierzy u Ciebie, projektuje i montuje. W Warszawie takie zabudowy, od kuchni po szafy i garderoby, robi [Pan Stolarz](https://pan-stolarz.pl/), grupa specjalistów od mebli na wymiar, z którą współpracujemy. W opisie garderób wymieniają układ jednościenny, w kształcie litery L i U oraz drzwi przesuwne i otwierane, więc dobrze mieć przed rozmową własną listę: ile ubrań, jakie walizki, które półki wysokie.
+Buty trekkingowe po wyjeździe najpierw schną poza szafą. Dopiero suche wracają na dolną półkę. Zamknięte mokre buty po tygodniu pachną całą garderobą.
 
-Zanim zaczniesz planować, spisz co masz. Zabierz się za to w tygodniu, w którym nigdzie nie lecisz. Pomaga tu lista z wpisu o [weekendzie w drodze](/blog/weekend-w-drodze-pakowanie-w-20-minut/), a na szlak przygotujesz się według tekstu o [sprzęcie dla początkujących](/blog/sprzet-na-szlak-dla-poczatkujacych/).
+## Światło i szafa na wymiar
 
-## Co zabrać z tego wpisu
+Szafa bez światła to szafa, w której świecisz latarką telefonu. Taśma LED nad drążkiem z czujnikiem otwarcia drzwi zapala się sama. W garderobie bez okna to duża różnica. Zasilanie zaplanuj przed malowaniem ścian, bo potem kabel idzie po wierzchu.
 
-- Wydziel w szafie jedną strefę na rzeczy podróżne i trzymaj w niej stały zestaw w osobnej torbie.
-- Ułóż ubrania według wysokości: sezonowe wysoko, bieżące na wysokości oczu, ciężkie nisko.
-- Zaplanuj światło i płytkie szuflady, zanim zdecydujesz o wymiarach.
+Jeśli zamiast gotowego mebla myślisz o szafie albo garderobie na wymiar, policz najpierw, co ma się w niej zmieścić: ile wieszaków, ile par butów, jakie walizki i jak wysokie. Z taką listą rozmowa ze stolarzem trwa krócej. W Warszawie szafy i garderoby na wymiar robi na przykład [Pan Stolarz](https://pan-stolarz.pl/szafy-na-wymiar), stolarnia z tej samej grupy co nasza strona. Przyjeżdżają zmierzyć wnękę i montują sami. Jedną regulację frontów w ciągu trzech miesięcy od odbioru mają w cenie. Szafa powstaje u nich w 21 do 30 dni od pierwszej wpłaty, więc pomiar umów tak, żeby montaż nie wypadł w tygodniu Twojego wyjazdu.
+
+Zanim cokolwiek zamówisz, spróbuj przez miesiąc żyć z jedną półką podróżną w obecnej szafie. Szybko zobaczysz, czego brakuje. Co włożyć do torby na weekend, masz we wpisie o [pakowaniu w 20 minut](/blog/weekend-w-drodze-pakowanie-w-20-minut/), a co trzymać na półce przed pierwszym szlakiem, w tekście o [sprzęcie na szlak dla początkujących](/blog/sprzet-na-szlak-dla-poczatkujacych/).

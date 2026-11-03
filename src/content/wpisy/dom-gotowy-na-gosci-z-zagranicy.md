@@ -1,51 +1,56 @@
 ---
-tytul: "Dom gotowy na gości z zagranicy: lista przed ich przyjazdem"
-opis: "Pokój gościnny, łazienka i drobne naprawy przed przyjazdem gości z zagranicy. Co sprawdzić, co dokupić i czego nie odkładać na ostatni wieczór."
-data: 2026-10-29
+tytul: "Dom gotowy na gości z zagranicy: co sprawdzić tydzień przed"
+opis: "Pokój gościnny, łazienka, drobne naprawy i kartka powitalna. Co sprawdzić tydzień przed przyjazdem gości z zagranicy, a czego nie zostawiać na wieczór."
+data: 2026-11-03
+dzial: dom
+# ZDJECIE_DO_PODMIANY: pokój gościnny z zasłanym łóżkiem, lampką nocną i walizką
 zdjecie: "weekend-przewodnik-turysci-mapa-01-www-3000x2001.webp"
 alt: "Przewodnik ze słuchawką i grupa uśmiechniętych turystów z mapą na ulicy starego miasta"
-cel:
-  nazwa: "Nadi Home"
-  adres: "https://nadihome.pl/uslugi"
 tagi: ["goście", "dom", "przygotowania"]
 ---
 
-Kto zna gościnność ludzi spotkanych w podróży, ten wie, że najlepiej odwdzięczyć się tym samym, a to oznacza dom gotowy na przyjazd.
+Goście z zagranicy przylatują zmęczeni i zwykle o dziwnej porze. Najpierw zobaczą łóżko i łazienkę, więc od nich zacznij. Resztę mieszkania i tak obejrzą dopiero rano.
 
-## Pokój gościnny: łóżko, miejsce i cisza
+## Łóżko, zasłony i miejsce na walizkę
 
-Gość z zagranicy przyjeżdża po długiej podróży, zmęczony i często w innej strefie czasowej. Najważniejsze są więc rzeczy podstawowe: wygodne łóżko, ciemne zasłony, które odcinają poranne światło, i trochę miejsca na walizkę. Rozłożona walizka potrafi zająć połowę pokoju, więc zostaw wolną ścianę albo składany stojak.
+Po locie z przesiadką albo po dwunastu godzinach w autokarze człowiek potrzebuje trzech rzeczy: wygodnego łóżka, ciemności i miejsca, gdzie rozłoży walizkę. Rozłożona walizka zajmuje sporo podłogi, więc zostaw wolny kawałek przy ścianie albo postaw składany stojak.
 
-Sprawdź materac, pościel i poduszki. Jeśli gość zostaje dłużej niż dwa dni, dostaje do dyspozycji pustą półkę albo kilka wieszaków w szafie, żeby nie żyć z walizki. Dodaj lampkę przy łóżku, gniazdko w zasięgu ręki i listę z hasłem do wifi, najlepiej w dwóch językach.
+Sprawdź materac i poduszki, najlepiej śpiąc na nich jedną noc. Jeśli coś uwiera Ciebie, będzie uwierać gościa. Zasłony powinny odcinać światło, bo w czerwcu w Polsce jasno robi się przed piątą. Dla kogoś, kto przyleciał z innej strefy czasowej, to różnica między snem a leżeniem z otwartymi oczami.
 
-Nie zapominaj o powietrzu. Pokój, w którym od miesięcy nikt nie spał, wymaga wietrzenia na kilka dni przed przyjazdem. Latem klimatyzacja lub wentylator robią dużą różnicę, a zimą grzejnik, który faktycznie grzeje, bo wcześniej nikt go nie odkręcał.
+Gość, który zostaje dłużej niż dwie noce, dostaje pustą półkę i kilka wieszaków. Inaczej żyje z walizki. Przy łóżku przyda się lampka i gniazdko w zasięgu ręki.
 
-## Łazienka: to, co goście widzą od razu
+Pokój, w którym od miesięcy nikt nie spał, wietrz przez kilka dni przed przyjazdem. Zimą odkręć tam grzejnik wcześniej i sprawdź, czy faktycznie grzeje.
 
-Łazienka mówi o domu więcej niż salon. Zacznij od rzeczy, które da się sprawdzić w dziesięć minut: czy woda szybko odpływa, czy bateria nie cieknie, czy spłuczka nie szumi, czy deska sedesowa się nie obsuwa, czy lustro i oświetlenie działają. Wymień fugę tam, gdzie pociemniała, a silikon wokół wanny lub brodzika, jeśli się odkleja.
+## Łazienka w dziesięć minut
 
-Przygotuj dla gościa osobny ręcznik, mydło, szampon i miejsce na kosmetyki. Dla wielu osób ważne jest, żeby nie pytać o nic wprost: wystarczy kosz z podstawowymi środkami i czyste szczotki. Gdy gość jest z innej kultury, dodaj kilka słów o tym, jak działa u Ciebie ciepła woda i prysznic.
+Łazienkę sprawdzisz szybciej niż pokój. Odkręć wodę i zobacz, czy szybko schodzi z umywalki i brodzika. Sprawdź, czy bateria nie kapie, czy spłuczka nie szumi po napełnieniu i czy deska sedesowa się nie przesuwa. Zapal światło nad lustrem.
 
-Jeśli odkładasz remont łazienki od lat, goście mogą być dobrym powodem, żeby go zaplanować. Ale uwaga: nie zaczynaj go tydzień przed przyjazdem. Przy większych pracach plan, harmonogram i odbiór wymagają czasu. W tekście o [remoncie, gdy jesteś w podróży](/blog/remont-gdy-jestes-w-podrozy/) opisujemy, jak ułożyć taki plan.
+Pociemniałą fugę da się odświeżyć w jeden wieczór. Silikon odklejony przy wannie wymień, bo pod nim zbiera się woda. To robota na jeden dzień razem ze schnięciem, więc nie zostawiaj jej na ostatnią chwilę.
 
-## Drobne naprawy, których nie warto odkładać
+Przygotuj gościowi osobny ręcznik i półkę na kosmetyki. Koszyk z mydłem, szamponem i nową szczoteczką oszczędzi mu pytania, którego nie lubi zadawać. Jeśli ciepła woda u Ciebie płynie po minucie albo prysznic ma nietypowy przełącznik, napisz to na kartce.
 
-Lista „na ostatni wieczór” zwykle jest za długa. Dlatego przejdź po domu tydzień wcześniej i spisz wszystko, co przeszkadza: klamkę, która się luzuje, drzwi, które ocierają o podłogę, zamek wymagający dokręcenia, parapet z odpadającą listwą, gniazdko bez pokrywy, klimatyzator bez przeglądu.
+Jeśli od lat odkładasz remont łazienki, goście bywają dobrym powodem. Ale nie zaczynaj go tydzień przed ich przyjazdem. Jak rozpisać taki remont, żeby skończył się w terminie, piszemy we wpisie o [remoncie, gdy jesteś w podróży](/blog/remont-gdy-jestes-w-podrozy/).
 
-Część z tego zrobisz sam. Resztę, czyli montaż lub regulację drzwi i zamków, parapety, klimatyzację, drobne prace elektryczne i hydrauliczne, wykonuje ekipa remontowa. W [opisie usług Nadi Home](https://nadihome.pl/uslugi) znajdziesz spis takich zakresów prac, od montażu drzwi i parapetów, przez instalacje elektryczne i hydrauliczne, po klimatyzację typu split i multisplit. To firma z Gocławia, która działa w Warszawie i okolicach od 2012 roku, a my z nią współpracujemy. Przed rozmową przygotuj własną listę z miejscami, zdjęciami i terminem, do którego chcesz skończyć.
+## Drobne naprawy tydzień wcześniej
 
-Jeśli coś ma być dopasowane do pomieszczenia, jak półka w pokoju gościnnym, planuj z wyprzedzeniem, bo wykonanie czegoś na wymiar wymaga czasu na pomiar i produkcję.
+Lista „na ostatni wieczór” zawsze jest za długa. Przejdź po domu tydzień przed przyjazdem i spisz, co przeszkadza: klamkę, która się luzuje, drzwi ocierające o podłogę, zamek, który trzeba docisnąć, gniazdko bez ramki, kaloryfer, który nie grzeje.
 
-## Dla gościa, nie dla zdjęcia
+Część zrobisz śrubokrętem w godzinę. Gniazdka, przewody i wszystko, co wymaga otwierania instalacji, zostaw elektrykowi albo hydraulikowi. Umów ich na początek tygodnia, nie na piątek przed przylotem. Jeśli fachowiec nie przyjdzie, zostaje Ci jeszcze kilka dni na drugi termin.
 
-Dom gotowy na gości to nie dom wystylizowany. Gość wolałby, żebyś był wypoczęty, niż żeby każda poduszka stała pod kątem. Przygotuj mały zestaw powitalny: mapa okolicy, zapasowe klucze, adapter do gniazdek, numery alarmowe i kilka miejsc, które Ci się podobają. Przyda się tam także kartka z informacją o komunikacji: gdzie jest najbliższy przystanek i jak kupić bilet.
+## Kartka powitalna
 
-Zostaw sobie rezerwę czasu. Dzień przed przyjazdem nie powinien zawierać żadnych napraw. Ma być na zakupy, pranie pościeli i wyciszenie. Gospodarz, który wita gości spokojnie, jest ich najlepszym powitaniem.
+Na stoliku w pokoju połóż kartkę w języku, który gość rozumie. Hasło do wifi, adres mieszkania (przyda się taksówkarzowi), numer alarmowy 112, Twój telefon. Dopisz, gdzie jest najbliższy przystanek i jak kupić bilet. Gość tego nie wie.
 
-Jeśli sam dopiero wróciłeś z wyjazdu, zajrzyj do wpisu o [przygotowaniu domu na dłuższy wyjazd](/blog/dom-na-dluzszy-wyjazd/): lista działa też w drugą stronę. A jeśli goście mają z Tobą jechać na wycieczkę, przyda się tekst o [pakowaniu w dwadzieścia minut](/blog/weekend-w-drodze-pakowanie-w-20-minut/).
+Połóż obok przejściówkę do gniazdka. Gość z Londynu albo z Nowego Jorku nie włoży swojej ładowarki do polskiego gniazdka bez adaptera. Zapasowy komplet kluczy oszczędzi Ci dzwonienia domofonem o północy.
 
-## Co zabrać z tego wpisu
+## Pierwsze śniadanie i pierwszy wieczór
 
-- Przygotuj pokój gościnny: materac, zasłony, miejsce na walizkę, lampkę przy łóżku i hasło do wifi.
-- Sprawdź łazienkę w dziesięć minut: odpływ, baterię, spłuczkę, fugi i silikon.
-- Spisz drobne naprawy tydzień wcześniej i zostaw dzień przed przyjazdem wolny od prac.
+Gość, który przyleciał wieczorem, rano budzi się głodny, często przed Tobą. Zostaw na blacie chleb, coś do chleba, owoce i kubek obok czajnika. Pokaż mu wieczorem, gdzie jest kawa. Wtedy nie będzie otwierał wszystkich szafek po kolei.
+
+Zapytaj przed przyjazdem, czego gość nie je. Wegetarianin, alergia na orzechy, post: lepiej wiedzieć przy zakupach niż przy stole. Na pierwszy wieczór nie planuj kolacji na sześć dań ani wyjścia do miasta. Po podróży wystarczy zupa i wcześnie do łóżka.
+
+## Dzień przed przyjazdem
+
+Dzień przed nie planuj żadnych napraw. To dzień na zakupy, pranie pościeli i pościelenie łóżka. Jeśli coś z listy nie zostało zrobione, zostaw to na po wizycie.
+
+Jeśli sam właśnie wracasz z wyjazdu, zajrzyj do wpisu o [przygotowaniu domu na dłuższy wyjazd](/blog/dom-na-dluzszy-wyjazd/): ta sama lista działa w drugą stronę. A jeśli zabierasz gości na wycieczkę, przyda się tekst o [pakowaniu w 20 minut](/blog/weekend-w-drodze-pakowanie-w-20-minut/).

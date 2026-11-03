@@ -24,7 +24,7 @@ const schemat = [okruszki(pozycje)];
     {
       wpisy.length > 0 ? (
         <ul class="karty">
-          {wpisy.map((w, i) => <li><KartaWpisu wpis={w} priorytet={i === 0} /></li>)}
+          {wpisy.map((w, i) => <li><KartaWpisu wpis={w} priorytet={i === 0} poziom={2} /></li>)}
         </ul>
       ) : (
         <p class="pusto">{t('interfejs.brakWpisow')}</p>

@@ -6,8 +6,10 @@ import { t, wstaw } from '../lib/tekst';
 
 interface Props {
   wpis: Polecany;
+  /** Szablon napisu odnośnika z {zrodlo}; domyślnie interfejs.czytajDalejNa. */
+  napis?: string;
 }
-const { wpis } = Astro.props;
+const { wpis, napis = t('interfejs.czytajDalejNa') } = Astro.props;
 const d = wpis.data;
 ---
 
@@ -24,8 +26,8 @@ const d = wpis.data;
       <span class="karta__zrodlo">{d.zrodlo}</span>{' '}
       <time datetime={dataIso(d.data)}>{dataPoPolsku(d.data)}</time>
     </p>
-    <h3>{d.tytul}</h3>
+    <h3 class="karta__tytul">{d.tytul}</h3>
     <p>{d.opis}</p>
-    <a class="karta__czytaj" href={d.link}>{wstaw(t('interfejs.czytajDalejNa'), { zrodlo: d.zrodlo })}</a>
+    <a class="karta__czytaj" href={d.link}>{wstaw(napis, { zrodlo: d.zrodlo })}</a>
   </div>
 </article>

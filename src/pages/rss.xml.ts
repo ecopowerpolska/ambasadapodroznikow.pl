@@ -1,7 +1,9 @@
 // /rss.xml — kanał RSS 2.0 naszych wpisów (bez pakietu @astrojs/rss). Zapowiedzi z innych stron do kanału NIE wchodzą.
+// Pierwsza <category> wpisu = nazwa działu, dalej tagi.
 import type { APIRoute } from 'astro';
 import { t } from '../lib/tekst';
 import { opublikowane, adresWpisu } from '../lib/wpisy';
+import { nazwaDzialu } from '../lib/dzialy';
 
 const xml = (s: string) =>
   s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&apos;');
@@ -19,6 +21,7 @@ export const GET: APIRoute = async () => {
         `      <guid isPermaLink="true">${adres}</guid>`,
         `      <pubDate>${w.data.data.toUTCString()}</pubDate>`,
         `      <description>${xml(w.data.opis)}</description>`,
+        `      <category>${xml(nazwaDzialu(w.data.dzial))}</category>`,
         ...w.data.tagi.map((tag) => `      <category>${xml(tag)}</category>`),
         '    </item>',
       ].join('\n');

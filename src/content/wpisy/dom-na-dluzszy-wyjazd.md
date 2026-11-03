@@ -1,57 +1,62 @@
 ---
-tytul: "Jak przygotować dom na dłuższy wyjazd: woda, prąd, poczta"
-opis: "Lista rzeczy do zrobienia w domu przed dłuższym wyjazdem: przegląd usterek, woda i prąd, poczta, sąsiedzi i ubezpieczenie. Rozpisana na 14 dni."
-data: 2026-09-27
+tytul: "Jak przygotować dom na dłuższy wyjazd: woda, prąd, ogrzewanie"
+opis: "Dwa wieczory przed dłuższym wyjazdem: przegląd usterek, zawory, prąd, lodówka, ogrzewanie, rośliny i polisa. Lista do odhaczenia w dniu wylotu."
+data: 2026-11-03
+dzial: dom
+# ZDJECIE_DO_PODMIANY: walizka w przedpokoju przy zamykanych drzwiach mieszkania albo zakręcony zawór wody pod zlewem
 zdjecie: "podroze-drogowskaz-adventure-08-www-3000x1972.webp"
 alt: "Drogowskaz z napisem Adventure i czerwoną strzałką przy pustej drodze wśród gór"
 cel:
   nazwa: "Nadi Home"
-  adres: "https://nadihome.pl/"
+  adres: "https://nadihome.pl/uslugi"
 tagi: ["dom", "wyjazd", "lista kontrolna"]
 ---
 
-Dobrze zostawiony dom to taki, o którym nie myślisz na plaży ani na szlaku, a lista poniżej jest po to, żebyś mógł o nim zapomnieć.
+Na przygotowanie mieszkania do trzytygodniowego wyjazdu wystarczą dwa wieczory. Pierwszy wypada dwa tygodnie przed wylotem. Drugi w ostatnim dniu. Między nimi jest czas na naprawy, których nie da się zrobić w godzinę.
 
-## Dwa tygodnie przed wyjazdem: przegląd usterek
+## Dwa tygodnie przed: obejście z kartką
 
-Zacznij od obejścia mieszkania z kartką. Szukamy rzeczy, które do tej pory „jakoś działały”: cieknącego kranu, luźnej klamki, zamka, który trzeba docisnąć, gniazdka, które iskrzy, albo klimatyzatora, który po zimie nie był sprawdzany. Podczas nieobecności drobna usterka staje się dużą, bo nikt jej nie zatrzyma. Kropla pod zlewem przez trzy tygodnie potrafi zrobić z blatu gąbkę.
+Przejdź przez mieszkanie powoli, pokój po pokoju. Szukasz rzeczy, które „jakoś działają”: kranu, z którego kapie, wężyka pod zlewem z rdzawym nalotem, gniazdka, które grzeje się pod ładowarką, zamka, który trzeba docisnąć barkiem. Pod Twoją obecność to drobiazgi. Bez Ciebie nikt ich nie zatrzyma.
 
-Jeśli lista jest dłuższa niż jeden wieczór z narzędziami, umów fachowca na tydzień przed wyjazdem, nie na dzień wcześniej. W Warszawie takie rzeczy jak montaż drzwi, zamków i parapetów, klimatyzacja, instalacje elektryczne i hydrauliczne wchodzą w zakres ekipy remontowej [Nadi Home](https://nadihome.pl/). To firma z Gocławia, która pracuje od 2012 roku i z którą współpracujemy. Ma w zespole elektryka z uprawnieniami SEP i hydraulika, więc nie trzeba umawiać dwóch osobnych wykonawców.
+Kropla pod zlewem przez 21 dni to spuchnięta płyta szafki i plama u sąsiada pod spodem. Dlatego wszystko, co cieknie, naprawiasz przed wyjazdem. Nie po powrocie.
 
-Zapisz sobie także, gdzie są zawory, bezpieczniki i licznik. Osoba, która zajrzy do mieszkania pod Twoją nieobecność, nie powinna ich szukać z latarką.
+Jeśli lista jest dłuższa niż jeden wieczór z kluczem nastawnym, umów fachowca na tydzień przed wylotem. Ostatni dzień zostaw wolny. Gniazdka i przewody zostaw elektrykowi z uprawnieniami SEP, bo to nie jest robota na oko. W Warszawie elektrykę i hydraulikę robi na przykład [Nadi Home](https://nadihome.pl/uslugi), ekipa z Gocławia z tej samej grupy co nasza strona. Mają elektryka i hydraulika u siebie, więc przy dwóch usterkach umawiasz jedną wizytę.
 
-## Woda i prąd: co wyłączyć, a co zostawić
+Przy okazji zapisz, gdzie jest zawór główny wody, skrzynka z bezpiecznikami i licznik. Osoba, która zajrzy do mieszkania pod Twoją nieobecność, nie powinna ich szukać z latarką w telefonie. Kartka na lodówce wystarczy.
 
-Przy wyjeździe na kilka dni wystarczy zakręcić zawory pod pralką i zmywarką. Przy dłuższej nieobecności zakręć zawór główny wody i odłącz niepotrzebne urządzenia z gniazdek, szczególnie te z trybem czuwania. Zostaw zasilanie dla lodówki, jeśli w niej zostają produkty, a wszystko inne wyłączaj świadomie: bojler, ekspres, telewizor, ładowarki.
+## Woda: co zakręcić
 
-W sezonie grzewczym nie wyłączaj ogrzewania całkiem. Wystarczy utrzymać w mieszkaniu niską temperaturę, rzędu kilkunastu stopni, żeby rury i ściany nie wychłodziły się do zera. Latem otwórz lodówkę, jeśli ją opróżniasz i wyłączasz, żeby w środku nie pojawiła się pleśń.
+Przy wyjeździe na weekend zakręć zawory pod pralką i zmywarką. Przy dłuższej nieobecności zakręć zawór główny. Sprawdź go wcześniej. Stary zawór, nieruszany od lat, potrafi się zapiec i pęknąć przy pierwszym obrocie. Lepiej odkryć to dwa tygodnie przed wyjazdem niż w dniu wylotu.
 
-Rośliny to osobny temat. Doniczki z podlewaniem kapilarnym albo prosty knot ze sznurka i butelki wystarczą na dwa, trzy tygodnie. Przy dłuższym wyjeździe poproś kogoś o regularne podlewanie.
+Jeśli masz bojler elektryczny, wyłącz go albo przestaw na tryb urlopowy. Zostaw otwarte drzwiczki pralki i zmywarki. W zamkniętym bębnie robi się stęchło.
 
-## Poczta, sąsiedzi i pozory obecności
+Zajrzyj też do syfonów, których rzadko używasz: w wannie, w brodziku, w kratce na balkonie. Po trzech tygodniach woda w nich może odparować i do mieszkania zaciągnie zapach z kanalizacji. Przed wyjazdem wlej do każdego szklankę wody. To kosztuje minutę.
 
-Pełna skrzynka na listy to najstarszy sygnał, że nikogo nie ma. Poproś sąsiada o opróżnianie jej, albo zleć to zaufanej osobie, której zostawisz klucz. Zapytaj, czy mogłaby też od czasu do czasu wyrzucić ulotki spod drzwi i odsunąć żaluzje.
+## Prąd, lodówka i ogrzewanie
 
-Dobrze mieć telefon do jednej osoby w bloku lub na osiedlu. Daj jej swój numer i numer do administracji. Gdy pęknie rura u sąsiada piętro wyżej albo włączy się alarm, ktoś powinien wiedzieć, do kogo zadzwonić.
+Telewizor, ekspres, ładowarki, listwę przy biurku: wszystko, czego nie potrzebujesz, wyjmij z gniazdek. Zostaw lodówkę, jeśli zostają w niej produkty. Jeśli ją opróżniasz i wyłączasz, zostaw drzwi uchylone. Zamknięta pusta lodówka po trzech tygodniach pachnie pleśnią.
 
-Światło na timerze, kilka godzin wieczorem, wygląda lepiej niż lampa świecąca całą dobę. Zdjęć z wakacji nie publikuj na bieżąco. Zostaw je na powrót.
+Router zostaw włączony, jeśli w domu działają czujniki albo kamera. Bez internetu nic Ci nie powiedzą.
 
-## Ubezpieczenie i dokumenty
+Zamrażarkę rozmroź przed wyjazdem albo zostaw w niej tylko to, czego nie żal wyrzucić. Prosty test na przerwę w prądzie: kubek zamrożonej wody z monetą na wierzchu lodu. Jeśli po powrocie moneta leży na dnie, lód się stopił. Wtedy mięso i ryby idą do kosza.
 
-Przeczytaj warunki polisy mieszkaniowej. W wielu ofertach długa nieobecność ma znaczenie: obowiązują limity czasu, wymóg zamknięcia na dodatkowe zamki albo wyłączenia odpowiedzialności, jeśli ktoś nie zakręcił wody. Najlepiej zapytać wprost agenta lub infolinię i zapisać odpowiedź.
+W sezonie grzewczym nie zakręcaj kaloryferów do zera. Ustaw w mieszkaniu około 15 °C. Ściany się nie wychłodzą, a w łazience nie zbierze się wilgoć. Po powrocie nie będziesz grzać mieszkania przez dwa dni.
 
-Przygotuj też teczkę z kopią dokumentów: polisa, numer umowy z administracją, numery awaryjne wodociągów, gazowni i elektrowni. Zdjęcia w telefonie na ten cel wystarczą, ale niech będą też w chmurze, żeby dało się je otworzyć z zagranicy.
+## Rośliny, poczta i polisa
 
-Jeśli w czasie Twojej nieobecności ma się odbywać remont, plan trzeba rozpisać znacznie dokładniej. O tym piszemy w tekście o [remoncie, gdy jesteś w podróży](/blog/remont-gdy-jestes-w-podrozy/).
+Doniczki z podlewaniem kapilarnym albo knot ze sznurka wsadzony do butelki z wodą wystarczą na dwa tygodnie. Przy dłuższym wyjeździe ktoś musi przyjść z konewką. Ta sama osoba może opróżniać skrzynkę na listy. Pełna skrzynka mówi każdemu, że nikogo nie ma.
 
-## Dzień wyjazdu: ostatnie dziesięć minut
+Przeczytaj warunki polisy mieszkaniowej. Część polis ma zasady dotyczące dłuższej nieobecności, na przykład wymóg zamknięcia na dodatkowy zamek. Zapytaj ubezpieczyciela wprost i zapisz odpowiedź. Numer polisy, numer do administracji i numery awaryjne trzymaj w telefonie i w chmurze, żeby otworzyć je z każdego miejsca.
 
-Obejdź dom jeszcze raz: okna, zawory, światła, kosz na śmieci, zlew, klucze zostawione u właściwej osoby. Zrób telefonem zdjęcie szafki z bezpiecznikami i zakręconego zaworu. W dniu powrotu będziesz wiedzieć, w jakim stanie wszystko zostawiłeś.
+Jeśli w tym czasie w mieszkaniu ma trwać remont, plan trzeba rozpisać dokładniej. O tym jest wpis o [remoncie, gdy jesteś w podróży](/blog/remont-gdy-jestes-w-podrozy/).
 
-Jeśli wyjeżdżasz na krótko, wystarczy lista z [weekendu w drodze](/blog/weekend-w-drodze-pakowanie-w-20-minut/). A jeśli pakowanie zajmuje Ci zbyt dużo czasu, zajrzyj do wpisu o [szafie podróżnika](/blog/szafa-podroznika/).
+## Ostatnie dziesięć minut
 
-## Co zabrać z tego wpisu
+- okna zamknięte, także uchylne w łazience,
+- zawór główny wody zakręcony, pralka i zmywarka otwarte,
+- bojler, ekspres i ładowarki wyłączone,
+- termostat na około 15 °C,
+- śmieci wyniesione, zlew pusty i suchy,
+- klucz u osoby, która ma zaglądać.
 
-- Dwa tygodnie przed wyjazdem zrób przegląd usterek i umów fachowca na to, czego sam nie naprawisz.
-- Zakręć wodę, odłącz urządzenia, zostaw lodówkę i utrzymuj minimalne ogrzewanie w sezonie grzewczym.
-- Zapytaj ubezpieczyciela o zasady przy długiej nieobecności i zostaw komuś klucz oraz numery awaryjne.
+Na koniec zrób telefonem zdjęcie skrzynki z bezpiecznikami i zakręconego zaworu. Po powrocie porównasz. Samą walizkę spakujesz według listy z [weekendu w drodze](/blog/weekend-w-drodze-pakowanie-w-20-minut/), a rzeczy na wyjazd znajdziesz szybciej, jeśli mają stałe miejsce w [szafie podróżnika](/blog/szafa-podroznika/).

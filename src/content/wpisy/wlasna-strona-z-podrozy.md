@@ -1,51 +1,59 @@
 ---
-tytul: "Własna strona z podróży: blog, domena i od czego zacząć"
-opis: "Jak założyć własną stronę z podróży: po co domena, jakie są rodzaje kosztów, czym różni się blog od mediów społecznościowych i jak napisać pierwsze wpisy."
-data: 2026-10-18
+tytul: "Własna strona z podróży: domena, hosting i pierwsze wpisy"
+opis: "Jak założyć własną stronę z podróży: domena, miejsce na pliki, narzędzie do pisania, koszty, o których się zapomina, i pierwsze wpisy, od których warto zacząć."
+data: 2026-11-03
+dzial: technologia
+# ZDJECIE_DO_PODMIANY: laptop z otwartym blogiem podróżniczym na stoliku, obok aparat albo notes z biletami
 zdjecie: "podroze-ulica-tokio-13-www-3000x2000.webp"
 alt: "Wąska ulica w Tokio z kolorowymi szyldami i neonami sklepów o zmierzchu"
 cel:
   nazwa: "EcoPower Polska"
-  adres: "https://www.ecopowerpolska.pl/"
-tagi: ["blog", "strona internetowa", "domena"]
+  adres: "https://www.ecopowerpolska.pl/strona-wizytowka/"
+tagi: ["blog", "strona internetowa", "domena", "hosting"]
 ---
 
-Zdjęcia z podróży można trzymać w mediach społecznościowych, ale własna strona to jedyne miejsce, które naprawdę należy do Ciebie.
+Własna strona z podróży to trzy rzeczy: adres, miejsce na pliki i narzędzie do pisania. Prosty blog z tekstami i zdjęciami nie potrzebuje bazy danych ani drogiego serwera. Potrzebuje za to kilku decyzji na początku, bo później trudno je zmienić. Niżej każda z nich po kolei. Na końcu: od czego zacząć pisanie.
 
-## Po co strona, skoro jest Instagram
+## Strona i media społecznościowe robią co innego
 
-Media społecznościowe są szybkie, ale ulotne. Wpis z zeszłorocznej wyprawy znika z widoku po kilku dniach, a zasady wyświetlania zmienia ktoś, na kogo nie masz wpływu. Strona działa odwrotnie: wpis sprzed trzech lat nadal znajduje się w wyszukiwarce, a ktoś, kto szuka „jak dojechać do doliny X”, trafia na Twoją odpowiedź, nawet jeśli nigdy Cię nie obserwował.
+Post na Instagramie żyje kilka dni. Potem znika z widoku, a o tym, kto go zobaczy, decyduje algorytm. Wpis na stronie działa inaczej. Ktoś, kto za dwa lata zapyta wyszukiwarkę o dojazd do schroniska, trafi na twoją odpowiedź, nawet jeśli nigdy cię nie obserwował.
 
-Własny adres daje też spokój o dorobek. Jeśli konto zostanie zablokowane albo platforma zmieni formę, teksty i zdjęcia zostają u Ciebie. Strona ma ponadto jedną zaletę, o której mało kto pamięta: możesz na niej napisać tekst tak długi, jak wymaga temat, z mapką, tabelą i listą rzeczy do zabrania, bez limitu znaków i bez algorytmu, który decyduje, kto go zobaczy.
+Strona ma też miejsce na długi tekst. Zmieścisz tam mapkę, tabelę kosztów i listę rzeczy do zabrania. Z mediów nie musisz rezygnować. Dobrze działa prosty podział: strona trzyma dłuższe teksty i archiwum, a media zapowiadają nowe wpisy i do nich prowadzą.
 
-Nie trzeba rezygnować z mediów. Dobry układ to strona jako archiwum i miejsce na dłuższe teksty, a media jako zapowiedzi i ciekawostki, które odsyłają do wpisu.
+## Domena: krótka i odnawiana na czas
 
-## Domena, hosting i narzędzie: trzy decyzje
+Domena to adres strony. Wybierz taki, który da się przeliterować przez telefon, bez cyfr i myślników. Końcówka .pl jest naturalna dla polskiego czytelnika.
 
-Strona składa się z trzech rzeczy. Pierwsza to adres, czyli domena. Wybierz krótki, łatwy do przeliterowania, bez myślników i cyfr. Końcówka .pl jest naturalna dla polskiego odbiorcy. Domenę wynajmuje się na rok i płaci się za nią co roku, zwykle jednorazowo, a nie co miesiąc.
+Domenę wynajmuje się na rok. Co roku trzeba ją odnowić. Włącz automatyczne odnowienie i podaj adres e-mail, który naprawdę czytasz. Nieodnowiona domena po pewnym czasie wraca do puli i może ją kupić ktoś inny.
 
-Druga to miejsce, w którym leżą pliki strony, czyli hosting. Prosta strona z tekstami i zdjęciami nie potrzebuje bazy danych ani mocnego serwera. Wystarczy zwykły hosting albo darmowy hosting plików statycznych, jaki oferują niektóre platformy dla programistów. Ten notatnik działa właśnie tak: jest zbudowany w Astro jako gotowe pliki i wystawiony na GitHub Pages.
+Adres, pod którym to czytasz, od 2014 do 2025 roku należał do biura wyjazdów grupowych. Dziś prowadzi go inna redakcja, a dawne wpisy biura zniknęły razem z jego stroną. Tak kończy adres, o który nikt nie dba.
 
-Trzecia to narzędzie do pisania. Jeśli lubisz klikać, wybierz kreator lub gotowy system blogowy. Jeśli lubisz pisać w zwykłych plikach tekstowych, wystarczy generator stron statycznych i edytor. Obie drogi mają sens, ale warto sprawdzić, czy da się później wyeksportować wszystkie wpisy. Nie wybieraj narzędzia, z którego nie wyjdziesz bez straty treści.
+## Hosting: prosta strona nie potrzebuje dużo
 
-## Co kosztuje i co jest ukryte
+Hosting to miejsce, w którym leżą pliki strony. Blog z tekstami i zdjęciami można zbudować jako gotowe pliki, bez bazy danych. Takie strony ładują się szybko. Rzadko się też psują, bo na serwerze nie działa żaden program, który trzeba aktualizować.
 
-Na liście wydatków są cztery pozycje: domena, hosting, ewentualnie poczta pod własnym adresem i szablon lub projekt graficzny. Wszystko poza ostatnim rozlicza się rocznie. Największy koszt zwykle nie jest w ogóle wyrażony w złotych: to czas, który poświęcisz na zdjęcia, opisy i regularne pisanie.
+Tak powstała ta strona. Jest zbudowana w Astro, czyli generatorze stron statycznych, i wystawiona na GitHub Pages, darmowym hostingu dla takich plików. Zbudowała ją dla nas [EcoPower Polska](https://www.ecopowerpolska.pl/strona-wizytowka/), spółka, która wydaje Ambasadę Podróżników i na co dzień robi strony firmom.
 
-Ukryte koszty też są cztery. Pierwszy to odnowienie: promocja na pierwszy rok bywa tańsza niż kolejne lata, więc czytaj cenniki. Drugi to wsparcie: gdy strona się zepsuje, ktoś musi ją naprawić. Trzeci to kopie zapasowe, bez których jedna awaria kasuje lata pracy. Czwarty to prawo: polityka prywatności, informacja o cookies i zgoda, jeśli korzystasz z analityki albo reklam.
+Darmowy hosting plików ma swoją granicę. Gdy z bloga robi się działalność, z formularzem kontaktowym, rezerwacjami albo płatnościami, potrzebujesz już zwykłego hostingu z obsługą takich funkcji.
 
-Jeśli wolisz, żeby kto inny zajął się całością, są firmy, które robią to dla innych. Wydawcą tego notatnika jest [EcoPower Polska](https://www.ecopowerpolska.pl/), która na co dzień buduje strony i sklepy internetowe dla firm: od projektu, przez panel do edycji treści, po hosting, domenę, pocztę i widoczność w Google. Dla hobbystycznego bloga to zwykle za dużo, ale jeśli z podróży robi się działalność, przewodniki, usługa albo sklep z pamiątkami, warto wiedzieć, że taka droga istnieje.
+## Narzędzie do pisania: sprawdź, czy wyjdziesz z treścią
 
-## Od czego zacząć: pierwsze pięć stron
+Masz dwie drogi. Kreator albo gotowy system blogowy pozwala klikać i od razu widzieć efekt. Generator stron statycznych wymaga pisania w zwykłych plikach tekstowych. Za to każdy wpis jest osobnym plikiem, który skopiujesz gdziekolwiek.
 
-Nie zaczynaj od wyglądu. Zacznij od pięciu elementów: strona główna z jednym zdaniem o tym, o czym jest blog, strona „o mnie” z prawdziwym zdjęciem, trzy dobre wpisy, polityka prywatności i spis wpisów. Trzy wpisy wystarczą, żeby czytelnik zrozumiał, o co chodzi, a wyszukiwarka miała co zindeksować.
+Przed wyborem sprawdź jedno. Czy da się wyeksportować wszystkie wpisy i zdjęcia naraz? Narzędzie, z którego nie wyjdziesz bez straty treści, za kilka lat stanie się kłopotem.
 
-Pierwszy wpis napisz o czymś, co znasz najlepiej: o jednym wyjeździe, jednej trasie, jednym mieście. Dodaj konkrety: jak dojechać, ile to trwało, co poszło źle. Czytelnicy szukają właśnie takich szczegółów, a nie ogólnych zachwytów. Do zdjęć dopisuj opisy alternatywne, czyli krótkie zdania mówiące, co jest na fotografii, a pliki nazywaj po ludzku, nie „IMG_4521”.
+## Koszty, o których się zapomina
 
-Dobrym wzorem na początek są teksty o pakowaniu, na przykład [lista na weekend w drodze](/blog/weekend-w-drodze-pakowanie-w-20-minut/), bo odpowiadają na pytania, które ludzie wpisują w wyszukiwarkę. Gdy temat to sprzęt, sprawdź nasz przegląd [wyposażenia na szlak dla początkujących](/blog/sprzet-na-szlak-dla-poczatkujacych/).
+Na liście wydatków są zwykle domena, hosting, czasem poczta pod własnym adresem i szablon graficzny. Większość z nich płaci się raz w roku. Największy koszt nie jest wyrażony w złotych. To czas na zdjęcia, opisy i regularne pisanie.
 
-## Co zabrać z tego wpisu
+Trzy rzeczy wychodzą dopiero po czasie. Cena pierwszego roku bywa niższa niż cena odnowienia, więc czytaj cennik do końca. Kopia zapasowa musi leżeć poza serwerem, bo jedna awaria potrafi skasować lata pracy. Do tego dochodzi polityka prywatności i informacja o plikach cookies, jeśli używasz statystyk albo reklam.
 
-- Strona to archiwum, które należy do Ciebie, a media społecznościowe niech odsyłają do wpisów.
-- Zaplanuj trzy decyzje: domena, miejsce na pliki i narzędzie do pisania, z możliwością eksportu treści.
-- Zacznij od trzech konkretnych wpisów, strony „o mnie” i polityki prywatności, a dopiero potem dopracowuj wygląd.
+## Pierwsze wpisy: jeden wyjazd, dużo szczegółów
+
+Nie zaczynaj od wyglądu. Na start wystarczy strona główna z jednym zdaniem o tym, o czym piszesz, strona „o mnie” z prawdziwym zdjęciem, trzy wpisy i polityka prywatności. Trzy teksty pokażą czytelnikowi, czego się tu spodziewać.
+
+Pierwszy wpis napisz o czymś, co znasz najlepiej: o jednej trasie, jednym mieście, jednym weekendzie. Dodaj konkrety. Jak dojechać, ile to trwało, co poszło nie tak. Czytelnicy szukają właśnie takich szczegółów, a nie zachwytów nad widokiem.
+
+Zdjęcia nazywaj po ludzku. Plik „schronisko-zima.jpg” powie więcej niż „IMG_4521”. Do każdego dopisz krótki opis tego, co na nim widać. Jak robić telefonem zdjęcia, które da się potem pokazać, piszemy we [wpisie o fotografii w podróży](/blog/fotografia-w-podrozy-telefonem/). Dobrym pierwszym tekstem bywa lista rzeczy do spakowania, taka jak nasza [lista na weekend w drodze](/blog/weekend-w-drodze-pakowanie-w-20-minut/). Odpowiada na pytania, które ludzie naprawdę wpisują w wyszukiwarkę.
+
+Zanim kupisz domenę, zapisz tematy trzech pierwszych wpisów. Jeśli trudno wymyślić trzy, strona może jeszcze poczekać.

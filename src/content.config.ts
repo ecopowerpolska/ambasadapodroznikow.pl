@@ -10,12 +10,16 @@ import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
+import { DZIALY } from './lib/dzialy';
+
 const KATALOG_ZDJEC = resolve(process.cwd(), 'src/assets/zdjecia');
 
 const wpisy = defineCollection({
   loader: glob({ pattern: '**/[^_]*.md', base: './src/content/wpisy' }),
   schema: z.object({
     tytul: z.string().min(5),
+    // dział magazynu (podroze, dom, pasje, technologia, zdrowie); brak albo inna wartość zatrzymuje budowanie
+    dzial: z.enum(DZIALY),
     // opis meta: 120–160 znaków (kontrola przy budowaniu, żeby wpis z błędem nie wyszedł na stronę)
     opis: z.string().min(120, 'opis krótszy niż 120 znaków').max(160, 'opis dłuższy niż 160 znaków'),
     data: z.coerce.date(),

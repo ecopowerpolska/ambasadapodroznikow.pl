@@ -101,6 +101,22 @@ function sitemapJakoPlikSitemapXml() {
         if (czesci.length === 1) {
           renameSync(join(katalog, czesci[0]), cel);
           if (existsSync(indeks)) rmSync(indeks);
+          // Strona z noindex (pusty dział magazynu) nie ma czego szukać w sitemapie: wycinamy jej <url> po treści HTML,
+          // więc dział sam wraca do sitemapy przy przebudowie, w której dostał pierwszy opublikowany wpis.
+          const mapa = readFileSync(cel, 'utf8');
+          const wyciete = [];
+          const nowa = mapa.replace(/<url>\s*<loc>([^<]+)<\/loc>[\s\S]*?<\/url>/g, (caly, loc) => {
+            const plik = join(katalog, new URL(loc).pathname, 'index.html');
+            if (existsSync(plik) && /<meta name="robots" content="noindex"/.test(readFileSync(plik, 'utf8'))) {
+              wyciete.push(new URL(loc).pathname);
+              return '';
+            }
+            return caly;
+          });
+          if (wyciete.length) {
+            writeFileSync(cel, nowa);
+            logger.info(`sitemap.xml bez stron z noindex: ${wyciete.join(' ')}`);
+          }
         } else if (existsSync(indeks)) {
           renameSync(indeks, cel);
           logger.warn(`sitemapa ma ${czesci.length} części — sitemap.xml zostaje indeksem, nie listą adresów`);

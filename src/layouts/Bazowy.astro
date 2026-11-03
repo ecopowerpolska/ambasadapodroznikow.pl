@@ -19,9 +19,11 @@ interface Props {
   /** Obiekty JSON-LD (schema.org) do wstawienia w <head>. */
   schemat?: Record<string, unknown>[];
   bezIndeksu?: boolean;
+  /** Adres pozycji menu do podświetlenia, gdy strona leży poza jej adresem (wpis → jego dział). */
+  podswietl?: string;
 }
 
-const { tytul, opis, typOg = 'website', obrazOg, obrazOgAlt, schemat = [], bezIndeksu = false } = Astro.props;
+const { tytul, opis, typOg = 'website', obrazOg, obrazOgAlt, schemat = [], bezIndeksu = false, podswietl } = Astro.props;
 const nazwa = t('marka.nazwa');
 const kanoniczny = new URL(Astro.url.pathname, import.meta.env.SITE);
 
@@ -71,7 +73,7 @@ if (!og) {
   </head>
   <body>
     <a class="skip" href="#tresc">{t('interfejs.przejdzDoTresci')}</a>
-    <Naglowek />
+    <Naglowek {podswietl} />
     <main id="tresc" tabindex="-1">
       <slot />
     </main>

@@ -1,48 +1,74 @@
 ---
-tytul: "Weekend w drodze: pakowanie w 20 minut i lista rzeczy"
-opis: "Jak spakować się na weekendowy wyjazd w dwadzieścia minut: stała lista, zasada trzech warstw, kosmetyczka i dokumenty. Do wydrukowania albo do telefonu."
-data: 2026-10-04
+tytul: "Pakowanie na weekend w 20 minut: stała lista i trzy warstwy"
+opis: "Jedna lista w telefonie, trzy zestawy ubrań w jednej palecie i kosmetyczka, która stoi gotowa. Tak spakujesz się na weekend w dwadzieścia minut."
+data: 2026-11-03
+dzial: podroze
 zdjecie: "weekend-przyjaciolki-road-trip-03-www-3000x2000.webp"
 alt: "Trzy roześmiane przyjaciółki w okularach przeciwsłonecznych na pace auta podczas wycieczki"
 tagi: ["weekend", "pakowanie", "lista rzeczy"]
 ---
 
-Weekendowy wyjazd psuje się najczęściej na pakowaniu w piątek wieczorem, dlatego dobra lista skraca je do dwudziestu minut.
+Na weekendowy wyjazd potrzebujesz jednej listy, która leży w telefonie i nie zmienia się co tydzień. Z nią pakowanie trwa około dwudziestu minut. Bez niej zajmuje cały piątkowy wieczór, a i tak w sobotę rano okazuje się, że ładowarka została w domu.
 
-## Jedna lista na każdy weekend
+## Lista, którą piszesz raz
 
-Zamiast wymyślać wszystko od nowa, stwórz listę bazową i trzymaj ją w telefonie. Wyjazd w góry, nad morze albo do miasta rządzi się innymi zasadami, ale około osiemdziesięciu procent bagażu jest za każdym razem takie samo: dokumenty, ładowarki, leki, kosmetyczka, bielizna, skarpety. Po każdym wyjeździe poprawiasz listę: skreślasz to, czego nie ruszyłeś, dopisujesz to, czego zabrakło.
+Większość bagażu jest za każdym razem taka sama: dokumenty, ładowarki, leki, kosmetyczka, bielizna. Zmienia się może jedna piąta. To rzeczy zależne od miejsca, czyli to, co odróżnia wyjazd w góry od wyjazdu do miasta. Dlatego listę dzielisz na pięć grup i tylko ostatnią przerabiasz przed każdym wyjazdem.
 
-Podziel ją na pięć grup. Pierwsza to dokumenty i pieniądze: dowód lub paszport, prawo jazdy, karta, trochę gotówki, bilety. Druga to elektronika: telefon, ładowarka, kabel, powerbank. Trzecia to ubrania. Czwarta to kosmetyczka i leki. Piąta to rzeczy specyficzne dla wyjazdu: sprzęt na szlak, ręcznik plażowy, kostium, buty do miasta.
+1. Dokumenty i pieniądze: dowód albo paszport, prawo jazdy, karta, trochę gotówki, bilety w telefonie.
+2. Elektronika: telefon, ładowarka, kabel, powerbank, słuchawki.
+3. Ubrania.
+4. Kosmetyczka i leki.
+5. Rzeczy na ten konkretny wyjazd: buty na szlak, kostium kąpielowy, coś porządniejszego na kolację.
 
-Papierowa wersja też ma sens, bo można ją odhaczać długopisem, nie wychodząc z pokoju do telefonu, który co chwilę przerywa powiadomieniami.
+Po powrocie poświęć liście dwie minuty. Skreśl to, czego nie wyjąłeś z torby. Dopisz to, czego zabrakło. Po trzech, czterech wyjazdach lista przestaje cię czymkolwiek zaskakiwać.
 
-## Ubrania: zasada trzech warstw i jednej palety
+Wersja papierowa też ma sens. Kartkę odhaczasz długopisem przy otwartej torbie, a telefon nie przerywa ci powiadomieniami w połowie pakowania.
 
-Na weekend nie potrzebujesz więcej niż trzech kompletów. Zasada jest prosta: warstwa bazowa (koszulki, bielizna, skarpety), warstwa środkowa (bluza, sweter lub polar) i warstwa zewnętrzna (cienka kurtka przeciwdeszczowa). Jeśli kolory pasują do siebie, każdy element można zestawić z każdym, a w walizce nie powstaje chaos.
+## Ubrania: trzy warstwy, jedna paleta
 
-Skarpet i bielizny zabierz o jedną parę więcej, niż potrzebujesz, ale spodni i bluz wystarczy po jednej sztuce zapasowej. Buty to najcięższy i najbardziej zajmujący miejsce element, więc ogranicz się do dwóch par: tych, w których jedziesz, i tych, w których będziesz chodzić.
+Na dwa dni wystarczą trzy zestawy. Myśl warstwami: koszulki i bielizna przy ciele, bluza albo sweter na wierzch, cienka kurtka przeciwdeszczowa na zewnątrz. Gdy wszystko jest w dwóch, trzech kolorach, każda góra pasuje do każdego dołu. Nie musisz układać strojów na każdy dzień osobno.
 
-Rolowanie ubrań oszczędza miejsce, ale nie zawsze chroni przed zagnieceniami. Koszule i cieńsze rzeczy lepiej składać na płasko, a zwijać koszulki, spodnie dresowe i bieliznę. Małe woreczki lub kostki do pakowania pomagają odróżnić brudne od czystego w drodze powrotnej.
+Skarpet i bielizny weź o jedną parę więcej, niż wychodzi z rachunku. Spodni i bluz nie dubluj. Buty zajmują najwięcej miejsca, więc ogranicz się do dwóch par: tych, w których jedziesz, i tych, w których będziesz chodzić.
 
-## Kosmetyczka, leki i drobiazgi, które ratują wyjazd
+Koszulki, dresy i bieliznę zwijaj w rulony, bo tak zajmują mniej miejsca. Koszule i cienkie rzeczy składaj płasko. Niech leżą na wierzchu. Woreczek na brudne ubrania przyda się w drodze powrotnej. Bez niego czyste i brudne mieszają się już w niedzielę rano.
 
-Kosmetyczka podróżna powinna stać zawsze gotowa. Kup miniatury najczęściej używanych kosmetyków, napełniaj je w domu i trzymaj w osobnym pokrowcu. Nie rozpakowuj jej do końca po powrocie, tylko uzupełnij, co się skończyło. Dzięki temu w piątek wystarczy włożyć ją do torby.
+## Kosmetyczka i apteczka stoją gotowe
 
-Leki bierzesz zawsze w oryginalnych opakowaniach, razem z ulotką, jeśli to tabletki na stałe schorzenie. Do tego proste podstawy: plastry, środek przeciwbólowy, coś na żołądek, krople do oczu, jeśli nosisz soczewki. Podróż samochodem uzupełnij o apteczkę, a w górach o folię NRC.
+Najwięcej czasu oszczędzasz na kosmetyczce, której nigdy do końca nie rozpakowujesz. Kup kilka małych pojemników, napełnij je w domu i trzymaj w osobnym pokrowcu. Po powrocie tylko uzupełniasz to, co się skończyło. W piątek wkładasz ją do torby i masz z głowy trzy minuty.
 
-Drobiazgi, które ratują wyjazd: zapasowy kabel, mały zamek do plecaka, wkładki do butów, składana torba na zakupy, długopis do kart wjazdowych. W bagażu podręcznym niech będzie coś do jedzenia i butelka wody, nawet przy krótkim wyjeździe.
+Obok niej trzymaj małą apteczkę. Wystarczą plastry, środek przeciwbólowy, coś na żołądek i leki, które bierzesz na stałe, w oryginalnych opakowaniach. Jeśli jedziesz autem, zajrzyj do apteczki samochodowej. Na szlak dorzuć folię NRC.
 
-## Dwadzieścia minut w praktyce
+Do tego drobiazgi, których brak potrafi zepsuć dzień: zapasowy kabel, długopis, składana torba na zakupy, mała kłódka do plecaka. Butelkę wody i coś do jedzenia trzymaj na wierzchu. Nawet przy dwugodzinnej jeździe korek potrafi zrobić z niej cztery.
 
-Spróbuj tak: dwie minuty na przejrzenie prognozy pogody i planu, pięć na ubrania, trzy na kosmetyczkę i leki, trzy na elektronikę i dokumenty, dwie na rzeczy specjalne dla wyjazdu, pięć na ostatnie sprawdzenie listy i zamknięcie bagażu. Stoper pomaga zrozumieć, gdzie tracisz czas. Najczęściej w szukaniu ładowarki albo ulubionej koszulki, która wciąż leży w koszu na pranie.
+## Gdy lecisz z samym bagażem podręcznym
 
-Gdy pakowanie zajmuje długo, problem leży zwykle w szafie, a nie w walizce. Jeśli ubrania podróżne leżą w jednym miejscu, a kosmetyczka i ładowarki w drugim, pakujesz się w pół kwadransa. O tym, jak ułożyć szafę pod wyjazdy, piszemy w tekście o [szafie podróżnika](/blog/szafa-podroznika/). A jeśli weekend ma zaprowadzić Cię w góry, zajrzyj do wpisu o [sprzęcie na szlak dla początkujących](/blog/sprzet-na-szlak-dla-poczatkujacych/).
+Tanie linie mierzą bagaż podręczny co do centymetra, a każda ma inne wymiary. Sprawdź je przy zakupie biletu. Potem zmierz torbę w domu, razem z kieszeniami i kółkami. Dopłata przy bramce jest zwykle wyższa niż przy rezerwacji.
 
-Przy dłuższym wyjeździe lista rośnie o sprawy domowe: wodę, prąd, pocztę i klucze. Przeczytasz o nich w tekście o [przygotowaniu domu na dłuższy wyjazd](/blog/dom-na-dluzszy-wyjazd/).
+Płyny pakujesz osobno. Zasady różnią się między lotniskami, bo część ma już nowe skanery, a część nie. Sprawdź stronę lotniska wylotu i powrotu, zanim zapakujesz pełnowymiarowy szampon. Najprościej trzymać się małych pojemników w przezroczystej kosmetyczce, wtedy przejdziesz kontrolę wszędzie.
 
-## Co zabrać z tego wpisu
+Najcięższe rzeczy, czyli buty i kurtkę, wkładasz na siebie. Torba robi się wtedy lżejsza o kilogram albo dwa.
 
-- Trzymaj w telefonie stałą listę podzieloną na pięć grup i poprawiaj ją po każdym wyjeździe.
-- Spakuj trzy kompletne zestawy w jednej palecie kolorów i dwie pary butów.
-- Miej zawsze gotową kosmetyczkę z miniaturami i małą apteczką.
+## Dwadzieścia minut z zegarkiem
+
+Ustaw stoper i pakuj się w tej kolejności:
+
+| Krok | Czas (min) |
+|---|---|
+| Prognoza pogody i plan dnia | 2 |
+| Ubrania | 5 |
+| Kosmetyczka i leki | 3 |
+| Elektronika i dokumenty | 3 |
+| Rzeczy na ten wyjazd | 2 |
+| Sprawdzenie listy i zamknięcie torby | 5 |
+
+Za pierwszym razem pewnie przekroczysz czas. Zwykle dlatego, że ładowarka jest w innym pokoju, a ulubiona koszulka leży w praniu. Właśnie to pokazuje stoper. Problem nie leży w torbie, tylko w tym, gdzie na co dzień trzymasz rzeczy.
+
+Pomaga jedna półka albo pudełko na rzeczy podróżne. Kosmetyczka, apteczka, powerbank i zapasowy kabel mieszkają razem i nie wędrują po domu. O tym, jak tak ułożyć całą szafę, piszemy w tekście o [szafie podróżnika](/blog/szafa-podroznika/).
+
+## Zanim zamkniesz drzwi
+
+Na weekend dom potrzebuje niewiele. Zamknij okna, wyłącz żelazko, wynieś śmieci i podlej kwiaty. Przy dłuższym wyjeździe dochodzą woda, prąd i poczta, a to opisujemy w tekście o [przygotowaniu domu na dłuższy wyjazd](/blog/dom-na-dluzszy-wyjazd/).
+
+Jeśli weekend ma być w górach, piąta grupa listy robi się dłuższa. Buty, warstwy ubrań i mapę offline opisujemy we wpisie o [sprzęcie na szlak dla początkujących](/blog/sprzet-na-szlak-dla-poczatkujacych/).
+
+Dziś wieczorem otwórz notatki w telefonie i zapisz pięć nagłówków z tej listy. Resztę dopiszesz po najbliższym wyjeździe, kiedy będziesz dokładnie wiedzieć, czego ci brakowało.

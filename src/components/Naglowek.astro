@@ -1,14 +1,19 @@
 ---
 // Naglowek.astro — przyklejony pas w jednej linii. Progi zapytaniem kontenera (motyw.css), nie oknem (potwor-ux-ui §G1).
+// Menu z teksty.json `menu` (7 pozycji); próg pasa w motyw.css zmierzony CDP dla tych 7 pozycji.
 // Telefon: przełącznik menu (aria-expanded, Esc, klik poza panelem, inert na main i stopce).
-import { t } from '../lib/tekst';
+import { t, pobierz } from '../lib/tekst';
 
+interface Props {
+  /** Adres działu, który menu ma podświetlić, gdy strona nie leży pod jego adresem (wpis /blog/<slug>/ → /<dzial>/). */
+  podswietl?: string;
+}
+const { podswietl } = Astro.props;
 const sciezka = Astro.url.pathname;
-const pozycje = [
-  { adres: '/blog/', nazwa: t('interfejs.menu_blog'), prefiks: '/blog/' },
-  { adres: '/z-naszych-stron/', nazwa: t('interfejs.menu_zNaszychStron'), prefiks: '/z-naszych-stron/' },
-  { adres: '/o-nas/', nazwa: t('interfejs.menu_oNas'), prefiks: '/o-nas/' },
-];
+// Pozycje menu z teksty.json `menu` [{nazwa, adres}] — kolejność pliku = kolejność w pasie.
+const pozycje = (Array.isArray(pobierz('menu')) ? (pobierz('menu') as { nazwa?: unknown; adres?: unknown }[]) : [])
+  .filter((p): p is { nazwa: string; adres: string } => typeof p?.nazwa === 'string' && typeof p?.adres === 'string')
+  .map((p) => ({ ...p, biezaca: p.adres === podswietl || (p.adres !== '/' && sciezka.startsWith(p.adres)) }));
 ---
 
 <header class="naglowek" id="naglowek">
@@ -40,7 +45,7 @@ const pozycje = [
         {
           pozycje.map((p) => (
             <li>
-              <a href={p.adres} aria-current={sciezka.startsWith(p.prefiks) ? 'page' : undefined}>{p.nazwa}</a>
+              <a href={p.adres} aria-current={p.biezaca ? (sciezka === p.adres ? 'page' : 'true') : undefined}>{p.nazwa}</a>
             </li>
           ))
         }

@@ -350,7 +350,7 @@ main {
   color: var(--na-morzu);
 }
 
-.menu a[aria-current='page'] {
+.menu a[aria-current] {
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 0.3em;
@@ -368,8 +368,11 @@ main {
   }
 }
 
-/* Pas z menu w jednej linii: marka (ok. 18 rem) + trzy pozycje (ok. 19 rem) + marginesy — próg 46 rem z zapasem */
-@container naglowek (min-width: 46rem) {
+/* Pas z menu w jednej linii, 7 pozycji (teksty.json `menu`). Zmierzone CDP 2026-11-03 (Chrome headless, dist kopii W1):
+   marka 20,3 rem + przerwa 0,75 + marginesy 4 + menu 38,7 rem przy odstępie pozycji 0,75 rem = 63,8 rem;
+   przy odstępie 0,5 rem menu ma 35,2 rem, razem 60,3 rem → próg 61 rem (pas od ok. 990 px okna), szerszy odstęp od 66 rem.
+   Poniżej progu przełącznik menu. Każda nowa pozycja menu = nowy pomiar i nowy próg. */
+@container naglowek (min-width: 61rem) {
   .menu-przelacznik {
     display: none;
   }
@@ -398,10 +401,16 @@ main {
 
   .menu a {
     min-height: var(--cel-dotyku);
-    padding: 0 var(--o-3);
+    padding: 0 var(--o-2);
     font-family: var(--font-tekst);
     font-size: var(--t-2);
     white-space: nowrap;
+  }
+}
+
+@container naglowek (min-width: 66rem) {
+  .menu a {
+    padding: 0 var(--o-3);
   }
 }
 
@@ -564,16 +573,62 @@ main:focus {
   object-fit: cover;
 }
 
-.karta__meta {
+.karta__meta,
+.wpis__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 var(--o-2);
   color: var(--tekst-cichy);
   font-size: var(--t-1);
 }
 
-.karta h3 {
+.karta__meta > * + *::before {
+  content: '·';
+  margin-right: var(--o-2);
+  color: var(--tekst-cichy);
+}
+
+/* Etykieta działu: kapitaliki w kolorze morza. Cel dotyku 44 px wysokości, a ujemny margines trzyma linię meta niską */
+.karta__dzial,
+.wpis__dzial a {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--cel-dotyku);
+  margin-block: calc((1.5rem - var(--cel-dotyku)) / 2);
+  color: var(--morze);
+  font-family: var(--font-tekst);
+  font-size: var(--t-1);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.karta__dzial:hover,
+.wpis__dzial a:hover {
+  color: var(--morze);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+.karta__dzial:active,
+.wpis__dzial a:active {
+  color: var(--tekst);
+}
+
+.karta .karta__dzial:focus-visible {
+  outline: 3px solid var(--morze);
+  outline-offset: 2px;
+}
+
+.karta__tytul {
   font-size: var(--t-4);
 }
 
-.karta h3 a {
+.karta__tytul a {
   color: var(--tekst);
   text-decoration: none;
 }
@@ -584,14 +639,15 @@ main:focus {
   line-height: 1.55;
 }
 
-/* Cała karta jest jednym odnośnikiem (rozciągnięty ::after), bez drugiego linku do tego samego adresu */
-.karta a::after {
+/* Cała karta jest odnośnikiem tytułu (rozciągnięty ::after); etykieta działu leży nad nim warstwą i prowadzi do działu */
+.karta__tytul a::after,
+.karta__czytaj::after {
   content: '';
   position: absolute;
   inset: 0;
 }
 
-.karta:hover h3 a,
+.karta:hover .karta__tytul a,
 .karta:hover .karta__czytaj {
   color: var(--akcent-mocny);
   text-decoration: underline;
@@ -642,7 +698,7 @@ main:focus {
   margin-bottom: var(--o-8);
 }
 
-.karta--glowna h3 {
+.karta--glowna .karta__tytul {
   font-size: var(--t-5);
 }
 
@@ -759,19 +815,29 @@ main:focus {
   font-size: var(--t-6);
 }
 
+.wpis__dzial {
+  margin-bottom: var(--o-2);
+}
+
+/* Linia meta wpisu bez kropek: na telefonie łamie się w trzy wiersze, a kropka na początku wiersza wisiałaby sama */
 .wpis__meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--o-1) var(--o-4);
+  gap: 0 var(--o-6);
   margin-top: var(--o-4);
-  color: var(--tekst-cichy);
   font-size: var(--t-2);
+}
+
+.wpis__podpis {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--cel-dotyku);
 }
 
 .wpis__tagi {
   display: flex;
   flex-wrap: wrap;
   gap: var(--o-2);
+  max-width: var(--miara-wpisu);
+  margin: var(--o-8) auto 0;
   list-style: none;
 }
 
@@ -877,11 +943,19 @@ main:focus {
   border-top: 1px solid var(--tekst-cichy);
 }
 
+.wiecej {
+  margin-top: var(--o-12);
+}
+
+.sasiedzi-rama {
+  padding-bottom: var(--o-16);
+}
+
 .sasiedzi {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: var(--o-4);
-  margin-top: var(--o-16);
+  margin-top: var(--o-12);
   padding-top: var(--o-8);
   border-top: 2px solid var(--morze);
 }
@@ -934,6 +1008,132 @@ main:focus {
     grid-column: 2;
     text-align: right;
   }
+}
+
+/* ══ DZIAŁY: bloki na stronie głównej, odnośniki do pozostałych działów na stronie działu ══ */
+.dzialy__naglowek {
+  margin-bottom: var(--o-8);
+  font-size: var(--t-5);
+}
+
+.dzial-blok + .dzial-blok {
+  margin-top: var(--o-12);
+}
+
+.dzial-blok__nazwa {
+  margin-bottom: var(--o-6);
+  padding-bottom: var(--o-1);
+  border-bottom: 2px solid var(--morze);
+  font-size: var(--t-4);
+}
+
+.dzial-blok__nazwa a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--cel-dotyku);
+  color: var(--tekst);
+  text-decoration: none;
+}
+
+.dzial-blok__nazwa a:hover {
+  color: var(--akcent-mocny);
+  text-decoration: underline;
+}
+
+.dzial-blok__nazwa a:active {
+  color: var(--tekst);
+}
+
+.dzial-blok__wiecej {
+  margin-top: var(--o-4);
+}
+
+/* Telefon: po 2 karty na dział (strona główna ma 5 bloków); trzecia od 48 rem, gdy karty stoją obok siebie */
+@media (max-width: 47.99rem) {
+  .dzial-blok .karty > li:nth-child(n + 3) {
+    display: none;
+  }
+}
+
+.inne-dzialy {
+  padding-bottom: var(--o-16);
+}
+
+.inne-dzialy h2 {
+  margin-bottom: var(--o-3);
+  font-size: var(--t-4);
+}
+
+.inne-dzialy ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--o-2) var(--o-3);
+  list-style: none;
+}
+
+.inne-dzialy a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--cel-dotyku);
+  padding: 0 var(--o-4);
+  border: 1px solid var(--morze);
+  color: var(--morze);
+  font-size: var(--t-2);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.inne-dzialy a:hover {
+  background: var(--morze);
+  color: var(--na-morzu);
+}
+
+.inne-dzialy a:active {
+  background: var(--powierzchnia-mocna);
+  color: var(--morze);
+}
+
+/* ══ POLECAMY: bloki firm (bez logo, ocen i cen), pod nimi zapowiedzi ══ */
+.firmy {
+  display: grid;
+  gap: var(--o-8) var(--o-12);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
+  list-style: none;
+}
+
+.firma {
+  display: flex;
+  flex-direction: column;
+  gap: var(--o-3);
+  padding-top: var(--o-4);
+  border-top: 2px solid var(--morze);
+}
+
+.firma h2 {
+  font-size: var(--t-5);
+}
+
+.firma p {
+  max-width: var(--miara);
+}
+
+.firma__dla-nas {
+  font-family: var(--font-nagl);
+  font-size: var(--t-3);
+}
+
+.firma__strona {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--o-2) var(--o-4);
+  margin-top: auto;
+  padding-top: var(--o-2);
+}
+
+.firma__host {
+  color: var(--tekst-cichy);
+  font-size: var(--t-1);
 }
 
 /* ══ STRONY TEKSTOWE (o nas, polityka, 404) ══ */
@@ -1059,6 +1259,21 @@ main:focus {
   flex-wrap: wrap;
   gap: var(--o-3);
   margin-top: var(--o-6);
+}
+
+.przycisk--obrys {
+  background: transparent;
+  color: var(--morze);
+}
+
+.przycisk--obrys:hover {
+  background: var(--morze);
+  color: var(--na-morzu);
+}
+
+.przycisk--obrys:active {
+  background: var(--powierzchnia-mocna);
+  color: var(--morze);
 }
 
 /* ══ STOPKA: neutralna, bez nazwy spółki i bez listy naszych stron ══ */

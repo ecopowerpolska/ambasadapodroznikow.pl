@@ -1,24 +1,33 @@
-# Linki wychodzące do naszych stron (stan na build 2026-11-03)
+# Linki wychodzące do naszych stron (stan na build 2026-11-03 wieczór)
 
 Zasada (skill `linkowanie-zewnetrzne`): link do naszej witryny stoi w treści wpisu, w zdaniu, bez `rel`.
-Nic sitewide: w nagłówku i stopce nie ma linków do naszych stron (sprawdzone na całym `dist/`).
+Nic sitewide: w nagłówku, menu i stopce nie ma linków do naszych stron (sprawdzone parserem na całym `dist/`,
+wszystkie 25 linków leży w `<main>`). Wszystkie 5 firm to marki EcoPower Polska Sp. z o.o., wydawcy strony;
+mówi to wstęp `/polecamy/`, sekcja „Kogo polecamy i dlaczego” w O nas i zdanie przy linku we wpisach.
 
-## Linki w treści wpisów (1 na wpis, bez `rel`)
+## Linki w treści wpisów (najwyżej 1 na wpis, bez `rel`)
 
 | Skąd | Dokąd | Anchor | rel |
 |---|---|---|---|
-| /blog/wlasna-strona-z-podrozy/ | https://www.ecopowerpolska.pl/ | EcoPower Polska | brak |
-| /blog/dom-gotowy-na-gosci-z-zagranicy/ | https://nadihome.pl/uslugi | opisie usług Nadi Home | brak |
-| /blog/dom-na-dluzszy-wyjazd/ | https://nadihome.pl/ | Nadi Home | brak |
-| /blog/remont-gdy-jestes-w-podrozy/ | https://studioagat.pl/ | Studio Agat | brak |
-| /blog/szafa-podroznika/ | https://pan-stolarz.pl/ | Pan Stolarz | brak |
-| /blog/podloga-pod-sprzet-wyprawowy-i-rowery/ | https://panwylewka.pl/ | Pan Wylewka | brak |
+| /blog/wlasna-strona-z-podrozy/ | https://www.ecopowerpolska.pl/strona-wizytowka/ | EcoPower Polska | brak |
+| /blog/dom-na-dluzszy-wyjazd/ | https://nadihome.pl/uslugi | Nadi Home | brak |
+| /blog/remont-gdy-jestes-w-podrozy/ | https://studioagat.pl/nadzor-inwestorski | Studio Agat | brak |
+| /blog/szafa-podroznika/ | https://pan-stolarz.pl/szafy-na-wymiar | Pan Stolarz | brak |
+| /blog/podloga-pod-sprzet-wyprawowy-i-rowery/ | https://panwylewka.pl/uslugi | Pan Wylewka | brak |
 
-Wpisy `sprzet-na-szlak-dla-poczatkujacych` i `weekend-w-drodze-pakowanie-w-20-minut` nie linkują do naszych stron (temat czysto podróżniczy).
+Pozostałe wpisy (Podróże, Pasje, Zdrowie, reszta Domu i Technologii, także zaplanowane na 5–20 listopada) nie linkują
+do naszych stron. `dom-gotowy-na-gosci-z-zagranicy` stracił link do Nadi Home (firma ma już link w `dom-na-dluzszy-wyjazd`).
 
-## Zapowiedzi z RSS (agregator, `src/content/polecane/`, bez `rel`)
+## `/polecamy/` (bez `rel`)
 
-Karty „Czytaj dalej na …” prowadzą do wpisów źródłowych. Pokazują je strona główna (6 kart: 5 EcoPower Polska, 1 Nadi Home) i `/z-naszych-stron/` (18 kart: 10 EcoPower Polska, 2 Nadi Home, 2 Studio Agat, 4 Pan Stolarz). Anchor: „Czytaj dalej na <nazwa strony>”.
-Pan Wylewka: kanał RSS bez wpisów, zapowiedzi brak.
+- 5 przycisków „Odwiedź <nazwa>” do stron głównych: studioagat.pl, pan-stolarz.pl, nadihome.pl, panwylewka.pl, www.ecopowerpolska.pl.
+- 12 kart zapowiedzi z RSS „Czytaj dalej na <nazwa>”: 8 EcoPower Polska, 2 Pan Stolarz, 1 Nadi Home, 1 Studio Agat.
+  Pan Wylewka: kanał RSS bez wpisów, zapowiedzi brak.
 
-Razem w `dist/`: 30 linków do naszych stron (6 w treści wpisów, 24 w kartach zapowiedzi; strona główna powtarza 6 kart z `/z-naszych-stron/`).
+## Strona główna (bez `rel`)
+
+3 karty zapowiedzi „Czytaj dalej na EcoPower Polska” (najnowsze z RSS) i odnośnik wewnętrzny do `/polecamy/`.
+
+Razem w `dist/`: 25 linków do naszych stron (5 w treści wpisów, 5 przycisków firm, 15 w kartach zapowiedzi).
+Według domen: ecopowerpolska.pl 13, pan-stolarz.pl 4, studioagat.pl 3, nadihome.pl 3, panwylewka.pl 2.
+Zapowiedzi zmieniają się przy każdej przebudowie (codziennie 05:30 UTC), więc liczby kart są stanem na ten build.
