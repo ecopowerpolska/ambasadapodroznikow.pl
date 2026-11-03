@@ -1,0 +1,83 @@
+---
+// Polityka prywatności: treść z teksty.json → polityka.*; administrator danych z src/data/spolka.json (EcoPower Polska Sp. z o.o.).
+// W tekście: [kotwica](/trasa/) = odnośnik wewnętrzny; {nazwa} {adres} {nip} {krs} {regon} {email} {telefon} = dane spółki.
+import Bazowy from '../layouts/Bazowy.astro';
+import Okruszki from '../components/Okruszki.astro';
+import spolka from '../data/spolka.json';
+import { t, pobierz, kawalki } from '../lib/tekst';
+import { okruszki } from '../lib/schemat';
+
+const tekstSpolki = String(spolka.nazwaStopka || spolka.nazwaPelna);
+const mail = spolka.email.toLowerCase();
+const cyfry = spolka.telefon.replace(/\D/g, '');
+const telefon = cyfry.length === 9 ? cyfry.replace(/(\d{3})(\d{3})(\d{3})/, '$1 $2 $3') : spolka.telefon;
+const adresSpolki = `${spolka.adresSiedziby}, ${spolka.kodPocztowy} ${spolka.miejscowosc}`;
+const podstaw = (s: string) =>
+  s
+    .replaceAll('{nazwa}', tekstSpolki)
+    .replaceAll('{adres}', adresSpolki)
+    .replaceAll('{nip}', spolka.nip)
+    .replaceAll('{krs}', spolka.krs)
+    .replaceAll('{regon}', spolka.regon)
+    .replaceAll('{email}', mail)
+    .replaceAll('{telefon}', telefon);
+const czesci = (s: string) => kawalki(podstaw(s));
+
+const naTekst = (v: unknown) => (typeof v === 'string' ? v.trim() : '');
+const teksty = (v: unknown) => (Array.isArray(v) ? v.map(naTekst).filter(Boolean) : []);
+const sekcje = (Array.isArray(pobierz('polityka.sekcje')) ? (pobierz('polityka.sekcje') as Record<string, unknown>[]) : [])
+  .map((s) => ({
+    id: naTekst(s?.id),
+    naglowek: naTekst(s?.naglowek),
+    akapity: teksty(s?.akapity),
+    lista: teksty(s?.lista),
+    akapityPo: teksty(s?.akapityPo),
+  }))
+  .filter((s) => s.naglowek);
+
+const pozycje = [
+  { nazwa: t('interfejs.okruszki_glowna'), adres: '/' },
+  { nazwa: t('polityka.h1'), adres: '/polityka-prywatnosci/' },
+];
+const dataAktualizacji = t('polityka.dataAktualizacji', '');
+const schemat = [okruszki(pozycje)];
+---
+
+<Bazowy tytul={t('polityka.tytulKarty')} opis={t('polityka.opisMeta')} {schemat}>
+  <Okruszki pozycje={pozycje} />
+  <div class="kontener podstrona-glowa">
+    <h1>{t('polityka.h1')}</h1>
+    <p class="podstrona-glowa__wstep">{t('polityka.lead')}</p>
+    {dataAktualizacji && <p class="polityka__data">Stan na <time datetime={dataAktualizacji}>{dataAktualizacji}</time></p>}
+  </div>
+  <div class="kontener strona-tekst">
+    <div class="strona-tekst__kolumna proza">
+      <h2 id="administrator">{t('polityka.administratorNaglowek')}</h2>
+      <p>{t('polityka.administratorWstep')}</p>
+      <ul class="administrator">
+        <li>{tekstSpolki}</li>
+        <li>{adresSpolki}</li>
+        <li>NIP: {spolka.nip}, KRS: {spolka.krs}</li>
+        <li>E-mail: <a href={`mailto:${mail}`}>{mail}</a></li>
+      </ul>
+      {
+        sekcje.map((s) => (
+          <>
+            <h2 id={s.id || undefined}>{s.naglowek}</h2>
+            {s.akapity.map((a) => (
+              <p>{czesci(a).map((k) => (k.adres ? <a href={k.adres}>{k.tekst}</a> : k.tekst))}</p>
+            ))}
+            {s.lista.length > 0 && (
+              <ul>
+                {s.lista.map((l) => <li>{czesci(l).map((k) => (k.adres ? <a href={k.adres}>{k.tekst}</a> : k.tekst))}</li>)}
+              </ul>
+            )}
+            {s.akapityPo.map((a) => (
+              <p>{czesci(a).map((k) => (k.adres ? <a href={k.adres}>{k.tekst}</a> : k.tekst))}</p>
+            ))}
+          </>
+        ))
+      }
+    </div>
+  </div>
+</Bazowy>

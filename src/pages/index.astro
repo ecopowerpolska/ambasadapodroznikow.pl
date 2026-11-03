@@ -1,0 +1,95 @@
+---
+// Strona główna: zdjęcie z panelem tytułu, wstęp (teksty.json → glowna.*), najnowsze wpisy, zapowiedzi z naszych stron.
+import Bazowy from '../layouts/Bazowy.astro';
+import Foto from '../components/Foto.astro';
+import KartaWpisu from '../components/KartaWpisu.astro';
+import KartaPolecana from '../components/KartaPolecana.astro';
+import { t, lista } from '../lib/tekst';
+import { opublikowane, polecane } from '../lib/wpisy';
+import { ZDJECIE_GLOWNE } from '../lib/zdjecia';
+import { organizacja, stronaWww } from '../lib/schemat';
+
+const wpisy = (await opublikowane()).slice(0, 4);
+const zaplowki = (await polecane()).slice(0, 6);
+const [glowny, ...pozostale] = wpisy;
+const akapity = lista('glowna.akapity');
+const [lead, ...reszta] = akapity;
+const schemat = [{ '@context': 'https://schema.org', '@graph': [stronaWww(), organizacja()] }];
+---
+
+<Bazowy tytul={t('glowna.tytulKarty')} opis={t('glowna.opisMeta')} {schemat}>
+  <div class="hero__zdjecie">
+    <Foto
+      nazwa={ZDJECIE_GLOWNE}
+      widths={[640, 960, 1440, 1920, 2400]}
+      sizes="100vw"
+      proporcja={3 / 2}
+      priorytet
+    />
+  </div>
+  <div class="hero__rama kontener">
+    <div class="hero__panel">
+      <h1>{t('glowna.h1')}</h1>
+      <p class="hero__haslo">{t('marka.haslo')}</p>
+    </div>
+  </div>
+
+  {
+    lead && (
+      <section class="sekcja" aria-label={t('marka.nazwa')}>
+        <div class="kontener wstep">
+          <p class="wstep__lead">{lead}</p>
+          {reszta.length > 0 && (
+            <div class="wstep__reszta">
+              {reszta.map((a) => <p>{a}</p>)}
+            </div>
+          )}
+        </div>
+      </section>
+    )
+  }
+
+  <section class="sekcja sekcja--piasek" aria-labelledby="najnowsze">
+    <div class="kontener">
+      <div class="sekcja__glowa">
+        <h2 id="najnowsze">{t('glowna.najnowszeNaglowek')}</h2>
+        <a class="link-sekcji" href="/blog/">{t('glowna.najnowszeWszystkie')}</a>
+      </div>
+      {
+        glowny ? (
+          <>
+            <KartaWpisu wpis={glowny} glowna />
+            {pozostale.length > 0 && (
+              <ul class="karty">
+                {pozostale.map((w) => <li><KartaWpisu wpis={w} /></li>)}
+              </ul>
+            )}
+          </>
+        ) : (
+          <p class="pusto">{t('interfejs.brakWpisow')}</p>
+        )
+      }
+    </div>
+  </section>
+
+  <section class="sekcja" aria-labelledby="z-naszych-stron">
+    <div class="kontener">
+      <div class="sekcja__glowa">
+        <div>
+          <h2 id="z-naszych-stron">{t('glowna.zNaszychStronNaglowek')}</h2>
+          <p class="sekcja__wstep">{t('glowna.zNaszychStronWstep')}</p>
+        </div>
+        <a class="link-sekcji" href="/z-naszych-stron/">{t('glowna.zNaszychStronWszystkie')}</a>
+      </div>
+      {
+        zaplowki.length > 0 ? (
+          <ul class="karty">
+            {zaplowki.map((w) => <li><KartaPolecana wpis={w} /></li>)}
+          </ul>
+        ) : (
+          <p class="pusto">{t('interfejs.brakPolecanych')}</p>
+        )
+      }
+    </div>
+  </section>
+</Bazowy>

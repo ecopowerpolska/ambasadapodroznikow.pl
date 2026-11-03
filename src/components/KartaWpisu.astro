@@ -1,0 +1,33 @@
+---
+// Karta wpisu: zdjęcie 3:2, data, tytuł jako jedyny odnośnik (rozciągnięty na całą kartę).
+import Foto from './Foto.astro';
+import { adresWpisu, dataIso, dataPoPolsku, type Wpis } from '../lib/wpisy';
+
+interface Props {
+  wpis: Wpis;
+  /** Karta główna (najnowszy wpis na stronie głównej): większe zdjęcie, tekst obok. */
+  glowna?: boolean;
+  priorytet?: boolean;
+}
+const { wpis, glowna = false, priorytet = false } = Astro.props;
+const d = wpis.data;
+---
+
+<article class:list={['karta', { 'karta--glowna': glowna }]}>
+  <div class="karta__zdjecie">
+    <Foto
+      nazwa={d.zdjecie}
+      alt={d.alt}
+      widths={glowna ? [560, 800, 1100, 1400] : [380, 600, 800]}
+      sizes={glowna
+        ? '(min-width: 56rem) 55vw, calc(100vw - 2.5rem)'
+        : '(min-width: 76rem) 24rem, (min-width: 48rem) 45vw, calc(100vw - 2.5rem)'}
+      priorytet={priorytet}
+    />
+  </div>
+  <div class="karta__tekst">
+    <p class="karta__meta"><time datetime={dataIso(d.data)}>{dataPoPolsku(d.data)}</time></p>
+    <h3><a href={adresWpisu(wpis.id)}>{d.tytul}</a></h3>
+    <p>{d.opis}</p>
+  </div>
+</article>

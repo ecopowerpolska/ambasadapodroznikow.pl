@@ -1,0 +1,43 @@
+---
+// Pełna lista zapowiedzi z naszych stron, pogrupowana po źródle (grupy od najświeższego wpisu).
+import Bazowy from '../layouts/Bazowy.astro';
+import Okruszki from '../components/Okruszki.astro';
+import KartaPolecana from '../components/KartaPolecana.astro';
+import { t } from '../lib/tekst';
+import { polecane, type Polecany } from '../lib/wpisy';
+import { okruszki } from '../lib/schemat';
+
+const wszystkie = await polecane(); // od najnowszego
+const grupy = new Map<string, Polecany[]>();
+for (const w of wszystkie) grupy.set(w.data.zrodlo, [...(grupy.get(w.data.zrodlo) ?? []), w]);
+
+const pozycje = [
+  { nazwa: t('interfejs.okruszki_glowna'), adres: '/' },
+  { nazwa: t('z-naszych-stron.h1'), adres: '/z-naszych-stron/' },
+];
+const schemat = [okruszki(pozycje)];
+---
+
+<Bazowy tytul={t('z-naszych-stron.tytulKarty')} opis={t('z-naszych-stron.opisMeta')} {schemat}>
+  <Okruszki pozycje={pozycje} />
+  <div class="kontener podstrona-glowa">
+    <h1>{t('z-naszych-stron.h1')}</h1>
+    <p class="podstrona-glowa__wstep">{t('z-naszych-stron.wstep')}</p>
+  </div>
+  <div class="kontener strona-tekst">
+    {
+      grupy.size > 0 ? (
+        [...grupy.entries()].map(([zrodlo, wpisy]) => (
+          <section class="grupa-zrodla" aria-labelledby={`zrodlo-${zrodlo.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>
+            <h2 id={`zrodlo-${zrodlo.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>{zrodlo}</h2>
+            <ul class="karty">
+              {wpisy.map((w) => <li><KartaPolecana wpis={w} /></li>)}
+            </ul>
+          </section>
+        ))
+      ) : (
+        <p class="pusto">{t('interfejs.brakPolecanych')}</p>
+      )
+    }
+  </div>
+</Bazowy>

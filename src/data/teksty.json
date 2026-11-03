@@ -1,0 +1,190 @@
+{
+  "marka": {
+    "nazwa": "Ambasada Podróżników",
+    "haslo": "Notatnik podróżnika: jak jeździć mądrze i wracać do dobrze urządzonego domu",
+    "opisKrotki": "Notatnik redakcji o podróżach, pakowaniu, sprzęcie na szlak i domu, do którego się wraca. Proste, rzetelne wpisy, bez sprzedaży i bez reklam."
+  },
+  "interfejs": {
+    "przejdzDoTresci": "Przejdź do treści",
+    "marka_aria": "Ambasada Podróżników, strona główna",
+    "menu_aria": "Menu główne",
+    "menu_otworz": "Menu",
+    "menu_zamknij": "Zamknij menu",
+    "menu_blog": "Blog",
+    "menu_zNaszychStron": "Z naszych stron",
+    "menu_oNas": "O nas",
+    "okruszki_aria": "Okruszki",
+    "okruszki_glowna": "Strona główna",
+    "okruszki_blog": "Blog",
+    "opublikowano": "Opublikowano",
+    "tagi_aria": "Tagi wpisu",
+    "czytajDalejNa": "Czytaj dalej na {zrodlo}",
+    "sasiedzi_aria": "Poprzedni i następny wpis",
+    "poprzedni": "Poprzedni wpis",
+    "nastepny": "Następny wpis",
+    "brakWpisow": "Pierwsze wpisy pojawią się tu wkrótce.",
+    "brakPolecanych": "Zapowiedzi z naszych stron pojawią się tu wkrótce."
+  },
+  "stopka": {
+    "redakcja": "Redakcja Ambasady Podróżników",
+    "polityka": "Polityka prywatności",
+    "rss": "Kanał RSS",
+    "prawa": "© {rok} Redakcja Ambasady Podróżników"
+  },
+  "glowna": {
+    "tytulKarty": "Ambasada Podróżników: notatnik podróżnika",
+    "opisMeta": "Notatnik podróżnika: proste, rzetelne wpisy o wyjazdach, pakowaniu, sprzęcie i domu, który czeka po powrocie. Bez reklam, bez sprzedaży, z listami do zabrania.",
+    "h1": "Ambasada Podróżników. Notatnik podróżnika",
+    "akapity": [
+      "Ambasada Podróżników to notatnik redakcji, w którym zbieramy to, czego sami szukaliśmy przed wyjazdami. Piszemy krótko i konkretnie, z listami, które można wydrukować albo zapisać w telefonie.",
+      "Strona jest dla tych, którzy jeżdżą często, i dla tych, którzy dopiero zaczynają. Znajdziesz tu teksty o pakowaniu, sprzęcie na szlak i planowaniu weekendu, a także o tym, co dzieje się w domu, kiedy Cię w nim nie ma, i jak go przygotować na powrót albo na gości.",
+      "Każdy wpis kończy się trzema rzeczami do zabrania, a gdy w tekście pojawia się firma, mówimy to wprost. Strona niczego nie sprzedaje, więc nie znajdziesz tu koszyka ani ofert."
+    ],
+    "najnowszeNaglowek": "Najnowsze wpisy",
+    "najnowszeWszystkie": "Wszystkie wpisy",
+    "zNaszychStronNaglowek": "Z naszych stron",
+    "zNaszychStronWstep": "Zbieramy tu zapowiedzi wpisów z zaprzyjaźnionych stron o domu i wnętrzach, a całość czyta się u źródła.",
+    "zNaszychStronWszystkie": "Wszystkie zapowiedzi"
+  },
+  "o-nas": {
+    "tytulKarty": "O nas: redakcja Ambasady Podróżników",
+    "opisMeta": "Kim jesteśmy i dlaczego wracamy do nazwy Ambasada Podróżników: dawne biuro wyjazdów, dziś notatnik o podróżach i domu. Zasady redakcji i tematy.",
+    "h1": "O nas",
+    "wstep": "Nazwa jest stara, notatnik nowy: piszemy o podróżach i o domu, do którego się wraca.",
+    "zdjecie": "weekend-przewodnik-turysci-mapa-01-www-3000x2001.webp",
+    "akapity": [
+      "Nazwę „Ambasada Podróżników” nosiło w latach 2014 do 2025 biuro wyjazdów: weekendy w Polsce, wyjazdy po Europie i dalsze podróże po świecie. Biuro zakończyło działalność, a strona, która była jego wizytówką, przez jakiś czas stała pusta. W 2026 roku nazwa wróciła w nowej formie, jako notatnik.",
+      "Nowy notatnik nie jest kontynuacją tamtej firmy i nie świadczy usług, które oferowało biuro. Wracamy do samej nazwy, która dobrze oddaje to, o co nam chodzi."
+    ],
+    "sekcje": [
+      {
+        "naglowek": "Kto pisze",
+        "akapity": [
+          "Piszemy jako redakcja. To ludzie, którzy dużo jeżdżą i dużo urządzają domów, więc znamy oba końce podróży: walizkę i klucz w drzwiach."
+        ]
+      },
+      {
+        "naglowek": "O czym piszemy",
+        "akapity": [
+          "Obok pakowania, szlaków i planowania weekendu znajdziesz tu teksty o remoncie w czasie wyjazdu, o przygotowaniu domu na dłuższą nieobecność, o szafie, w której łatwo się pakować, i o pokoju dla gości. Staramy się pisać prosto i sprawdzać fakty. Liczby podajemy tylko wtedy, gdy znamy ich źródło albo wynikają z powszechnej wiedzy. Ceny usług zostawiamy firmom, bo zmieniają się szybciej niż nasze wpisy."
+        ]
+      },
+      {
+        "naglowek": "Zasada polecania",
+        "akapity": [
+          "W tekście wskazujemy najwyżej jedną firmę, i tylko taką, z którą współpracujemy. Robimy to jednym zdaniem tam, gdzie pomaga w temacie wpisu, a nie w formie reklamy czy zestawienia. Zaprzyjaźnione strony o domu i wnętrzach zapowiadamy w zakładce „Z naszych stron”, a całość czyta się u źródła."
+        ]
+      },
+      {
+        "naglowek": "Czego tu nie ma",
+        "akapity": [
+          "Strona nie prowadzi sprzedaży, nie ma sklepu, koszyka ani formularza kontaktowego. Jest notatnikiem, który się czyta. Informacje o danych osobowych znajdziesz w [polityce prywatności](/polityka-prywatnosci/)."
+        ]
+      }
+    ]
+  },
+  "blog": {
+    "tytulKarty": "Blog: wpisy o podróżach, pakowaniu i domu",
+    "opisMeta": "Wszystkie wpisy z notatnika Ambasady Podróżników: pakowanie, sprzęt na szlak, dom na czas wyjazdu i goście z zagranicy. Od najnowszych do najstarszych.",
+    "h1": "Blog",
+    "wstep": "Wpisy o podróżach i o domu, do którego się wraca, od najnowszych. Każdy kończy się krótką listą rzeczy do zabrania."
+  },
+  "z-naszych-stron": {
+    "tytulKarty": "Z naszych stron: wpisy o domu i wnętrzach",
+    "opisMeta": "Zapowiedzi wpisów z zaprzyjaźnionych stron o remontach, wnętrzach, meblach na wymiar i podłogach. Całość czytasz u źródła, po kliknięciu w tytuł wpisu.",
+    "h1": "Z naszych stron",
+    "wstep": "Zbieramy tu zapowiedzi wpisów z zaprzyjaźnionych stron o domu i wnętrzach: tytuł, krótki opis i zdjęcie. Całość czyta się u źródła, po kliknięciu w link do oryginału."
+  },
+  "polityka": {
+    "tytulKarty": "Polityka prywatności | Ambasada Podróżników",
+    "opisMeta": "Polityka prywatności ambasadapodroznikow.pl: administrator, hosting na GitHub Pages, zdjęcia zapowiedzi z naszych stron, brak cookies i analityki, Twoje prawa.",
+    "h1": "Polityka prywatności",
+    "lead": "Ten serwis nie ustawia własnych plików cookies, nie ma analityki ani reklam, kont i formularzy. Niżej opisujemy, jakie dane technicznie przetwarzają hosting i serwery stron, z których pokazujemy zapowiedzi.",
+    "dataAktualizacji": "2026-11-03",
+    "administratorNaglowek": "Administrator danych",
+    "administratorWstep": "Administratorem danych osobowych jest:",
+    "sekcje": [
+      {
+        "id": "zakres",
+        "naglowek": "Jaki to serwis",
+        "akapity": [
+          "Serwis ambasadapodroznikow.pl jest statyczną stroną z wpisami do czytania. Nie ma kont użytkowników, komentarzy, sklepu ani newslettera i nie zbiera od odwiedzających danych, które sami by wpisali."
+        ],
+        "lista": [],
+        "akapityPo": []
+      },
+      {
+        "id": "hosting",
+        "naglowek": "Hosting na GitHub Pages",
+        "akapity": [
+          "Serwis jest opublikowany na GitHub Pages. Dostawcą hostingu jest GitHub Inc., która w ramach usługi może przetwarzać adresy IP odwiedzających i podstawowe dane techniczne zapytań, takie jak data, przeglądarka i adres żądanej strony, w dziennikach serwera. Robi to na własnych zasadach, opisanych w jej polityce prywatności.",
+          "Podstawą przetwarzania po stronie administratora jest uzasadniony interes (art. 6 ust. 1 lit. f RODO), czyli udostępnienie serwisu i zapewnienie jego bezpieczeństwa."
+        ],
+        "lista": [],
+        "akapityPo": []
+      },
+      {
+        "id": "cookies",
+        "naglowek": "Pliki cookies i analityka",
+        "akapity": [
+          "Serwis nie ustawia własnych plików cookies, nie używa analityki, nie ładuje skryptów reklamowych ani narzędzi śledzących. Dlatego nie wyświetlamy okna zgody. Twoja przeglądarka może zapisywać technicznie niezbędne dane zgodnie z własnymi ustawieniami."
+        ],
+        "lista": [],
+        "akapityPo": []
+      },
+      {
+        "id": "zapowiedzi",
+        "naglowek": "Zdjęcia zapowiedzi z naszych stron",
+        "akapity": [
+          "W zakładce [Z naszych stron](/z-naszych-stron/) i na stronie głównej pokazujemy zapowiedzi wpisów z zaprzyjaźnionych stron. Zdjęcia do tych zapowiedzi przeglądarka pobiera bezpośrednio z serwerów tych stron, a nie z naszego hostingu. Przy pobraniu ich serwer może odnotować adres IP i podstawowe dane techniczne zapytania. Są to serwery następujących stron:"
+        ],
+        "lista": [
+          "studioagat.pl",
+          "nadihome.pl",
+          "pan-stolarz.pl",
+          "ecopowerpolska.pl",
+          "panwylewka.pl"
+        ],
+        "akapityPo": [
+          "Zapowiedzi nie ustawiają cookies ani nie uruchamiają skryptów z tych stron. Samo kliknięcie linku do oryginału przenosi Cię na stronę z jej własną polityką prywatności i własnym administratorem."
+        ]
+      },
+      {
+        "id": "linki",
+        "naglowek": "Linki do innych stron",
+        "akapity": [
+          "We wpisach znajdują się odnośniki do zewnętrznych serwisów. Po kliknięciu przechodzisz na stronę, która ma własną politykę prywatności. Zapoznaj się z nią, zanim zostawisz tam jakiekolwiek dane."
+        ],
+        "lista": [],
+        "akapityPo": []
+      },
+      {
+        "id": "prawa",
+        "naglowek": "Twoje prawa",
+        "akapity": [
+          "Przysługuje Ci prawo dostępu do danych (art. 15 RODO), sprostowania (art. 16), usunięcia (art. 17), ograniczenia przetwarzania (art. 18), powiadomienia o sprostowaniu, usunięciu lub ograniczeniu (art. 19), przenoszenia danych (art. 20), sprzeciwu wobec przetwarzania (art. 21) oraz prawo, by nie podlegać decyzji opartej wyłącznie na zautomatyzowanym przetwarzaniu (art. 22).",
+          "Możesz skontaktować się z administratorem pod adresem {email} albo złożyć skargę do Prezesa Urzędu Ochrony Danych Osobowych. Ponieważ serwis nie zbiera danych poza dziennikami hostingu i serwerów stron, z których pokazujemy zapowiedzi, część praw wykonasz bezpośrednio wobec ich administratorów."
+        ],
+        "lista": [],
+        "akapityPo": []
+      },
+      {
+        "id": "zmiany",
+        "naglowek": "Zmiany polityki",
+        "akapity": [
+          "Politykę zmieniamy, gdy zmienia się sposób działania serwisu. Aktualna wersja obowiązuje od 3 listopada 2026 roku."
+        ],
+        "lista": [],
+        "akapityPo": []
+      }
+    ]
+  },
+  "e404": {
+    "tytulKarty": "Nie ma takiej strony | Ambasada Podróżników",
+    "opisMeta": "Strony, której szukasz, nie ma pod tym adresem. Wróć na stronę główną albo zajrzyj do wpisów na blogu.",
+    "h1": "Nie znaleźliśmy tej strony",
+    "tekst": "Adres mógł się zmienić albo zawierać literówkę. Wróć na stronę główną albo przejrzyj wpisy na blogu.",
+    "glowna": "Wróć na stronę główną",
+    "blog": "Zobacz blog"
+  }
+}

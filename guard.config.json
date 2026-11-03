@@ -1,0 +1,13 @@
+{
+  "$comment": "Progi astro-guard dla ambasadapodroznikow.pl. Jedyny JS strony to kilkanaście wierszy menu mobilnego w nagłówku (bundlowany, bez wysp); budżet 3 kB gzip. Trasy bez menu nie istnieją, więc zeroJsRoutes puste — zero-JS nie dotyczy żadnej trasy.",
+  "static": {
+    "maxIslandsPerFile": 3,
+    "minAstroMajor": 6
+  },
+  "budget": {
+    "jsGzipKB": 3,
+    "cssGzipKB": 30,
+    "htmlGzipKB": 25,
+    "zeroJsRoutes": []
+  }
+}
