@@ -1,8 +1,10 @@
 ---
 tytul: "Pociągiem po Europie: jak zaplanować trasę i nie przepłacić"
-opis: "Jak ułożyć trasę koleją po Europie: wyszukiwarki rozkładów, bilety pojedyncze czy Interrail, rezerwacje, przesiadki, nocne pociągi i przykładowa pętla z Polski."
-data: 2026-11-20
+opis: "Jak ułożyć trasę koleją po Europie: wyszukiwarki rozkładów, bilety pojedyncze czy Interrail, rezerwacje, przesiadki, nocne pociągi i przykładowa trasa z Polski."
+data: 2026-12-01
 dzial: podroze
+zdjecie: "podroze-wieza-eiffla-21-www-3000x2000.webp"
+alt: "Wieża Eiffla w Paryżu nad Sekwaną widziana między zielonymi drzewami w słoneczny dzień"
 tagi: ["kolej", "Europa", "Interrail"]
 ---
 
@@ -10,11 +12,11 @@ Z Polski bezpośrednim pociągiem dojedziesz do Berlina, Pragi, Wiednia i Budape
 
 ## Krok pierwszy: mapa, nie bilety
 
-Zacznij od listy miast. Potem sprawdź, jak długo jedzie się między nimi. Do szukania połączeń w całej Europie dobrze nadaje się wyszukiwarka kolei niemieckich. Pokazuje rozkłady większości krajów, także tam, gdzie biletu nie sprzeda. Szczegóły tras, zdjęcia wagonów i rady, gdzie kupić bilet najtaniej, znajdziesz w przewodniku The Man in Seat 61.
+Zacznij od listy miast. Potem sprawdź, jak długo jedzie się między nimi. Do szukania połączeń w całej Europie dobrze nadaje się wyszukiwarka Deutsche Bahn ([bahn.de](https://int.bahn.de/pl)). Pokazuje rozkłady większości krajów, także tam, gdzie biletu nie sprzeda. Szczegóły tras, zdjęcia wagonów i rady, gdzie kupić bilet najtaniej, znajdziesz w przewodniku [The Man in Seat 61](https://www.seat61.com/).
 
 Planuj odcinki do pięciu, sześciu godzin. Tyle da się przejechać przed południem i mieć jeszcze popołudnie w nowym mieście. Dłuższe odcinki przejedź nocą.
 
-Kilka orientacyjnych czasów z Polski. Z Warszawy do Berlina jedziesz około pięciu i pół godziny. Z Krakowa do Wiednia pociąg dzienny jedzie mniej więcej tyle samo. Nocny skład z Budapesztu do Warszawy jedzie około trzynastu godzin. Rozkłady zmieniają się co sezon, więc przed zakupem sprawdź je u przewoźnika.
+Kilka orientacyjnych czasów z Polski. Z Warszawy do Berlina jedziesz około pięciu i pół godziny. Z Krakowa do Wiednia pociąg dzienny jedzie około pięciu godzin. Nocny skład z Budapesztu do Warszawy jedzie około trzynastu godzin. Rozkłady zmieniają się co sezon, więc przed zakupem sprawdź je u przewoźnika.
 
 ## Krok drugi: bilety pojedyncze czy Interrail
 
@@ -46,11 +48,11 @@ Nocny pociąg zastępuje dzień jazdy i nocleg. Wybierasz miejsce siedzące, kus
 
 W Europie nocne trasy prowadzą między innymi koleje austriackie pod marką Nightjet i przewoźnik European Sleeper. Z Polski nocą dojedziesz między innymi do Budapesztu i Wiednia. Miejsca znikają szybko. Najszybciej latem i w święta.
 
-## Przykładowa pętla na dziesięć dni
+## Przykładowa trasa na osiem dni
 
-Kraków, Wiedeń, Budapeszt, Warszawa. Z Krakowa jedziesz dziennym pociągiem do Wiednia i zostajesz trzy noce. Z Wiednia do Budapesztu masz krótki odcinek, około trzech godzin. Po trzech, czterech dniach w Budapeszcie wracasz nocnym pociągiem do Warszawy i rano jesteś w domu.
+Kraków, Wiedeń, Budapeszt, Warszawa. Z Krakowa jedziesz dziennym pociągiem do Wiednia i zostajesz trzy noce. Z Wiednia do Budapesztu masz krótki odcinek, około trzech godzin. Po trzech nocach w Budapeszcie wracasz nocnym pociągiem do Warszawy i rano jesteś w domu. Razem wychodzi osiem dni.
 
-Taka pętla ma tylko trzy odcinki, więc bilety pojedyncze wyjdą zwykle taniej niż Interrail. To dobra trasa na pierwszy raz. Co robić w Budapeszcie, opisujemy w tekście o [trzech dniach bez pośpiechu](/blog/budapeszt-w-trzy-dni/).
+Taka trasa ma tylko trzy odcinki, więc bilety pojedyncze wyjdą zwykle taniej niż Interrail. To dobra trasa na pierwszy raz. Co robić w Budapeszcie, opisujemy w tekście o [trzech dniach bez pośpiechu](/blog/budapeszt-w-trzy-dni/).
 
 ## Co spakować do pociągu
 

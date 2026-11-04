@@ -1,12 +1,12 @@
 ---
 // /polecamy/ — firmy, z którymi pracujemy (teksty.json `polecamy.firmy[]`), a pod nimi zapowiedzi ich najnowszych wpisów
-// z RSS (kolekcja `polecane`, najwyżej 12). Zastępuje dawne /z-naszych-stron/ (przekierowanie w docs/przekierowania.json).
+// z RSS (kolekcja `polecane`, najwyżej 12: po 3 z jednej firmy, nie starsze niż 90 dni). Zastępuje dawne /z-naszych-stron/ (przekierowanie w docs/przekierowania.json).
 // Odnośnik do firmy: rel="nofollow" (blok polecający; link w treści wpisu bez rel — schemat Piotra 2026-10-26). Bez logo, ocen i cen.
 import Bazowy from '../layouts/Bazowy.astro';
 import Okruszki from '../components/Okruszki.astro';
 import KartaPolecana from '../components/KartaPolecana.astro';
 import { t, pobierz, wstaw } from '../lib/tekst';
-import { polecane } from '../lib/wpisy';
+import { polecaneRozne } from '../lib/wpisy';
 import { adresBezwzgledny, okruszki } from '../lib/schemat';
 
 type Firma = { nazwa: string; adres: string; opis: string; coDlaNas: string };
@@ -15,7 +15,7 @@ const firmy: Firma[] = (Array.isArray(pobierz('polecamy.firmy')) ? (pobierz('pol
   .map((f) => ({ nazwa: tekst(f?.nazwa), adres: tekst(f?.adres), opis: tekst(f?.opis), coDlaNas: tekst(f?.coDlaNas) }))
   .filter((f) => f.nazwa !== '' && /^https?:\/\//.test(f.adres));
 
-const zapowiedzi = (await polecane()).slice(0, 12);
+const zapowiedzi = (await polecaneRozne(3)).slice(0, 12);
 // Napis odnośnika do firmy: `polecamy.odwiedz` („Odwiedź {nazwa}”), a bez tego klucza sama nazwa firmy.
 const napisOdwiedz = t('polecamy.odwiedz', '{nazwa}');
 const host = (adres: string) => new URL(adres).hostname.replace(/^www\./, '');

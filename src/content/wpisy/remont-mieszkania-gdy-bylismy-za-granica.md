@@ -1,15 +1,14 @@
 ---
 tytul: "Remont mieszkania, gdy byliśmy dwa tygodnie za granicą"
-opis: "Dwa tygodnie za granicą, a w mieszkaniu remont z wykończeniem i meblami. Jak szedł projekt na odległość, co załatwiał WhatsApp, a co mail."
-data: 2026-11-03
+opis: "Dwa tygodnie za granicą, a w mieszkaniu remont z wykończeniem i meblami. Jak szedł projekt na odległość, co nadaje się na WhatsApp, a co na mail."
+data: 2026-11-04
 dzial: dom
-cel:
-  nazwa: "Studio Agat"
-  adres: "https://studioagat.pl/projektowanie-wnetrz"
+zdjecie: "dom-salon-czarna-sofa-01-www-3000x2000.webp"
+alt: "Nowoczesny salon z czarną skórzaną sofą, otwartą kuchnią z wyspą i podświetloną drewnianą zabudową"
 tagi: ["remont", "wyjazd", "meble na wymiar"]
 ---
 
-Remont naszego mieszkania szedł wtedy, kiedy byliśmy dwa tygodnie za granicą. Typowy wyjazd, nic wyjątkowego. Projekt zrobiło zdalnie [Studio Agat](https://studioagat.pl/projektowanie-wnetrz), firma z tej samej grupy co nasza strona. Ta sama firma przeprowadziła remont razem z wykończeniem i meblami. Cały kontakt szedł przez WhatsAppa i maile.
+Remont naszego mieszkania szedł wtedy, kiedy byliśmy dwa tygodnie za granicą. Projekt zrobiło zdalnie [Studio Agat](https://studioagat.pl/projektowanie-wnetrz). To marka tej samej spółki, która wydaje Ambasadę Podróżników. Ta sama firma przeprowadziła remont razem z wykończeniem i meblami. Cały kontakt szedł przez WhatsAppa i maile.
 
 Da się więc remontować, kiedy cię nie ma. Ale nie dlatego, że wszystko dzieje się samo.
 
@@ -21,7 +20,7 @@ Całość robiła jedna firma: projekt, remont, wykończenie i meble. Przy jedny
 
 ## Projekt na odległość
 
-Projekt powstał zdalnie. Materiały przychodziły mailem albo na WhatsAppie, a nasze uwagi wracały tą samą drogą.
+Projekt powstał zdalnie. Cały kontakt szedł przez WhatsAppa i maile, w obie strony.
 
 Przy takiej pracy liczy się słowo pisane. Uwaga rzucona w rozmowie łatwo się rozmywa. Zdanie w mailu da się przeczytać jeszcze raz po tygodniu i obie strony widzą to samo. Dlatego uwagi warto pisać konkretnie: co zostaje, co zmieniamy, czego nie chcemy.
 
@@ -29,11 +28,11 @@ Druga rzecz to tempo. Na odległość pytanie bez odpowiedzi szybko zamienia si�
 
 ## WhatsApp na bieżąco, mail na decyzje
 
-Kanały podzieliły się prosto. Na WhatsAppie szło to, co dzieje się dziś: zdjęcia postępu i krótkie pytania. Zdjęcia mówią więcej niż opis. Widać na nich, czy praca idzie, i od razu widać, o co chodzi w pytaniu.
+Kanały warto podzielić prosto. Przy takim podziale WhatsApp nadaje się do tego, co dzieje się dziś: zdjęć postępu i krótkich pytań. Zdjęcia mówią więcej niż opis. Widać na nich, czy praca idzie, i od razu widać, o co chodzi w pytaniu.
 
-Decyzje potwierdzaliśmy mailem, żeby był ślad. Na czacie wszystko jest wymieszane: zdjęcia, pytania, emotikony. Po kilku dniach trudno odnaleźć wiadomość, w której coś ustaliliśmy. W mailu decyzja stoi osobno, z datą i tematem.
+Decyzje warto potwierdzać mailem, żeby był ślad. Na czacie wszystko jest wymieszane: zdjęcia, pytania, emotikony. Po kilku dniach trudno odnaleźć wiadomość, w której coś ustalono. W mailu decyzja stoi osobno, z datą i tematem.
 
-Ten podział nic nie kosztuje, a oszczędza nerwów po obu stronach. Firma ma potwierdzenie na piśmie. My mamy jedno miejsce, w którym widać, co postanowiliśmy.
+Ten podział nic nie kosztuje, a oszczędza nerwów po obu stronach. Firma ma potwierdzenie na piśmie, a ty jedno miejsce, w którym widać, co postanowiono.
 
 ## Czego nie załatwi ekran telefonu
 
@@ -43,11 +42,11 @@ Tu nie ma sztuczki. Trzeba albo zaufać projektowi, albo zdecydować przed wyjaz
 
 ## Powrót
 
-Po powrocie oglądaliśmy mieszkanie już na żywo, a nie na zdjęciach. To, co przez dwa tygodnie znaliśmy z ekranu, dostało prawdziwy wymiar i kolor.
+Po powrocie mieszkanie ogląda się już na żywo, a nie na ekranie.
 
-Przy odbiorze przydaje się wątek maili, bo każda decyzja z drogi jest w nim zapisana. Łatwo sprawdzić, czy jest tak, jak ustaliliśmy, bez sporu o to, kto co pamięta.
+Przy odbiorze przydaje się wątek maili, bo każda decyzja z drogi jest w nim zapisana. Łatwo sprawdzić, czy jest tak, jak ustalono, bez sporu o to, kto co pamięta.
 
-## Czego się nauczyliśmy
+## Co z tego wynika
 
 Nie każdy remont da się puścić w czasie wyjazdu. Jeśli jednak plan już jest, te rzeczy robią różnicę:
 
@@ -57,6 +56,6 @@ Nie każdy remont da się puścić w czasie wyjazdu. Jeśli jednak plan już jes
 4. **Co da się wybrać przed wyjazdem, wybierz przed wyjazdem.** Kolor i fakturę lepiej ocenić na żywo niż na zdjęciu.
 5. **Do odbioru weź wątek maili.** To gotowa lista tego, co miało powstać.
 
-Szczegóły umowy, zakresu i nadzoru przy remoncie bez Ciebie opisaliśmy w poradniku o [remoncie, gdy jesteś w podróży](/blog/remont-gdy-jestes-w-podrozy/). Mieszkanie w remoncie też zostaje bez gospodarza, więc przed wylotem przejdź listę z tekstu o [przygotowaniu domu na dłuższy wyjazd](/blog/dom-na-dluzszy-wyjazd/).
+Szczegóły umowy, zakresu i nadzoru przy remoncie bez ciebie opisaliśmy w poradniku o [remoncie, gdy jesteś w podróży](/blog/remont-gdy-jestes-w-podrozy/). Mieszkanie w remoncie też zostaje bez gospodarza, więc przed wylotem przejdź listę z tekstu o [przygotowaniu domu na dłuższy wyjazd](/blog/dom-na-dluzszy-wyjazd/).
 
-Zanim kupisz bilety, załóż osobny wątek mailowy z firmą i nazwij go tak, żeby łatwo go znaleźć. Do niego trafi każda decyzja.
+Przed wylotem załóż osobny wątek mailowy z firmą i nazwij go tak, żeby łatwo go znaleźć. Trafi do niego każda decyzja.

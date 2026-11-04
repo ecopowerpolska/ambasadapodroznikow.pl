@@ -4,7 +4,8 @@ import opisy from '../data/zdjecia.json';
 /** Zdjęcie główne strony głównej i domyślne zdjęcie do udostępnień. */
 export const ZDJECIE_GLOWNE = 'podroze-turysci-szlak-gorski-01-www-3000x2002.webp';
 
-// Import leniwy: plik trafia do dist/_astro tylko wtedy, gdy strona go faktycznie wyrenderuje.
+// Import zachłanny (`eager: true`): WSZYSTKIE pliki z src/assets/zdjecia trafiają do dist/_astro, także zdjęcia wpisów
+// zaplanowanych na przyszłość, które nie występują jeszcze w żadnym HTML. Ich adresy są przez to publiczne przed datą wpisu.
 const moduly = import.meta.glob<{ default: ImageMetadata }>('../assets/zdjecia/*.webp', { eager: true });
 const wgNazwy = new Map<string, ImageMetadata>(
   Object.entries(moduly).map(([sciezka, m]) => [sciezka.split('/').pop()!, m.default]),

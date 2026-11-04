@@ -12,7 +12,7 @@
     "check": "astro check",
     "agreguj": "node scripts/agreguj-rss.mjs",
     "guard": "node scripts/validate-astro.mjs",
-    "guard:build": "node scripts/audit-dist.mjs",
+    "guard:build": "node scripts/audit-dist.mjs && node scripts/sprawdz-linki-firm.mjs dist",
     "verify": "npm run guard && astro check && astro build --force && npm run guard:build"
   },
   "dependencies": {

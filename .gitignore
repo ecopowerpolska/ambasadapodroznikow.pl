@@ -32,3 +32,6 @@ secrets/
 .netrc
 credentials*.json
 *service-account*.json
+
+# Kontrakt sesji (zostaje na dysku, poza repo)
+/CLAUDE.md

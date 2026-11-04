@@ -1,14 +1,14 @@
 ---
-tytul: "Kręgosłup w długiej podróży: jak siedzieć w aucie i w samolocie"
+tytul: "Kręgosłup w długiej podróży: auto, samolot i bagaż"
 opis: "Plecy w długiej podróży autem i samolotem: ustawienie fotela, podparcie lędźwi, postoje, ruch w czasie lotu, bagaż i objawy, z którymi trzeba iść do lekarza."
-data: 2026-11-14
+data: 2026-11-24
 dzial: zdrowie
 zdjecie: "technologia-nawigacja-w-aucie-01-www-2000x1333.webp"
 alt: "Smartfon w uchwycie na desce rozdzielczej auta z otwartą nawigacją i trasą, w tle rozmyte drzewa za szybą"
 tagi: ["kręgosłup", "podróż autem", "długi lot", "zakrzepica"]
 ---
 
-Kilka godzin w jednej pozycji męczy plecy bardziej niż sama droga. Najwięcej pomagają trzy rzeczy: dobrze ustawiony fotel, ruch co 2 do 3 godzin i rozsądnie spakowany bagaż. Te same przerwy chronią nogi przed zakrzepicą, o czym przypomina amerykańskie CDC. Niżej są ogólne wskazówki. Ból, który nie mija, pokaż lekarzowi albo fizjoterapeucie.
+Kilka godzin w jednej pozycji męczy plecy bardziej niż sama droga. Pomaga dobrze ustawiony fotel, ruch co 2 do 3 godzin i rozsądnie spakowany bagaż. Te same przerwy chronią nogi przed zakrzepicą, o czym przypomina amerykańskie CDC. Niżej są ogólne wskazówki. Ból, który nie mija, pokaż lekarzowi albo fizjoterapeucie.
 
 ## Fotel kierowcy: ustaw go przed ruszeniem
 
@@ -46,6 +46,6 @@ Sztywność po długiej jeździe zwykle mija po spacerze i przespanej nocy. Do l
 
 Pomocy szukaj od razu, także w podróży, gdy pojawi się drętwienie w kroczu, osłabienie nogi albo kłopot z oddaniem moczu lub z jego utrzymaniem.
 
-Osobna sprawa to nogi. Obrzęk, ból i zaczerwienienie jednej nogi po podróży, a także duszność, szybkie tętno albo ból w klatce piersiowej mogą oznaczać zakrzep. CDC każe wtedy natychmiast szukać pomocy medycznej. CDC nie zaleca też brania aspiryny „na zapas” przed podróżą. O pończochy uciskowe zapytaj lekarza, zwłaszcza po przebytej zakrzepicy, w ciąży albo krótko po operacji. Szczegóły są w [poradniku CDC o zakrzepach w podróży](https://wwwnc.cdc.gov/travel/page/dvt) (po angielsku).
+Osobna sprawa to nogi. Obrzęk, ból i zaczerwienienie jednej nogi po podróży, a także duszność, szybkie tętno albo ból w klatce piersiowej mogą oznaczać zakrzep. CDC radzi wtedy natychmiast szukać pomocy medycznej. CDC nie zaleca też brania aspiryny „na zapas” przed podróżą. O pończochy uciskowe zapytaj lekarza, zwłaszcza po przebytej zakrzepicy, w ciąży albo krótko po operacji. Szczegóły są w [poradniku CDC o zakrzepach w podróży](https://wwwnc.cdc.gov/travel/page/dvt) (po angielsku).
 
 Przed najbliższą długą trasą ustaw fotel jeszcze pod domem, zanim wyjedziesz na drogę. Od razu wpisz w nawigację pierwszy postój.

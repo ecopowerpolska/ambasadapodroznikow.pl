@@ -27,10 +27,13 @@ on:
     branches: [main]
     # Commit bota agregacji (GITHUB_TOKEN) i tak nie wyzwoli tego wyzwalacza; ten push dotyczy wpisów i kodu.
   workflow_dispatch:
-  # Codziennie 05:30 UTC (06:30 zimą, 07:30 latem w Polsce): agregacja nowych wpisów z naszych stron
-  # oraz publikacja wpisów, których data już minęła (filtr opublikowane() liczy „teraz” w chwili budowania).
+  # Trzy przebiegi dziennie (03:17, 07:47 i 11:23 UTC), poza pełną godziną: GitHub spóźnia `schedule` nawet o godziny,
+  # a pojedynczy przebieg bywał pomijany. Każdy robi agregację nowych wpisów z naszych stron oraz publikację wpisów,
+  # których data już minęła (filtr opublikowane() liczy „teraz” w chwili budowania); bez zmian wypuszcza to samo.
   schedule:
-    - cron: '30 5 * * *'
+    - cron: '17 3 * * *'
+    - cron: '47 7 * * *'
+    - cron: '23 11 * * *'
 
 permissions:
   contents: read

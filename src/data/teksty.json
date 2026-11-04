@@ -71,7 +71,7 @@
     "najnowszeWszystkie": "Wszystkie wpisy",
     "naglowekDzialy": "Według tematu",
     "zNaszychStronNaglowek": "Polecamy",
-    "zNaszychStronWstep": "Firmy, z którymi pracujemy na co dzień, też piszą. Tu są ich najnowsze wpisy.",
+    "zNaszychStronWstep": "Marki spółki EcoPower Polska, która wydaje tę stronę, też piszą. Tu są ich najnowsze wpisy.",
     "zNaszychStronWszystkie": "Zobacz, kogo polecamy"
   },
   "dzialy": {
@@ -80,42 +80,42 @@
       "tytulKarty": "Podróże: pakowanie, szlak i weekend w drodze",
       "opisMeta": "Jak spakować się na weekend w 20 minut, co wziąć na pierwszy szlak i jak nie wozić połowy szafy. Wpisy o drodze, plecaku i bagażniku.",
       "h1": "Podróże",
-      "wstep": "Tu jest wszystko o samym wyjeździe: pakowanie, pierwszy szlak, kilka dni w obcym mieście i pociągi po Europie. Najczęściej zaczynamy od listy, bo bez niej zawsze czegoś brakuje. Lista się zmienia, więc wpisy też."
+      "wstep": "Tu jest wszystko o samym wyjeździe: pakowanie, pierwszy szlak, dokumenty i dojazd na miejsce. Najczęściej zaczynamy od listy, bo bez niej zawsze czegoś brakuje. Lista się zmienia, więc wpisy też."
     },
     "dom": {
       "nazwa": "Dom",
-      "tytulKarty": "Dom: przed wyjazdem, po powrocie i w czasie remontu",
-      "opisMeta": "Co zakręcić przed dłuższym wyjazdem, jak przygotować pokój dla gości z zagranicy i jak prowadzić remont, kiedy nie ma Cię na miejscu.",
+      "tytulKarty": "Dom: przed wyjazdem i w czasie remontu",
+      "opisMeta": "Co zakręcić przed dłuższym wyjazdem, jak przygotować pokój dla gości z zagranicy i jak prowadzić remont, kiedy nie ma cię na miejscu.",
       "h1": "Dom",
-      "wstep": "Z każdego wyjazdu się wraca. Przez ten czas dom stoi sam, więc piszemy, co zakręcić, komu zostawić klucze i jak prowadzić remont z daleka. Jest też o szafie, w której łatwiej się pakować, i o pokoju dla gości."
+      "wstep": "Z każdego wyjazdu się wraca. Przez ten czas dom stoi sam, więc piszemy, co zakręcić przed drogą i jak prowadzić remont z daleka. Jest też o szafie, w której łatwiej się pakować, i o pokoju dla gości."
     },
     "pasje": {
       "nazwa": "Pasje",
-      "tytulKarty": "Pasje: zdjęcia, rower i kuchnia z wyjazdów",
-      "opisMeta": "Zdjęcia z podróży telefonem, rower na wakacjach i kuchnia z wyjazdów. Wpisy o tym, po co w ogóle wyjeżdżamy i jak zacząć bez drogiego sprzętu.",
+      "tytulKarty": "Pasje: zdjęcia i powody, dla których wyjeżdżamy",
+      "opisMeta": "Zdjęcia z podróży robione telefonem i inne pasje, dla których wyjeżdżamy. Wpisy o tym, jak zacząć bez drogiego sprzętu i co się naprawdę przydaje.",
       "h1": "Pasje",
-      "wstep": "Pasje to powód, dla którego w ogóle się wyjeżdża. U nas to zdjęcia, rower i jedzenie. Piszemy, jak zrobić lepszy kadr samym telefonem, czy wieźć na wakacje własny rower i jak odtworzyć w domu smak z wyjazdu."
+      "wstep": "Pasje to powód, dla którego w ogóle się wyjeżdża. Piszemy o tym, jak zrobić lepszy kadr samym telefonem, i o innych zajęciach, które warto zabrać ze sobą w drogę, także wtedy, gdy nie masz drogiego sprzętu."
     },
     "technologia": {
       "nazwa": "Technologia",
-      "tytulKarty": "Technologia: mapy, internet i strona z podróży",
-      "opisMeta": "Mapy offline, roaming i eSIM za granicą, własna strona z podróży. Piszemy o telefonie i programach, które naprawdę pomagają w drodze.",
+      "tytulKarty": "Technologia: telefon, programy i strona z podróży",
+      "opisMeta": "Telefon i programy, które pomagają w drodze, oraz własna strona z podróży: domena, hosting i prowadzenie bloga. Bez testów sprzętu na zamówienie.",
       "h1": "Technologia",
-      "wstep": "Telefon jest dziś mapą, biletem i aparatem naraz. Piszemy o mapach bez zasięgu, o internecie za granicą i o tym, jak założyć własną stronę z podróży. Bez testów sprzętu na zamówienie."
+      "wstep": "Telefon jest dziś mapą, biletem i aparatem naraz. Piszemy o tym, jak korzystać z niego w drodze, jak założyć własną stronę z podróży i jak ją prowadzić. Bez testów sprzętu na zamówienie."
     },
     "zdrowie": {
       "nazwa": "Zdrowie",
-      "tytulKarty": "Zdrowie: apteczka, sen i kręgosłup w podróży",
-      "opisMeta": "Apteczka na wyjazd, sen po długim locie i kręgosłup po wielu godzinach w aucie albo w samolocie. Wpisy o zdrowiu w podróży, bez udawania lekarza.",
+      "tytulKarty": "Zdrowie: apteczka i dbanie o siebie w drodze",
+      "opisMeta": "Apteczka na wyjazd i dbanie o siebie w drodze: co spakować i o co zapytać farmaceutę. Wpisy o zdrowiu w podróży, bez udawania lekarza.",
       "h1": "Zdrowie",
-      "wstep": "Najgorszy wyjazd to ten, z którego wraca się chorym. Piszemy o apteczce, o śnie po długim locie i o kręgosłupie po całym dniu w aucie. Porady lekarza nie zastąpimy i tego nie udajemy."
+      "wstep": "Najgorszy wyjazd to ten, z którego wraca się chorym. Piszemy o apteczce i o tym, jak dbać o siebie w czasie podróży. Porady lekarza nie zastąpimy i tego nie udajemy."
     }
   },
   "polecamy": {
-    "tytulKarty": "Polecamy: firmy, z którymi pracujemy",
-    "opisMeta": "Pięć firm, z którymi pracujemy na co dzień: projekt wnętrz, remont, meble na wymiar, wylewki i strony internetowe. Krótko, kto co robi.",
+    "tytulKarty": "Polecamy: marki spółki EcoPower Polska",
+    "opisMeta": "Pięć firm spółki EcoPower Polska, która wydaje tę stronę: projekt wnętrz, remont, meble na wymiar, wylewki i strony internetowe.",
     "h1": "Polecamy",
-    "wstep": "Polecamy tylko firmy, z którymi pracujemy na co dzień. Wszystkie należą do naszej grupy EcoPower Polska, tej samej, która wydaje tę stronę.",
+    "wstep": "Cztery z tych firm to marki spółki EcoPower Polska, która wydaje tę stronę, a piąta to sama spółka. To nie jest niezależna opinia, tylko krótki opis, kto co robi.",
     "firmy": [
       {
         "nazwa": "Studio Agat",
@@ -166,22 +166,22 @@
       {
         "naglowek": "Skąd nazwa",
         "akapity": [
-          "Od 2014 do 2025 roku nazwę „Ambasada Podróżników” nosiło biuro wyjazdów. Organizowało weekendy w Polsce, wyjazdy po Europie i dalsze podróże. To nie była nasza firma. Biuro zakończyło działalność, a w 2026 roku nazwa wróciła, tym razem jako notatnik o podróżach i domu.",
+          "Od 2014 do 2025 roku nazwę „Ambasada Podróżników” nosiło biuro wyjazdów. Organizowało weekendy w Polsce, wyjazdy po Europie i dalsze podróże. To nie była nasza firma. Od 2026 roku adres prowadzimy my, jako notatnik o podróżach i domu.",
           "Wyjazdów nie organizujemy i nie prowadzimy spraw dawnego biura. Wzięliśmy samą nazwę, bo dobrze mówi, o co nam chodzi."
         ]
       },
       {
         "naglowek": "O czym piszemy",
         "akapity": [
-          "Mamy pięć działów. Podróże to pakowanie, szlak, miasta na kilka dni i kolej. Dom to wszystko, co dzieje się pod naszą nieobecność: woda, prąd, goście i remont prowadzony z daleka. Pasje to zdjęcia, rower i kuchnia przywieziona z wyjazdu. Technologia to mapy offline, internet za granicą i własna strona z podróży. Zdrowie to apteczka, sen po długim locie i kręgosłup w drodze.",
+          "Mamy pięć działów. Podróże to pakowanie, szlak i wszystko o samym wyjeździe. Dom to wszystko, co dzieje się pod naszą nieobecność: woda, prąd, goście i remont prowadzony z daleka. Pasje to zdjęcia i inne powody, dla których wyjeżdżamy. Technologia to telefon w drodze i własna strona z podróży. Zdrowie to apteczka i dbanie o siebie w czasie wyjazdu.",
           "Cen usług nie podajemy. Zmieniają się szybciej niż nasze wpisy."
         ]
       },
       {
         "naglowek": "Kogo polecamy i dlaczego",
         "akapity": [
-          "Polecamy tylko firmy, z którymi pracujemy na co dzień: Studio Agat, Pan Stolarz, Nadi Home, Pan Wylewka i EcoPower Polska. Wszystkie należą do naszej grupy EcoPower Polska, więc nie udajemy, że to niezależna opinia.",
-          "Płatnych wpisów nie bierzemy i nie publikujemy tekstów napisanych przez firmy. Jeśli we wpisie pada nazwa firmy, to jedna i w jednym zdaniu, tam gdzie naprawdę pasuje do tematu."
+          "Polecamy pięć firm: Studio Agat, Pan Stolarz, Nadi Home, Pan Wylewka i EcoPower Polska. Cztery pierwsze to marki spółki EcoPower Polska, która wydaje tę stronę, a piąta to sama spółka. To nie jest niezależna opinia.",
+          "Nie przyjmujemy płatnych wpisów ani tekstów od firm spoza naszej spółki. Jeśli we wpisie pada nazwa firmy, to zwykle jedna i w kilku zdaniach, tam gdzie naprawdę pasuje do tematu."
         ]
       },
       {
@@ -249,7 +249,7 @@
           "panwylewka.pl"
         ],
         "akapityPo": [
-          "Zapowiedzi nie ustawiają cookies i nie uruchamiają skryptów tych stron. Kliknięcie w link do oryginału przenosi Cię na stronę, która ma własną politykę prywatności i własnego administratora."
+          "Zapowiedzi nie ustawiają cookies i nie uruchamiają skryptów tych stron. Kliknięcie w link do oryginału przenosi cię na stronę z własną polityką prywatności; administratorem większości tych stron jest ta sama spółka, która wydaje tę stronę."
         ]
       },
       {
@@ -286,7 +286,7 @@
     "tytulKarty": "Nie ma takiej strony | Ambasada Podróżników",
     "opisMeta": "Pod tym adresem nie ma strony. Mogła się przenieść albo w adresie jest literówka. Wróć na stronę główną albo przejrzyj wszystkie wpisy.",
     "h1": "Nie ma tu takiej strony",
-    "tekst": "Adres mógł się zmienić albo ma literówkę. Jeśli szukasz dawnego biura wyjazdów Ambasada Podróżników, ono już nie działa.",
+    "tekst": "Adres mógł się zmienić albo ma literówkę. Jeśli szukasz dawnego biura wyjazdów Ambasada Podróżników, to nie jest już jego strona.",
     "glowna": "Wróć na stronę główną",
     "blog": "Zobacz wszystkie wpisy"
   }

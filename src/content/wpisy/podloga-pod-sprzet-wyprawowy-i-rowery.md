@@ -1,11 +1,10 @@
 ---
 tytul: "Posadzka w garażu pod rowery i sprzęt wyprawowy: o co zapytać"
 opis: "Jaka posadzka wytrzyma rowery, kajak i regały ze sprzętem w garażu? Wylewka a posadzka betonowa, dylatacje, schnięcie, wykończenie i pytania do ekipy."
-data: 2026-11-03
+data: 2026-11-04
 dzial: dom
-cel:
-  nazwa: "Pan Wylewka"
-  adres: "https://panwylewka.pl/uslugi"
+zdjecie: "dom-pokoj-przed-po-remoncie-03-www-3000x993.webp"
+alt: "Pokój przed remontem z gołymi tynkami i ten sam pokój po remoncie z białymi drzwiami i panelami"
 tagi: ["garaż", "posadzka", "sprzęt"]
 ---
 
@@ -17,7 +16,7 @@ Sprzęt wyprawowy nie jest bardzo ciężki, ale naciska punktowo. Rower stoi na 
 
 Do tego dochodzi woda. Samochód zimą przywozi śnieg i sól z nadkoli, a mokre buty i namiot po wyjeździe zostawiają kałużę. Surowy beton chłonie wszystko: sól, olej z łańcucha, błoto. Po dwóch zimach widać na nim mapę ostatnich wypraw.
 
-Zrób więc listę: ile rowerów, czy jest elektryczny, jakie regały, czy w garażu stoi auto i czy garaż jest ogrzewany. Dopisz, gdzie stoi stół warsztatowy. Z taką listą wykonawca dobierze grubość i warstwy do Twojego garażu, a nie poda liczby z tabelki.
+Zrób więc listę: ile rowerów, czy jest elektryczny, jakie regały, czy w garażu stoi auto i czy garaż jest ogrzewany. Dopisz, gdzie stoi stół warsztatowy. Z taką listą wykonawca dobierze grubość i warstwy do twojego garażu, a nie poda liczby z tabelki.
 
 ## Wylewka a posadzka betonowa
 
@@ -27,26 +26,26 @@ Ważne są też dylatacje. To nacięcia w posadzce, które wyznaczają miejsce, 
 
 Przy starej posadzce dochodzi pytanie, co z nią zrobić. Popękaną i nierówną zwykle się skuwa. Wykonawca oceni to na miejscu, po oględzinach podłoża.
 
+Duże powierzchnie robi się coraz częściej maszynowo, miksokretem. To urządzenie, które miesza i podaje mieszankę na miejscu. W Warszawie i okolicach posadzki tą metodą robi na przykład [Pan Wylewka](https://panwylewka.pl/uslugi). To marka tej samej spółki, która wydaje Ambasadę Podróżników. Opisują przebieg tak: oczyszczenie i zagruntowanie podłoża, rozprowadzenie mieszanki, zatarcie mechaniczne i kontrola poziomu. Tej samej kolejności oczekuj od każdej ekipy, z którą rozmawiasz.
+
 Zapytaj też o próg przy bramie. Nowa posadzka bywa wyższa od starej o kilka centymetrów, a brama garażowa musi się nad nią zamknąć. Uszczelka na dole bramy powinna przylegać do betonu na całej szerokości. Inaczej zimą pod bramą wieje, a woda z roztopów wpływa do środka.
 
 ## Pytania do wykonawcy
 
 Przed rozmową spisz pytania i odhaczaj je po kolei:
 
-- jaka grubość i jaka klasa betonu przy Twoim obciążeniu,
+- jaka grubość i jaka klasa betonu przy twoim obciążeniu,
 - czy będzie zbrojenie i jakie,
 - czy pod spodem będzie izolacja przeciwwilgociowa, a przy ogrzewanym garażu także ocieplenie,
 - gdzie pójdą dylatacje,
 - czy posadzka ma mieć spadek do kratki albo do bramy,
 - ile dni garaż ma stać pusty i kiedy wolno wjechać autem.
 
-Duże powierzchnie robi się coraz częściej maszynowo, miksokretem. To urządzenie, które miesza i podaje mieszankę na miejscu. W Warszawie i okolicach posadzki tą metodą robi na przykład [Pan Wylewka](https://panwylewka.pl/uslugi), firma z tej samej grupy co nasza strona. Opisują przebieg tak: oczyszczenie i zagruntowanie podłoża, rozprowadzenie mieszanki, zatarcie mechaniczne i kontrola poziomu. Tej samej kolejności oczekuj od każdej ekipy, z którą rozmawiasz.
-
 ## Schnięcie i wykończenie
 
 Świeża posadzka nie przyjmie od razu ciężaru. Beton nabiera wytrzymałości stopniowo, a pełną osiąga po około 28 dniach. Chodzić po nim można wcześniej. Konkretny termin poda wykonawca. Nie przyspieszaj schnięcia grzejnikiem ani dmuchawą, bo szybko wysychający beton pęka.
 
-Termin prac można zgrać z dłuższym wyjazdem: beton dojrzewa, a Ty nie musisz omijać garażu. Przez pierwsze dni posadzkę trzeba jednak chronić przed słońcem i przeciągiem. Czasem trzeba ją też zwilżać. Zapytaj ekipę, kto to zrobi, gdy Ciebie nie będzie, i zostaw klucz właściwej osobie. Co jeszcze zrobić przed wyjazdem, masz we wpisie o [przygotowaniu domu na dłuższy wyjazd](/blog/dom-na-dluzszy-wyjazd/).
+Termin prac można zgrać z dłuższym wyjazdem: beton dojrzewa, a ty nie musisz omijać garażu. Przez pierwsze dni posadzkę trzeba jednak chronić przed słońcem i przeciągiem; [według „Inżyniera Budownictwa”](https://inzynierbudownictwa.pl/posadzka-betonowa-pielegnacja-od-a-do-z/) zabezpieczenie folią albo preparatem pielęgnacyjnym obejmuje pierwsze 7 dni. Czasem trzeba ją też zwilżać. Zapytaj ekipę, kto to zrobi, gdy ciebie nie będzie, i zostaw klucz właściwej osobie. Co jeszcze zrobić przed wyjazdem, masz we wpisie o [przygotowaniu domu na dłuższy wyjazd](/blog/dom-na-dluzszy-wyjazd/).
 
 Gdy beton jest gotowy, zabezpiecz go. Surowy pyli i łapie plamy. Impregnat, farba posadzkowa albo żywica sprawiają, że podłogę zamiatasz i zmywasz jak kafelki. Gres też się sprawdza, ale wymaga równego podłoża.
 

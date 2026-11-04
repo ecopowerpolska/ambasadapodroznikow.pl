@@ -1,12 +1,14 @@
 ---
 tytul: "Jet lag: jak szybciej wrócić do snu po długim locie"
 opis: "Jet lag po locie przez kilka stref: dlaczego lot na wschód męczy bardziej, jak przesunąć sen przed wylotem, kiedy szukać światła i czego unikać w samolocie."
-data: 2026-11-07
+data: 2026-11-11
 dzial: zdrowie
+zdjecie: "podroze-turystka-nad-morzem-02-www-3000x2000.webp"
+alt: "Turystka z plecakiem stoi na skale nad morzem z uniesioną ręką w jasnym słońcu"
 tagi: ["jet lag", "sen", "długi lot", "strefy czasowe"]
 ---
 
-Jet lag pojawia się zwykle po locie przez co najmniej dwie strefy czasowe. Organizm przestawia się powoli. Według amerykańskiego CDC po locie na zachód o około półtorej godziny na dobę, po locie na wschód o około godzinę. Najwięcej pomagają trzy rzeczy: przesunięcie snu przed wylotem, światło dzienne o właściwej porze i krótkie drzemki zamiast długich.
+Jet lag pojawia się zwykle po locie przez co najmniej dwie strefy czasowe. Organizm przestawia się powoli. Według amerykańskiego CDC po locie na zachód o około półtorej godziny na dobę, po locie na wschód o około godzinę. Przestawić zegar pomagają przede wszystkim: sen przesunięty przed wylotem, światło dzienne o właściwej porze i krótkie drzemki zamiast długich.
 
 ## Skąd bierze się rozbicie po przylocie
 
@@ -32,7 +34,7 @@ Leki nasenne i melatoninę omów wcześniej z lekarzem albo farmaceutą. CDC zwr
 
 ## Po przylocie: światło o właściwej porze
 
-Światło dzienne to główny sygnał, według którego zegar ciała się przestawia. Pora ma znaczenie. Po locie na wschód w pierwszych dniach wychodź na dwór rano, a wieczorem unikaj jasnego światła. Po locie na zachód szukaj światła wieczorem i nie łap jasnego słońca wcześnie rano.
+Światło dzienne to główny sygnał, według którego zegar ciała się przestawia. Pora ma znaczenie. Po locie na wschód w pierwszych dniach wychodź na dwór rano, a wieczorem unikaj jasnego światła. Po locie na zachód szukaj światła wieczorem i nie łap jasnego słońca wcześnie rano. To uproszczenie: najlepsza pora zależy od kierunku i liczby przekroczonych stref, więc przy dalekim locie sprawdź plan w kalkulatorze jet lagu, który poleca CDC.
 
 Drzemka w dzień pomaga, jeśli jest krótka: 20 do 30 minut. Dłuższa rozbija sen w nocy. Nastaw budzik, zanim się położysz, bo po długim locie łatwo przespać pół popołudnia.
 
@@ -46,4 +48,4 @@ Jet lag mija sam. Jeśli bierzesz leki o stałych porach, na przykład insulinę
 
 Leki, które zabierasz w drogę, spakuj zgodnie z [listą z naszej apteczki podróżnika](/blog/apteczka-podroznika-co-spakowac/). Goście też mają jet lag. Jeśli to ty przyjmujesz gości z innej strefy czasowej, daj im zaciemnioną sypialnię i spokojny pierwszy wieczór. Więcej o tym w tekście o [domu gotowym na gości z zagranicy](/blog/dom-gotowy-na-gosci-z-zagranicy/).
 
-Przed następnym długim lotem zapisz w kalendarzu trzy godziny: od kiedy przesuwasz sen, kiedy na miejscu wychodzisz na światło i o której kładziesz się pierwszego wieczoru.
+Zapisz w kalendarzu trzy godziny: od kiedy przesuwasz sen, kiedy na miejscu wychodzisz na światło i o której kładziesz się pierwszego wieczoru.

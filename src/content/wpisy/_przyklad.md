@@ -8,14 +8,12 @@ data: 2026-11-03
 dzial: podroze
 zdjecie: "podroze-turysci-szlak-gorski-01-www-3000x2002.webp"
 alt: "Troje turystów z plecakami idzie górskim szlakiem doliną z ośnieżonymi szczytami w słońcu"
-# cel (opcjonalnie): jedna nasza strona, do której wpis linkuje W TREŚCI zdaniem; link jest dofollow, bez rel
-cel:
-  nazwa: "Nazwa strony"
-  adres: "https://example.pl/"
+# link do naszej strony stoi W TREŚCI, w zdaniu, bez rel; w tym samym akapicie ujawnienie: marka tej samej spółki, która wydaje Ambasadę Podróżników
+# zmieniono (opcjonalnie): data ostatniej zmiany merytorycznej, np. zmieniono: 2026-11-04
 tagi: ["przykład", "szablon"]
 ---
 
-Pierwszy akapit wpisu. Link do naszej strony stoi w zdaniu, na przykład: [Nazwa strony](https://example.pl/) pomoże w tym temacie.
+Pierwszy akapit wpisu. Link do naszej strony stoi w zdaniu, na przykład: [Nazwa strony](https://example.pl/) pomoże w tym temacie. To marka tej samej spółki, która wydaje Ambasadę Podróżników.
 
 ## Śródtytuł
 

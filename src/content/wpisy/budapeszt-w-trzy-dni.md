@@ -1,8 +1,10 @@
 ---
 tytul: "Budapeszt w trzy dni bez pośpiechu: Peszt, Buda i łaźnie"
 opis: "Trzy dni w Budapeszcie: gdzie spać, który dzień na Peszt, a który na Budę, do której łaźni iść, co zjeść poza gulaszem i jak dojechać pociągiem z Polski."
-data: 2026-11-06
+data: 2026-11-09
 dzial: podroze
+zdjecie: "weekend-przewodnik-turysci-mapa-01-www-3000x2001.webp"
+alt: "Przewodnik ze słuchawką i grupa uśmiechniętych turystów z mapą na ulicy starego miasta"
 tagi: ["Budapeszt", "Węgry", "miasto"]
 ---
 
@@ -10,7 +12,7 @@ Budapeszt to dwa miasta po dwóch stronach Dunaju. Peszt jest płaski, gęsty i 
 
 ## Jak dojechać
 
-Z Warszawy jeździ do Budapesztu bezpośredni pociąg dzienny i nocny. Podróż trwa ponad dziesięć godzin. Nocny skład oszczędza ci jeden nocleg. Rozkład i ceny sprawdź przed wyjazdem na stronie PKP Intercity, bo zmieniają się kilka razy w roku.
+Z Warszawy jeździ do Budapesztu bezpośredni pociąg dzienny i nocny. Podróż trwa ponad dziesięć godzin. Nocny skład oszczędza ci jeden nocleg. Rozkład i ceny sprawdź przed wyjazdem na [stronie PKP Intercity](https://www.intercity.pl/pl/), bo zmieniają się kilka razy w roku.
 
 Samolotem lecisz z kilku polskich miast. Z lotniska do centrum jedzie autobus ekspresowy, na który kupujesz osobny bilet. Autem przejedziesz przez Słowację, a czasem także przez Czechy. Każdy z tych krajów, tak jak Węgry, ma elektroniczne winiety na autostrady, które kupujesz przez internet przed wjazdem.
 
@@ -24,7 +26,7 @@ Buda jest cichsza, ale bardziej pod górę. Pasuje, jeśli wolisz wieczorem wido
 
 ## Dzień pierwszy: Peszt
 
-Zacznij od Parlamentu nad Dunajem. Do środka wejdziesz tylko z przewodnikiem, a bilety na konkretną godzinę warto kupić przez internet kilka dni wcześniej. Kawałek dalej, na nabrzeżu, stoją żeliwne buty. To pomnik Żydów rozstrzelanych tu nad rzeką zimą 1944 i 1945 roku.
+Zacznij od Parlamentu nad Dunajem. Do środka wejdziesz tylko z przewodnikiem, a bilety na konkretną godzinę kup przez internet z wyprzedzeniem. Kawałek dalej, na nabrzeżu, stoją żeliwne buty. To pomnik Żydów rozstrzelanych tu nad rzeką zimą 1944 i 1945 roku.
 
 Potem przejdź do Bazyliki Świętego Stefana. Z tarasu pod kopułą widać całe centrum. Stamtąd idziesz aleją Andrássyego aż do Placu Bohaterów i Parku Miejskiego.
 
@@ -58,7 +60,7 @@ Ulica Váci w centrum Pesztu jest pełna restauracji z naganiaczami i menu bez c
 
 Papierowy bilet na tramwaj, metro czy autobus musisz skasować w kasowniku. Kontrolerzy stoją często przy wejściach do metra. Tłumaczenie, że nie wiedziałeś, nic nie da. Bilet kupiony w aplikacji aktywujesz przed wejściem do pojazdu.
 
-Nie wymieniaj pieniędzy z ludźmi zaczepiającymi na ulicy. Do tego taksówkę bierz z postoju oficjalnej korporacji albo zamawiaj przez aplikację, a nie od kierowcy, który sam podchodzi.
+Nie wymieniaj pieniędzy z ludźmi zaczepiającymi na ulicy. Taksówkę bierz z postoju oficjalnej korporacji albo zamawiaj przez aplikację, a nie od kierowcy, który sam podchodzi.
 
 ## Pieniądze i drobiazgi
 
@@ -68,4 +70,4 @@ Sprawdzaj rachunek w restauracji. Wiele lokali dolicza opłatę za obsługę i w
 
 Listę rzeczy do torby znajdziesz we wpisie o [pakowaniu w dwadzieścia minut](/blog/weekend-w-drodze-pakowanie-w-20-minut/). Co zakręcić w domu przed wyjazdem, opisujemy w tekście o [przygotowaniu domu na dłuższy wyjazd](/blog/dom-na-dluzszy-wyjazd/).
 
-Bilety do Parlamentu i na pociąg kup od razu, kiedy masz już daty. Resztę planu zostaw luźną, bo Budapeszt najlepiej smakuje bez zegarka.
+Bilety do Parlamentu i na pociąg kup, gdy tylko masz daty. Na pozostałe godziny wystarczą mapa i wygodne buty.

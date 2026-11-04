@@ -1,24 +1,24 @@
 ---
-tytul: "Gruzja po raz pierwszy: trasa, transport, jedzenie i formalności"
-opis: "Pierwszy wyjazd do Gruzji: obowiązkowa polisa, dokumenty, Tbilisi, Kazbegi i Kachetia, marszrutki, chinkali i wino z kwewri. Co sprawdzić przed lotem."
-data: 2026-11-13
+tytul: "Gruzja po raz pierwszy: polisa, trasa, transport i jedzenie"
+opis: "Pierwszy wyjazd do Gruzji: obowiązkowa polisa od 2026 roku (min. 30 000 GEL), dokumenty, Tbilisi, Kazbegi i Kachetia, marszrutki, chinkali i wino z kwewri."
+data: 2026-11-21
 dzial: podroze
 zdjecie: "podroze-przyjaciele-wzgorza-23-www-3000x2000.webp"
 alt: "Grupa uśmiechniętych przyjaciół z plecakami wędruje po zielonych wzgórzach w górach"
 tagi: ["Gruzja", "Kaukaz", "Tbilisi"]
 ---
 
-Do Gruzji lecisz z Polski kilka godzin i lądujesz w Tbilisi albo w Kutaisi. Na pierwszy raz wystarczy tydzień, najlepiej dziesięć dni: stolica, góry przy Kazbeku i winnice Kachetii. Morze w Batumi i Swanetię zostaw na kolejny wyjazd, bo i tak będziesz chcieć wrócić.
+Do Gruzji lecisz z Polski kilka godzin i lądujesz w Tbilisi albo w Kutaisi. Na pierwszy raz wystarczy tydzień, najlepiej dziesięć dni: stolica, góry przy Kazbeku i winnice Kachetii. Morze w Batumi i Swanetię zostaw na kolejny wyjazd, bo w tydzień się nie zmieszczą.
 
 ## Formalności przed wylotem
 
-Polacy wjeżdżają do Gruzji bez wizy i mogą zostać w niej do roku. Dowód osobisty wystarcza przy locie prosto z Polski albo z innego kraju Unii. Paszport i tak weź. Urzędy i wiele punktów usługowych w Gruzji uznaje tylko jego.
+Polacy wjeżdżają do Gruzji bez wizy i mogą zostać w niej do roku. Dowód osobisty wystarcza tylko przy locie prosto z Polski albo z innego kraju Unii. Przy przesiadce poza Unią potrzebny jest paszport. Weź go zawsze, także gdy lecisz bez przesiadki.
 
-Od 1 stycznia 2026 roku turyści wjeżdżający do Gruzji muszą mieć ubezpieczenie zdrowotne i od następstw nieszczęśliwych wypadków. Polisa ma obejmować cały pobyt i mieć sumę nie niższą niż ta z gruzińskich przepisów. Minimalną kwotę i formę dowodu sprawdź na gov.pl, w informacjach dla podróżujących do Gruzji. Wydruk albo plik w telefonie miej przy sobie na granicy. Brak polisy grozi karą albo odmową wjazdu.
+Od 1 stycznia 2026 roku turyści wjeżdżający do Gruzji muszą mieć ubezpieczenie zdrowotne i od następstw nieszczęśliwych wypadków. Polisa ma obejmować cały pobyt, mieć sumę co najmniej 30 000 GEL i być wystawiona po angielsku lub po gruzińsku. Wydruk albo plik w telefonie miej przy sobie na granicy. Brak polisy grozi karą finansową. Szczegóły podaje [komunikat ambasady RP w Tbilisi](https://www.gov.pl/web/gruzja/wazne-informacje-dla-podrozujacych-do-gruzji2).
 
 Leki weź w oryginalnych opakowaniach. Niektóre preparaty sprzedawane w Polsce bez recepty Gruzja traktuje jak środki odurzające, więc sprawdź swoje przed wyjazdem. Nie planuj też wjazdu do Abchazji ani do Osetii Południowej. Wjazd tam od strony Rosji jest według prawa gruzińskiego nielegalny.
 
-W Tbilisi od kilku lat odbywają się duże demonstracje polityczne. Omijaj je, nawet jeśli wyglądają spokojnie.
+Od listopada 2024 roku w Tbilisi odbywają się duże demonstracje polityczne, głównie przed parlamentem przy alei Rustawelego. Ministerstwo Spraw Zagranicznych radzi unikać miejsc wystąpień publicznych i masowych zgromadzeń. Omijaj je, nawet jeśli wyglądają spokojnie, i przed wylotem sprawdź aktualny komunikat dla podróżujących do Gruzji.
 
 ## Kiedy jechać
 
@@ -28,7 +28,7 @@ Zimą Gruzińska Droga Wojenna bywa zamykana z powodu śniegu i zagrożenia lawi
 
 ## Plan na pierwszy tydzień
 
-Tbilisi to dwa, trzy dni. Chodź po starym mieście, wjedź kolejką linową do twierdzy Narikala i zejdź do dzielnicy łaźni siarkowych. W łaźni możesz wynająć prywatną salkę na godzinę. Wieczorem przejdź aleją Rustawelego.
+Tbilisi to dwa, trzy dni. Chodź po starym mieście, wjedź kolejką linową do twierdzy Narikala i zejdź do dzielnicy łaźni siarkowych. W łaźni możesz wynająć prywatną salkę na godzinę. Wieczorem spaceruj po Starym Mieście i nad Kurą. Aleję Rustawelego, przy której stoi parlament, omijaj w dni demonstracji.
 
 Mccheta leży tuż obok stolicy i wystarczy na nią pół dnia. To dawna stolica kraju, z katedrą Sweti Cchoweli i klasztorem Dżwari na wzgórzu.
 
@@ -56,10 +56,10 @@ Jeśli trafisz na supra, czyli gruzińską ucztę, toasty wznosi tamada, gospoda
 
 ## Pieniądze i język
 
-Płacisz w lari. W miastach kartą zapłacisz prawie wszędzie, w górach i u gospodarzy potrzebna jest gotówka. Wypłacaj ją z bankomatów w Tbilisi, zanim pojedziesz dalej.
+Płacisz w lari. W miastach kartą zapłacisz prawie wszędzie, w górach i u gospodarzy potrzebna jest gotówka. Wypłacaj ją z bankomatów w Tbilisi, zanim pojedziesz dalej. Poza Unią roaming bywa drogi, więc przed wylotem zajrzyj do tekstu o [internecie w podróży](/blog/internet-w-podrozy-roaming-esim-karta-lokalna/).
 
-Gruzini piszą własnym alfabetem. Bez nauki go nie odczytasz. Starsi ludzie zwykle mówią po rosyjsku, młodsi często po angielsku. Kilka słów po gruzińsku, choćby dziękuję, czyli madloba, otwiera więcej drzwi niż najlepszy przewodnik.
+Gruzini piszą własnym alfabetem. Bez nauki go nie odczytasz. Starsi ludzie zwykle mówią po rosyjsku, młodsi często po angielsku. Na początek wystarczą dwa słowa: gamardżoba, czyli dzień dobry, i madloba, czyli dziękuję.
 
-Przed wylotem zajrzyj jeszcze do dwóch tekstów. Na podejście pod Kazbek przyda się lista z tekstu o [sprzęcie na szlak dla początkujących](/blog/sprzet-na-szlak-dla-poczatkujacych/). Kosmetyczkę i apteczkę spakujesz jak na każdy wyjazd, według wpisu o [pakowaniu w dwadzieścia minut](/blog/weekend-w-drodze-pakowanie-w-20-minut/). Jeśli wolisz zacząć od czegoś bliżej, przeczytaj o [trzech dniach w Budapeszcie](/blog/budapeszt-w-trzy-dni/).
+Przed wylotem zajrzyj jeszcze do dwóch tekstów. Na podejście pod Kazbek przyda się lista z tekstu o [sprzęcie na szlak dla początkujących](/blog/sprzet-na-szlak-dla-poczatkujacych/), a apteczkę spakujesz według tekstu o [apteczce podróżnika](/blog/apteczka-podroznika-co-spakowac/).
 
 Polisę kup od razu, razem z biletem lotniczym. Sprawdź w niej sumę, okres ochrony i to, czy obejmuje wędrówki w górach.

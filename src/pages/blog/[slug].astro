@@ -11,7 +11,7 @@ import { t, wstaw } from '../../lib/tekst';
 import { adresWpisu, czasCzytania, dataIso, dataPoPolsku, opublikowane, wiecejZDzialu } from '../../lib/wpisy';
 import { adresDzialu, nazwaDzialu } from '../../lib/dzialy';
 import { zdjecie, ZDJECIE_GLOWNE } from '../../lib/zdjecia';
-import { adresBezwzgledny, okruszki as schematOkruszkow } from '../../lib/schemat';
+import { adresBezwzgledny, okruszki as schematOkruszkow, WYDAWCA } from '../../lib/schemat';
 
 export async function getStaticPaths() {
   const wpisy = await opublikowane(); // od najnowszego
@@ -37,6 +37,9 @@ const adres = adresBezwzgledny(adresWpisu(wpis.id));
 const nazwaD = nazwaDzialu(d.dzial);
 const adresD = adresDzialu(d.dzial);
 const minuty = czasCzytania(wpis);
+// <title> z marką tylko do 65 znaków; dłuższy tytuł Google i tak obcina, więc idzie sam (marka zostaje w og:site_name).
+const tytulZMarka = `${d.tytul} | ${t('marka.nazwa')}`;
+const tytulStrony = tytulZMarka.length <= 65 ? tytulZMarka : d.tytul;
 
 const pozycje = [
   { nazwa: t('interfejs.okruszki_glowna'), adres: '/' },
@@ -54,18 +57,18 @@ const schemat = [
     // wpis bez zdjęcia: bez image (zdjęcie główne strony nie przedstawia treści wpisu; pole jest zalecane, nie wymagane)
     image: d.zdjecie ? [obrazOg] : undefined,
     datePublished: dataIso(d.data),
-    dateModified: dataIso(d.data),
+    dateModified: dataIso(d.zmieniono ?? d.data),
     inLanguage: 'pl-PL',
     articleSection: nazwaD,
     keywords: d.tagi.join(', ') || undefined,
     author: { '@type': 'Organization', name: t('interfejs.podpisRedakcji'), url: adresBezwzgledny('/o-nas/') },
-    publisher: { '@id': adresBezwzgledny('/') + '#organizacja', '@type': 'Organization', name: t('marka.nazwa') },
+    publisher: { '@id': adresBezwzgledny('/') + '#organizacja', '@type': 'Organization', name: t('marka.nazwa'), url: adresBezwzgledny('/'), parentOrganization: WYDAWCA },
   },
   schematOkruszkow(pozycje),
 ];
 ---
 
-<Bazowy tytul={`${d.tytul} | ${t('marka.nazwa')}`} opis={d.opis} typOg="article" {obrazOg} obrazOgAlt={d.alt ?? t('marka.nazwa')} {schemat} podswietl={adresD}>
+<Bazowy tytul={tytulStrony} opis={d.opis} typOg="article" {obrazOg} obrazOgAlt={d.alt ?? t('marka.nazwa')} {schemat} podswietl={adresD}>
   <Okruszki pozycje={pozycje} />
   <article class:list={['wpis', { 'wpis--bez-zdjecia': !d.zdjecie }]}>
     <header class="wpis__glowa kontener">

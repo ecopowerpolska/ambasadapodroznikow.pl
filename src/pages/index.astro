@@ -7,7 +7,7 @@ import Foto from '../components/Foto.astro';
 import KartaWpisu from '../components/KartaWpisu.astro';
 import KartaPolecana from '../components/KartaPolecana.astro';
 import { t, lista, wstaw } from '../lib/tekst';
-import { opublikowane, polecane, type Wpis } from '../lib/wpisy';
+import { opublikowane, polecaneRozne, type Wpis } from '../lib/wpisy';
 import { DZIALY, adresDzialu, nazwaDzialu } from '../lib/dzialy';
 import { ZDJECIE_GLOWNE } from '../lib/zdjecia';
 import { organizacja, stronaWww } from '../lib/schemat';
@@ -24,7 +24,7 @@ const bloki = DZIALY.map((dzial) => {
   return { dzial, nazwa: nazwaDzialu(dzial), adres: adresDzialu(dzial), wpisy: kolejnosc.slice(0, 3) };
 }).filter((b) => b.wpisy.length > 0);
 
-const zapowiedzi = (await polecane()).slice(0, 3);
+const zapowiedzi = (await polecaneRozne(1)).slice(0, 3);
 const [zdanie] = lista('glowna.akapity');
 const schemat = [{ '@context': 'https://schema.org', '@graph': [stronaWww(), organizacja()] }];
 ---

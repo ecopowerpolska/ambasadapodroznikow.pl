@@ -24,8 +24,10 @@ const wpisy = defineCollection({
       // opis meta: 120–160 znaków (kontrola przy budowaniu, żeby wpis z błędem nie wyszedł na stronę)
       opis: z.string().min(120, 'opis krótszy niż 120 znaków').max(160, 'opis dłuższy niż 160 znaków'),
       data: z.coerce.date(),
-      // Zdjęcie OPCJONALNE (decyzja Piotra 2026-11-03: „nie muszą być zdjęcia wszędzie”). Wpis bez zdjęcia dostaje
-      // planszę działu na karcie i nagłówek bez zdjęcia. Podane: nazwa pliku w src/assets/zdjecia/, brak pliku = błąd.
+      // data ostatniej merytorycznej zmiany treści (JSON-LD `dateModified`); bez niej `dateModified` = `data`
+      zmieniono: z.coerce.date().optional(),
+      // Zdjęcie: każdy wpis ma dziś zdjęcie (decyzja Piotra 2026-11-04), pole zostaje technicznie opcjonalne. Bez zdjęcia wpis
+      // dostaje planszę działu na karcie i nagłówek bez zdjęcia. Podane: nazwa pliku w src/assets/zdjecia/, brak pliku = błąd.
       zdjecie: z
         .string()
         .refine((n) => existsSync(resolve(KATALOG_ZDJEC, n.split('/').pop() ?? '')), {
@@ -34,7 +36,6 @@ const wpisy = defineCollection({
         .optional(),
       // alt wymagany, gdy jest zdjęcie (kontrola niżej)
       alt: z.string().min(10).optional(),
-      cel: z.object({ nazwa: z.string(), adres: z.url() }).optional(),
       tagi: z.array(z.string()).default([]),
     })
     .refine((w) => !w.zdjecie || !!w.alt, { message: 'wpis ze zdjęciem musi mieć alt (co najmniej 10 znaków)', path: ['alt'] }),

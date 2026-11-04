@@ -1,6 +1,6 @@
 ---
 // Polityka prywatności: treść z teksty.json → polityka.*; administrator danych z src/data/spolka.json (EcoPower Polska Sp. z o.o.).
-// W tekście: [kotwica](/trasa/) = odnośnik wewnętrzny; {nazwa} {adres} {nip} {krs} {regon} {email} {telefon} = dane spółki.
+// W tekście: [kotwica](/trasa/) = odnośnik wewnętrzny; {nazwa} {adres} {nip} {krs} {regon} {email} = dane spółki.
 import Bazowy from '../layouts/Bazowy.astro';
 import Okruszki from '../components/Okruszki.astro';
 import spolka from '../data/spolka.json';
@@ -9,8 +9,6 @@ import { okruszki } from '../lib/schemat';
 
 const tekstSpolki = String(spolka.nazwaStopka || spolka.nazwaPelna);
 const mail = spolka.email.toLowerCase();
-const cyfry = spolka.telefon.replace(/\D/g, '');
-const telefon = cyfry.length === 9 ? cyfry.replace(/(\d{3})(\d{3})(\d{3})/, '$1 $2 $3') : spolka.telefon;
 const adresSpolki = `${spolka.adresSiedziby}, ${spolka.kodPocztowy} ${spolka.miejscowosc}`;
 const podstaw = (s: string) =>
   s
@@ -19,8 +17,7 @@ const podstaw = (s: string) =>
     .replaceAll('{nip}', spolka.nip)
     .replaceAll('{krs}', spolka.krs)
     .replaceAll('{regon}', spolka.regon)
-    .replaceAll('{email}', mail)
-    .replaceAll('{telefon}', telefon);
+    .replaceAll('{email}', mail);
 const czesci = (s: string) => kawalki(podstaw(s));
 
 const naTekst = (v: unknown) => (typeof v === 'string' ? v.trim() : '');

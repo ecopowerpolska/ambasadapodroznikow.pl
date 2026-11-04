@@ -1,7 +1,7 @@
 ---
 tytul: "Zdjęcia z podróży telefonem: co naprawdę poprawia kadr"
 opis: "Lepsze zdjęcia z wyjazdu telefonem bez nowego sprzętu: czysty obiektyw, światło rano i wieczorem, kadr, tryby aparatu i kopia zdjęć, zanim zgubisz telefon."
-data: 2026-11-03
+data: 2026-11-04
 dzial: pasje
 zdjecie: "pasje-fotografowie-safari-auto-02-www-3000x2000.webp"
 alt: "Dwaj podróżni w otwartym aucie terenowym na sawannie: jeden robi zdjęcie telefonem, drugi celuje teleobiektywem"
@@ -24,7 +24,7 @@ Pod światło telefon często przyciemnia pierwszy plan. Dotknij ekranu w miejsc
 
 ## Kadr: jeden temat, mniej rzeczy
 
-Najczęstszy kłopot to za dużo na zdjęciu. Zanim naciśniesz spust, zapytaj siebie, co jest tematem. Jeśli odpowiedź brzmi „wszystko”, podejdź bliżej.
+Najczęstszy kłopot to za dużo na zdjęciu. Zanim zrobisz zdjęcie, zapytaj siebie, co jest tematem. Jeśli odpowiedź brzmi „wszystko”, podejdź bliżej.
 
 Włącz siatkę w ustawieniach aparatu. Linie dzielą ekran na trzy części w pionie i w poziomie. Horyzont postaw na górnej albo dolnej linii, nie w środku. Pilnuj, żeby był prosty. Krzywe morze widać od razu. Szukaj też ramy: łuku bramy, okna, gałęzi. Rama prowadzi wzrok do tematu.
 
@@ -56,4 +56,4 @@ Fotografowanie drenuje baterię. Powerbank i krótki kabel dopisz do [listy na w
 
 Wieczorem przejrzyj zdjęcia z dnia i usuń duble. Po powrocie, z tysiącem podobnych kadrów, nikt już tego nie zrobi. Te najlepsze od razu nazwij i opisz jednym zdaniem. Przyda się to, gdy zechcesz pokazać je na [własnej stronie z podróży](/blog/wlasna-strona-z-podrozy/).
 
-Na najbliższym spacerze zrób jedno ćwiczenie. Sfotografuj to samo miejsce dziesięć razy, za każdym razem z innej wysokości albo odległości. Wieczorem porównaj kadry i zobacz, który mówi najwięcej.
+Zrób jedno ćwiczenie: sfotografuj to samo miejsce dziesięć razy, za każdym razem z innej wysokości albo odległości. Wieczorem porównaj kadry i zobacz, który mówi najwięcej.

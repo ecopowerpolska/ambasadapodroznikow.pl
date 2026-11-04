@@ -1,7 +1,7 @@
 /* motyw.css — JEDYNE miejsce, w którym zadeklarowane są kolory, skala typograficzna, siatka odstępów
    i stany elementów interaktywnych tej strony. Plik podaje się bramce: --motyw src/styles/motyw.css
 
-   KIERUNEK WIZUALNY — „magazyn podróżniczy”, zapisany cechami sprawdzalnymi (docs/ZALOZENIA.md, część „Wygląd”):
+   KIERUNEK WIZUALNY — „magazyn podróżniczy”, zapisany cechami sprawdzalnymi (dokumentacja robocza w repo warsztatu: strony-docs/ambasadapodroznikow.pl/ZALOZENIA.md, część „Wygląd”):
      · paleta: piasek (tło), głęboki teal „morze” (nagłówek, stopka, panel hero), terakota (odnośniki i fokus);
        jasny motyw, bez wariantu ciemnego,
      · dwa kroje systemowe o różnych rolach: szeryfowy dla nagłówków i tekstu wpisu, bezszeryfowy dla interfejsu

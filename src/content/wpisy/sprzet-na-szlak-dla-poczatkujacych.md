@@ -1,7 +1,8 @@
 ---
-tytul: "Sprzęt na szlak dla początkujących: buty, plecak, mapa i woda"
+tytul: "Sprzęt na szlak dla początkujących: buty, plecak, mapa, woda"
 opis: "Na pierwsze górskie wędrówki wystarczą dobre buty, plecak z pasem biodrowym, trzy warstwy ubrań, mapa offline i woda. Do tego zasady ważniejsze od sprzętu."
 data: 2026-11-03
+zmieniono: 2026-11-04
 dzial: podroze
 zdjecie: "podroze-wedrowka-jesienny-las-05-www-3000x2000.webp"
 alt: "Grupa wędrowców z plecakami idzie leśną ścieżką wśród sosen w jesiennym słońcu"
@@ -42,7 +43,7 @@ Trasę sprawdź dzień wcześniej. Interesują cię długość, przewyższenie, 
 
 Na dzień marszu zabierz co najmniej półtora litra wody na osobę, latem więcej. Jedz często i po trochu: orzechy, suszone owoce, kanapki, batony. Głód w górach przychodzi nagle, a razem z nim zmęczenie i gorsze decyzje.
 
-Apteczka może być prosta:
+Apteczka na szlak może być prosta (pełniejszą listę ma tekst o [apteczce podróżnika](/blog/apteczka-podroznika-co-spakowac/)):
 
 - plastry, także na pęcherze,
 - bandaż elastyczny,
@@ -58,13 +59,13 @@ Sklepy górskie kuszą sprzętem na wyprawy, których jeszcze nie planujesz. Na 
 
 Nie kupuj też całego zestawu jednego dnia. Po trzech, czterech wyjściach będziesz wiedzieć, czy marzną ci ręce, czy plecak uwiera, czy brakuje ci kijków. Wtedy dokupujesz konkretną rzecz, a nie cały katalog.
 
-Dobrym pomysłem jest wypożyczenie droższego sprzętu na próbę. Wiele sklepów i schronisk wypożycza kijki, raki i plecaki na kilka dni.
+Dobrym pomysłem jest wypożyczenie droższego sprzętu na próbę. Wiele sklepów wypożycza kijki i plecaki na kilka dni.
 
 ## Zasady ważniejsze od sprzętu
 
-Powiedz komuś, dokąd idziesz i o której planujesz wrócić. Trzymaj się szlaku. Zawróć, gdy pogoda się psuje, nawet jeśli do szczytu zostało pół godziny. Góra poczeka.
+Powiedz komuś, dokąd idziesz i o której planujesz wrócić. Trzymaj się szlaku. Zawróć, gdy pogoda się psuje, nawet jeśli do szczytu zostało pół godziny.
 
-Zapisz w telefonie numery alarmowe: ogólny 112, TOPR w Tatrach 601 100 300 i GOPR w pozostałych górach 985. Zainstaluj też aplikację Ratunek, która przy wezwaniu pomocy przekazuje ratownikom twoje położenie.
+Zapisz w telefonie numery alarmowe: ogólny 112 oraz ratunkowe w górach, 985 i 601 100 300 ([podaje je TOPR](https://www.topr.pl/#jak-wezwac-pomoc), a GOPR te same). Zainstaluj też [aplikację Ratunek](https://www.ratunek.eu/), która przy wezwaniu pomocy przekazuje ratownikom twoje położenie.
 
 Cały zestaw spakujesz według listy z tekstu o [pakowaniu na weekend](/blog/weekend-w-drodze-pakowanie-w-20-minut/). Gdzie trzymać buty, plecak i kijki między wyjazdami, opisujemy w tekście o [szafie podróżnika](/blog/szafa-podroznika/).
 

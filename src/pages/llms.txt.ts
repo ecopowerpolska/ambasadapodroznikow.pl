@@ -2,13 +2,13 @@
 // Bez daty budowania: zmieniałaby się przy każdej przebudowie, choć treść stoi.
 import type { APIRoute } from 'astro';
 import { t } from '../lib/tekst';
-import { opublikowane, polecane, adresWpisu, bezHtml } from '../lib/wpisy';
+import { opublikowane, polecaneRozne, adresWpisu, bezHtml } from '../lib/wpisy';
 import { DZIALY, adresDzialu, nazwaDzialu } from '../lib/dzialy';
 
 export const GET: APIRoute = async () => {
   const baza = new URL('/', import.meta.env.SITE).href.replace(/\/$/, '');
   const wpisy = await opublikowane();
-  const zaplowki = (await polecane()).slice(0, 20);
+  const zaplowki = (await polecaneRozne(3)).slice(0, 12);
   // Działy z wpisami; pusty dział (noindex) nie wchodzi ani do listy stron, ani do sekcji wpisów.
   const dzialy = DZIALY.map((d) => ({ d, wpisy: wpisy.filter((w) => w.data.dzial === d) })).filter((x) => x.wpisy.length > 0);
   const linie = [
@@ -31,7 +31,7 @@ export const GET: APIRoute = async () => {
       ...lista.map((w) => `- [${w.data.tytul}](${baza}${adresWpisu(w.id)}): ${bezHtml(w.data.opis)}`),
       '',
     ]),
-    `## ${t('polecamy.naglowekZapowiedzi')}`,
+    `## ${t('polecamy.naglowekZapowiedzi')} (firmy spółki EcoPower Polska, która wydaje tę stronę)`,
     ...zaplowki.map((w) => `- [${w.data.tytul}](${w.data.link}): ${w.data.zrodlo}`),
     '',
   ];

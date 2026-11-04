@@ -2,10 +2,10 @@
 tytul: "Własna strona z podróży: domena, hosting i pierwsze wpisy"
 opis: "Jak założyć własną stronę z podróży: domena, miejsce na pliki, narzędzie do pisania, koszty, o których się zapomina, i pierwsze wpisy, od których warto zacząć."
 data: 2026-11-03
+zmieniono: 2026-11-04
 dzial: technologia
-cel:
-  nazwa: "EcoPower Polska"
-  adres: "https://www.ecopowerpolska.pl/strona-wizytowka/"
+zdjecie: "technologia-smartfon-mapa-swiata-02-www-3000x1914.webp"
+alt: "Smartfon z kolorowymi ikonami aplikacji leży ukośnie na ciemnej mapie świata z obiema Amerykami"
 tagi: ["strona internetowa", "blog", "domena", "hosting"]
 ---
 
@@ -21,15 +21,15 @@ Strona ma też miejsce na długi tekst. Zmieścisz tam mapkę, tabelę kosztów 
 
 Domena to adres strony. Wybierz taki, który da się przeliterować przez telefon, bez cyfr i myślników. Końcówka .pl jest naturalna dla polskiego czytelnika.
 
-Domenę wynajmuje się na rok. Co roku trzeba ją odnowić. Włącz automatyczne odnowienie i podaj adres e-mail, który naprawdę czytasz. Nieodnowiona domena po pewnym czasie wraca do puli i może ją kupić ktoś inny.
+Domenę wynajmuje się na rok. Co roku trzeba ją odnowić. Włącz automatyczne odnowienie i podaj adres e-mail, który naprawdę czytasz. Nieodnowiona domena po pewnym czasie wraca do puli i może ją kupić ktoś inny ([cykl życia domeny .pl w rejestrze NASK](https://www.dns.pl/cykl_zycia_domeny_pl)).
 
-Adres, pod którym to czytasz, od 2014 do 2025 roku należał do biura wyjazdów grupowych. Dziś prowadzi go inna redakcja, a dawne wpisy biura zniknęły razem z jego stroną. Tak kończy adres, o który nikt nie dba.
+Adres, pod którym to czytasz, od 2014 do 2025 roku należał do biura wyjazdów grupowych. Dziś prowadzi go inna redakcja, a dawne wpisy biura zniknęły razem z jego stroną. Adres po odnowieniu albo przejęciu zaczyna nowe życie, więc dobrze go pilnować.
 
 ## Hosting: prosta strona nie potrzebuje dużo
 
 Hosting to miejsce, w którym leżą pliki strony. Blog z tekstami i zdjęciami można zbudować jako gotowe pliki, bez bazy danych. Takie strony ładują się szybko. Rzadko się też psują, bo na serwerze nie działa żaden program, który trzeba aktualizować.
 
-Tak powstała ta strona. Jest zbudowana w Astro, czyli generatorze stron statycznych, i wystawiona na GitHub Pages, darmowym hostingu dla takich plików. Zbudowała ją dla nas [EcoPower Polska](https://www.ecopowerpolska.pl/strona-wizytowka/), spółka, która wydaje Ambasadę Podróżników i na co dzień robi strony firmom.
+Tak powstała ta strona. Jest zbudowana w Astro, czyli generatorze stron statycznych, i wystawiona na GitHub Pages, darmowym hostingu dla takich plików. Zbudowała ją [EcoPower Polska](https://www.ecopowerpolska.pl/strona-wizytowka/), spółka, która wydaje Ambasadę Podróżników i na co dzień robi strony firmom.
 
 Darmowy hosting plików ma swoją granicę. Gdy z bloga robi się działalność, z formularzem kontaktowym, rezerwacjami albo płatnościami, potrzebujesz już zwykłego hostingu z obsługą takich funkcji.
 
@@ -53,4 +53,4 @@ Pierwszy wpis napisz o czymś, co znasz najlepiej: o jednej trasie, jednym mieś
 
 Zdjęcia nazywaj po ludzku. Plik „schronisko-zima.jpg” powie więcej niż „IMG_4521”. Do każdego dopisz krótki opis tego, co na nim widać. Jak robić telefonem zdjęcia, które da się potem pokazać, piszemy we [wpisie o fotografii w podróży](/blog/fotografia-w-podrozy-telefonem/). Dobrym pierwszym tekstem bywa lista rzeczy do spakowania, taka jak nasza [lista na weekend w drodze](/blog/weekend-w-drodze-pakowanie-w-20-minut/). Odpowiada na pytania, które ludzie naprawdę wpisują w wyszukiwarkę.
 
-Zanim kupisz domenę, zapisz tematy trzech pierwszych wpisów. Jeśli trudno wymyślić trzy, strona może jeszcze poczekać.
+Zapisz na kartce tematy trzech pierwszych wpisów. Jeśli trudno wymyślić trzy, domena może jeszcze poczekać.

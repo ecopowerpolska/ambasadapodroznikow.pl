@@ -5,8 +5,8 @@ export type Wpis = CollectionEntry<'wpisy'>;
 export type Polecany = CollectionEntry<'polecane'>;
 
 /**
- * Wpisy opublikowane, od najnowszego. Wpis z datą w przyszłości czeka: codzienna przebudowa w Actions (05:30 UTC)
- * wypuszcza go w dniu daty. Liczba oczekujących idzie do logu budowania.
+ * Wpisy opublikowane, od najnowszego. Wpis z datą w przyszłości czeka: przebudowa w Actions (trzy razy dziennie: 03:17, 07:47
+ * i 11:23 UTC) wypuszcza go w dniu daty. Liczba oczekujących idzie do logu budowania.
  */
 export async function opublikowane(): Promise<Wpis[]> {
   const wszystkie = await getCollection('wpisy');
@@ -15,7 +15,8 @@ export async function opublikowane(): Promise<Wpis[]> {
   if (gotowe.length < wszystkie.length) {
     console.info(`[wpisy] oczekuje na datę publikacji: ${wszystkie.length - gotowe.length}`);
   }
-  return gotowe.sort((a, b) => b.data.data.getTime() - a.data.data.getTime());
+  // Remis dat (kilka wpisów z tego samego dnia) rozstrzyga id, żeby kolejność nie zależała od loadera.
+  return gotowe.sort((a, b) => b.data.data.getTime() - a.data.data.getTime() || a.id.localeCompare(b.id));
 }
 
 /** Opublikowane wpisy jednego działu, od najnowszego. */
@@ -49,7 +50,19 @@ export function czasCzytania(wpis: Wpis): number {
 
 export async function polecane(): Promise<Polecany[]> {
   const wszystkie = await getCollection('polecane');
-  return wszystkie.sort((a, b) => b.data.data.getTime() - a.data.data.getTime());
+  return wszystkie.sort((a, b) => b.data.data.getTime() - a.data.data.getTime() || a.id.localeCompare(b.id));
+}
+
+/** Zapowiedzi z różnych źródeł: najwyżej `naZrodlo` z jednej firmy i nie starsze niż `dni` — żeby jedna firma nie zajmowała całej listy. */
+export async function polecaneRozne(naZrodlo: number, dni = 90): Promise<Polecany[]> {
+  const granica = Date.now() - dni * 86_400_000;
+  const licznik = new Map<string, number>();
+  return (await polecane()).filter((w) => {
+    if (w.data.data.getTime() < granica) return false;
+    const n = (licznik.get(w.data.zrodlo) ?? 0) + 1;
+    licznik.set(w.data.zrodlo, n);
+    return n <= naZrodlo;
+  });
 }
 
 export const adresWpisu = (id: string) => `/blog/${id}/`;

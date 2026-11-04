@@ -1,7 +1,7 @@
 ---
 tytul: "Internet w podróży: roaming w UE, eSIM czy karta lokalna"
 opis: "Jak mieć internet za granicą: gdzie działa roaming jak w kraju, co ze statkami i samolotami, jak działa eSIM na wyjazd i kiedy lepiej kupić kartę na miejscu."
-data: 2026-11-12
+data: 2026-11-19
 dzial: technologia
 zdjecie: "technologia-smartfon-mapa-swiata-02-www-3000x1914.webp"
 alt: "Smartfon z kolorowymi ikonami aplikacji leży ukośnie na ciemnej mapie świata z obiema Amerykami"
@@ -46,7 +46,7 @@ Karta kupiona na miejscu ma sens przy dłuższym pobycie albo gdy potrzebujesz l
 
 Plastikową kartę włożysz tylko do telefonu z wolnym gniazdem. Część nowych telefonów działa już wyłącznie na eSIM, więc sprawdź to przed wyjazdem.
 
-Polską kartę wyjętą z telefonu schowaj w opisanej kopercie razem z kluczykiem do szuflady na kartę. Jest mała. Łatwo ją zgubić w hotelowym pokoju.
+Polską kartę wyjętą z telefonu schowaj w opisanej kopercie. Jest mała i łatwo ją zgubić w hotelowym pokoju. Pamiętaj, że bez niej nie dostaniesz SMS-ów z kodami, na przykład z banku, więc jeśli telefon ma dwa gniazda albo eSIM, zostaw polską kartę w środku.
 
 ## Wi-Fi w hotelu i na lotnisku
 

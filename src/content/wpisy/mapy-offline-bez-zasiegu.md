@@ -1,7 +1,7 @@
 ---
 tytul: "Mapy offline: jak nawigować bez zasięgu i bez internetu"
 opis: "Jak przygotować telefon do drogi bez zasięgu: mapy offline w Mapach Google, aplikacje na danych OpenStreetMap, GPS bez internetu, bateria i papierowa mapa."
-data: 2026-11-05
+data: 2026-11-06
 dzial: technologia
 zdjecie: "technologia-dlon-ekran-mapa-pinezka-03-www-3000x2000.webp"
 alt: "Dłoń trzyma przezroczysty ekran z planem miasta, nad którym stoi duża czerwona pinezka celu podróży"
@@ -16,7 +16,7 @@ W Mapach Google zapiszesz wybrany obszar. Wyszukaj miasto albo region, otwórz j
 
 Bez sieci Mapy Google poprowadzą cię do celu, jeśli cała trasa mieści się na pobranej mapie. Pomoc Map Google wymienia też, czego offline nie ma: wskazówek komunikacją miejską, tras pieszych i rowerowych, korków i tras alternatywnych. Na szlak to za mało.
 
-Pobrane mapy mają termin ważności. Z włączoną automatyczną aktualizacją aplikacja próbuje je odświeżyć przez Wi-Fi, gdy do końca zostaje 15 dni lub mniej. W niektórych krajach pobieranie w ogóle nie działa. Sprawdź to w domu, nie na lotnisku.
+Pobrane mapy mają termin ważności. Z włączoną automatyczną aktualizacją aplikacja próbuje je odświeżyć przez Wi-Fi, gdy do końca zostaje 15 dni lub mniej ([pomoc Map Google](https://support.google.com/maps/answer/6291838?hl=pl)). W niektórych krajach pobieranie w ogóle nie działa. Sprawdź to w domu, nie na lotnisku.
 
 ## Aplikacje, które działają w całości bez sieci
 

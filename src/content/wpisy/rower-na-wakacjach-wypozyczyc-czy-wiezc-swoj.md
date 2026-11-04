@@ -1,8 +1,10 @@
 ---
 tytul: "Rower na wakacjach: wypożyczyć na miejscu czy wieźć swój"
 opis: "Rower na urlopie: kiedy wieźć własny autem, pociągiem albo samolotem, a kiedy wypożyczyć na miejscu. Co sprawdzić w wypożyczalni i co wziąć z domu."
-data: 2026-11-18
+data: 2026-11-29
 dzial: pasje
+zdjecie: "podroze-segway-wycieczka-24-www-3000x2000.webp"
+alt: "Grupa turystów w kaskach jedzie na segwayach alejką podczas zwiedzania miasta"
 tagi: ["rower", "wakacje", "wypożyczalnia", "transport roweru"]
 ---
 
@@ -28,7 +30,7 @@ W pociągu miejsc na rowery jest niewiele. U wielu przewoźników trzeba je zare
 
 Samolot to osobna logistyka. Linie lotnicze przewożą rower jako bagaż specjalny, zwykle za dodatkową opłatą, w kartonie albo w torbie. Jak go przygotować, linia opisuje w regulaminie bagażu. Zgłoś rower od razu przy rezerwacji. Jest też druga strona podróży: karton z rowerem trzeba przewieźć z lotniska i przechować do powrotu.
 
-## Wypożyczalnia: obejrzyj rower jak auto z wypożyczalni
+## Wypożyczalnia: co sprawdzić przed odjazdem
 
 Wypożyczony rower oszczędza całą tę logistykę. Zanim podpiszesz umowę i odjedziesz, sprawdź kilka rzeczy:
 
