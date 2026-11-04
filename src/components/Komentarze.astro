@@ -1,0 +1,210 @@
+---
+// Komentarze pod wpisem (decyzja Piotra 2026-11-04). Sekcja leży POZA <article class="wpis…">, bo bramka linków do firm
+// liczy odnośniki tylko w artykule. Lista komentarzy powstaje statycznie przy buildzie (Google ją widzi); skrypt pod
+// spodem dociąga nowsze i pokazuje własny komentarz od razu po wysłaniu. Wspólne renderowanie: src/lib/komentarze.ts.
+import konfig from '../data/komentarze.json';
+import { t } from '../lib/tekst';
+import { htmlKomentarza, komentarzeWpisu, liczbaKomentarzy } from '../lib/komentarze';
+
+interface Props {
+  /** Identyfikator wpisu (slug adresu /blog/<slug>/). */
+  slug: string;
+}
+
+const { slug } = Astro.props;
+const lista = await komentarzeWpisu(slug);
+
+const KODY_BLEDOW = ['autor', 'tresc', 'turnstile', 'limit', 'wpis', 'wysylka', 'inny'] as const;
+const bledy = Object.fromEntries(KODY_BLEDOW.map((k) => [k, t(`komentarze.bledy.${k}`)]));
+const poliInformacji = t('komentarze.informacja');
+// Odsyłacz do polityki prywatności: w miejscu {link}, a gdy tekst go nie ma, na końcu zdania.
+const czesciInformacji = poliInformacji.includes('{link}') ? poliInformacji.split('{link}') : [`${poliInformacji} `, '.'];
+const teksty = {
+  liczba1: t('komentarze.liczba1'),
+  liczba2_4: t('komentarze.liczba2_4'),
+  liczba5: t('komentarze.liczba5'),
+  brak: t('komentarze.brak'),
+  wysylanie: t('komentarze.wysylanie'),
+  dodany: t('komentarze.dodany'),
+  czeka: t('komentarze.czeka'),
+  bledy,
+};
+---
+
+<section
+  class="komentarze"
+  id="komentarze"
+  aria-labelledby="komentarze-naglowek"
+  data-api={konfig.api}
+  data-strona={konfig.strona}
+  data-wpis={slug}
+  data-sitekey={konfig.turnstileSitekey}
+  data-teksty={JSON.stringify(teksty)}
+>
+  <div class="kontener">
+    <div class="komentarze__rama">
+      <h2 id="komentarze-naglowek">{t('komentarze.naglowek')}</h2>
+      <p class="komentarze__wstep">{t('komentarze.wstep')}</p>
+      <p class="komentarze__liczba" data-liczba>{lista.length > 0 ? liczbaKomentarzy(lista.length, teksty) : teksty.brak}</p>
+      <ol class="komentarze__lista" data-lista hidden={lista.length === 0} set:html={lista.map(htmlKomentarza).join('')} />
+
+      <form class="komentarze__formularz" method="post" action={konfig.api} data-formularz>
+        <input type="hidden" name="strona" value={konfig.strona} />
+        <input type="hidden" name="wpis" value={slug} />
+
+        <div class="pole">
+          <label for="komentarz-autor">{t('komentarze.poleAutor')}</label>
+          <input id="komentarz-autor" name="autor" type="text" required minlength="2" maxlength="60" autocomplete="name" aria-describedby="komentarz-autor-pomoc" />
+          <p class="pole__pomoc" id="komentarz-autor-pomoc">{t('komentarze.poleAutorPomoc')}</p>
+        </div>
+
+        <div class="pole">
+          <label for="komentarz-tresc">{t('komentarze.poleTresc')}</label>
+          <textarea id="komentarz-tresc" name="tresc" rows="6" required minlength="3" maxlength="2000" aria-describedby="komentarz-tresc-pomoc"></textarea>
+          <p class="pole__pomoc" id="komentarz-tresc-pomoc">{t('komentarze.poleTrescPomoc')}</p>
+        </div>
+
+        <div class="pole">
+          <label for="komentarz-email">{t('komentarze.poleEmail')}</label>
+          <input id="komentarz-email" name="email" type="email" maxlength="254" autocomplete="email" aria-describedby="komentarz-email-pomoc" />
+          <p class="pole__pomoc" id="komentarz-email-pomoc">{t('komentarze.poleEmailPomoc')}</p>
+        </div>
+
+        <div class="komentarze__turnstile" data-turnstile></div>
+
+        <div class="komentarze__akcje">
+          <button class="przycisk" type="submit" data-przycisk>{t('komentarze.przycisk')}</button>
+        </div>
+        <p class="komentarze__stan" data-stan role="status" aria-live="polite" tabindex="-1" hidden></p>
+        <p class="komentarze__informacja">
+          {czesciInformacji[0]}<a href="/polityka-prywatnosci/">{t('komentarze.informacjaLink')}</a>{czesciInformacji[1]}
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { htmlKomentarza, liczbaKomentarzy, type Komentarz } from '../lib/komentarze';
+
+  type Turnstile = { render: (el: HTMLElement, o: Record<string, unknown>) => string; reset: (id?: string) => void };
+  const api = () => (window as unknown as { turnstile?: Turnstile }).turnstile;
+
+  const sekcja = document.getElementById('komentarze');
+  const formularz = sekcja?.querySelector<HTMLFormElement>('[data-formularz]');
+  const lista = sekcja?.querySelector<HTMLOListElement>('[data-lista]');
+  const liczba = sekcja?.querySelector<HTMLElement>('[data-liczba]');
+  const stan = sekcja?.querySelector<HTMLElement>('[data-stan]');
+  const przycisk = sekcja?.querySelector<HTMLButtonElement>('[data-przycisk]');
+  const kontener = sekcja?.querySelector<HTMLElement>('[data-turnstile]');
+
+  if (sekcja && formularz && lista && liczba && stan && przycisk && kontener) {
+    const { api: adresApi = '', strona = '', wpis = '', sitekey = '', teksty = '{}' } = sekcja.dataset;
+    const tx = JSON.parse(teksty) as { liczba1: string; liczba2_4: string; liczba5: string; brak: string; wysylanie: string; dodany: string; czeka: string; bledy: Record<string, string> };
+    const znane = new Set([...lista.querySelectorAll<HTMLElement>('[data-id]')].map((el) => el.dataset.id));
+
+    const pokaz = (tekst: string, blad = false) => {
+      stan.textContent = tekst;
+      stan.hidden = false;
+      stan.toggleAttribute('data-blad', blad);
+      return tekst;
+    };
+    const naStan = (tekst: string, blad = false) => {
+      pokaz(tekst, blad);
+      stan.focus();
+    };
+
+    const dopisz = (k: Komentarz) => {
+      if (znane.has(k.id)) return;
+      znane.add(k.id);
+      lista.insertAdjacentHTML('beforeend', htmlKomentarza(k));
+      lista.hidden = false;
+      liczba.textContent = liczbaKomentarzy(znane.size, tx);
+    };
+
+    // ── Turnstile: skrypt Cloudflare dopiero przy pierwszym skupieniu na formularzu ──
+    let widget: string | undefined;
+    let zlecone = false;
+    let tokenGotowy = () => {};
+    let token = new Promise<void>((ok) => (tokenGotowy = ok));
+    const nowyToken = () => (token = new Promise<void>((ok) => (tokenGotowy = ok)));
+    const zaladuj = () =>
+      new Promise<void>((ok, nie) => {
+        if (api()) return ok();
+        const s = document.createElement('script');
+        s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+        s.async = true;
+        s.onload = () => ok();
+        s.onerror = () => nie(new Error('turnstile'));
+        document.head.append(s);
+      });
+    const renderuj = () => {
+      if (zlecone) return;
+      zlecone = true;
+      zaladuj()
+        .then(() => {
+          widget = api()?.render(kontener, {
+            sitekey,
+            language: 'pl',
+            theme: 'light',
+            size: 'flexible',
+            callback: () => tokenGotowy(),
+            'expired-callback': () => nowyToken(),
+            'error-callback': () => nowyToken(),
+          });
+        })
+        .catch(() => (zlecone = false));
+    };
+    formularz.addEventListener('focusin', renderuj, { once: true });
+
+    // ── wysyłka ──
+    formularz.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (przycisk.disabled) return;
+      renderuj();
+      przycisk.disabled = true;
+      formularz.setAttribute('aria-busy', 'true');
+      pokaz(tx.wysylanie);
+      try {
+        // brak tokenu przy wysyłce: czekamy na widżet do 10 s
+        if (!new FormData(formularz).get('cf-turnstile-response')) {
+          await Promise.race([token, new Promise<void>((ok) => setTimeout(ok, 10000))]);
+        }
+        const dane = new FormData(formularz);
+        if (!dane.get('cf-turnstile-response')) return naStan(tx.bledy.turnstile ?? tx.bledy.inny, true);
+        const odp = await fetch(adresApi, { method: 'POST', body: dane, headers: { Accept: 'application/json' } });
+        const json = (await odp.json().catch(() => null)) as { ok?: boolean; status?: string; komentarz?: Komentarz; blad?: string } | null;
+        if (json?.ok) {
+          if (json.status === 'opublikowany' && json.komentarz) {
+            dopisz(json.komentarz);
+            naStan(tx.dodany);
+          } else naStan(tx.czeka);
+          formularz.querySelector<HTMLTextAreaElement>('[name=tresc]')!.value = '';
+        } else naStan(tx.bledy[json?.blad ?? ''] ?? tx.bledy.inny, true);
+      } catch {
+        naStan(tx.bledy.wysylka, true);
+      } finally {
+        przycisk.disabled = false;
+        formularz.removeAttribute('aria-busy');
+        nowyToken();
+        if (widget) api()?.reset(widget);
+      }
+    });
+
+    // ── powrót po wysyłce bez JS (303 z ?komentarz= / ?blad=) ──
+    const parametry = new URLSearchParams(location.search);
+    const status = parametry.get('komentarz');
+    const blad = parametry.get('blad');
+    if (status || blad) {
+      if (blad) pokaz(tx.bledy[blad] ?? tx.bledy.inny, true);
+      else pokaz(status === 'czeka' ? tx.czeka : tx.dodany);
+      history.replaceState(null, '', `${location.pathname}#komentarze`);
+    }
+
+    // ── komentarze nowsze niż ostatni build ──
+    fetch(`${adresApi}?strona=${encodeURIComponent(strona)}&wpis=${encodeURIComponent(wpis)}`, { headers: { Accept: 'application/json' } })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((j: { komentarze?: Komentarz[] } | null) => j?.komentarze?.forEach(dopisz))
+      .catch(() => {});
+  }
+</script>

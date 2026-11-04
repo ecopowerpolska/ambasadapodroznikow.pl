@@ -23,8 +23,10 @@ export const GET: APIRoute = async () => {
     `- [Wszystkie wpisy](${baza}/blog/): lista wpisów ze wszystkich działów, od najnowszego`,
     `- [${t('polecamy.h1')}](${baza}/polecamy/): ${bezHtml(t('polecamy.opisMeta'))}`,
     `- [O nas](${baza}/o-nas/): kim jesteśmy`,
-    `- [Polityka prywatności](${baza}/polityka-prywatnosci/): strona bez cookies i bez analityki`,
+    `- [Polityka prywatności](${baza}/polityka-prywatnosci/): bez własnych cookies i bez analityki`,
     `- [Kanał RSS](${baza}/rss.xml): nowe wpisy`,
+    '',
+    'Pod każdym wpisem na blogu można zostawić publiczny komentarz (formularz pod artykułem); komentarze nie wchodzą do tego pliku.',
     '',
     ...dzialy.flatMap(({ d, wpisy: lista }) => [
       `## ${nazwaDzialu(d)}`,

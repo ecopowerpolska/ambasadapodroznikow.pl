@@ -27,12 +27,12 @@ export function wstaw(szablon: string, wartosci: Record<string, string>): string
   return Object.entries(wartosci).reduce((s, [k, v]) => s.replaceAll(`{${k}}`, v), szablon);
 }
 
-/** Odnośnik wewnętrzny w tekście: [kotwica](/trasa/) → kawałki. Tylko adresy od „/”. */
+/** Odnośnik w tekście: [kotwica](/trasa/) albo [kotwica](https://…) → kawałki. Tylko adresy od „/” i https:// (bez javascript: i http:). */
 export type Kawalek = { tekst: string; adres?: string };
 export function kawalki(t: string): Kawalek[] {
   const wynik: Kawalek[] = [];
   let od = 0;
-  for (const m of t.matchAll(/\[([^\]]+)\]\((\/[^)\s]*)\)/g)) {
+  for (const m of t.matchAll(/\[([^\]]+)\]\((\/[^)\s]*|https:\/\/[^)\s]+)\)/g)) {
     if (m.index! > od) wynik.push({ tekst: t.slice(od, m.index) });
     wynik.push({ tekst: m[1], adres: m[2] });
     od = m.index! + m[0].length;

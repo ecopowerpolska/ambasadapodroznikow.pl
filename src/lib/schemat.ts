@@ -48,3 +48,19 @@ export function okruszki(pozycje: { nazwa: string; adres: string }[]): Record<st
     })),
   };
 }
+
+/** Pola BlogPosting o komentarzach: liczba wszystkich opublikowanych i do 20 najnowszych jako Comment. Bez komentarzy: pusty obiekt. */
+export function komentarzeSchematu(
+  lista: { autor: string; tresc: string; data: string }[],
+): Record<string, unknown> {
+  if (lista.length === 0) return {};
+  return {
+    commentCount: lista.length,
+    comment: lista.slice(-20).map((k) => ({
+      '@type': 'Comment',
+      author: { '@type': 'Person', name: k.autor },
+      text: k.tresc,
+      dateCreated: k.data,
+    })),
+  };
+}

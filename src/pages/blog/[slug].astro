@@ -7,11 +7,13 @@ import Bazowy from '../../layouts/Bazowy.astro';
 import Okruszki from '../../components/Okruszki.astro';
 import Foto from '../../components/Foto.astro';
 import KartaWpisu from '../../components/KartaWpisu.astro';
+import Komentarze from '../../components/Komentarze.astro';
 import { t, wstaw } from '../../lib/tekst';
 import { adresWpisu, czasCzytania, dataIso, dataPoPolsku, opublikowane, wiecejZDzialu } from '../../lib/wpisy';
 import { adresDzialu, nazwaDzialu } from '../../lib/dzialy';
 import { zdjecie, ZDJECIE_GLOWNE } from '../../lib/zdjecia';
-import { adresBezwzgledny, okruszki as schematOkruszkow, WYDAWCA } from '../../lib/schemat';
+import { adresBezwzgledny, komentarzeSchematu, okruszki as schematOkruszkow, WYDAWCA } from '../../lib/schemat';
+import { komentarzeWpisu } from '../../lib/komentarze';
 
 export async function getStaticPaths() {
   const wpisy = await opublikowane(); // od najnowszego
@@ -29,6 +31,7 @@ export async function getStaticPaths() {
 const { wpis, poprzedni, nastepny, wiecej } = Astro.props;
 const d = wpis.data;
 const { Content } = await render(wpis);
+const komentarze = await komentarzeWpisu(wpis.id); // pobranie z API jest jedno na cały build (lib/komentarze.ts)
 
 // Obraz do udostępnień: zdjęcie wpisu, a gdy wpis go nie ma, zdjęcie główne strony (to samo, co domyślnie daje layout)
 const kadrOg = await getImage({ src: zdjecie(d.zdjecie ?? ZDJECIE_GLOWNE), width: 1200, height: 630, fit: 'cover', format: 'jpeg', quality: 80 });
@@ -63,6 +66,7 @@ const schemat = [
     keywords: d.tagi.join(', ') || undefined,
     author: { '@type': 'Organization', name: t('interfejs.podpisRedakcji'), url: adresBezwzgledny('/o-nas/') },
     publisher: { '@id': adresBezwzgledny('/') + '#organizacja', '@type': 'Organization', name: t('marka.nazwa'), url: adresBezwzgledny('/'), parentOrganization: WYDAWCA },
+    ...komentarzeSchematu(komentarze),
   },
   schematOkruszkow(pozycje),
 ];
@@ -109,6 +113,8 @@ const schemat = [
       }
     </div>
   </article>
+
+  <Komentarze slug={wpis.id} />
 
   {
     wiecej.length > 0 && (

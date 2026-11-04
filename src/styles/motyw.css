@@ -1439,6 +1439,135 @@ main:focus {
 }
 
 /* ══ RUCH: wyłączony na życzenie systemu; poza tym tylko krótkie przejścia koloru ══ */
+/* ══ KOMENTARZE pod wpisem (sekcja poza artykułem; kolory wyłącznie z pary już policzonych na górze pliku) ══ */
+.komentarze {
+  padding-block: var(--o-12);
+  border-top: 2px solid var(--morze);
+}
+
+.komentarze__rama {
+  max-width: var(--miara-wpisu);
+  margin-inline: auto;
+}
+
+.komentarze h2 {
+  font-size: var(--t-5);
+}
+
+.komentarze [hidden] {
+  display: none;
+}
+
+.komentarze__wstep,
+.komentarze__liczba {
+  margin-top: var(--o-3);
+  color: var(--tekst-cichy);
+}
+
+.komentarze__lista {
+  display: grid;
+  gap: var(--o-6);
+  margin-top: var(--o-8);
+  padding: 0;
+  list-style: none;
+}
+
+.komentarz {
+  padding-left: var(--o-4);
+  border-left: 3px solid var(--linia);
+}
+
+.komentarz__glowa {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 var(--o-3);
+}
+
+.komentarz__autor {
+  overflow-wrap: anywhere;
+  font-size: var(--t-3);
+}
+
+.komentarz__data {
+  color: var(--tekst-cichy);
+  font-size: var(--t-1);
+}
+
+.komentarz__tresc {
+  margin-top: var(--o-2);
+  overflow-wrap: anywhere;
+  white-space: pre-line; /* podziały wierszy z pola komentarza bez <br> */
+}
+
+.komentarze__formularz {
+  display: grid;
+  gap: var(--o-6);
+  margin-top: var(--o-12);
+  padding: var(--o-6);
+  background: var(--powierzchnia);
+}
+
+.komentarze__formularz .pole {
+  display: grid;
+  gap: var(--o-2);
+}
+
+.komentarze__formularz label {
+  font-weight: 600;
+}
+
+.komentarze__formularz input:not([type='hidden']),
+.komentarze__formularz textarea {
+  width: 100%;
+  min-height: var(--cel-dotyku);
+  padding: var(--o-2) var(--o-3);
+  border: 2px solid var(--tekst-cichy);
+  border-radius: 0;
+  background: var(--tlo);
+  color: var(--tekst);
+  font: inherit;
+}
+
+.komentarze__formularz textarea {
+  min-height: 9rem;
+  resize: vertical;
+}
+
+.pole__pomoc,
+.komentarze__informacja {
+  color: var(--tekst-cichy);
+  font-size: var(--t-1);
+}
+
+.komentarze__akcje .przycisk {
+  cursor: pointer;
+}
+
+.komentarze__akcje .przycisk:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.komentarze__turnstile:empty {
+  display: none;
+}
+
+.komentarze__stan {
+  padding: var(--o-3) var(--o-4);
+  border-left: 4px solid var(--morze);
+  background: var(--tlo);
+  color: var(--tekst);
+}
+
+.komentarze__stan[data-blad] {
+  border-left-color: var(--akcent-mocny);
+}
+
+.komentarze__stan:focus-visible {
+  outline: 3px solid var(--morze);
+}
+
 @media (prefers-reduced-motion: no-preference) {
   a,
   .menu-przelacznik,

@@ -187,7 +187,8 @@
       {
         "naglowek": "Kto wydaje stronę",
         "akapity": [
-          "Stronę wydaje EcoPower Polska Sp. z o.o. z Warszawy. Nie ma tu sklepu, kont, komentarzy ani formularza. Jak obchodzimy się z danymi, opisuje polityka prywatności, do której link jest w stopce."
+          "Stronę wydaje EcoPower Polska Sp. z o.o. z Warszawy. Nie ma tu sklepu ani kont. Jak obchodzimy się z danymi, opisuje polityka prywatności, do której link jest w stopce.",
+          "Osobnej strony kontaktowej nie ma. Najprościej odezwać się do redakcji komentarzem pod dowolnym wpisem: o każdym komentarzu wiemy."
         ]
       }
     ]
@@ -198,12 +199,42 @@
     "h1": "Wszystkie wpisy",
     "wstep": "Wszystko, co napisaliśmy, od najnowszego wpisu. Jeśli wolisz jeden temat, wybierz dział w menu."
   },
+  "komentarze": {
+    "naglowek": "Komentarze",
+    "wstep": "Komentarz pod wpisem to także sposób, żeby napisać do redakcji, a o każdym komentarzu wiemy.",
+    "brak": "Nikt jeszcze nie skomentował tego wpisu. Możesz być pierwszy.",
+    "liczba": "Komentarze: {n}",
+    "liczba1": "1 komentarz",
+    "liczba2_4": "{n} komentarze",
+    "liczba5": "{n} komentarzy",
+    "poleAutor": "Podpis",
+    "poleAutorPomoc": "Imię albo pseudonim, od 2 do 60 znaków. Będzie widoczny dla wszystkich.",
+    "poleTresc": "Komentarz",
+    "poleTrescPomoc": "Od 3 do 2000 znaków. Linki w komentarzu nie przekazują mocy stronie, do której prowadzą.",
+    "poleEmail": "E-mail (nieobowiązkowy)",
+    "poleEmailPomoc": "Podaj go tylko, jeśli chcesz dostać odpowiedź na maila. Nigdy go nie pokazujemy.",
+    "przycisk": "Dodaj komentarz",
+    "wysylanie": "Wysyłam…",
+    "dodany": "Dziękujemy, twój komentarz jest już pod wpisem.",
+    "czeka": "Dziękujemy. Komentarz z kilkoma linkami pokażemy po sprawdzeniu.",
+    "informacja": "Publikujemy podpis i treść komentarza. E-mail jest opcjonalny i niepubliczny. Linki w komentarzach nie przekazują mocy. Usuwamy spam i treści bezprawne. Więcej w",
+    "informacjaLink": "polityce prywatności",
+    "bledy": {
+      "autor": "Podpis musi mieć od 2 do 60 znaków.",
+      "tresc": "Komentarz musi mieć od 3 do 2000 znaków.",
+      "turnstile": "Nie udało się sprawdzić zabezpieczenia przed spamem. Odśwież stronę i spróbuj jeszcze raz.",
+      "limit": "Za dużo komentarzy z jednego miejsca w krótkim czasie. Spróbuj za kilka minut.",
+      "wpis": "Nie znaleźliśmy takiego wpisu. Odśwież stronę i spróbuj jeszcze raz.",
+      "wysylka": "Nie udało się wysłać komentarza. Spróbuj jeszcze raz za chwilę.",
+      "inny": "Coś poszło nie tak. Sprawdź pola, w tym adres e-mail, i spróbuj jeszcze raz."
+    }
+  },
   "polityka": {
     "tytulKarty": "Polityka prywatności | Ambasada Podróżników",
-    "opisMeta": "Polityka prywatności ambasadapodroznikow.pl: kto jest administratorem, hosting na GitHub Pages, zdjęcia w zapowiedziach, brak cookies i analityki.",
+    "opisMeta": "Polityka prywatności ambasadapodroznikow.pl: administrator, komentarze pod wpisami, Cloudflare Turnstile i sieć Cloudflare, hosting, zdjęcia w zapowiedziach, cookies i brak analityki.",
     "h1": "Polityka prywatności",
-    "lead": "Ta strona nie ustawia własnych plików cookies, nie ma analityki, reklam, kont ani formularzy. Niżej piszemy, jakie dane technicznie widzą hosting i serwery firm, których zapowiedzi pokazujemy.",
-    "dataAktualizacji": "2026-11-03",
+    "lead": "Ta strona nie ma analityki, reklam ani kont i nie ustawia własnych plików cookies. Pod wpisami możesz za to zostawić komentarz, więc niżej opisujemy, jakie dane wtedy przetwarzamy, a także co technicznie widzą Cloudflare, hosting i serwery firm, których zapowiedzi pokazujemy.",
+    "dataAktualizacji": "2026-11-04",
     "administratorNaglowek": "Administrator danych",
     "administratorWstep": "Administratorem danych osobowych jest:",
     "sekcje": [
@@ -211,10 +242,40 @@
         "id": "zakres",
         "naglowek": "Jaka to strona",
         "akapity": [
-          "ambasadapodroznikow.pl to statyczna strona z wpisami do czytania. Nie ma kont, komentarzy, sklepu ani newslettera. Nie zbiera danych, które ktoś musiałby sam wpisać."
+          "ambasadapodroznikow.pl to strona z wpisami do czytania. Nie ma kont, sklepu ani newslettera. Jedyne, co możesz tu sam wpisać, to komentarz pod wpisem, opisany niżej."
         ],
         "lista": [],
         "akapityPo": []
+      },
+      {
+        "id": "komentarze",
+        "naglowek": "Komentarze pod wpisami",
+        "akapity": [
+          "Pod wpisami możesz zostawić komentarz. To jedyne miejsce na tej stronie, w którym sam podajesz jakieś dane. Administratorem jest wydawca strony, wskazany wyżej. Przetwarzamy:"
+        ],
+        "lista": [
+          "podpis i treść komentarza: są publiczne, widać je pod wpisem razem z datą;",
+          "adres e-mail: podajesz go tylko wtedy, gdy chcesz dostać odpowiedź. Jest opcjonalny i nigdy nie jest publikowany;",
+          "skrót adresu IP (jednokierunkowy, nie sam adres): służy do limitów liczby komentarzy i ochrony przed spamem, a liczniki limitów kasujemy po dobie."
+        ],
+        "akapityPo": [
+          "Cel: publikacja i moderacja komentarzy oraz odpowiedź na e-mail, jeśli go podałeś. Podstawą jest twoja zgoda wyrażona przez wysłanie komentarza (art. 6 ust. 1 lit. a RODO), a dla skrótu adresu IP i ochrony przed spamem nasz uzasadniony interes (art. 6 ust. 1 lit. f RODO). Podpis i treść są konieczne, żeby komentarz mógł się ukazać; e-mail podajesz dobrowolnie.",
+          "Komentarze zapisujemy na serwerze LH.pl Sp. z o.o. w Polsce, na zapleczu api.ecopowerpolska.pl, które należy do tej samej spółki, co strona. O każdym nowym komentarzu dostaje wiadomość redakcja (skrzynka {email}). Komentarz z więcej niż dwoma linkami pokazujemy dopiero po sprawdzeniu. Linki w komentarzach mają oznaczenie rel=\"ugc nofollow\", więc nie przekazują mocy stronom, do których prowadzą. Usuwamy spam i treści bezprawne.",
+          "Komentarz przechowujemy do czasu jego usunięcia albo twojego żądania. Żeby go usunąć, napisz o to komentarzem pod tym samym wpisem albo wiadomością na adres {email}; podaj wpis i swój podpis. Zgodę możesz wycofać w każdej chwili, prosząc o usunięcie komentarza; nie wpływa to na zgodność z prawem przetwarzania przed jej wycofaniem."
+        ]
+      },
+      {
+        "id": "turnstile",
+        "naglowek": "Zabezpieczenie przed spamem: Cloudflare Turnstile",
+        "akapity": [
+          "Przed wysłaniem komentarza sprawdzamy, czy nie wysyła go automat, za pomocą Cloudflare Turnstile. Skrypt weryfikacji ładuje się z domeny challenges.cloudflare.com, a Cloudflare, Inc. przetwarza wtedy dane techniczne twojej przeglądarki, między innymi adres IP, żeby ocenić, czy to człowiek. Robi to na zasadach opisanych w swojej polityce dla Turnstile:"
+        ],
+        "lista": [
+          "https://www.cloudflare.com/turnstile-privacy-policy/"
+        ],
+        "akapityPo": [
+          "Podstawą jest uzasadniony interes ochrony strony przed spamem (art. 6 ust. 1 lit. f RODO). Według dokumentacji Cloudflare Turnstile przetwarza tylko dane niezbędne do tej weryfikacji i nie służy do śledzenia ani reklam."
+        ]
       },
       {
         "id": "hosting",
@@ -227,10 +288,24 @@
         "akapityPo": []
       },
       {
+        "id": "cloudflare",
+        "naglowek": "Sieć Cloudflare",
+        "akapity": [
+          "Strona jest obsługiwana przez sieć Cloudflare, Inc., która pośredniczy w połączeniu i chroni stronę przed atakami i spamem. Adres IP i dane techniczne każdego żądania do strony przechodzą więc przez serwery Cloudflare, który może zapisywać je w swoich dziennikach na własnych zasadach, opisanych w jego polityce prywatności:"
+        ],
+        "lista": [
+          "https://www.cloudflare.com/privacypolicy/"
+        ],
+        "akapityPo": [
+          "Podstawą po stronie administratora jest uzasadniony interes (art. 6 ust. 1 lit. f RODO): bezpieczeństwo i dostępność strony. Cloudflare ma siedzibę w USA, więc dane mogą być przetwarzane poza Europejskim Obszarem Gospodarczym; zasady takiego przekazywania opisuje jego polityka prywatności."
+        ]
+      },
+      {
         "id": "cookies",
         "naglowek": "Pliki cookies i analityka",
         "akapity": [
-          "Strona nie ustawia własnych plików cookies, nie używa analityki, nie ładuje reklam ani skryptów śledzących. Dlatego nie pokazujemy okna zgody. Przeglądarka może sama zapisywać dane potrzebne technicznie, zgodnie ze swoimi ustawieniami."
+          "Strona nie ustawia własnych plików cookies, nie używa analityki, nie ładuje reklam ani skryptów śledzących. Nie pokazujemy okna zgody, bo nie używamy cookies, które by jej wymagały.",
+          "Wyjątkiem są dane techniczne zapisywane przez usługi Cloudflare. Ochrona sieci może ustawić techniczne ciasteczko, na przykład __cf_bm (wygasa po 30 minutach bezczynności) albo cf_clearance (zapamiętuje, że przeszedłeś weryfikację, żeby nie powtarzać jej przy każdym wejściu). Cloudflare opisuje je jako niezbędne technicznie do ochrony strony. Turnstile nie służy do śledzenia; jeśli jego działanie wymaga zapisu w przeglądarce, dotyczy to wyłącznie danych potrzebnych do weryfikacji. Przeglądarka może też sama zapisywać dane potrzebne technicznie, zgodnie ze swoimi ustawieniami."
         ],
         "lista": [],
         "akapityPo": []
@@ -266,7 +341,7 @@
         "naglowek": "Twoje prawa",
         "akapity": [
           "Masz prawo dostępu do danych (art. 15 RODO), ich sprostowania (art. 16), usunięcia (art. 17), ograniczenia przetwarzania (art. 18), powiadomienia o sprostowaniu, usunięciu lub ograniczeniu (art. 19), przenoszenia danych (art. 20) i sprzeciwu wobec przetwarzania (art. 21). Masz też prawo nie podlegać decyzji opartej wyłącznie na zautomatyzowanym przetwarzaniu (art. 22).",
-          "Napisz do administratora na adres {email} albo złóż skargę do Prezesa Urzędu Ochrony Danych Osobowych. Strona sama nie zbiera danych poza dziennikami hostingu i serwerów polecanych firm, więc część praw wykonasz bezpośrednio wobec ich administratorów."
+          "Napisz do administratora na adres {email} albo złóż skargę do Prezesa Urzędu Ochrony Danych Osobowych. Strona sama nie zbiera danych poza komentarzami, dziennikami hostingu i sieci Cloudflare oraz serwerów polecanych firm, więc część praw wykonasz bezpośrednio wobec ich administratorów."
         ],
         "lista": [],
         "akapityPo": []
@@ -275,7 +350,7 @@
         "id": "zmiany",
         "naglowek": "Zmiany polityki",
         "akapity": [
-          "Politykę zmieniamy, gdy zmienia się sposób działania strony. Ta wersja obowiązuje od 3 listopada 2026 roku."
+          "Politykę zmieniamy, gdy zmienia się sposób działania strony. Ta wersja obowiązuje od 4 listopada 2026 roku; dodaliśmy w niej komentarze pod wpisami, Cloudflare Turnstile i sieć Cloudflare."
         ],
         "lista": [],
         "akapityPo": []
