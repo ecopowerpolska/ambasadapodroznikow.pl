@@ -9,8 +9,8 @@ Bez cookies, bez analityki, bez formularza. Dokumentacja robocza: repo warsztatu
 2. Wypełnij frontmatter: `tytul`, `opis` (120–160 znaków), `data`, `zdjecie` (nazwa pliku z `src/assets/zdjecia/`,
    alt-y w `src/data/zdjecia.json`), `alt`, opcjonalnie `zmieniono` (data istotnej zmiany treści, trafia do `dateModified`) i `tagi`.
    Każdy wpis ma zdjęcie.
-3. Treść w Markdown; link do naszej firmy (najwyżej jeden na wpis) wstaw w zdaniu, bez `rel`, z zdaniem ujawnienia
-   („to marka tej samej spółki, która wydaje Ambasadę Podróżników”).
+3. Treść w Markdown; link do polecanej firmy (najwyżej jeden na wpis) wstaw w zdaniu, w treści wpisu, bez `rel`.
+   Linki w blokach poza treścią wpisu mają `rel="nofollow"`.
 4. `npm run build` — błąd w frontmatterze zatrzymuje budowanie z komunikatem. Wpis z datą w przyszłości
    czeka i wychodzi w dniu daty (przebudowa trzy razy dziennie: 03:17, 07:47 i 11:23 UTC).
 
