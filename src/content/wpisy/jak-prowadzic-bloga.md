@@ -8,7 +8,7 @@ alt: "Aparat na statywie z czerwonymi paskami nad górskim jeziorem w dolinie, o
 tagi: ["blog", "pisanie", "Search Console", "zdjęcia", "kalendarz wpisów"]
 ---
 
-Blog, który ktoś czyta, odpowiada na pytania jednej grupy ludzi i ukazuje się w stałym rytmie. Tak prowadzi blogi [EcoPower Polska](https://www.ecopowerpolska.pl/prowadzenie-strony-internetowej/), spółka, która wydaje Ambasadę Podróżników i zbudowała tę stronę. Pisze też wpisy na stronach, które robi dla innych firm. Jej zasady spisaliśmy tak, żeby przydały się też komuś, kto pisze o wyjazdach albo o domu.
+Blog, który ktoś czyta, odpowiada na pytania jednej grupy ludzi i ukazuje się w stałym rytmie. Tak prowadzi blogi [EcoPower Polska](https://www.ecopowerpolska.pl/prowadzenie-strony-internetowej/). Pisze też wpisy na stronach, które robi dla innych firm. Jej zasady spisaliśmy tak, żeby przydały się też komuś, kto pisze o wyjazdach albo o domu.
 
 ## Najpierw czytelnik, potem temat
 

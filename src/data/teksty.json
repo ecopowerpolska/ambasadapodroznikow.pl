@@ -71,7 +71,7 @@
     "najnowszeWszystkie": "Wszystkie wpisy",
     "naglowekDzialy": "Według tematu",
     "zNaszychStronNaglowek": "Polecamy",
-    "zNaszychStronWstep": "Marki spółki EcoPower Polska, która wydaje tę stronę, też piszą. Tu są ich najnowsze wpisy.",
+    "zNaszychStronWstep": "Firmy, które polecamy, też piszą. Tu są ich najnowsze wpisy.",
     "zNaszychStronWszystkie": "Zobacz, kogo polecamy"
   },
   "dzialy": {
@@ -112,10 +112,10 @@
     }
   },
   "polecamy": {
-    "tytulKarty": "Polecamy: marki spółki EcoPower Polska",
-    "opisMeta": "Pięć firm spółki EcoPower Polska, która wydaje tę stronę: projekt wnętrz, remont, meble na wymiar, wylewki i strony internetowe.",
+    "tytulKarty": "Polecamy | Ambasada Podróżników",
+    "opisMeta": "Pięć firm, które polecamy: projekt wnętrz, remont, meble na wymiar, wylewki i strony internetowe.",
     "h1": "Polecamy",
-    "wstep": "Cztery z tych firm to marki spółki EcoPower Polska, która wydaje tę stronę, a piąta to sama spółka. To nie jest niezależna opinia, tylko krótki opis, kto co robi.",
+    "wstep": "",
     "firmy": [
       {
         "nazwa": "Studio Agat",
@@ -144,8 +144,8 @@
       {
         "nazwa": "EcoPower Polska",
         "adres": "https://www.ecopowerpolska.pl/",
-        "opis": "EcoPower Polska z Gocławia buduje strony i sklepy internetowe dla firm, razem z domeną, pocztą i wizytówką w Google. Zrobiła strony czterech firm z tej listy. Większość spraw da się z nimi załatwić mailem i przez telefon.",
-        "coDlaNas": "Zbudowała tę stronę, razem z zapowiedziami, które co rano zbierają się tu z blogów firm z tej listy."
+        "opis": "EcoPower Polska z Gocławia buduje strony i sklepy internetowe dla firm, razem z domeną, pocztą i wizytówką w Google. Większość spraw da się z nimi załatwić mailem i przez telefon.",
+        "coDlaNas": ""
       }
     ],
     "odwiedz": "Odwiedź {nazwa}",
@@ -155,7 +155,7 @@
   },
   "o-nas": {
     "tytulKarty": "O nas: kto pisze Ambasadę Podróżników",
-    "opisMeta": "Kim jesteśmy, skąd nazwa po dawnym biurze wyjazdów, o czym piszemy w pięciu działach i kogo polecamy. Stronę wydaje EcoPower Polska Sp. z o.o.",
+    "opisMeta": "Kim jesteśmy, skąd nazwa po dawnym biurze wyjazdów, o czym piszemy w pięciu działach i kogo polecamy.",
     "h1": "O nas",
     "wstep": "Jeździmy i urządzamy dom. Piszemy o jednym i o drugim.",
     "zdjecie": "weekend-przewodnik-turysci-mapa-01-www-3000x2001.webp",
@@ -180,14 +180,14 @@
       {
         "naglowek": "Kogo polecamy i dlaczego",
         "akapity": [
-          "Polecamy pięć firm: Studio Agat, Pan Stolarz, Nadi Home, Pan Wylewka i EcoPower Polska. Cztery pierwsze to marki spółki EcoPower Polska, która wydaje tę stronę, a piąta to sama spółka. To nie jest niezależna opinia.",
-          "Nie przyjmujemy płatnych wpisów ani tekstów od firm spoza naszej spółki. Jeśli we wpisie pada nazwa firmy, to zwykle jedna i w kilku zdaniach, tam gdzie naprawdę pasuje do tematu."
+          "Polecamy pięć firm: Studio Agat, Pan Stolarz, Nadi Home, Pan Wylewka i EcoPower Polska.",
+          "Nie przyjmujemy płatnych wpisów ani tekstów od firm. Jeśli we wpisie pada nazwa firmy, to zwykle jedna i w kilku zdaniach, tam gdzie naprawdę pasuje do tematu."
         ]
       },
       {
-        "naglowek": "Kto wydaje stronę",
+        "naglowek": "Kontakt",
         "akapity": [
-          "Stronę wydaje EcoPower Polska Sp. z o.o. z Warszawy. Nie ma tu sklepu ani kont. Jak obchodzimy się z danymi, opisuje polityka prywatności, do której link jest w stopce.",
+          "Nie ma tu sklepu ani kont. Jak obchodzimy się z danymi, opisuje polityka prywatności, do której link jest w stopce.",
           "Osobnej strony kontaktowej nie ma. Najprościej odezwać się do redakcji komentarzem pod dowolnym wpisem: o każdym komentarzu wiemy."
         ]
       }

@@ -37,7 +37,7 @@ Ustal jeden kanał do bieżących spraw i stałą porę raportu, na przykład co
 
 Raz w tygodniu umów dziesięciominutową rozmowę wideo z budowy. Telefon w ręku ekipy pokaże rzeczy, których opis nie odda. Na przykład spadek w kabinie prysznicowej idący w złą stronę. Lepiej zobaczyć go przed płytkami.
 
-Przy malowaniu wystarczy ktoś z rodziny z listą kontrolną. Przy łazience albo kuchni to za mało. Potrzebna jest osoba, która zna budowę zawodowo i może zatrzymać prace, jeśli coś idzie źle. W Warszawie taki nadzór prowadzi na przykład Studio Agat. To marka tej samej spółki, która wydaje Ambasadę Podróżników. Projektant jeździ tam na budowę, a każdy etap zamyka protokół. Jak wyglądał nasz remont z wykończeniem i meblami, kiedy byliśmy dwa tygodnie za granicą, opisaliśmy w [osobnym tekście](/blog/remont-mieszkania-gdy-bylismy-za-granica/). Bez względu na to, kogo wybierzesz, ustal przed wyjazdem, kto ma prawo powiedzieć „stop”.
+Przy malowaniu wystarczy ktoś z rodziny z listą kontrolną. Przy łazience albo kuchni to za mało. Potrzebna jest osoba, która zna budowę zawodowo i może zatrzymać prace, jeśli coś idzie źle. W Warszawie taki nadzór prowadzi na przykład Studio Agat. Projektant jeździ tam na budowę, a każdy etap zamyka protokół. Jak wyglądał nasz remont z wykończeniem i meblami, kiedy byliśmy dwa tygodnie za granicą, opisaliśmy w [osobnym tekście](/blog/remont-mieszkania-gdy-bylismy-za-granica/). Bez względu na to, kogo wybierzesz, ustal przed wyjazdem, kto ma prawo powiedzieć „stop”.
 
 ## Odbiór po powrocie
 

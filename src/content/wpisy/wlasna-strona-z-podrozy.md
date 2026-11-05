@@ -29,7 +29,7 @@ Adres, pod którym to czytasz, od 2014 do 2025 roku należał do biura wyjazdów
 
 Hosting to miejsce, w którym leżą pliki strony. Blog z tekstami i zdjęciami można zbudować jako gotowe pliki, bez bazy danych. Takie strony ładują się szybko. Rzadko się też psują, bo na serwerze nie działa żaden program, który trzeba aktualizować.
 
-Tak powstała ta strona. Jest zbudowana w Astro, czyli generatorze stron statycznych, i wystawiona na GitHub Pages, darmowym hostingu dla takich plików. Zbudowała ją [EcoPower Polska](https://www.ecopowerpolska.pl/strona-wizytowka/), spółka, która wydaje Ambasadę Podróżników i na co dzień robi strony firmom.
+Tak powstała ta strona. Jest zbudowana w Astro, czyli generatorze stron statycznych, i wystawiona na GitHub Pages, darmowym hostingu dla takich plików. Takie strony na co dzień robi firmom na przykład [EcoPower Polska](https://www.ecopowerpolska.pl/strona-wizytowka/).
 
 Darmowy hosting plików ma swoją granicę. Gdy z bloga robi się działalność, z formularzem kontaktowym, rezerwacjami albo płatnościami, potrzebujesz już zwykłego hostingu z obsługą takich funkcji.
 

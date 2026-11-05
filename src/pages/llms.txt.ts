@@ -33,7 +33,7 @@ export const GET: APIRoute = async () => {
       ...lista.map((w) => `- [${w.data.tytul}](${baza}${adresWpisu(w.id)}): ${bezHtml(w.data.opis)}`),
       '',
     ]),
-    `## ${t('polecamy.naglowekZapowiedzi')} (firmy spółki EcoPower Polska, która wydaje tę stronę)`,
+    `## ${t('polecamy.naglowekZapowiedzi')}`,
     ...zaplowki.map((w) => `- [${w.data.tytul}](${w.data.link}): ${w.data.zrodlo}`),
     '',
   ];

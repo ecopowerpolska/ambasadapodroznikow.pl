@@ -1,0 +1,118 @@
+{
+  "specVersion": "1.0",
+  "entries": [
+    {
+      "identifier": "urn:air:ambasadapodroznikow.pl:strona:glowna",
+      "displayName": "Ambasada Podróżników - o wyjazdach i o domu, do którego z nich wracamy",
+      "type": "application/ld+json",
+      "data": {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": "https://ambasadapodroznikow.pl/#strona",
+        "name": "Ambasada Podróżników",
+        "url": "https://ambasadapodroznikow.pl/",
+        "inLanguage": "pl-PL",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Redakcja Ambasady Podróżników",
+          "url": "https://ambasadapodroznikow.pl/"
+        }
+      },
+      "description": "Piszemy o wyjazdach i o domu, który przez ten czas stoi sam: pakowanie na weekend, pierwszy szlak, remont z daleka, sprzęt i zdrowie w drodze.",
+      "representativeQueries": [
+        "blog podróżniczy o pakowaniu i domu",
+        "jak spakować się na weekend w 20 minut",
+        "co wziąć na pierwszy szlak"
+      ],
+      "tags": [
+        "podróże",
+        "pakowanie",
+        "dom",
+        "blog"
+      ]
+    },
+    {
+      "identifier": "urn:air:ambasadapodroznikow.pl:strona:blog",
+      "displayName": "Blog Ambasady Podróżników - wszystkie wpisy",
+      "type": "application/ld+json",
+      "data": {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Blog Ambasady Podróżników",
+        "url": "https://ambasadapodroznikow.pl/blog/",
+        "inLanguage": "pl-PL",
+        "isPartOf": {
+          "@id": "https://ambasadapodroznikow.pl/#strona"
+        }
+      },
+      "description": "Lista wpisów ze wszystkich działów (podróże, dom, pasje, technologia, zdrowie), od najnowszego.",
+      "representativeQueries": [
+        "wpisy o podróżach i domu",
+        "co zakręcić przed dłuższym wyjazdem",
+        "apteczka na wyjazd co spakować"
+      ]
+    },
+    {
+      "identifier": "urn:air:ambasadapodroznikow.pl:strona:polecamy",
+      "displayName": "Polecamy - firmy polecane przez Ambasadę Podróżników",
+      "type": "application/ld+json",
+      "data": {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Polecamy | Ambasada Podróżników",
+        "url": "https://ambasadapodroznikow.pl/polecamy/",
+        "inLanguage": "pl-PL",
+        "isPartOf": {
+          "@id": "https://ambasadapodroznikow.pl/#strona"
+        }
+      },
+      "description": "Pięć firm, które polecamy: projekt wnętrz, remont, meble na wymiar, wylewki i strony internetowe.",
+      "representativeQueries": [
+        "polecane firmy remont i meble na wymiar",
+        "projekt wnętrz i remont polecane firmy"
+      ]
+    },
+    {
+      "identifier": "urn:air:ambasadapodroznikow.pl:strona:o-nas",
+      "displayName": "O nas - Ambasada Podróżników",
+      "type": "application/ld+json",
+      "data": {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "name": "O nas - Ambasada Podróżników",
+        "url": "https://ambasadapodroznikow.pl/o-nas/",
+        "inLanguage": "pl-PL",
+        "isPartOf": {
+          "@id": "https://ambasadapodroznikow.pl/#strona"
+        }
+      },
+      "description": "Kim jesteśmy, skąd nazwa po dawnym biurze wyjazdów, o czym piszemy w pięciu działach i kogo polecamy.",
+      "representativeQueries": [
+        "kim jest Ambasada Podróżników",
+        "o czym pisze Ambasada Podróżników"
+      ]
+    },
+    {
+      "identifier": "urn:air:ambasadapodroznikow.pl:strona:rss",
+      "displayName": "Ambasada Podróżników - nowe wpisy (RSS)",
+      "type": "application/rss+xml",
+      "url": "https://ambasadapodroznikow.pl/rss.xml",
+      "description": "Kanał RSS z nowymi wpisami ze wszystkich działów bloga.",
+      "representativeQueries": [
+        "nowe wpisy Ambasady Podróżników",
+        "kanał RSS bloga podróżniczego"
+      ]
+    },
+    {
+      "identifier": "urn:air:ambasadapodroznikow.pl:strona:sitemap",
+      "displayName": "Ambasada Podróżników - mapa strony (sitemap.xml)",
+      "type": "application/xml",
+      "url": "https://ambasadapodroznikow.pl/sitemap.xml",
+      "description": "Adresy wszystkich podstron ambasadapodroznikow.pl przeznaczonych do indeksowania.",
+      "representativeQueries": [
+        "podstrony Ambasady Podróżników",
+        "lista stron ambasadapodroznikow.pl"
+      ]
+    }
+  ]
+}

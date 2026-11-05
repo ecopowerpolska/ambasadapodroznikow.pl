@@ -26,7 +26,7 @@ Ważne są też dylatacje. To nacięcia w posadzce, które wyznaczają miejsce, 
 
 Przy starej posadzce dochodzi pytanie, co z nią zrobić. Popękaną i nierówną zwykle się skuwa. Wykonawca oceni to na miejscu, po oględzinach podłoża.
 
-Duże powierzchnie robi się coraz częściej maszynowo, miksokretem. To urządzenie, które miesza i podaje mieszankę na miejscu. W Warszawie i okolicach posadzki tą metodą robi na przykład [Pan Wylewka](https://panwylewka.pl/uslugi). To marka tej samej spółki, która wydaje Ambasadę Podróżników. Opisują przebieg tak: oczyszczenie i zagruntowanie podłoża, rozprowadzenie mieszanki, zatarcie mechaniczne i kontrola poziomu. Tej samej kolejności oczekuj od każdej ekipy, z którą rozmawiasz.
+Duże powierzchnie robi się coraz częściej maszynowo, miksokretem. To urządzenie, które miesza i podaje mieszankę na miejscu. W Warszawie i okolicach posadzki tą metodą robi na przykład [Pan Wylewka](https://panwylewka.pl/uslugi). Opisują przebieg tak: oczyszczenie i zagruntowanie podłoża, rozprowadzenie mieszanki, zatarcie mechaniczne i kontrola poziomu. Tej samej kolejności oczekuj od każdej ekipy, z którą rozmawiasz.
 
 Zapytaj też o próg przy bramie. Nowa posadzka bywa wyższa od starej o kilka centymetrów, a brama garażowa musi się nad nią zamknąć. Uszczelka na dole bramy powinna przylegać do betonu na całej szerokości. Inaczej zimą pod bramą wieje, a woda z roztopów wpływa do środka.
 

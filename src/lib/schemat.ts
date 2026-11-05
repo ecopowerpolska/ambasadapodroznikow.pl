@@ -4,13 +4,6 @@ import { t } from './tekst';
 const baza = () => new URL('/', import.meta.env.SITE).href.replace(/\/$/, '');
 export const adresBezwzgledny = (sciezka: string) => new URL(sciezka, import.meta.env.SITE).href;
 
-/** Spółka wydająca stronę (ujawnienie wydawcy w danych strukturalnych, zgodne z tekstem na /o-nas/ i /polecamy/). */
-export const WYDAWCA = {
-  '@type': 'Organization',
-  name: 'EcoPower Polska Sp. z o.o.',
-  url: 'https://www.ecopowerpolska.pl/',
-};
-
 export function organizacja(): Record<string, unknown> {
   return {
     '@type': 'Organization',
@@ -20,7 +13,6 @@ export function organizacja(): Record<string, unknown> {
     logo: { '@type': 'ImageObject', url: `${baza()}/logo-ambasada.png`, width: 512, height: 512 },
     description: t('marka.opisKrotki'),
     slogan: t('marka.haslo'),
-    parentOrganization: WYDAWCA,
   };
 }
 

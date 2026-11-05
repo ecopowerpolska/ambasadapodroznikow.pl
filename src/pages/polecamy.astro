@@ -15,6 +15,8 @@ const firmy: Firma[] = (Array.isArray(pobierz('polecamy.firmy')) ? (pobierz('pol
   .map((f) => ({ nazwa: tekst(f?.nazwa), adres: tekst(f?.adres), opis: tekst(f?.opis), coDlaNas: tekst(f?.coDlaNas) }))
   .filter((f) => f.nazwa !== '' && /^https?:\/\//.test(f.adres));
 
+// Wstęp opcjonalny: pusty tekst = bez akapitu (t() dla pustego daje „[brak: …]”, więc czytamy wprost).
+const wstep = tekst(pobierz('polecamy.wstep'));
 const zapowiedzi = (await polecaneRozne(3)).slice(0, 12);
 // Napis odnośnika do firmy: `polecamy.odwiedz` („Odwiedź {nazwa}”), a bez tego klucza sama nazwa firmy.
 const napisOdwiedz = t('polecamy.odwiedz', '{nazwa}');
@@ -53,7 +55,7 @@ const schemat = [
   <Okruszki pozycje={pozycje} />
   <div class="kontener podstrona-glowa">
     <h1>{t('polecamy.h1')}</h1>
-    <p class="podstrona-glowa__wstep">{t('polecamy.wstep')}</p>
+    {wstep !== '' && <p class="podstrona-glowa__wstep">{wstep}</p>}
   </div>
 
   <div class="kontener">

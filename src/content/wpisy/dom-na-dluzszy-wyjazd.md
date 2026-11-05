@@ -17,7 +17,7 @@ Przejdź przez mieszkanie powoli, pokój po pokoju. Szukasz rzeczy, które „ja
 
 Kropla pod zlewem przez 21 dni to spuchnięta płyta szafki i plama u sąsiada pod spodem. Dlatego wszystko, co cieknie, naprawiasz przed wyjazdem. Nie po powrocie.
 
-Jeśli lista jest dłuższa niż jeden wieczór z kluczem nastawnym, umów fachowca na tydzień przed wylotem. Przeddzień wylotu zostaw wolny od napraw. Gniazdka i przewody zostaw elektrykowi z [uprawnieniami SEP](https://sep.com.pl/oferta/egzaminy.html), bo to nie jest robota na oko. W Warszawie elektrykę i hydraulikę robi na przykład [Nadi Home](https://nadihome.pl/uslugi), ekipa remontowa z Gocławia. To marka tej samej spółki, która wydaje Ambasadę Podróżników. Elektrykę i hydraulikę wykonuje sama, na uprawnieniach SEP i z OC.
+Jeśli lista jest dłuższa niż jeden wieczór z kluczem nastawnym, umów fachowca na tydzień przed wylotem. Przeddzień wylotu zostaw wolny od napraw. Gniazdka i przewody zostaw elektrykowi z [uprawnieniami SEP](https://sep.com.pl/oferta/egzaminy.html), bo to nie jest robota na oko. W Warszawie elektrykę i hydraulikę robi na przykład [Nadi Home](https://nadihome.pl/uslugi), ekipa remontowa z Gocławia. Elektrykę i hydraulikę wykonuje sama, na uprawnieniach SEP i z OC.
 
 Przy okazji zapisz, gdzie jest zawór główny wody, skrzynka z bezpiecznikami i licznik. Osoba, która zajrzy do mieszkania pod twoją nieobecność, nie powinna ich szukać z latarką w telefonie. Kartka na lodówce wystarczy.
 

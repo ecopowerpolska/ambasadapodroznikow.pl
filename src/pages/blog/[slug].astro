@@ -12,7 +12,7 @@ import { t, wstaw } from '../../lib/tekst';
 import { adresWpisu, czasCzytania, dataIso, dataPoPolsku, opublikowane, wiecejZDzialu } from '../../lib/wpisy';
 import { adresDzialu, nazwaDzialu } from '../../lib/dzialy';
 import { zdjecie, ZDJECIE_GLOWNE } from '../../lib/zdjecia';
-import { adresBezwzgledny, komentarzeSchematu, okruszki as schematOkruszkow, WYDAWCA } from '../../lib/schemat';
+import { adresBezwzgledny, komentarzeSchematu, okruszki as schematOkruszkow } from '../../lib/schemat';
 import { komentarzeWpisu } from '../../lib/komentarze';
 
 export async function getStaticPaths() {
@@ -65,7 +65,7 @@ const schemat = [
     articleSection: nazwaD,
     keywords: d.tagi.join(', ') || undefined,
     author: { '@type': 'Organization', name: t('interfejs.podpisRedakcji'), url: adresBezwzgledny('/o-nas/') },
-    publisher: { '@id': adresBezwzgledny('/') + '#organizacja', '@type': 'Organization', name: t('marka.nazwa'), url: adresBezwzgledny('/'), parentOrganization: WYDAWCA },
+    publisher: { '@id': adresBezwzgledny('/') + '#organizacja', '@type': 'Organization', name: t('marka.nazwa'), url: adresBezwzgledny('/') },
     ...komentarzeSchematu(komentarze),
   },
   schematOkruszkow(pozycje),

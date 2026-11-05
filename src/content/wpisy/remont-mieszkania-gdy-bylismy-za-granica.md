@@ -8,7 +8,7 @@ alt: "Nowoczesny salon z czarną skórzaną sofą, otwartą kuchnią z wyspą i 
 tagi: ["remont", "wyjazd", "meble na wymiar"]
 ---
 
-Remont naszego mieszkania szedł wtedy, kiedy byliśmy dwa tygodnie za granicą. Projekt zrobiło zdalnie [Studio Agat](https://studioagat.pl/projektowanie-wnetrz). To marka tej samej spółki, która wydaje Ambasadę Podróżników. Ta sama firma przeprowadziła remont razem z wykończeniem i meblami. Cały kontakt szedł przez WhatsAppa i maile.
+Remont naszego mieszkania szedł wtedy, kiedy byliśmy dwa tygodnie za granicą. Projekt zrobiło zdalnie [Studio Agat](https://studioagat.pl/projektowanie-wnetrz). Ta sama firma przeprowadziła remont razem z wykończeniem i meblami. Cały kontakt szedł przez WhatsAppa i maile.
 
 Da się więc remontować, kiedy cię nie ma. Ale nie dlatego, że wszystko dzieje się samo.
 
