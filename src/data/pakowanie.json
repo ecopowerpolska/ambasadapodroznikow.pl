@@ -9,8 +9,7 @@
    "ilosc": "wzór ilości: liczba | dni | min(…) | max(…) | ceil(…) z + - * / oraz na_osobe | na_dziecko (liczba pasujących osób / dzieci)",
    "os": "true = ilość liczona na każdą pasującą osobę (np. bielizna), brak = jedna sztuka na całą grupę (np. apteczka)",
    "kto": "lista typów osób: kobieta | mezczyzna | nastolatek | dziecko | niemowle; pozycja jest, gdy jedzie choć jedna pasująca osoba; brak = wszyscy",
-   "klimat": "cieplo | umiarkowanie | zimno; brak = każdy (wyjazd typu zima liczy się zawsze jako zimno)",
-   "typ": "plaza | miasto | gory | zima | biznes; brak = każdy",
+   "klimat": "cieplo | umiarkowanie | zimno; brak = każdy (zaznaczone narty i snowboard liczą się zawsze jako zimno)",
    "transport": "samolot | samochod | pociag; brak = każdy",
    "sklad": "kobieta | mezczyzna | para | para_dzieci | sam_dzieci; brak = każdy",
    "min_dni": "pozycja od tylu dni wyjazdu; min_dni_podreczny = próg przy samym bagażu podręcznym",
@@ -18,7 +17,9 @@
    "max_podreczny": "górna granica ilości przy samym bagażu podręcznym (resztę się dopiera)",
    "jedn": "jednostka ilości, domyślnie szt.",
    "uwaga": "dopisek pod pozycją; przy lekach zawsze odsyła do lekarza lub farmaceuty, bez dawek i nazw handlowych",
-   "zrodlo": "kod źródła z `_meta.zrodla`"
+   "zrodlo": "kod źródła z `_meta.zrodla`",
+   "aktywnosci": "plaza | zwiedzanie | wedrowki | narty | rower | wodne | bieganie | kemping | praca | uroczystosc; pozycja jest, gdy zaznaczono choć jedną z nich; brak = zawsze (zastąpiło pole typ, 2026-11-18)",
+   "deszcz": "true = pozycja tylko gdy na miejscu często pada (>= 10 dni z opadem w miesiącu pobytu, wg klimat.json)"
   },
   "zrodla": {
    "kvz": {
@@ -95,6 +96,22 @@
   {
    "id": "miasto",
    "nazwa": "Miasto i zwiedzanie"
+  },
+  {
+   "id": "rower",
+   "nazwa": "Rower"
+  },
+  {
+   "id": "sport",
+   "nazwa": "Bieganie i siłownia"
+  },
+  {
+   "id": "kemping",
+   "nazwa": "Kemping i namiot"
+  },
+  {
+   "id": "uroczystosc",
+   "nazwa": "Uroczystość"
   },
   {
    "id": "biznes",
@@ -657,12 +674,12 @@
    "klimat": [
     "cieplo"
    ],
-   "typ": [
-    "miasto",
-    "gory",
-    "biznes"
-   ],
-   "zrodlo": "wlasne"
+   "zrodlo": "wlasne",
+   "aktywnosci": [
+    "zwiedzanie",
+    "wedrowki",
+    "praca"
+   ]
   },
   {
    "id": "stroj_wyjscie",
@@ -675,11 +692,11 @@
     "mezczyzna",
     "nastolatek"
    ],
-   "typ": [
-    "miasto"
-   ],
    "min_dni": 2,
-   "zrodlo": "wlasne"
+   "zrodlo": "wlasne",
+   "aktywnosci": [
+    "zwiedzanie"
+   ]
   },
   {
    "id": "pasek",
@@ -970,11 +987,11 @@
    "nazwa": "Ręcznik szybkoschnący, jeśli nocleg go nie daje",
    "kat": "higiena",
    "ilosc": "1",
-   "typ": [
-    "gory",
+   "zrodlo": "wlasne",
+   "aktywnosci": [
+    "wedrowki",
     "plaza"
-   ],
-   "zrodlo": "wlasne"
+   ]
   },
   {
    "id": "pranie",
@@ -1120,13 +1137,13 @@
     "cieplo",
     "umiarkowanie"
    ],
-   "typ": [
-    "plaza",
-    "gory",
-    "miasto"
-   ],
    "uwaga": "Przy dzieciach wybierz preparat odpowiedni do wieku. Zapytaj farmaceutę.",
-   "zrodlo": "orange"
+   "zrodlo": "orange",
+   "aktywnosci": [
+    "plaza",
+    "wedrowki",
+    "zwiedzanie"
+   ]
   },
   {
    "id": "ukaszenia",
@@ -1148,11 +1165,11 @@
     "cieplo",
     "umiarkowanie"
    ],
-   "typ": [
-    "gory",
+   "zrodlo": "triverna",
+   "aktywnosci": [
+    "wedrowki",
     "plaza"
-   ],
-   "zrodlo": "triverna"
+   ]
   },
   {
    "id": "woda_morska",
@@ -1190,11 +1207,11 @@
    "nazwa": "Plastry na pęcherze",
    "kat": "apteczka",
    "ilosc": "1",
-   "typ": [
-    "gory",
-    "miasto"
-   ],
-   "zrodlo": "wlasne"
+   "zrodlo": "wlasne",
+   "aktywnosci": [
+    "wedrowki",
+    "zwiedzanie"
+   ]
   },
   {
    "id": "telefon",
@@ -1271,32 +1288,32 @@
    "nazwa": "Aparat fotograficzny z ładowarką i kartą pamięci",
    "kat": "elektronika",
    "ilosc": "1",
-   "typ": [
-    "miasto",
-    "gory",
+   "zrodlo": "wlasne",
+   "aktywnosci": [
+    "zwiedzanie",
+    "wedrowki",
     "plaza"
-   ],
-   "zrodlo": "wlasne"
+   ]
   },
   {
    "id": "laptop",
    "nazwa": "Laptop z zasilaczem",
    "kat": "elektronika",
    "ilosc": "1",
-   "typ": [
-    "biznes"
-   ],
-   "zrodlo": "kvz"
+   "zrodlo": "kvz",
+   "aktywnosci": [
+    "praca"
+   ]
   },
   {
    "id": "adapter_prezentacja",
    "nazwa": "Przejściówka do rzutnika lub monitora (HDMI, USB-C)",
    "kat": "elektronika",
    "ilosc": "1",
-   "typ": [
-    "biznes"
-   ],
-   "zrodlo": "wlasne"
+   "zrodlo": "wlasne",
+   "aktywnosci": [
+    "praca"
+   ]
   },
   {
    "id": "ladowarka_auto",
@@ -1522,12 +1539,12 @@
    "kto": [
     "dziecko"
    ],
-   "typ": [
-    "miasto",
+   "zrodlo": "orange",
+   "aktywnosci": [
+    "zwiedzanie",
     "plaza",
-    "gory"
-   ],
-   "zrodlo": "orange"
+    "wedrowki"
+   ]
   },
   {
    "id": "nocnik",
@@ -1552,7 +1569,7 @@
     "dziecko"
    ],
    "zrodlo": "travelplanet",
-   "typ": [
+   "aktywnosci": [
     "plaza"
    ]
   },
@@ -1566,7 +1583,7 @@
     "niemowle"
    ],
    "zrodlo": "travelplanet",
-   "typ": [
+   "aktywnosci": [
     "plaza"
    ]
   },
@@ -1577,7 +1594,7 @@
    "ilosc": "1",
    "os": true,
    "zrodlo": "kvz",
-   "typ": [
+   "aktywnosci": [
     "plaza"
    ]
   },
@@ -1594,7 +1611,7 @@
     "dziecko"
    ],
    "zrodlo": "kvz",
-   "typ": [
+   "aktywnosci": [
     "plaza"
    ]
   },
@@ -1604,7 +1621,7 @@
    "kat": "plaza",
    "ilosc": "1",
    "zrodlo": "wlasne",
-   "typ": [
+   "aktywnosci": [
     "plaza"
    ]
   },
@@ -1619,7 +1636,7 @@
    ],
    "podreczny": "bez",
    "zrodlo": "triverna",
-   "typ": [
+   "aktywnosci": [
     "plaza"
    ]
   },
@@ -1637,7 +1654,7 @@
     "cieplo"
    ],
    "zrodlo": "triverna",
-   "typ": [
+   "aktywnosci": [
     "plaza"
    ]
   },
@@ -1652,7 +1669,7 @@
    ],
    "podreczny": "bez",
    "zrodlo": "triverna",
-   "typ": [
+   "aktywnosci": [
     "plaza"
    ]
   },
@@ -1666,7 +1683,7 @@
     "niemowle"
    ],
    "zrodlo": "triverna",
-   "typ": [
+   "aktywnosci": [
     "plaza"
    ]
   },
@@ -1676,7 +1693,7 @@
    "kat": "plaza",
    "ilosc": "1",
    "zrodlo": "wlasne",
-   "typ": [
+   "aktywnosci": [
     "plaza"
    ]
   },
@@ -1696,8 +1713,9 @@
     "cieplo"
    ],
    "zrodlo": "wlasne",
-   "typ": [
-    "plaza"
+   "aktywnosci": [
+    "plaza",
+    "wodne"
    ]
   },
   {
@@ -1712,7 +1730,7 @@
     "samochod"
    ],
    "zrodlo": "wlasne",
-   "typ": [
+   "aktywnosci": [
     "plaza"
    ]
   },
@@ -1728,8 +1746,8 @@
     "nastolatek"
    ],
    "zrodlo": "wlasne",
-   "typ": [
-    "gory"
+   "aktywnosci": [
+    "wedrowki"
    ]
   },
   {
@@ -1745,8 +1763,8 @@
     "dziecko"
    ],
    "zrodlo": "wlasne",
-   "typ": [
-    "gory"
+   "aktywnosci": [
+    "wedrowki"
    ]
   },
   {
@@ -1762,8 +1780,8 @@
     "dziecko"
    ],
    "zrodlo": "triverna",
-   "typ": [
-    "gory"
+   "aktywnosci": [
+    "wedrowki"
    ]
   },
   {
@@ -1779,8 +1797,8 @@
     "dziecko"
    ],
    "zrodlo": "wlasne",
-   "typ": [
-    "gory"
+   "aktywnosci": [
+    "wedrowki"
    ]
   },
   {
@@ -1795,8 +1813,9 @@
     "nastolatek"
    ],
    "zrodlo": "triverna",
-   "typ": [
-    "gory"
+   "aktywnosci": [
+    "wedrowki",
+    "kemping"
    ]
   },
   {
@@ -1812,8 +1831,8 @@
    ],
    "podreczny": "bez",
    "zrodlo": "wlasne",
-   "typ": [
-    "gory"
+   "aktywnosci": [
+    "wedrowki"
    ]
   },
   {
@@ -1829,8 +1848,8 @@
     "dziecko"
    ],
    "zrodlo": "wlasne",
-   "typ": [
-    "gory"
+   "aktywnosci": [
+    "wedrowki"
    ]
   },
   {
@@ -1839,8 +1858,8 @@
    "kat": "gory",
    "ilosc": "1",
    "zrodlo": "wlasne",
-   "typ": [
-    "gory"
+   "aktywnosci": [
+    "wedrowki"
    ]
   },
   {
@@ -1849,8 +1868,8 @@
    "kat": "gory",
    "ilosc": "1",
    "zrodlo": "wlasne",
-   "typ": [
-    "gory"
+   "aktywnosci": [
+    "wedrowki"
    ]
   },
   {
@@ -1859,8 +1878,8 @@
    "kat": "gory",
    "ilosc": "1",
    "zrodlo": "wlasne",
-   "typ": [
-    "gory"
+   "aktywnosci": [
+    "wedrowki"
    ]
   },
   {
@@ -1870,8 +1889,8 @@
    "ilosc": "1",
    "uwaga": "W Polsce GOPR i TOPR: 985 lub 601 100 300, w całej UE: 112.",
    "zrodlo": "wlasne",
-   "typ": [
-    "gory"
+   "aktywnosci": [
+    "wedrowki"
    ]
   },
   {
@@ -1883,8 +1902,8 @@
     "niemowle"
    ],
    "zrodlo": "wlasne",
-   "typ": [
-    "gory"
+   "aktywnosci": [
+    "wedrowki"
    ]
   },
   {
@@ -1901,8 +1920,8 @@
    ],
    "podreczny": "bez",
    "zrodlo": "wlasne",
-   "typ": [
-    "zima"
+   "aktywnosci": [
+    "narty"
    ]
   },
   {
@@ -1919,8 +1938,8 @@
    ],
    "podreczny": "bez",
    "zrodlo": "wlasne",
-   "typ": [
-    "zima"
+   "aktywnosci": [
+    "narty"
    ]
   },
   {
@@ -1936,8 +1955,8 @@
     "dziecko"
    ],
    "zrodlo": "wlasne",
-   "typ": [
-    "zima"
+   "aktywnosci": [
+    "narty"
    ]
   },
   {
@@ -1953,8 +1972,8 @@
     "dziecko"
    ],
    "zrodlo": "wlasne",
-   "typ": [
-    "zima"
+   "aktywnosci": [
+    "narty"
    ]
   },
   {
@@ -1970,8 +1989,8 @@
     "dziecko"
    ],
    "zrodlo": "wlasne",
-   "typ": [
-    "zima"
+   "aktywnosci": [
+    "narty"
    ]
   },
   {
@@ -1988,8 +2007,8 @@
    ],
    "jedn": "par",
    "zrodlo": "wlasne",
-   "typ": [
-    "zima"
+   "aktywnosci": [
+    "narty"
    ]
   },
   {
@@ -2005,8 +2024,8 @@
     "dziecko"
    ],
    "zrodlo": "wlasne",
-   "typ": [
-    "zima"
+   "aktywnosci": [
+    "narty"
    ]
   },
   {
@@ -2022,8 +2041,8 @@
     "dziecko"
    ],
    "zrodlo": "wlasne",
-   "typ": [
-    "zima"
+   "aktywnosci": [
+    "narty"
    ]
   },
   {
@@ -2032,8 +2051,8 @@
    "kat": "zima",
    "ilosc": "1",
    "zrodlo": "wlasne",
-   "typ": [
-    "zima"
+   "aktywnosci": [
+    "narty"
    ]
   },
   {
@@ -2042,8 +2061,8 @@
    "kat": "zima",
    "ilosc": "1",
    "zrodlo": "wlasne",
-   "typ": [
-    "zima"
+   "aktywnosci": [
+    "narty"
    ]
   },
   {
@@ -2059,8 +2078,8 @@
     "dziecko"
    ],
    "zrodlo": "wlasne",
-   "typ": [
-    "zima"
+   "aktywnosci": [
+    "narty"
    ]
   },
   {
@@ -2069,8 +2088,8 @@
    "kat": "miasto",
    "ilosc": "1",
    "zrodlo": "wlasne",
-   "typ": [
-    "miasto"
+   "aktywnosci": [
+    "zwiedzanie"
    ]
   },
   {
@@ -2079,8 +2098,8 @@
    "kat": "miasto",
    "ilosc": "1",
    "zrodlo": "wlasne",
-   "typ": [
-    "miasto"
+   "aktywnosci": [
+    "zwiedzanie"
    ]
   },
   {
@@ -2089,8 +2108,8 @@
    "kat": "miasto",
    "ilosc": "1",
    "zrodlo": "wlasne",
-   "typ": [
-    "miasto"
+   "aktywnosci": [
+    "zwiedzanie"
    ]
   },
   {
@@ -2102,8 +2121,8 @@
     "umiarkowanie"
    ],
    "zrodlo": "wlasne",
-   "typ": [
-    "miasto"
+   "aktywnosci": [
+    "zwiedzanie"
    ]
   },
   {
@@ -2112,8 +2131,8 @@
    "kat": "miasto",
    "ilosc": "1",
    "zrodlo": "wlasne",
-   "typ": [
-    "miasto"
+   "aktywnosci": [
+    "zwiedzanie"
    ]
   },
   {
@@ -2122,8 +2141,8 @@
    "kat": "miasto",
    "ilosc": "1",
    "zrodlo": "wlasne",
-   "typ": [
-    "miasto"
+   "aktywnosci": [
+    "zwiedzanie"
    ]
   },
   {
@@ -2137,8 +2156,8 @@
     "mezczyzna"
    ],
    "zrodlo": "wlasne",
-   "typ": [
-    "biznes"
+   "aktywnosci": [
+    "praca"
    ]
   },
   {
@@ -2153,8 +2172,8 @@
    ],
    "podreczny": "bez",
    "zrodlo": "wlasne",
-   "typ": [
-    "biznes"
+   "aktywnosci": [
+    "praca"
    ]
   },
   {
@@ -2169,8 +2188,8 @@
    ],
    "max_podreczny": 3,
    "zrodlo": "wlasne",
-   "typ": [
-    "biznes"
+   "aktywnosci": [
+    "praca"
    ]
   },
   {
@@ -2180,8 +2199,8 @@
    "ilosc": "1",
    "podreczny": "bez",
    "zrodlo": "wlasne",
-   "typ": [
-    "biznes"
+   "aktywnosci": [
+    "praca"
    ]
   },
   {
@@ -2190,8 +2209,8 @@
    "kat": "biznes",
    "ilosc": "1",
    "zrodlo": "wlasne",
-   "typ": [
-    "biznes"
+   "aktywnosci": [
+    "praca"
    ]
   },
   {
@@ -2200,8 +2219,8 @@
    "kat": "biznes",
    "ilosc": "1",
    "zrodlo": "wlasne",
-   "typ": [
-    "biznes"
+   "aktywnosci": [
+    "praca"
    ]
   },
   {
@@ -2210,8 +2229,8 @@
    "kat": "biznes",
    "ilosc": "1",
    "zrodlo": "wlasne",
-   "typ": [
-    "biznes"
+   "aktywnosci": [
+    "praca"
    ]
   },
   {
@@ -2350,20 +2369,379 @@
    "nazwa": "Ustaw automatyczną odpowiedź w poczcie",
    "kat": "przed_wyjazdem",
    "ilosc": "1",
-   "typ": [
-    "plaza",
-    "gory",
-    "zima",
-    "miasto"
-   ],
    "min_dni": 4,
-   "zrodlo": "wlasne"
+   "zrodlo": "wlasne",
+   "aktywnosci": [
+    "plaza",
+    "wedrowki",
+    "narty",
+    "zwiedzanie"
+   ]
   },
   {
    "id": "klucze",
    "nazwa": "Klucze do domu (i zapasowe u kogoś bliskiego)",
    "kat": "przed_wyjazdem",
    "ilosc": "1",
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "kask_rower",
+   "nazwa": "Kask rowerowy",
+   "kat": "rower",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ],
+   "aktywnosci": [
+    "rower"
+   ],
+   "uwaga": "Dziecko też, kask dobrany do obwodu głowy.",
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "rekawiczki_rower",
+   "nazwa": "Rękawiczki rowerowe",
+   "kat": "rower",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek"
+   ],
+   "aktywnosci": [
+    "rower"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "bidon_rower",
+   "nazwa": "Bidon na rower",
+   "kat": "rower",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ],
+   "aktywnosci": [
+    "rower"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "naprawa_rower",
+   "nazwa": "Zestaw naprawczy (łatki, dętka, pompka, klucze)",
+   "kat": "rower",
+   "ilosc": "1",
+   "aktywnosci": [
+    "rower"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "lampki_rower",
+   "nazwa": "Lampki rowerowe (przód i tył)",
+   "kat": "rower",
+   "ilosc": "1",
+   "aktywnosci": [
+    "rower"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "spodenki_rower",
+   "nazwa": "Spodenki rowerowe z wkładką",
+   "kat": "rower",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek"
+   ],
+   "aktywnosci": [
+    "rower"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "maska_rurka",
+   "nazwa": "Maska i rurka",
+   "kat": "plaza",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ],
+   "aktywnosci": [
+    "wodne"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "worek_wodoszczelny",
+   "nazwa": "Worek wodoszczelny na telefon i dokumenty",
+   "kat": "plaza",
+   "ilosc": "1",
+   "aktywnosci": [
+    "wodne"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "krem_wodoodporny",
+   "nazwa": "Krem z filtrem wodoodporny",
+   "kat": "plaza",
+   "ilosc": "1",
+   "aktywnosci": [
+    "wodne",
+    "plaza"
+   ],
+   "uwaga": "Po kąpieli nałóż go ponownie.",
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "buty_bieganie",
+   "nazwa": "Buty do biegania",
+   "kat": "sport",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek"
+   ],
+   "aktywnosci": [
+    "bieganie"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "stroj_bieganie",
+   "nazwa": "Strój sportowy (koszulka i spodenki)",
+   "kat": "sport",
+   "ilosc": "min(ceil(dni/2),3)",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek"
+   ],
+   "aktywnosci": [
+    "bieganie"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "zegarek_opaska",
+   "nazwa": "Zegarek lub opaska sportowa",
+   "kat": "sport",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek"
+   ],
+   "aktywnosci": [
+    "bieganie"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "opaska_telefon",
+   "nazwa": "Opaska na telefon",
+   "kat": "sport",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek"
+   ],
+   "aktywnosci": [
+    "bieganie"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "namiot",
+   "nazwa": "Namiot",
+   "kat": "kemping",
+   "ilosc": "1",
+   "aktywnosci": [
+    "kemping"
+   ],
+   "uwaga": "Sprawdź, czy mieści wszystkich i czy masz śledzie oraz stelaż.",
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "spiwor",
+   "nazwa": "Śpiwór",
+   "kat": "kemping",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ],
+   "aktywnosci": [
+    "kemping"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "mata",
+   "nazwa": "Mata lub karimata",
+   "kat": "kemping",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ],
+   "aktywnosci": [
+    "kemping"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "kuchenka",
+   "nazwa": "Kuchenka turystyczna z kartuszem",
+   "kat": "kemping",
+   "ilosc": "1",
+   "aktywnosci": [
+    "kemping"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "sztucce_kemping",
+   "nazwa": "Sztućce i kubek",
+   "kat": "kemping",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ],
+   "aktywnosci": [
+    "kemping"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "worki_kemping",
+   "nazwa": "Worki na śmieci",
+   "kat": "kemping",
+   "ilosc": "1",
+   "aktywnosci": [
+    "kemping"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "sznurek",
+   "nazwa": "Sznurek",
+   "kat": "kemping",
+   "ilosc": "1",
+   "aktywnosci": [
+    "kemping"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "stroj_uroczystosc",
+   "nazwa": "Strój na uroczystość",
+   "kat": "uroczystosc",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ],
+   "aktywnosci": [
+    "uroczystosc"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "buty_uroczystosc",
+   "nazwa": "Eleganckie buty",
+   "kat": "uroczystosc",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ],
+   "aktywnosci": [
+    "uroczystosc"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "prezent",
+   "nazwa": "Prezent",
+   "kat": "uroczystosc",
+   "ilosc": "1",
+   "aktywnosci": [
+    "uroczystosc"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "zaproszenie",
+   "nazwa": "Zaproszenie lub adres i godzina uroczystości",
+   "kat": "uroczystosc",
+   "ilosc": "1",
+   "aktywnosci": [
+    "uroczystosc"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "peleryna",
+   "nazwa": "Peleryna przeciwdeszczowa",
+   "kat": "ubrania",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ],
+   "deszcz": true,
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "woreczki_mokre",
+   "nazwa": "Woreczki foliowe na mokre rzeczy",
+   "kat": "ubrania",
+   "ilosc": "1",
+   "deszcz": true,
    "zrodlo": "wlasne"
   }
  ]

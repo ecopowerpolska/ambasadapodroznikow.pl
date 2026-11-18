@@ -1,11 +1,11 @@
 {
-  "$comment": "Progi astro-guard dla ambasadapodroznikow.pl. JS strony jest bundlowany, bez wysp (menu mobilne, okienko zgody; wpisy ok. 2,6 kB gzip). Budżet JS 3 → 6 kB gzip: narzędzia interaktywne (pomocnik pakowania) 2026-11-18 — strona pomocnika ma ok. 3,4 kB gzip, a audit-dist nie zna budżetu JS per trasa. Trasy bez menu nie istnieją, więc zeroJsRoutes puste — zero-JS nie dotyczy żadnej trasy.",
+  "$comment": "Progi astro-guard dla ambasadapodroznikow.pl. JS strony jest bundlowany, bez wysp (menu mobilne, okienko zgody; wpisy ok. 2,6 kB gzip). Budżet JS 3 → 6 → 7 kB gzip: narzędzia interaktywne (pomocnik pakowania) 2026-11-18, edytor listy, zapis i wgranie pliku (2026-11-18) — strona pomocnika ma ok. 3,4 kB gzip, a audit-dist nie zna budżetu JS per trasa. Trasy bez menu nie istnieją, więc zeroJsRoutes puste — zero-JS nie dotyczy żadnej trasy.",
   "static": {
     "maxIslandsPerFile": 3,
     "minAstroMajor": 6
   },
   "budget": {
-    "jsGzipKB": 6,
+    "jsGzipKB": 7,
     "cssGzipKB": 30,
     "htmlGzipKB": 25,
     "zeroJsRoutes": []

@@ -1,0 +1,2984 @@
+[
+{
+"n": "Albania",
+"en": "Durres",
+"cc": "AL",
+"k": "Durrës",
+"typ": "kraj",
+"a": [
+"albanii",
+"albania"
+]
+},
+{
+"n": "Andora",
+"en": "Andorra la Vella",
+"cc": "AD",
+"k": "Andorra la Vella",
+"typ": "kraj",
+"a": [
+"andory",
+"andorra"
+]
+},
+{
+"n": "Austria",
+"en": "Vienna",
+"cc": "AT",
+"k": "Wiedeń",
+"typ": "kraj",
+"a": [
+"austrii",
+"austria"
+]
+},
+{
+"n": "Belgia",
+"en": "Brussels",
+"cc": "BE",
+"k": "Bruksela",
+"typ": "kraj",
+"a": [
+"belgii",
+"belgium"
+]
+},
+{
+"n": "Bośnia i Hercegowina",
+"en": "Sarajevo",
+"cc": "BA",
+"k": "Sarajewo",
+"typ": "kraj",
+"a": [
+"bosni",
+"bosni i hercegowiny",
+"bosnia"
+]
+},
+{
+"n": "Bułgaria",
+"en": "Varna",
+"cc": "BG",
+"k": "Warna",
+"typ": "kraj",
+"a": [
+"bulgarii",
+"bulgaria"
+]
+},
+{
+"n": "Chorwacja",
+"en": "Split",
+"cc": "HR",
+"k": "Split",
+"typ": "kraj",
+"a": [
+"chorwacji",
+"croatia"
+]
+},
+{
+"n": "Czarnogóra",
+"en": "Budva",
+"cc": "ME",
+"k": "Budva",
+"typ": "kraj",
+"a": [
+"czarnogory",
+"montenegro"
+]
+},
+{
+"n": "Czechy",
+"en": "Prague",
+"cc": "CZ",
+"k": "Praga",
+"typ": "kraj",
+"a": [
+"czech",
+"czechia",
+"czech republic"
+]
+},
+{
+"n": "Dania",
+"en": "Copenhagen",
+"cc": "DK",
+"k": "Kopenhaga",
+"typ": "kraj",
+"a": [
+"danii",
+"denmark"
+]
+},
+{
+"n": "Estonia",
+"en": "Tallinn",
+"cc": "EE",
+"k": "Tallin",
+"typ": "kraj",
+"a": [
+"estonii",
+"estonia"
+]
+},
+{
+"n": "Finlandia",
+"en": "Helsinki",
+"cc": "FI",
+"k": "Helsinki",
+"typ": "kraj",
+"a": [
+"finlandii",
+"finland"
+]
+},
+{
+"n": "Francja",
+"en": "Paris",
+"cc": "FR",
+"k": "Paryż",
+"typ": "kraj",
+"a": [
+"francji",
+"france"
+]
+},
+{
+"n": "Grecja",
+"en": "Athens",
+"cc": "GR",
+"k": "Ateny",
+"typ": "kraj",
+"a": [
+"grecji",
+"greece"
+]
+},
+{
+"n": "Hiszpania",
+"en": "Malaga",
+"cc": "ES",
+"k": "Malaga (Costa del Sol)",
+"typ": "kraj",
+"a": [
+"hiszpanii",
+"spain",
+"espana"
+]
+},
+{
+"n": "Holandia",
+"en": "Amsterdam",
+"cc": "NL",
+"k": "Amsterdam",
+"typ": "kraj",
+"a": [
+"holandii",
+"holland",
+"netherlands",
+"niderlandy"
+]
+},
+{
+"n": "Irlandia",
+"en": "Dublin",
+"cc": "IE",
+"k": "Dublin",
+"typ": "kraj",
+"a": [
+"irlandii",
+"ireland"
+]
+},
+{
+"n": "Islandia",
+"en": "Reykjavik",
+"cc": "IS",
+"k": "Reykjavik",
+"typ": "kraj",
+"a": [
+"islandii",
+"iceland"
+]
+},
+{
+"n": "Litwa",
+"en": "Vilnius",
+"cc": "LT",
+"k": "Wilno",
+"typ": "kraj",
+"a": [
+"litwy",
+"lithuania"
+]
+},
+{
+"n": "Luksemburg",
+"en": "Luxembourg",
+"cc": "LU",
+"k": "Luksemburg",
+"typ": "kraj",
+"a": [
+"luksemburga",
+"luxembourg"
+]
+},
+{
+"n": "Łotwa",
+"en": "Riga",
+"cc": "LV",
+"k": "Ryga",
+"typ": "kraj",
+"a": [
+"lotwy",
+"latvia"
+]
+},
+{
+"n": "Macedonia Północna",
+"en": "Ohrid",
+"cc": "MK",
+"k": "Ochryda",
+"typ": "kraj",
+"a": [
+"macedonii",
+"macedonii polnocnej",
+"north macedonia",
+"macedonia"
+]
+},
+{
+"n": "Malta",
+"en": "Valletta",
+"cc": "MT",
+"k": "Valletta",
+"typ": "kraj",
+"a": [
+"malty"
+]
+},
+{
+"n": "Niemcy",
+"en": "Berlin",
+"cc": "DE",
+"k": "Berlin",
+"typ": "kraj",
+"a": [
+"niemiec",
+"germany",
+"deutschland"
+]
+},
+{
+"n": "Norwegia",
+"en": "Oslo",
+"cc": "NO",
+"k": "Oslo",
+"typ": "kraj",
+"a": [
+"norwegii",
+"norway"
+]
+},
+{
+"n": "Polska",
+"en": "Warsaw",
+"cc": "PL",
+"k": "Warszawa",
+"typ": "kraj",
+"a": [
+"polski",
+"poland"
+]
+},
+{
+"n": "Portugalia",
+"en": "Faro",
+"cc": "PT",
+"k": "Faro (Algarve)",
+"typ": "kraj",
+"a": [
+"portugalii",
+"portugal",
+"algarve"
+]
+},
+{
+"n": "Rumunia",
+"en": "Bucharest",
+"cc": "RO",
+"k": "Bukareszt",
+"typ": "kraj",
+"a": [
+"rumunii",
+"romania"
+]
+},
+{
+"n": "Serbia",
+"en": "Belgrade",
+"cc": "RS",
+"k": "Belgrad",
+"typ": "kraj",
+"a": [
+"serbii"
+]
+},
+{
+"n": "Słowacja",
+"en": "Bratislava",
+"cc": "SK",
+"k": "Bratysława",
+"typ": "kraj",
+"a": [
+"slowacji",
+"slovakia"
+]
+},
+{
+"n": "Słowenia",
+"en": "Ljubljana",
+"cc": "SI",
+"k": "Lublana",
+"typ": "kraj",
+"a": [
+"slowenii",
+"slovenia"
+]
+},
+{
+"n": "Szwajcaria",
+"en": "Zurich",
+"cc": "CH",
+"k": "Zurych",
+"typ": "kraj",
+"a": [
+"szwajcarii",
+"switzerland"
+]
+},
+{
+"n": "Szwecja",
+"en": "Stockholm",
+"cc": "SE",
+"k": "Sztokholm",
+"typ": "kraj",
+"a": [
+"szwecji",
+"sweden"
+]
+},
+{
+"n": "Turcja",
+"en": "Antalya",
+"cc": "TR",
+"k": "Antalya",
+"typ": "kraj",
+"a": [
+"turcji",
+"turkey",
+"turkiye"
+]
+},
+{
+"n": "Ukraina",
+"en": "Kyiv",
+"cc": "UA",
+"k": "Kijów",
+"typ": "kraj",
+"a": [
+"ukrainy",
+"ukraine"
+]
+},
+{
+"n": "Węgry",
+"en": "Budapest",
+"cc": "HU",
+"k": "Budapeszt",
+"typ": "kraj",
+"a": [
+"wegier",
+"hungary"
+]
+},
+{
+"n": "Wielka Brytania",
+"en": "London",
+"cc": "GB",
+"k": "Londyn",
+"typ": "kraj",
+"a": [
+"wielkiej brytanii",
+"anglia",
+"anglii",
+"uk",
+"united kingdom",
+"great britain",
+"england"
+]
+},
+{
+"n": "Włochy",
+"en": "Rome",
+"cc": "IT",
+"k": "Rzym",
+"typ": "kraj",
+"a": [
+"wloch",
+"italy",
+"italia"
+]
+},
+{
+"n": "Cypr",
+"en": "Paphos",
+"cc": "CY",
+"k": "Pafos",
+"typ": "kraj",
+"a": [
+"cypru",
+"cyprus"
+]
+},
+{
+"n": "Gruzja",
+"en": "Tbilisi",
+"cc": "GE",
+"k": "Tbilisi",
+"typ": "kraj",
+"a": [
+"gruzji",
+"georgia"
+]
+},
+{
+"n": "Armenia",
+"en": "Yerevan",
+"cc": "AM",
+"k": "Erywań",
+"typ": "kraj",
+"a": [
+"armenii"
+]
+},
+{
+"n": "Azerbejdżan",
+"en": "Baku",
+"cc": "AZ",
+"k": "Baku",
+"typ": "kraj",
+"a": [
+"azerbejdzanu",
+"azerbaijan"
+]
+},
+{
+"n": "Malediwy",
+"en": "Male",
+"cc": "MV",
+"k": "Malé",
+"typ": "kraj",
+"a": [
+"malediwow",
+"maldives"
+]
+},
+{
+"n": "Seszele",
+"en": "Victoria",
+"cc": "SC",
+"k": "Victoria (Mahé)",
+"typ": "kraj",
+"a": [
+"seszeli",
+"seychelles"
+]
+},
+{
+"n": "Mauritius",
+"en": "Port Louis",
+"cc": "MU",
+"k": "Port Louis",
+"typ": "kraj",
+"a": [
+"mauritiusa",
+"mauritiusu"
+]
+},
+{
+"n": "Zanzibar",
+"en": "Zanzibar City",
+"cc": "TZ",
+"k": "Zanzibar",
+"typ": "kraj",
+"a": [
+"zanzibaru"
+],
+"la": -6.16,
+"lo": 39.19
+},
+{
+"n": "Bali",
+"en": "Denpasar",
+"cc": "ID",
+"k": "Denpasar",
+"typ": "kraj",
+"a": [
+"bali",
+"balii"
+]
+},
+{
+"n": "Teneryfa",
+"en": "Santa Cruz de Tenerife",
+"cc": "ES",
+"k": "Santa Cruz de Tenerife",
+"typ": "kraj",
+"a": [
+"teneryfy",
+"tenerife",
+"kanary",
+"wysp kanaryjskich",
+"canary islands"
+]
+},
+{
+"n": "Gran Canaria",
+"en": "Las Palmas de Gran Canaria",
+"cc": "ES",
+"k": "Las Palmas",
+"typ": "kraj",
+"a": [
+"gran canarii"
+]
+},
+{
+"n": "Fuerteventura",
+"en": "Puerto del Rosario",
+"cc": "ES",
+"k": "Puerto del Rosario",
+"typ": "kraj",
+"a": [
+"fuerteventury"
+]
+},
+{
+"n": "Lanzarote",
+"en": "Arrecife",
+"cc": "ES",
+"k": "Arrecife",
+"typ": "kraj",
+"a": [
+"lanzarote"
+]
+},
+{
+"n": "Madera",
+"en": "Funchal",
+"cc": "PT",
+"k": "Funchal",
+"typ": "kraj",
+"a": [
+"madery",
+"madeira"
+]
+},
+{
+"n": "Majorka",
+"en": "Palma",
+"cc": "ES",
+"k": "Palma de Mallorca",
+"typ": "kraj",
+"a": [
+"majorki",
+"mallorca",
+"baleary",
+"balearow",
+"balearics"
+]
+},
+{
+"n": "Ibiza",
+"en": "Ibiza",
+"cc": "ES",
+"k": "Ibiza",
+"typ": "kraj",
+"a": [
+"ibizy"
+]
+},
+{
+"n": "Kreta",
+"en": "Heraklion",
+"cc": "GR",
+"k": "Heraklion",
+"typ": "kraj",
+"a": [
+"krety",
+"crete"
+]
+},
+{
+"n": "Rodos",
+"en": "Rhodes",
+"cc": "GR",
+"k": "Rodos",
+"typ": "kraj",
+"a": [
+"rodos",
+"rodosu"
+]
+},
+{
+"n": "Korfu",
+"en": "Corfu",
+"cc": "GR",
+"k": "Korfu",
+"typ": "kraj",
+"a": [
+"korfu"
+]
+},
+{
+"n": "Sycylia",
+"en": "Palermo",
+"cc": "IT",
+"k": "Palermo",
+"typ": "kraj",
+"a": [
+"sycylii",
+"sicily"
+]
+},
+{
+"n": "Sardynia",
+"en": "Cagliari",
+"cc": "IT",
+"k": "Cagliari",
+"typ": "kraj",
+"a": [
+"sardynii",
+"sardinia"
+]
+},
+{
+"n": "Korsyka",
+"en": "Ajaccio",
+"cc": "FR",
+"k": "Ajaccio",
+"typ": "kraj",
+"a": [
+"korsyki",
+"corsica"
+]
+},
+{
+"n": "Maroko",
+"en": "Marrakesh",
+"cc": "MA",
+"k": "Marrakesz",
+"typ": "kraj",
+"a": [
+"maroka",
+"morocco"
+]
+},
+{
+"n": "Tunezja",
+"en": "Hammamet",
+"cc": "TN",
+"k": "Hammamet",
+"typ": "kraj",
+"a": [
+"tunezji",
+"tunisia"
+]
+},
+{
+"n": "Egipt",
+"en": "Hurghada",
+"cc": "EG",
+"k": "Hurghada",
+"typ": "kraj",
+"a": [
+"egiptu",
+"egypt"
+]
+},
+{
+"n": "Kenia",
+"en": "Nairobi",
+"cc": "KE",
+"k": "Nairobi",
+"typ": "kraj",
+"a": [
+"kenii",
+"kenya"
+]
+},
+{
+"n": "Tanzania",
+"en": "Dar es Salaam",
+"cc": "TZ",
+"k": "Dar es Salaam",
+"typ": "kraj",
+"a": [
+"tanzanii"
+]
+},
+{
+"n": "RPA",
+"en": "Cape Town",
+"cc": "ZA",
+"k": "Kapsztad",
+"typ": "kraj",
+"a": [
+"rpa",
+"poludniowej afryki",
+"south africa",
+"republika poludniowej afryki"
+]
+},
+{
+"n": "Namibia",
+"en": "Windhoek",
+"cc": "NA",
+"k": "Windhuk",
+"typ": "kraj",
+"a": [
+"namibii"
+]
+},
+{
+"n": "Senegal",
+"en": "Dakar",
+"cc": "SN",
+"k": "Dakar",
+"typ": "kraj",
+"a": [
+"senegalu"
+]
+},
+{
+"n": "Republika Zielonego Przylądka",
+"en": "Espargos",
+"cc": "CV",
+"k": "Sal (Espargos)",
+"typ": "kraj",
+"a": [
+"kabo verde",
+"wysp zielonego przyladka",
+"cape verde",
+"zielony przyladek"
+]
+},
+{
+"n": "Etiopia",
+"en": "Addis Ababa",
+"cc": "ET",
+"k": "Addis Abeba",
+"typ": "kraj",
+"a": [
+"etiopii",
+"ethiopia"
+]
+},
+{
+"n": "Algieria",
+"en": "Algiers",
+"cc": "DZ",
+"k": "Algier",
+"typ": "kraj",
+"a": [
+"algierii",
+"algeria"
+]
+},
+{
+"n": "Madagaskar",
+"en": "Antananarivo",
+"cc": "MG",
+"k": "Antananarywa",
+"typ": "kraj",
+"a": [
+"madagaskaru"
+]
+},
+{
+"n": "Jordania",
+"en": "Amman",
+"cc": "JO",
+"k": "Amman",
+"typ": "kraj",
+"a": [
+"jordanii",
+"jordan"
+]
+},
+{
+"n": "Izrael",
+"en": "Tel Aviv",
+"cc": "IL",
+"k": "Tel Awiw",
+"typ": "kraj",
+"a": [
+"izraela",
+"israel"
+]
+},
+{
+"n": "Liban",
+"en": "Beirut",
+"cc": "LB",
+"k": "Bejrut",
+"typ": "kraj",
+"a": [
+"libanu",
+"lebanon"
+]
+},
+{
+"n": "Zjednoczone Emiraty Arabskie",
+"en": "Dubai",
+"cc": "AE",
+"k": "Dubaj",
+"typ": "kraj",
+"a": [
+"emiratow",
+"emiraty",
+"zea",
+"uae",
+"emirates"
+]
+},
+{
+"n": "Oman",
+"en": "Muscat",
+"cc": "OM",
+"k": "Maskat",
+"typ": "kraj",
+"a": [
+"omanu"
+]
+},
+{
+"n": "Katar",
+"en": "Doha",
+"cc": "QA",
+"k": "Doha",
+"typ": "kraj",
+"a": [
+"kataru",
+"qatar"
+]
+},
+{
+"n": "Arabia Saudyjska",
+"en": "Riyadh",
+"cc": "SA",
+"k": "Rijad",
+"typ": "kraj",
+"a": [
+"arabii saudyjskiej",
+"saudi arabia"
+]
+},
+{
+"n": "Indie",
+"en": "Delhi",
+"cc": "IN",
+"k": "Delhi",
+"typ": "kraj",
+"a": [
+"indii",
+"india"
+]
+},
+{
+"n": "Sri Lanka",
+"en": "Colombo",
+"cc": "LK",
+"k": "Kolombo",
+"typ": "kraj",
+"a": [
+"sri lanki",
+"cejlon"
+]
+},
+{
+"n": "Nepal",
+"en": "Kathmandu",
+"cc": "NP",
+"k": "Katmandu",
+"typ": "kraj",
+"a": [
+"nepalu"
+]
+},
+{
+"n": "Tajlandia",
+"en": "Bangkok",
+"cc": "TH",
+"k": "Bangkok",
+"typ": "kraj",
+"a": [
+"tajlandii",
+"thailand"
+]
+},
+{
+"n": "Wietnam",
+"en": "Hanoi",
+"cc": "VN",
+"k": "Hanoi",
+"typ": "kraj",
+"a": [
+"wietnamu",
+"vietnam"
+]
+},
+{
+"n": "Kambodża",
+"en": "Siem Reap",
+"cc": "KH",
+"k": "Siem Reap",
+"typ": "kraj",
+"a": [
+"kambodzy",
+"cambodia"
+]
+},
+{
+"n": "Laos",
+"en": "Luang Prabang",
+"cc": "LA",
+"k": "Luang Prabang",
+"typ": "kraj",
+"a": [
+"laosu"
+]
+},
+{
+"n": "Malezja",
+"en": "Kuala Lumpur",
+"cc": "MY",
+"k": "Kuala Lumpur",
+"typ": "kraj",
+"a": [
+"malezji",
+"malaysia"
+]
+},
+{
+"n": "Singapur",
+"en": "Singapore",
+"cc": "SG",
+"k": "Singapur",
+"typ": "kraj",
+"a": [
+"singapuru",
+"singapore"
+]
+},
+{
+"n": "Indonezja",
+"en": "Jakarta",
+"cc": "ID",
+"k": "Dżakarta",
+"typ": "kraj",
+"a": [
+"indonezji",
+"indonesia"
+]
+},
+{
+"n": "Filipiny",
+"en": "Manila",
+"cc": "PH",
+"k": "Manila",
+"typ": "kraj",
+"a": [
+"filipin",
+"philippines"
+]
+},
+{
+"n": "Chiny",
+"en": "Beijing",
+"cc": "CN",
+"k": "Pekin",
+"typ": "kraj",
+"a": [
+"chin",
+"china"
+]
+},
+{
+"n": "Japonia",
+"en": "Tokyo",
+"cc": "JP",
+"k": "Tokio",
+"typ": "kraj",
+"a": [
+"japonii",
+"japan"
+]
+},
+{
+"n": "Korea Południowa",
+"en": "Seoul",
+"cc": "KR",
+"k": "Seul",
+"typ": "kraj",
+"a": [
+"korei",
+"korei poludniowej",
+"south korea",
+"korea"
+]
+},
+{
+"n": "Tajwan",
+"en": "Taipei",
+"cc": "TW",
+"k": "Tajpej",
+"typ": "kraj",
+"a": [
+"tajwanu",
+"taiwan"
+]
+},
+{
+"n": "Mongolia",
+"en": "Ulaanbaatar",
+"cc": "MN",
+"k": "Ułan Bator",
+"typ": "kraj",
+"a": [
+"mongolii"
+]
+},
+{
+"n": "Uzbekistan",
+"en": "Samarkand",
+"cc": "UZ",
+"k": "Samarkanda",
+"typ": "kraj",
+"a": [
+"uzbekistanu"
+]
+},
+{
+"n": "Kazachstan",
+"en": "Almaty",
+"cc": "KZ",
+"k": "Ałmaty",
+"typ": "kraj",
+"a": [
+"kazachstanu",
+"kazakhstan"
+]
+},
+{
+"n": "Kirgistan",
+"en": "Bishkek",
+"cc": "KG",
+"k": "Biszkek",
+"typ": "kraj",
+"a": [
+"kirgistanu",
+"kyrgyzstan"
+]
+},
+{
+"n": "Stany Zjednoczone",
+"en": "New York",
+"cc": "US",
+"k": "Nowy Jork",
+"typ": "kraj",
+"a": [
+"stanow zjednoczonych",
+"usa",
+"stanow",
+"ameryki",
+"ameryka",
+"united states",
+"america"
+]
+},
+{
+"n": "Kanada",
+"en": "Toronto",
+"cc": "CA",
+"k": "Toronto",
+"typ": "kraj",
+"a": [
+"kanady",
+"canada"
+]
+},
+{
+"n": "Meksyk",
+"en": "Cancun",
+"cc": "MX",
+"k": "Cancún",
+"typ": "kraj",
+"a": [
+"meksyku",
+"mexico"
+]
+},
+{
+"n": "Kuba",
+"en": "Havana",
+"cc": "CU",
+"k": "Hawana",
+"typ": "kraj",
+"a": [
+"kuby",
+"cuba"
+]
+},
+{
+"n": "Dominikana",
+"en": "Punta Cana",
+"cc": "DO",
+"k": "Punta Cana",
+"typ": "kraj",
+"a": [
+"dominikany",
+"dominican republic",
+"dominikanie"
+]
+},
+{
+"n": "Jamajka",
+"en": "Montego Bay",
+"cc": "JM",
+"k": "Montego Bay",
+"typ": "kraj",
+"a": [
+"jamajki",
+"jamaica"
+]
+},
+{
+"n": "Kostaryka",
+"en": "San Jose",
+"cc": "CR",
+"k": "San José",
+"typ": "kraj",
+"a": [
+"kostaryki",
+"costa rica"
+]
+},
+{
+"n": "Panama",
+"en": "Panama City",
+"cc": "PA",
+"k": "Panama",
+"typ": "kraj",
+"a": [
+"panamy"
+]
+},
+{
+"n": "Bahamy",
+"en": "Nassau",
+"cc": "BS",
+"k": "Nassau",
+"typ": "kraj",
+"a": [
+"bahamow",
+"bahamas"
+]
+},
+{
+"n": "Barbados",
+"en": "Bridgetown",
+"cc": "BB",
+"k": "Bridgetown",
+"typ": "kraj",
+"a": [
+"barbadosu"
+]
+},
+{
+"n": "Brazylia",
+"en": "Rio de Janeiro",
+"cc": "BR",
+"k": "Rio de Janeiro",
+"typ": "kraj",
+"a": [
+"brazylii",
+"brazil"
+]
+},
+{
+"n": "Argentyna",
+"en": "Buenos Aires",
+"cc": "AR",
+"k": "Buenos Aires",
+"typ": "kraj",
+"a": [
+"argentyny",
+"argentina"
+]
+},
+{
+"n": "Chile",
+"en": "Santiago",
+"cc": "CL",
+"k": "Santiago",
+"typ": "kraj",
+"a": [
+"chile"
+]
+},
+{
+"n": "Peru",
+"en": "Lima",
+"cc": "PE",
+"k": "Lima",
+"typ": "kraj",
+"a": [
+"peru"
+]
+},
+{
+"n": "Kolumbia",
+"en": "Cartagena",
+"cc": "CO",
+"k": "Cartagena",
+"typ": "kraj",
+"a": [
+"kolumbii",
+"colombia"
+]
+},
+{
+"n": "Ekwador",
+"en": "Quito",
+"cc": "EC",
+"k": "Quito",
+"typ": "kraj",
+"a": [
+"ekwadoru",
+"ecuador"
+]
+},
+{
+"n": "Boliwia",
+"en": "La Paz",
+"cc": "BO",
+"k": "La Paz",
+"typ": "kraj",
+"a": [
+"boliwii",
+"bolivia"
+]
+},
+{
+"n": "Urugwaj",
+"en": "Montevideo",
+"cc": "UY",
+"k": "Montevideo",
+"typ": "kraj",
+"a": [
+"urugwaju",
+"uruguay"
+]
+},
+{
+"n": "Australia",
+"en": "Sydney",
+"cc": "AU",
+"k": "Sydney",
+"typ": "kraj",
+"a": [
+"australii"
+]
+},
+{
+"n": "Nowa Zelandia",
+"en": "Auckland",
+"cc": "NZ",
+"k": "Auckland",
+"typ": "kraj",
+"a": [
+"nowej zelandii",
+"new zealand"
+]
+},
+{
+"n": "Fidżi",
+"en": "Nadi",
+"cc": "FJ",
+"k": "Nadi",
+"typ": "kraj",
+"a": [
+"fidzi",
+"fiji"
+]
+},
+{
+"n": "Polinezja Francuska",
+"en": "Papeete",
+"cc": "PF",
+"k": "Papeete",
+"typ": "kraj",
+"a": [
+"polinezji",
+"polinezji francuskiej",
+"tahiti",
+"french polynesia"
+]
+},
+{
+"n": "Rzym",
+"en": "Rome",
+"cc": "IT",
+"k": "Włochy",
+"typ": "miasto",
+"a": [
+"roma"
+]
+},
+{
+"n": "Wenecja",
+"en": "Venice",
+"cc": "IT",
+"k": "Włochy",
+"typ": "miasto",
+"a": [
+"venezia"
+]
+},
+{
+"n": "Florencja",
+"en": "Florence",
+"cc": "IT",
+"k": "Włochy",
+"typ": "miasto",
+"a": [
+"firenze"
+]
+},
+{
+"n": "Neapol",
+"en": "Naples",
+"cc": "IT",
+"k": "Włochy",
+"typ": "miasto",
+"a": [
+"napoli"
+]
+},
+{
+"n": "Mediolan",
+"en": "Milan",
+"cc": "IT",
+"k": "Włochy",
+"typ": "miasto",
+"a": [
+"milano"
+]
+},
+{
+"n": "Turyn",
+"en": "Turin",
+"cc": "IT",
+"k": "Włochy",
+"typ": "miasto",
+"a": [
+"torino"
+]
+},
+{
+"n": "Werona",
+"en": "Verona",
+"cc": "IT",
+"k": "Włochy",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Piza",
+"en": "Pisa",
+"cc": "IT",
+"k": "Włochy",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Bolonia",
+"en": "Bologna",
+"cc": "IT",
+"k": "Włochy",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Bari",
+"en": "Bari",
+"cc": "IT",
+"k": "Włochy",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Palermo",
+"en": "Palermo",
+"cc": "IT",
+"k": "Włochy",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Barcelona",
+"en": "Barcelona",
+"cc": "ES",
+"k": "Hiszpania",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Madryt",
+"en": "Madrid",
+"cc": "ES",
+"k": "Hiszpania",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Sewilla",
+"en": "Seville",
+"cc": "ES",
+"k": "Hiszpania",
+"typ": "miasto",
+"a": [
+"sevilla"
+]
+},
+{
+"n": "Malaga",
+"en": "Malaga",
+"cc": "ES",
+"k": "Hiszpania",
+"typ": "miasto",
+"a": [
+"costa del sol"
+]
+},
+{
+"n": "Walencja",
+"en": "Valencia",
+"cc": "ES",
+"k": "Hiszpania",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Granada",
+"en": "Granada",
+"cc": "ES",
+"k": "Hiszpania",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Palma de Mallorca",
+"en": "Palma",
+"cc": "ES",
+"k": "Hiszpania",
+"typ": "miasto",
+"a": [
+"palma",
+"majorka"
+]
+},
+{
+"n": "Lizbona",
+"en": "Lisbon",
+"cc": "PT",
+"k": "Portugalia",
+"typ": "miasto",
+"a": [
+"lisboa"
+]
+},
+{
+"n": "Porto",
+"en": "Porto",
+"cc": "PT",
+"k": "Portugalia",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Faro",
+"en": "Faro",
+"cc": "PT",
+"k": "Portugalia",
+"typ": "miasto",
+"a": [
+"algarve"
+]
+},
+{
+"n": "Funchal",
+"en": "Funchal",
+"cc": "PT",
+"k": "Portugalia",
+"typ": "miasto",
+"a": [
+"madera"
+]
+},
+{
+"n": "Paryż",
+"en": "Paris",
+"cc": "FR",
+"k": "Francja",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Nicea",
+"en": "Nice",
+"cc": "FR",
+"k": "Francja",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Cannes",
+"en": "Cannes",
+"cc": "FR",
+"k": "Francja",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Marsylia",
+"en": "Marseille",
+"cc": "FR",
+"k": "Francja",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Lyon",
+"en": "Lyon",
+"cc": "FR",
+"k": "Francja",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Chamonix",
+"en": "Chamonix",
+"cc": "FR",
+"k": "Francja",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Londyn",
+"en": "London",
+"cc": "GB",
+"k": "Wielka Brytania",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Edynburg",
+"en": "Edinburgh",
+"cc": "GB",
+"k": "Wielka Brytania",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Dublin",
+"en": "Dublin",
+"cc": "IE",
+"k": "Irlandia",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Amsterdam",
+"en": "Amsterdam",
+"cc": "NL",
+"k": "Holandia",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Bruksela",
+"en": "Brussels",
+"cc": "BE",
+"k": "Belgia",
+"typ": "miasto",
+"a": [
+"brussel",
+"bruxelles"
+]
+},
+{
+"n": "Brugia",
+"en": "Bruges",
+"cc": "BE",
+"k": "Belgia",
+"typ": "miasto",
+"a": [
+"brugge"
+],
+"la": 51.21,
+"lo": 3.22
+},
+{
+"n": "Berlin",
+"en": "Berlin",
+"cc": "DE",
+"k": "Niemcy",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Monachium",
+"en": "Munich",
+"cc": "DE",
+"k": "Niemcy",
+"typ": "miasto",
+"a": [
+"munchen"
+]
+},
+{
+"n": "Hamburg",
+"en": "Hamburg",
+"cc": "DE",
+"k": "Niemcy",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Kolonia",
+"en": "Cologne",
+"cc": "DE",
+"k": "Niemcy",
+"typ": "miasto",
+"a": [
+"koln"
+]
+},
+{
+"n": "Frankfurt",
+"en": "Frankfurt",
+"cc": "DE",
+"k": "Niemcy",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Drezno",
+"en": "Dresden",
+"cc": "DE",
+"k": "Niemcy",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Wiedeń",
+"en": "Vienna",
+"cc": "AT",
+"k": "Austria",
+"typ": "miasto",
+"a": [
+"wien"
+]
+},
+{
+"n": "Salzburg",
+"en": "Salzburg",
+"cc": "AT",
+"k": "Austria",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Innsbruck",
+"en": "Innsbruck",
+"cc": "AT",
+"k": "Austria",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Zurych",
+"en": "Zurich",
+"cc": "CH",
+"k": "Szwajcaria",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Genewa",
+"en": "Geneva",
+"cc": "CH",
+"k": "Szwajcaria",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Praga",
+"en": "Prague",
+"cc": "CZ",
+"k": "Czechy",
+"typ": "miasto",
+"a": [
+"praha"
+]
+},
+{
+"n": "Budapeszt",
+"en": "Budapest",
+"cc": "HU",
+"k": "Węgry",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Bratysława",
+"en": "Bratislava",
+"cc": "SK",
+"k": "Słowacja",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Lublana",
+"en": "Ljubljana",
+"cc": "SI",
+"k": "Słowenia",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Zagrzeb",
+"en": "Zagreb",
+"cc": "HR",
+"k": "Chorwacja",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Split",
+"en": "Split",
+"cc": "HR",
+"k": "Chorwacja",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Dubrownik",
+"en": "Dubrovnik",
+"cc": "HR",
+"k": "Chorwacja",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Budva",
+"en": "Budva",
+"cc": "ME",
+"k": "Czarnogóra",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Kotor",
+"en": "Kotor",
+"cc": "ME",
+"k": "Czarnogóra",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Sarajewo",
+"en": "Sarajevo",
+"cc": "BA",
+"k": "Bośnia i Hercegowina",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Belgrad",
+"en": "Belgrade",
+"cc": "RS",
+"k": "Serbia",
+"typ": "miasto",
+"a": [
+"beograd"
+]
+},
+{
+"n": "Bukareszt",
+"en": "Bucharest",
+"cc": "RO",
+"k": "Rumunia",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Sofia",
+"en": "Sofia",
+"cc": "BG",
+"k": "Bułgaria",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Warna",
+"en": "Varna",
+"cc": "BG",
+"k": "Bułgaria",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Burgas",
+"en": "Burgas",
+"cc": "BG",
+"k": "Bułgaria",
+"typ": "miasto",
+"a": [
+"slonecznybrzeg",
+"sloneczny brzeg"
+]
+},
+{
+"n": "Tirana",
+"en": "Tirana",
+"cc": "AL",
+"k": "Albania",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Ateny",
+"en": "Athens",
+"cc": "GR",
+"k": "Grecja",
+"typ": "miasto",
+"a": [
+"athina"
+]
+},
+{
+"n": "Saloniki",
+"en": "Thessaloniki",
+"cc": "GR",
+"k": "Grecja",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Santorini",
+"en": "Santorini",
+"cc": "GR",
+"k": "Grecja",
+"typ": "miasto",
+"a": [
+"thira"
+],
+"la": 36.39,
+"lo": 25.46
+},
+{
+"n": "Mykonos",
+"en": "Mykonos",
+"cc": "GR",
+"k": "Grecja",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Zakynthos",
+"en": "Zakynthos",
+"cc": "GR",
+"k": "Grecja",
+"typ": "miasto",
+"a": [
+"zante"
+]
+},
+{
+"n": "Korfu",
+"en": "Corfu",
+"cc": "GR",
+"k": "Grecja",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Rodos",
+"en": "Rhodes",
+"cc": "GR",
+"k": "Grecja",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Kos",
+"en": "Kos",
+"cc": "GR",
+"k": "Grecja",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Heraklion",
+"en": "Heraklion",
+"cc": "GR",
+"k": "Grecja",
+"typ": "miasto",
+"a": [
+"kreta"
+]
+},
+{
+"n": "Stambuł",
+"en": "Istanbul",
+"cc": "TR",
+"k": "Turcja",
+"typ": "miasto",
+"a": [
+"istanbul"
+]
+},
+{
+"n": "Antalya",
+"en": "Antalya",
+"cc": "TR",
+"k": "Turcja",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Alanya",
+"en": "Alanya",
+"cc": "TR",
+"k": "Turcja",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Bodrum",
+"en": "Bodrum",
+"cc": "TR",
+"k": "Turcja",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Tbilisi",
+"en": "Tbilisi",
+"cc": "GE",
+"k": "Gruzja",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Batumi",
+"en": "Batumi",
+"cc": "GE",
+"k": "Gruzja",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Larnaka",
+"en": "Larnaca",
+"cc": "CY",
+"k": "Cypr",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Pafos",
+"en": "Paphos",
+"cc": "CY",
+"k": "Cypr",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Ajia Napa",
+"en": "Ayia Napa",
+"cc": "CY",
+"k": "Cypr",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Valletta",
+"en": "Valletta",
+"cc": "MT",
+"k": "Malta",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Reykjavik",
+"en": "Reykjavik",
+"cc": "IS",
+"k": "Islandia",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Oslo",
+"en": "Oslo",
+"cc": "NO",
+"k": "Norwegia",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Bergen",
+"en": "Bergen",
+"cc": "NO",
+"k": "Norwegia",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Tromsø",
+"en": "Tromso",
+"cc": "NO",
+"k": "Norwegia",
+"typ": "miasto",
+"a": [
+"tromso"
+]
+},
+{
+"n": "Sztokholm",
+"en": "Stockholm",
+"cc": "SE",
+"k": "Szwecja",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Göteborg",
+"en": "Gothenburg",
+"cc": "SE",
+"k": "Szwecja",
+"typ": "miasto",
+"a": [
+"goteborg"
+]
+},
+{
+"n": "Kopenhaga",
+"en": "Copenhagen",
+"cc": "DK",
+"k": "Dania",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Helsinki",
+"en": "Helsinki",
+"cc": "FI",
+"k": "Finlandia",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Rovaniemi",
+"en": "Rovaniemi",
+"cc": "FI",
+"k": "Finlandia",
+"typ": "miasto",
+"a": [
+"laponia"
+]
+},
+{
+"n": "Tallin",
+"en": "Tallinn",
+"cc": "EE",
+"k": "Estonia",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Ryga",
+"en": "Riga",
+"cc": "LV",
+"k": "Łotwa",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Wilno",
+"en": "Vilnius",
+"cc": "LT",
+"k": "Litwa",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Kijów",
+"en": "Kyiv",
+"cc": "UA",
+"k": "Ukraina",
+"typ": "miasto",
+"a": [
+"kiev"
+]
+},
+{
+"n": "Lwów",
+"en": "Lviv",
+"cc": "UA",
+"k": "Ukraina",
+"typ": "miasto",
+"a": [
+"lwow"
+]
+},
+{
+"n": "Nowy Jork",
+"en": "New York",
+"cc": "US",
+"k": "Stany Zjednoczone",
+"typ": "miasto",
+"a": [
+"nyc",
+"new york city",
+"manhattan"
+]
+},
+{
+"n": "Los Angeles",
+"en": "Los Angeles",
+"cc": "US",
+"k": "Stany Zjednoczone",
+"typ": "miasto",
+"a": [
+"la"
+]
+},
+{
+"n": "Miami",
+"en": "Miami",
+"cc": "US",
+"k": "Stany Zjednoczone",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Las Vegas",
+"en": "Las Vegas",
+"cc": "US",
+"k": "Stany Zjednoczone",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "San Francisco",
+"en": "San Francisco",
+"cc": "US",
+"k": "Stany Zjednoczone",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Chicago",
+"en": "Chicago",
+"cc": "US",
+"k": "Stany Zjednoczone",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Orlando",
+"en": "Orlando",
+"cc": "US",
+"k": "Stany Zjednoczone",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Honolulu",
+"en": "Honolulu",
+"cc": "US",
+"k": "Stany Zjednoczone",
+"typ": "miasto",
+"a": [
+"hawaje",
+"hawaii"
+]
+},
+{
+"n": "Toronto",
+"en": "Toronto",
+"cc": "CA",
+"k": "Kanada",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Vancouver",
+"en": "Vancouver",
+"cc": "CA",
+"k": "Kanada",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Cancún",
+"en": "Cancun",
+"cc": "MX",
+"k": "Meksyk",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Hawana",
+"en": "Havana",
+"cc": "CU",
+"k": "Kuba",
+"typ": "miasto",
+"a": [
+"la habana"
+]
+},
+{
+"n": "Punta Cana",
+"en": "Punta Cana",
+"cc": "DO",
+"k": "Dominikana",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Lima",
+"en": "Lima",
+"cc": "PE",
+"k": "Peru",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Cusco",
+"en": "Cusco",
+"cc": "PE",
+"k": "Peru",
+"typ": "miasto",
+"a": [
+"cuzco"
+]
+},
+{
+"n": "Rio de Janeiro",
+"en": "Rio de Janeiro",
+"cc": "BR",
+"k": "Brazylia",
+"typ": "miasto",
+"a": [
+"rio"
+]
+},
+{
+"n": "Buenos Aires",
+"en": "Buenos Aires",
+"cc": "AR",
+"k": "Argentyna",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Dubaj",
+"en": "Dubai",
+"cc": "AE",
+"k": "Zjednoczone Emiraty Arabskie",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Abu Zabi",
+"en": "Abu Dhabi",
+"cc": "AE",
+"k": "Zjednoczone Emiraty Arabskie",
+"typ": "miasto",
+"a": [
+"abu dabi"
+]
+},
+{
+"n": "Doha",
+"en": "Doha",
+"cc": "QA",
+"k": "Katar",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Maskat",
+"en": "Muscat",
+"cc": "OM",
+"k": "Oman",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Tel Awiw",
+"en": "Tel Aviv",
+"cc": "IL",
+"k": "Izrael",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Amman",
+"en": "Amman",
+"cc": "JO",
+"k": "Jordania",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Bejrut",
+"en": "Beirut",
+"cc": "LB",
+"k": "Liban",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Kair",
+"en": "Cairo",
+"cc": "EG",
+"k": "Egipt",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Hurghada",
+"en": "Hurghada",
+"cc": "EG",
+"k": "Egipt",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Szarm el-Szejk",
+"en": "Sharm el-Sheikh",
+"cc": "EG",
+"k": "Egipt",
+"typ": "miasto",
+"a": [
+"sharm",
+"szarm",
+"sharm el sheikh",
+"szarm el szejk"
+]
+},
+{
+"n": "Luksor",
+"en": "Luxor",
+"cc": "EG",
+"k": "Egipt",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Marrakesz",
+"en": "Marrakesh",
+"cc": "MA",
+"k": "Maroko",
+"typ": "miasto",
+"a": [
+"marrakech"
+]
+},
+{
+"n": "Agadir",
+"en": "Agadir",
+"cc": "MA",
+"k": "Maroko",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Tunis",
+"en": "Tunis",
+"cc": "TN",
+"k": "Tunezja",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Dżerba",
+"en": "Djerba",
+"cc": "TN",
+"k": "Tunezja",
+"typ": "miasto",
+"a": [
+"djerba"
+]
+},
+{
+"n": "Hammamet",
+"en": "Hammamet",
+"cc": "TN",
+"k": "Tunezja",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Nairobi",
+"en": "Nairobi",
+"cc": "KE",
+"k": "Kenia",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Zanzibar (Stone Town)",
+"en": "Zanzibar City",
+"cc": "TZ",
+"k": "Tanzania",
+"typ": "miasto",
+"a": [
+"zanzibar"
+],
+"la": -6.16,
+"lo": 39.19
+},
+{
+"n": "Kapsztad",
+"en": "Cape Town",
+"cc": "ZA",
+"k": "RPA",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Bangkok",
+"en": "Bangkok",
+"cc": "TH",
+"k": "Tajlandia",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Phuket",
+"en": "Phuket",
+"cc": "TH",
+"k": "Tajlandia",
+"typ": "miasto",
+"a": [
+"puket"
+]
+},
+{
+"n": "Krabi",
+"en": "Krabi",
+"cc": "TH",
+"k": "Tajlandia",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Chiang Mai",
+"en": "Chiang Mai",
+"cc": "TH",
+"k": "Tajlandia",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Koh Samui",
+"en": "Ko Samui",
+"cc": "TH",
+"k": "Tajlandia",
+"typ": "miasto",
+"a": [
+"ko samui",
+"samui"
+]
+},
+{
+"n": "Pattaya",
+"en": "Pattaya",
+"cc": "TH",
+"k": "Tajlandia",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Hanoi",
+"en": "Hanoi",
+"cc": "VN",
+"k": "Wietnam",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Da Nang",
+"en": "Da Nang",
+"cc": "VN",
+"k": "Wietnam",
+"typ": "miasto",
+"a": [
+"danang"
+]
+},
+{
+"n": "Ho Chi Minh",
+"en": "Ho Chi Minh City",
+"cc": "VN",
+"k": "Wietnam",
+"typ": "miasto",
+"a": [
+"sajgon",
+"saigon"
+]
+},
+{
+"n": "Siem Reap",
+"en": "Siem Reap",
+"cc": "KH",
+"k": "Kambodża",
+"typ": "miasto",
+"a": [
+"angkor"
+]
+},
+{
+"n": "Denpasar (Bali)",
+"en": "Denpasar",
+"cc": "ID",
+"k": "Indonezja",
+"typ": "miasto",
+"a": [
+"denpasar",
+"bali"
+]
+},
+{
+"n": "Ubud",
+"en": "Ubud",
+"cc": "ID",
+"k": "Indonezja",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Dżakarta",
+"en": "Jakarta",
+"cc": "ID",
+"k": "Indonezja",
+"typ": "miasto",
+"a": [
+"jakarta"
+]
+},
+{
+"n": "Singapur",
+"en": "Singapore",
+"cc": "SG",
+"k": "Singapur",
+"typ": "miasto",
+"a": [
+"singapore"
+]
+},
+{
+"n": "Kuala Lumpur",
+"en": "Kuala Lumpur",
+"cc": "MY",
+"k": "Malezja",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "George Town (Penang)",
+"en": "George Town",
+"cc": "MY",
+"k": "Malezja",
+"typ": "miasto",
+"a": [
+"penang",
+"george town"
+],
+"la": 5.41,
+"lo": 100.33
+},
+{
+"n": "Manila",
+"en": "Manila",
+"cc": "PH",
+"k": "Filipiny",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Tokio",
+"en": "Tokyo",
+"cc": "JP",
+"k": "Japonia",
+"typ": "miasto",
+"a": [
+"tokyo"
+]
+},
+{
+"n": "Kioto",
+"en": "Kyoto",
+"cc": "JP",
+"k": "Japonia",
+"typ": "miasto",
+"a": [
+"kyoto"
+]
+},
+{
+"n": "Osaka",
+"en": "Osaka",
+"cc": "JP",
+"k": "Japonia",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Seul",
+"en": "Seoul",
+"cc": "KR",
+"k": "Korea Południowa",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Pekin",
+"en": "Beijing",
+"cc": "CN",
+"k": "Chiny",
+"typ": "miasto",
+"a": [
+"beijing"
+]
+},
+{
+"n": "Szanghaj",
+"en": "Shanghai",
+"cc": "CN",
+"k": "Chiny",
+"typ": "miasto",
+"a": [
+"shanghai"
+]
+},
+{
+"n": "Hongkong",
+"en": "Hong Kong",
+"cc": "HK",
+"k": "Chiny",
+"typ": "miasto",
+"a": [
+"hong kong"
+]
+},
+{
+"n": "Delhi",
+"en": "Delhi",
+"cc": "IN",
+"k": "Indie",
+"typ": "miasto",
+"a": [
+"nowe delhi",
+"new delhi"
+]
+},
+{
+"n": "Goa",
+"en": "Panaji",
+"cc": "IN",
+"k": "Indie",
+"typ": "miasto",
+"a": [
+"panaji"
+],
+"la": 15.5,
+"lo": 73.83
+},
+{
+"n": "Mumbaj",
+"en": "Mumbai",
+"cc": "IN",
+"k": "Indie",
+"typ": "miasto",
+"a": [
+"mumbai",
+"bombaj"
+]
+},
+{
+"n": "Kolombo",
+"en": "Colombo",
+"cc": "LK",
+"k": "Sri Lanka",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Katmandu",
+"en": "Kathmandu",
+"cc": "NP",
+"k": "Nepal",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Malé",
+"en": "Male",
+"cc": "MV",
+"k": "Malediwy",
+"typ": "miasto",
+"a": [
+"male"
+]
+},
+{
+"n": "Sydney",
+"en": "Sydney",
+"cc": "AU",
+"k": "Australia",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Melbourne",
+"en": "Melbourne",
+"cc": "AU",
+"k": "Australia",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Auckland",
+"en": "Auckland",
+"cc": "NZ",
+"k": "Nowa Zelandia",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Queenstown",
+"en": "Queenstown",
+"cc": "NZ",
+"k": "Nowa Zelandia",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Warszawa",
+"en": "Warsaw",
+"cc": "PL",
+"k": "Polska",
+"typ": "miasto",
+"a": [
+"warsaw"
+]
+},
+{
+"n": "Zakopane",
+"en": "Zakopane",
+"cc": "PL",
+"k": "Polska",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Kraków",
+"en": "Krakow",
+"cc": "PL",
+"k": "Polska",
+"typ": "miasto",
+"a": [
+"krakow",
+"cracow"
+]
+},
+{
+"n": "Gdańsk",
+"en": "Gdansk",
+"cc": "PL",
+"k": "Polska",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Gdynia",
+"en": "Gdynia",
+"cc": "PL",
+"k": "Polska",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Sopot",
+"en": "Sopot",
+"cc": "PL",
+"k": "Polska",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Kołobrzeg",
+"en": "Kolobrzeg",
+"cc": "PL",
+"k": "Polska",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Świnoujście",
+"en": "Swinoujscie",
+"cc": "PL",
+"k": "Polska",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Międzyzdroje",
+"en": "Miedzyzdroje",
+"cc": "PL",
+"k": "Polska",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Ustka",
+"en": "Ustka",
+"cc": "PL",
+"k": "Polska",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Łeba",
+"en": "Leba",
+"cc": "PL",
+"k": "Polska",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Władysławowo",
+"en": "Wladyslawowo",
+"cc": "PL",
+"k": "Polska",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Hel",
+"en": "Hel",
+"cc": "PL",
+"k": "Polska",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Wrocław",
+"en": "Wroclaw",
+"cc": "PL",
+"k": "Polska",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Poznań",
+"en": "Poznan",
+"cc": "PL",
+"k": "Polska",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Toruń",
+"en": "Torun",
+"cc": "PL",
+"k": "Polska",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Lublin",
+"en": "Lublin",
+"cc": "PL",
+"k": "Polska",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Szczyrk",
+"en": "Szczyrk",
+"cc": "PL",
+"k": "Polska",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Karpacz",
+"en": "Karpacz",
+"cc": "PL",
+"k": "Polska",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Szklarska Poręba",
+"en": "Szklarska Poreba",
+"cc": "PL",
+"k": "Polska",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Krynica-Zdrój",
+"en": "Krynica-Zdroj",
+"cc": "PL",
+"k": "Polska",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Mikołajki",
+"en": "Mikolajki",
+"cc": "PL",
+"k": "Polska",
+"typ": "miasto",
+"a": []
+},
+{
+"n": "Augustów",
+"en": "Augustow",
+"cc": "PL",
+"k": "Polska",
+"typ": "miasto",
+"a": []
+}
+]

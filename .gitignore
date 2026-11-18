@@ -35,3 +35,6 @@ credentials*.json
 
 # Kontrakt sesji (zostaje na dysku, poza repo)
 /CLAUDE.md
+
+# Plik roboczy odświeżania klimatu (scripts/zbuduj-klimat.mjs)
+scripts/klimat-czesciowy.json

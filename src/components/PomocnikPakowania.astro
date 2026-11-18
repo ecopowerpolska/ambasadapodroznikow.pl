@@ -1,8 +1,9 @@
 ---
-// PomocnikPakowania.astro — darmowy pomocnik pakowania (2026-11-18). Formularz bez wysyłki; wszystko liczy przeglądarka.
-// Cała lista (src/data/pakowanie.json) jest w HTML jako ukryte pozycje z filtrami w atrybutach data-pk-*;
-// skrypt niżej tylko pokazuje pasujące, liczy ilości i pamięta stan w localStorage (klucz ambasada-pakowanie, zapis
-// funkcjonalny: ustawienia formularza, odhaczenia, data). Bez JS widać formularz i komunikat. Style: src/styles/narzedzia.css.
+// PomocnikPakowania.astro — darmowy pomocnik pakowania (2026-11-18, runda 2). Formularz bez wysyłki; wszystko liczy przeglądarka.
+// Cała lista (src/data/pakowanie.json) jest w HTML jako ukryte pozycje z filtrami w atrybutach data-*;
+// skrypt niżej pokazuje pasujące, liczy ilości, dobiera klimat z celu i dat (public/dane/klimat.json, ładowany leniwie),
+// pozwala usuwać pozycje, dopisywać własne, zapisać listę do pliku .txt i wgrać ją z powrotem; stan trzyma w localStorage
+// (klucz ambasada-pakowanie: ustawienia, odhaczenia, własne i usunięte pozycje, data). Bez JS widać formularz i komunikat.
 import '../styles/narzedzia.css';
 import dane from '../data/pakowanie.json';
 
@@ -14,7 +15,8 @@ type Pozycja = {
   os?: boolean;
   kto?: string[];
   klimat?: string[];
-  typ?: string[];
+  aktywnosci?: string[];
+  deszcz?: boolean;
   transport?: string[];
   sklad?: string[];
   min_dni?: number;
@@ -55,12 +57,17 @@ const KLIMAT = [
   ['umiarkowanie', 'Umiarkowanie'],
   ['zimno', 'Zimno'],
 ];
-const TYP = [
-  ['plaza', 'Plaża'],
-  ['miasto', 'Miasto'],
-  ['gory', 'Góry'],
-  ['zima', 'Zima i narty'],
-  ['biznes', 'Wyjazd służbowy'],
+const AKT = [
+  ['plaza', 'Plażowanie i kąpiele'],
+  ['zwiedzanie', 'Zwiedzanie miasta'],
+  ['wedrowki', 'Wędrówki i góry'],
+  ['narty', 'Narty i snowboard'],
+  ['rower', 'Rower'],
+  ['wodne', 'Sporty wodne i nurkowanie'],
+  ['bieganie', 'Bieganie, siłownia'],
+  ['kemping', 'Kemping i namiot'],
+  ['praca', 'Praca, konferencja'],
+  ['uroczystosc', 'Uroczystość, elegancko'],
 ];
 const TRANSPORT = [
   ['samolot', 'Samolot'],
@@ -68,7 +75,7 @@ const TRANSPORT = [
   ['pociag', 'Pociąg lub autokar'],
 ];
 // Ustawienia domyślne = stan HTML (pierwsze wejście bez zapisu nie przesuwa układu).
-const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat: 'umiarkowanie', typ: 'miasto', transport: 'samolot', dni: 7 };
+const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat: 'umiarkowanie', akt: 'zwiedzanie', transport: 'samolot', dni: 7 };
 ---
 
 <div class="pk" data-pakowanie>
@@ -78,6 +85,66 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
   </p>
 
   <form class="nz-form szklo szklo--jasne" data-pk-form aria-label="Parametry wyjazdu">
+    <div class="nz-grupa">
+      <label class="nz-legenda" for="pk-cel">Gdzie jedziesz?</label>
+      <input
+        class="nz-wejscie"
+        id="pk-cel"
+        name="cel"
+        type="text"
+        role="combobox"
+        aria-expanded="false"
+        aria-controls="pk-cel-lb"
+        aria-autocomplete="list"
+        aria-describedby="pk-cel-info"
+        autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
+        maxlength="60"
+        placeholder="Miasto lub kraj, np. Barcelona"
+      />
+      <ul class="pk-lb" id="pk-cel-lb" role="listbox" aria-label="Podpowiedzi miejsc" data-pk-lb hidden></ul>
+    </div>
+
+    <fieldset class="nz-grupa">
+      <legend class="nz-legenda">Kiedy</legend>
+      <div class="pk-daty">
+        <label class="nz-pole">
+          <span class="nz-etykieta">Od</span>
+          <input class="nz-wejscie" type="date" name="od" />
+        </label>
+        <label class="nz-pole">
+          <span class="nz-etykieta">Do</span>
+          <input class="nz-wejscie" type="date" name="do" />
+        </label>
+      </div>
+      <div class="pk-dni">
+        <input class="nz-suwak" id="pk-dni" type="range" name="dni" min="1" max="30" step="1" value={DOM.dni} aria-label="Liczba dni" aria-describedby="pk-dni-opis" />
+        <input class="nz-wejscie pk-dni__liczba" type="number" name="dni_liczba" min="1" max="30" step="1" inputmode="numeric" value={DOM.dni} aria-label="Liczba dni (pole liczby)" />
+      </div>
+      <p class="nz-pomoc" id="pk-dni-opis" data-pk-dni-opis>Dni liczą się z dat. Możesz też wpisać liczbę dni (1–30) bez dat.</p>
+    </fieldset>
+
+    <div class="nz-grupa nz-grupa--szeroka pk-klimat">
+      <div class="pk-klimat__wiersz">
+        <p class="pk-klimat__info" id="pk-cel-info" data-pk-klimat-info aria-live="polite">Wpisz cel i daty, a klimat wybierze się sam. Możesz też wybrać go ręcznie.</p>
+        <button class="guzik guzik--obrys" type="button" data-pk-zmien aria-expanded="true" hidden>Zmień</button>
+      </div>
+      <fieldset class="nz-grupa" data-pk-klimat>
+        <legend class="nz-legenda">Klimat na miejscu</legend>
+        <div class="nz-wybory">
+          {
+            KLIMAT.map(([w, n]) => (
+              <label class="nz-wybor">
+                <input type="radio" name="klimat" value={w} checked={w === DOM.klimat} />
+                <span>{n}</span>
+              </label>
+            ))
+          }
+        </div>
+      </fieldset>
+    </div>
+
     <fieldset class="nz-grupa nz-grupa--szeroka">
       <legend class="nz-legenda">Kto jedzie</legend>
       <div class="nz-wybory">
@@ -148,42 +215,19 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
       </div>
     </fieldset>
 
-    <fieldset class="nz-grupa">
-      <legend class="nz-legenda">Klimat na miejscu</legend>
+    <fieldset class="nz-grupa nz-grupa--szeroka">
+      <legend class="nz-legenda">Co będziesz robić</legend>
       <div class="nz-wybory">
         {
-          KLIMAT.map(([w, n]) => (
+          AKT.map(([w, n]) => (
             <label class="nz-wybor">
-              <input type="radio" name="klimat" value={w} checked={w === DOM.klimat} />
+              <input type="checkbox" name="akt" value={w} checked={w === DOM.akt} />
               <span>{n}</span>
             </label>
           ))
         }
       </div>
     </fieldset>
-
-    <fieldset class="nz-grupa">
-      <legend class="nz-legenda">Rodzaj wyjazdu</legend>
-      <div class="nz-wybory">
-        {
-          TYP.map(([w, n]) => (
-            <label class="nz-wybor">
-              <input type="radio" name="typ" value={w} checked={w === DOM.typ} />
-              <span>{n}</span>
-            </label>
-          ))
-        }
-      </div>
-    </fieldset>
-
-    <div class="nz-grupa">
-      <label class="nz-legenda" for="pk-dni">Na ile dni</label>
-      <div class="pk-dni">
-        <input class="nz-suwak" id="pk-dni" type="range" name="dni" min="1" max="30" step="1" value={DOM.dni} aria-describedby="pk-dni-opis" />
-        <input class="nz-wejscie pk-dni__liczba" type="number" name="dni_liczba" min="1" max="30" step="1" inputmode="numeric" value={DOM.dni} aria-label="Liczba dni" />
-      </div>
-      <p class="nz-pomoc" id="pk-dni-opis">Od 1 do 30 dni. Na dłuższy wyjazd zaznacz 30 i licz na pranie.</p>
-    </div>
 
     <fieldset class="nz-grupa">
       <legend class="nz-legenda">Transport</legend>
@@ -213,6 +257,8 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
     </div>
   </form>
 
+  <p class="nz-pomoc pk-zrodlo">Dane pogodowe: <a href="https://open-meteo.com/" rel="noopener">Open-Meteo.com</a> (<a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener">CC BY 4.0</a>). Zmiany: średnie miesięczne z lat 2023–2025 policzyliśmy sami z danych Open-Meteo.</p>
+
   <noscript>
     <p class="nz-bez-js">Lista potrzebuje włączonego JavaScriptu. Włącz go w przeglądarce i odśwież stronę.</p>
   </noscript>
@@ -229,9 +275,15 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
         <div class="pk-postep__tor" aria-hidden="true"><div class="pk-postep__pasek" data-pk-pasek></div></div>
       </div>
       <div class="pk-akcje">
-        <button class="guzik guzik--twardy" type="button" data-pk-drukuj>Drukuj listę</button>
+        <button class="guzik guzik--twardy" type="button" data-pk-zapisz>Zapisz na komputer</button>
+        <button class="guzik guzik--obrys" type="button" data-pk-wgraj>Wgraj listę</button>
+        <button class="guzik guzik--obrys" type="button" data-pk-drukuj>Drukuj listę</button>
         <button class="guzik guzik--obrys" type="button" data-pk-kopiuj>Kopiuj listę</button>
+        <input class="pk-plik" type="file" accept=".txt,.json,text/plain,application/json" data-pk-plik tabindex="-1" aria-hidden="true" hidden />
         <span class="pk-akcje__stan" role="status" data-pk-stan></span>
+        <p class="nz-pomoc pk-akcje__pomoc">
+          Plik .txt zawiera listę i dane pomocnika, więc możesz go później wgrać i dalej edytować. Drukowanie pozwala też zapisać listę jako PDF.
+        </p>
       </div>
     </div>
 
@@ -249,7 +301,7 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
                   data-pk-p={p.id}
                   data-k={lista(p.kto)}
                   data-kl={lista(p.klimat)}
-                  data-t={lista(p.typ)}
+                  data-a={lista(p.aktywnosci)}
                   data-tr={lista(p.transport)}
                   data-s={lista(p.sklad)}
                   data-md={p.min_dni}
@@ -258,18 +310,29 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
                   data-mp={p.max_podreczny}
                   data-il={p.ilosc === '1' ? undefined : p.ilosc}
                   data-os={p.os ? '' : undefined}
+                  data-dz={p.deszcz ? '' : undefined}
                   data-j={p.jedn}
                   hidden
                 >
-                  <label class="pk-poz__wiersz">
-                    <input type="checkbox" />
-                    <span class="pk-poz__nazwa">{p.nazwa}</span>
+                  <div class="pk-poz__wiersz">
+                    <label class="pk-poz__et">
+                      <input type="checkbox" />
+                      <span class="pk-poz__nazwa">{p.nazwa}</span>
+                    </label>
+                    <input class="nz-wejscie pk-q" type="number" min="1" max="99" inputmode="numeric" aria-label={`Ilość: ${p.nazwa}`} />
+                    <span class="pk-poz__jed" data-pk-jed />
                     <span class="pk-poz__ile" data-pk-ilosc />
-                  </label>
+                    <button class="pk-poz__usun" type="button" aria-label={`Usuń: ${p.nazwa}`}>Usuń</button>
+                  </div>
                   {p.uwaga && <p class="pk-poz__uwaga">{p.uwaga}</p>}
                 </li>
               ))}
             </ul>
+            <form class="pk-dodaj" data-pk-dodaj={k.id}>
+              <input class="nz-wejscie" name="n" type="text" maxlength="60" autocomplete="off" placeholder="Dodaj własną rzecz" aria-label={`Dodaj własną rzecz do: ${k.nazwa}`} />
+              <input class="nz-wejscie pk-dodaj__q" name="q" type="number" min="1" max="99" inputmode="numeric" placeholder="Ile" aria-label="Ilość własnej rzeczy" />
+              <button class="guzik guzik--obrys" type="submit">Dodaj</button>
+            </form>
             {'link' in k && k.link && (
               <p class="pk-kat__link">
                 Więcej: <a href={k.link}>apteczka podróżnika, co spakować i o co zapytać farmaceutę</a>
@@ -279,50 +342,214 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
         ))
       }
     </div>
+    <p class="pk-usuniete" data-pk-usuniete hidden>
+      <button class="guzik guzik--obrys" type="button" data-pk-przywroc>Przywróć usunięte</button>
+    </p>
+    <template data-pk-szablon>
+      <li class="pk-poz" data-pk-p="" data-wl="" hidden>
+        <div class="pk-poz__wiersz">
+          <label class="pk-poz__et">
+            <input type="checkbox" />
+            <span class="pk-poz__nazwa"></span>
+          </label>
+          <input class="nz-wejscie pk-q" type="number" min="1" max="99" inputmode="numeric" />
+          <span class="pk-poz__jed" data-pk-jed></span>
+          <span class="pk-poz__ile" data-pk-ilosc></span>
+          <button class="pk-poz__usun" type="button">Usuń</button>
+        </div>
+      </li>
+    </template>
   </section>
 </div>
 
 <script>
-  // Pomocnik pakowania: filtr pozycji z atrybutów data-*, ilości ze wzorów, pamięć w localStorage. Bez bibliotek.
+  // Pomocnik pakowania: cel i daty → klimat, filtr pozycji z atrybutów data-*, ilości ze wzorów, edycja listy,
+  // zapis i wgranie pliku, pamięć w localStorage. Bez bibliotek.
   const KLUCZ = 'ambasada-pakowanie';
+  const ZN = '--- dane pomocnika (nie usuwaj tej części, pozwala wgrać listę z powrotem) ---';
+  const MW = ['styczniu', 'lutym', 'marcu', 'kwietniu', 'maju', 'czerwcu', 'lipcu', 'sierpniu', 'wrześniu', 'październiku', 'listopadzie', 'grudniu'];
+  const MG = ['stycznia', 'lutego', 'marca', 'kwietnia', 'maja', 'czerwca', 'lipca', 'sierpnia', 'września', 'października', 'listopada', 'grudnia'];
+  const STARE: Record<string, string> = { plaza: 'plaza', miasto: 'zwiedzanie', gory: 'wedrowki', zima: 'narty', biznes: 'praca' };
   const root = document.querySelector<HTMLElement>('[data-pakowanie]');
   if (root) {
     const $ = <T extends Element = HTMLElement>(s: string) => root.querySelector<T>(s)!;
     const f = $<HTMLFormElement>('[data-pk-form]');
     const el = f.elements as unknown as Record<string, RadioNodeList & HTMLInputElement>;
-    const poz = [...root.querySelectorAll<HTMLLIElement>('[data-pk-p]')];
     const kat = [...root.querySelectorAll<HTMLElement>('[data-pk-kat]')];
     const lista = $('[data-pk-lista]');
+    const stan = $('[data-pk-stan]');
     const odh = new Set<string>();
+    type M = { n: string; k?: string; a?: string[]; t: number[]; d: number[] };
+    type W = { id: string; k: string; n: string; q: number };
     let zapisuj = false;
+    let m: M | null = null;
+    let reczny = false;
+    let otw = false;
+    let w: W[] = [];
+    let x: string[] = [];
+    let ile: Record<string, number> = {};
 
-    type Ust = { sklad: string; para: string; rodzic: string; dzieci: number; wiek: string[]; klimat: string; typ: string; dni: number; transport: string; podreczny: boolean };
+    type Ust = { cel: string; m: M | null; od: string; do: string; r: boolean; sklad: string; para: string; rodzic: string; dzieci: number; wiek: string[]; akt: string[]; klimat: string; dni: number; transport: string; podreczny: boolean };
 
     const dni = (v: unknown) => Math.min(30, Math.max(1, Math.round(Number(v)) || 1));
+    const akt = () => [...f.querySelectorAll<HTMLInputElement>('input[name="akt"]')];
+    const wiek = (n: number) => f.elements.namedItem('wiek' + n) as HTMLSelectElement;
     const czytaj = (): Ust => ({
+      cel: el.cel.value.trim(),
+      m,
+      od: el.od.value,
+      do: el.do.value,
+      r: reczny,
       sklad: el.sklad.value,
       para: el.para.value,
       rodzic: el.rodzic.value,
       dzieci: Number(el.dzieci.value) || 1,
-      wiek: [1, 2, 3, 4].map((n) => (f.elements.namedItem('wiek' + n) as HTMLSelectElement).value),
+      wiek: [1, 2, 3, 4].map((n) => wiek(n).value),
+      akt: akt().filter((c) => c.checked).map((c) => c.value),
       klimat: el.klimat.value,
-      typ: el.typ.value,
       dni: dni(el.dni.value),
       transport: el.transport.value,
       podreczny: el.podreczny.checked,
     });
-    const ustaw = (u: Ust) => {
-      for (const k of ['sklad', 'para', 'rodzic', 'klimat', 'typ', 'transport'] as const) if (u[k]) el[k].value = u[k];
-      el.dzieci.value = String(u.dzieci);
-      u.wiek.forEach((w, i) => w && ((f.elements.namedItem('wiek' + (i + 1)) as HTMLSelectElement).value = w));
+    const tx = (v: unknown, n = 60) => (typeof v === 'string' ? v.slice(0, n) : '');
+    const dat = (v: unknown) => (typeof v === 'string' && /^\d{4}-\d\d-\d\d$/.test(v) ? v : '');
+    const ustaw = (u: Ust & { typ?: string }) => {
+      for (const k of ['sklad', 'para', 'rodzic', 'klimat', 'transport'] as const) if (u[k]) el[k].value = u[k];
+      el.cel.value = tx(u.cel);
+      el.od.value = dat(u.od);
+      el.do.value = dat(u.do);
+      el.do.min = el.od.value;
+      const mm = u.m;
+      m = mm && typeof mm.n === 'string' && Array.isArray(mm.t) && mm.t.length === 12 && Array.isArray(mm.d) && mm.d.length === 12 ? { n: tx(mm.n), k: tx(mm.k), t: mm.t.map(Number), d: mm.d.map(Number) } : null;
+      reczny = otw = !!u.r;
+      el.dzieci.value = String(Number(u.dzieci) || 1);
+      (Array.isArray(u.wiek) ? u.wiek : []).forEach((v, i) => v && i < 4 && (wiek(i + 1).value = v));
       el.dni.value = el.dni_liczba.value = String(dni(u.dni));
       el.podreczny.checked = !!u.podreczny;
+      const a = Array.isArray(u.akt) ? u.akt : u.typ && STARE[u.typ] ? [STARE[u.typ]] : [];
+      akt().forEach((c) => (c.checked = a.includes(c.value)));
     };
 
-    // Wzór ilości: liczby, dni, na_osobe, na_dziecko, + - * /, nawiasy, min/max/ceil. Mały parser zamiast eval.
+    // ——— miejsca: podpowiedzi z public/dane/klimat.json (z własnej domeny, po pierwszym dotknięciu pola) ———
+    let baza: { e: M & { typ?: string }; h: string[] }[] | null = null;
+    let pob: Promise<void> | null = null;
+    let blad = false;
+    const norm = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/ł/g, 'l').trim();
+    const laduj = () =>
+      (pob ||= fetch('/dane/klimat.json')
+        .then((r) => r.json())
+        .then((j) => {
+          baza = (j.m as (M & { typ?: string })[]).map((e) => ({ e, h: [e.n, ...(e.a || []), e.k || ''].map(norm) }));
+          blad = false;
+        })
+        .catch(() => {
+          blad = true;
+          pob = null;
+        })
+        .then(() => {
+          generuj();
+          pokaz();
+        }));
+    const szukaj = (s: string) => {
+      const q = norm(s);
+      if (q.length < 2 || !baza) return [];
+      const sc = (b: { h: string[] }) => (b.h[0].startsWith(q) ? 0 : b.h.slice(1, -1).some((y) => y.startsWith(q)) ? 1 : 2);
+      return baza
+        .filter((b) => b.h.some((y) => y.startsWith(q) || y.includes(' ' + q)))
+        .sort((a, b) => sc(a) - sc(b))
+        .slice(0, 8)
+        .map((b) => b.e);
+    };
+    const lb = $('[data-pk-lb]');
+    let wyn: (M & { typ?: string })[] = [];
+    let ak = -1;
+    const pokaz = () => {
+      wyn = document.activeElement === el.cel && !m ? szukaj(el.cel.value) : [];
+      ak = -1;
+      lb.replaceChildren(
+        ...wyn.map((e, i) => {
+          const o = document.createElement('li');
+          o.id = 'pk-o' + i;
+          o.setAttribute('role', 'option');
+          o.textContent = e.typ === 'kraj' ? e.n + (e.k && e.k !== e.n ? ` (dane: ${e.k})` : '') : e.k ? `${e.n}, ${e.k}` : e.n;
+          return o;
+        }),
+      );
+      lb.hidden = !wyn.length;
+      el.cel.setAttribute('aria-expanded', String(!lb.hidden));
+      el.cel.removeAttribute('aria-activedescendant');
+    };
+    const ruch = (i: number) => {
+      ak = (i + wyn.length) % wyn.length;
+      [...lb.children].forEach((o, j) => o.setAttribute('aria-selected', String(j === ak)));
+      el.cel.setAttribute('aria-activedescendant', 'pk-o' + ak);
+      lb.children[ak].scrollIntoView({ block: 'nearest' });
+    };
+    const wybierz = (e: M) => {
+      m = { n: e.n, k: e.k, t: e.t, d: e.d };
+      el.cel.value = e.n;
+      reczny = otw = false;
+      zapisuj = true;
+      pokaz();
+      generuj();
+    };
+    el.cel.addEventListener('focus', () => {
+      laduj();
+      pokaz();
+    });
+    el.cel.addEventListener('blur', () => {
+      lb.hidden = true;
+      el.cel.setAttribute('aria-expanded', 'false');
+    });
+    el.cel.addEventListener('keydown', (e) => {
+      const k = (e as KeyboardEvent).key;
+      if (k === 'ArrowDown' && wyn.length) ruch(ak + 1);
+      else if (k === 'ArrowUp' && wyn.length) ruch(ak < 0 ? -1 : ak - 1);
+      else if (k === 'Enter' && ak >= 0) wybierz(wyn[ak]);
+      else if (k === 'Escape' && !lb.hidden) lb.hidden = true;
+      else return;
+      e.preventDefault();
+    });
+    lb.addEventListener('mousedown', (e) => {
+      e.preventDefault();
+      const i = [...lb.children].indexOf((e.target as Element).closest('li')!);
+      if (i >= 0) wybierz(wyn[i]);
+    });
+
+    // ——— daty i klimat ———
+    const okres = (od: string, dk: string) => {
+      const A = Date.parse(od), B = Date.parse(dk);
+      return A && B && B >= A ? { A, B, n: Math.max(1, Math.round((B - A) / 864e5)) } : null;
+    };
+    const iso = (t: number) => new Date(t).toISOString().slice(0, 10);
+    const zakres = (od: string, dk: string) => {
+      const o = new Intl.DateTimeFormat('pl-PL', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+      const A = new Date(od), B = new Date(dk);
+      return o.formatRange ? o.formatRange(A, B) : o.format(A) + ' – ' + o.format(B);
+    };
+    const dniTxt = (n: number) => (n === 1 ? '1 dzień' : `${n} dni`);
+    const pogoda = (p: { A: number; B: number; n: number }, mi: M) => {
+      let T = 0, D = 0;
+      const lim = Math.min(p.n, 366);
+      for (let i = 0; i < lim; i++) {
+        const mo = new Date(p.A + i * 864e5).getUTCMonth();
+        T += mi.t[mo] / lim;
+        D += mi.d[mo] / lim;
+      }
+      T = Math.round(T);
+      const s = T >= 26 ? 'gorąco' : T >= 18 ? 'ciepło' : T >= 10 ? 'umiarkowanie' : T >= 0 ? 'zimno' : 'mróz';
+      const a = new Date(p.A).getUTCMonth(), b = new Date(p.B).getUTCMonth();
+      return {
+        klimat: T >= 18 ? 'cieplo' : T >= 10 ? 'umiarkowanie' : 'zimno',
+        deszcz: D >= 10,
+        zdanie: `${mi.n} ${a === b ? 'w ' + MW[a] : `od ${MG[a]} do ${MG[b]}`}: ok. ${T} °C, ${s}, ${D >= 10 ? 'często pada' : D >= 5 ? 'czasem deszcz' : 'mało deszczu'}.`,
+      };
+    };
+
+    // ——— ilości: mały parser wzorów zamiast eval ———
     const FN: Record<string, (...a: number[]) => number> = { min: Math.min, max: Math.max, ceil: Math.ceil };
-    const licz = (w: string, v: Record<string, number>) => {
-      const t = w.match(/\d+|[a-z_]+|[-+*/(),]/g) || [];
+    const licz = (wz: string, v: Record<string, number>) => {
+      const t = wz.match(/\d+|[a-z_]+|[-+*/(),]/g) || [];
       let i = 0;
       const wyr = (): number => {
         let a = skl();
@@ -335,17 +562,17 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
         return a;
       };
       const czy = (): number => {
-        const x = t[i++];
-        if (x === '(') { const a = wyr(); i++; return a; }
-        if (/^\d/.test(x)) return +x;
-        if (t[i] === '(' && FN[x]) {
+        const y = t[i++];
+        if (y === '(') { const a = wyr(); i++; return a; }
+        if (/^\d/.test(y)) return +y;
+        if (t[i] === '(' && FN[y]) {
           i++;
           const r = [wyr()];
           while (t[i] === ',') { i++; r.push(wyr()); }
           i++;
-          return FN[x](...r);
+          return FN[y](...r);
         }
-        return v[x] || 0;
+        return v[y] || 0;
       };
       return wyr();
     };
@@ -357,29 +584,39 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
       return dorosli.concat(zDziecmi(u) ? u.wiek.slice(0, u.dzieci) : []);
     };
 
-    const napis = (n: string) => (f.querySelector(`input[name="${n}"]:checked + span`)?.textContent || '').trim();
+    const napis = (n: string) => (f.querySelector(`input[name="${n}"]:checked + span`)?.textContent || '').trim().toLowerCase();
     const opis = (u: Ust) => {
       const d = u.dzieci;
-      const ile = `z ${d} ${d === 1 ? 'dzieckiem' : 'dziećmi'}`;
+      const ilu = `z ${d} ${d === 1 ? 'dzieckiem' : 'dziećmi'}`;
       const WIEK: Record<string, string> = { niemowle: 'niemowlę', dziecko: '3–12 lat', nastolatek: 'nastolatek' };
-      const wieki = zDziecmi(u) ? ` (${u.wiek.slice(0, d).map((w) => WIEK[w]).join(', ')})` : '';
+      const wieki = zDziecmi(u) ? ` (${u.wiek.slice(0, d).map((v) => WIEK[v]).join(', ')})` : '';
       const kto =
         u.sklad === 'para'
-          ? 'Para' + (u.para === 'km' ? '' : ` (${napis('para').toLowerCase()})`)
+          ? 'Para' + (u.para === 'km' ? '' : ` (${napis('para')})`)
           : u.sklad === 'para_dzieci'
-            ? `Para ${ile}${wieki}`
+            ? `Para ${ilu}${wieki}`
             : u.sklad === 'sam_dzieci'
-              ? `${napis('rodzic')} ${ile}${wieki}`
-              : napis('sklad');
-      return [kto, napis('typ').toLowerCase(), napis('klimat').toLowerCase(), u.dni === 1 ? '1 dzień' : `${u.dni} dni`, napis('transport').toLowerCase()]
-        .concat(u.podreczny ? ['tylko bagaż podręczny'] : [])
+              ? `${napis('rodzic')} ${ilu}${wieki}`.replace(/^./, (c) => c.toUpperCase())
+              : napis('sklad').replace(/^./, (c) => c.toUpperCase());
+      const p = okres(u.od, u.do);
+      return [
+        u.cel,
+        p ? `${zakres(u.od, u.do)} (${dniTxt(p.n)})` : dniTxt(u.dni),
+        kto,
+        ...[...f.querySelectorAll('input[name="akt"]:checked + span')].map((s) => s.textContent!.trim().toLowerCase()),
+        napis('klimat'),
+        napis('transport'),
+        u.podreczny ? 'tylko bagaż podręczny' : '',
+      ]
+        .filter(Boolean)
         .join(', ');
     };
 
+    const dane = () => ({ v: 1, u: czytaj(), o: [...odh], w, x, i: ile, d: Date.now() });
     const zapisz = () => {
       if (!zapisuj) return;
       try {
-        localStorage.setItem(KLUCZ, JSON.stringify({ u: czytaj(), o: [...odh], d: Date.now() }));
+        localStorage.setItem(KLUCZ, JSON.stringify(dane()));
       } catch {
         /* pamięć wyłączona albo pełna: lista działa bez zapisu */
       }
@@ -389,35 +626,76 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
       let wszystkie = 0, spakowane = 0;
       for (const k of kat) {
         if (k.hidden) continue;
-        const w = [...k.querySelectorAll<HTMLLIElement>('[data-pk-p]:not([hidden])')];
-        const z = w.filter((p) => odh.has(p.dataset.pkP!)).length;
-        wszystkie += w.length;
+        const l = [...k.querySelectorAll<HTMLLIElement>('[data-pk-p]:not([hidden])')];
+        const z = l.filter((p) => odh.has(p.dataset.pkP!)).length;
+        wszystkie += l.length;
         spakowane += z;
-        k.querySelector('[data-pk-ile]')!.textContent = `${z}/${w.length}`;
+        k.querySelector('[data-pk-ile]')!.textContent = `${z}/${l.length}`;
       }
       $('[data-pk-licznik]').textContent = `Spakowane ${spakowane} z ${wszystkie}`;
       $('[data-pk-pasek]').style.transform = `scaleX(${wszystkie ? spakowane / wszystkie : 0})`;
     };
 
+    // własne pozycje: render z szablonu do list kategorii
+    const szablon = $<HTMLTemplateElement>('[data-pk-szablon]').content.firstElementChild!;
+    const renderW = () => {
+      root.querySelectorAll('[data-wl]').forEach((n) => n.remove());
+      for (const o of w) {
+        const ul = root.querySelector(`[data-pk-kat="${o.k}"] .pk-kat__lista`);
+        if (!ul) continue;
+        const li = szablon.cloneNode(true) as HTMLLIElement;
+        li.dataset.pkP = o.id;
+        li.dataset.il = String(o.q);
+        li.querySelector('.pk-poz__nazwa')!.textContent = o.n;
+        li.querySelector('.pk-q')!.setAttribute('aria-label', 'Ilość: ' + o.n);
+        li.querySelector('.pk-poz__usun')!.setAttribute('aria-label', 'Usuń: ' + o.n);
+        ul.append(li);
+      }
+    };
+
     const generuj = () => {
+      // klimat z celu i dat
+      const per = okres(el.od.value, el.do.value);
+      const pg = m && per ? pogoda(per, m) : null;
+      if (pg && !reczny) el.klimat.value = pg.klimat;
       const u = czytaj();
       const ludzie = osoby(u);
-      const klimat = u.typ === 'zima' ? 'zimno' : u.klimat;
-      const jest = (a: string | undefined, w: string) => !a || a.split(' ').includes(w);
+      const klimat = u.akt.includes('narty') ? 'zimno' : u.klimat;
+      const deszcz = !!pg?.deszcz;
+      const jest = (a: string | undefined, v: string) => !a || a.split(' ').includes(v);
+      const info = !pg
+        ? m
+          ? `${m.n}: wybierz daty wyjazdu, a klimat dobierze się sam.`
+          : blad
+            ? 'Nie udało się pobrać listy miejsc. Wybierz klimat ręcznie.'
+            : u.cel.length > 1 && baza && !szukaj(u.cel).length
+              ? 'Nie znam tego miejsca, wybierz klimat ręcznie.'
+              : 'Wpisz cel i daty, a klimat wybierze się sam. Możesz też wybrać go ręcznie.'
+        : pg.zdanie + (reczny ? ` Ręcznie wybrano: ${napis('klimat')}.` : '');
+      $('[data-pk-klimat-info]').textContent = info;
+      const zm = $<HTMLButtonElement>('[data-pk-zmien]');
+      zm.hidden = !pg;
+      zm.setAttribute('aria-expanded', String(!pg || otw));
+      $('[data-pk-klimat]').hidden = !!pg && !otw;
+      $('[data-pk-dni-opis]').textContent = per && per.n > 30 ? 'Pobyt trwa dłużej niż 30 dni, lista liczy 30 dni i zakłada pranie.' : 'Dni liczą się z dat. Możesz też wpisać liczbę dni (1–30) bez dat.';
+
       $('[data-pk-para]').hidden = !(u.sklad === 'para' || u.sklad === 'para_dzieci');
       $('[data-pk-rodzic]').hidden = u.sklad !== 'sam_dzieci';
       $('[data-pk-dzieci]').hidden = !zDziecmi(u);
-      root.querySelectorAll<HTMLElement>('[data-pk-wiek]').forEach((w) => (w.hidden = Number(w.dataset.pkWiek) > u.dzieci));
+      root.querySelectorAll<HTMLElement>('[data-pk-wiek]').forEach((v) => (v.hidden = Number(v.dataset.pkWiek) > u.dzieci));
 
       const widoczne = new Set<string>();
-      for (const p of poz) {
+      for (const p of root.querySelectorAll<HTMLLIElement>('[data-pk-p]')) {
         const d = p.dataset;
+        const id = d.pkP!;
         const pasujace = d.k ? ludzie.filter((o) => d.k!.split(' ').includes(o)) : ludzie;
         const prog = Number((u.podreczny && d.mdp) || d.md || 1);
         const ok =
+          !x.includes(id) &&
           pasujace.length > 0 &&
           jest(d.kl, klimat) &&
-          jest(d.t, u.typ) &&
+          (!d.a || d.a.split(' ').some((v) => u.akt.includes(v))) &&
+          (d.dz === undefined || deszcz) &&
           jest(d.tr, u.transport) &&
           jest(d.s, u.sklad) &&
           u.dni >= prog &&
@@ -425,37 +703,67 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
           !(d.pb === 'tylko' && !u.podreczny);
         p.hidden = !ok;
         if (!ok) continue;
-        widoczne.add(d.pkP!);
+        widoczne.add(id);
         const n = d.os !== undefined ? pasujace.length : 1;
         const dzieci = pasujace.filter((o) => o === 'niemowle' || o === 'dziecko' || o === 'nastolatek').length;
         let q = Math.max(1, Math.round(licz(d.il || '1', { dni: u.dni, na_osobe: pasujace.length, na_dziecko: dzieci })));
         if (u.podreczny && d.mp) q = Math.min(q, Number(d.mp));
-        const razem = q * n, j = d.j || 'szt.';
-        p.querySelector('[data-pk-ilosc]')!.textContent = razem < 2 ? '' : n > 1 && q > 1 ? `${razem} ${j} (${n} × ${q})` : `${razem} ${j}`;
-        p.querySelector('input')!.checked = odh.has(d.pkP!);
+        const j = d.j || 'szt.';
+        const razem = ile[id] || q * n;
+        const rozbicie = !ile[id] && n > 1 && q > 1 ? ` (${n} × ${q})` : '';
+        p.querySelector<HTMLInputElement>('.pk-q')!.value = String(razem);
+        p.querySelector('[data-pk-jed]')!.textContent = j === 'szt.' && !rozbicie ? '' : j + rozbicie;
+        p.querySelector('[data-pk-ilosc]')!.textContent = razem < 2 ? '' : `${razem} ${j}${rozbicie}`;
+        p.querySelector('input')!.checked = odh.has(id);
       }
       for (const id of [...odh]) if (!widoczne.has(id)) odh.delete(id);
       for (const k of kat) k.hidden = !k.querySelector('[data-pk-p]:not([hidden])');
+      $('[data-pk-usuniete]').hidden = !x.length;
+      $('[data-pk-przywroc]').textContent = `Przywróć usunięte (${x.length})`;
       $('[data-pk-opis]').textContent = opis(u);
       $('[data-pk-data]').textContent = 'Lista z dnia ' + new Date().toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' });
       licznik();
       zapisz();
     };
 
-    // Zdarzenia formularza: suwak i pole liczby trzymają tę samą wartość.
+    // ——— zdarzenia formularza ———
     f.addEventListener('input', (e) => {
       const t = e.target as HTMLInputElement;
-      if (t.name === 'dni_liczba') {
+      const nm = t.name;
+      if (nm === 'cel') {
+        laduj();
+        if (m && t.value !== m.n) m = null;
+        reczny = otw = false;
+        pokaz();
+      }
+      if (nm === 'od' || nm === 'do') {
+        reczny = otw = false;
+        el.do.min = el.od.value;
+        if (el.od.value && el.do.value && el.do.value < el.od.value) el.do.value = el.od.value;
+        const p = okres(el.od.value, el.do.value);
+        if (p) el.dni.value = el.dni_liczba.value = String(dni(p.n));
+      }
+      if (nm === 'dni_liczba') {
         if (t.value === '') return;
         el.dni.value = String(dni(t.value));
       }
-      if (t.name === 'dni') el.dni_liczba.value = t.value;
+      if (nm === 'dni' || nm === 'dni_liczba') {
+        el.dni_liczba.value = el.dni.value;
+        const A = Date.parse(el.od.value);
+        if (A) el.do.value = iso(A + dni(el.dni.value) * 864e5);
+      }
+      if (nm === 'klimat') reczny = otw = true;
       zapisuj = true;
       generuj();
     });
     f.addEventListener('change', (e) => {
       const t = e.target as HTMLInputElement;
       if (t.name === 'dni_liczba') t.value = el.dni.value;
+      if (t.name === 'cel' && !m && baza) {
+        const q = norm(t.value);
+        const b = q && baza.find((y) => y.h.slice(0, -1).includes(q));
+        if (b) wybierz(b.e);
+      }
     });
     f.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -463,38 +771,96 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
       generuj();
       lista.focus();
     });
+    $('[data-pk-zmien]').addEventListener('click', () => {
+      otw = !otw;
+      generuj();
+    });
+
+    // ——— edycja listy: odhaczanie, ilość, usuwanie, własne rzeczy ———
+    const idPoz = (t: Element) => t.closest<HTMLElement>('[data-pk-p]')?.dataset.pkP;
     lista.addEventListener('change', (e) => {
       const t = e.target as HTMLInputElement;
-      const id = t.closest<HTMLElement>('[data-pk-p]')?.dataset.pkP;
+      const id = idPoz(t);
       if (!id) return;
+      if (t.classList.contains('pk-q')) {
+        const v = Math.round(Number(t.value));
+        v >= 1 && v <= 99 ? (ile[id] = v) : delete ile[id];
+        zapisuj = true;
+        generuj();
+        return;
+      }
       t.checked ? odh.add(id) : odh.delete(id);
       zapisuj = true;
       licznik();
       zapisz();
     });
+    lista.addEventListener('click', (e) => {
+      const b = (e.target as Element).closest('.pk-poz__usun');
+      if (!b) return;
+      const li = b.closest<HTMLLIElement>('[data-pk-p]')!;
+      const id = li.dataset.pkP!;
+      const sas = (s: 'nextElementSibling' | 'previousElementSibling') => {
+        let y = li[s] as HTMLElement | null;
+        while (y && y.hidden) y = y[s] as HTMLElement | null;
+        return y;
+      };
+      const kolejny = (sas('nextElementSibling') || sas('previousElementSibling'))?.dataset.pkP;
+      const dodaj = li.closest('[data-pk-kat]')!.querySelector<HTMLInputElement>('.pk-dodaj input')!;
+      if (li.hasAttribute('data-wl')) {
+        w = w.filter((o) => o.id !== id);
+        delete ile[id];
+        renderW();
+      } else x.push(id);
+      odh.delete(id);
+      zapisuj = true;
+      generuj();
+      (kolejny ? root.querySelector<HTMLInputElement>(`[data-pk-p="${kolejny}"] input`) : dodaj.closest<HTMLElement>('[data-pk-kat]')!.hidden ? lista : dodaj)?.focus();
+    });
+    lista.addEventListener('submit', (e) => {
+      const fm = e.target as HTMLFormElement;
+      if (!fm.dataset.pkDodaj) return;
+      e.preventDefault();
+      const fd = new FormData(fm);
+      const nm = String(fd.get('n')).trim().slice(0, 60);
+      if (!nm) return;
+      const id = 'wl-' + (Math.max(0, ...w.map((o) => Number(o.id.slice(3)))) + 1);
+      w.push({ id, k: fm.dataset.pkDodaj, n: nm, q: Math.min(99, Math.max(1, Math.round(Number(fd.get('q'))) || 1)) });
+      fm.reset();
+      renderW();
+      zapisuj = true;
+      generuj();
+      fm.querySelector('input')!.focus();
+    });
+    $('[data-pk-przywroc]').addEventListener('click', () => {
+      x = [];
+      zapisuj = true;
+      generuj();
+    });
 
+    // ——— druk, kopiowanie, zapis i wgranie pliku ———
     $('[data-pk-drukuj]').addEventListener('click', () => window.print());
-
-    const stan = $('[data-pk-stan]');
-    $('[data-pk-kopiuj]').addEventListener('click', async () => {
+    const tekst = () => {
       const wiersze = ['Lista do spakowania: ' + $('[data-pk-opis]').textContent];
       for (const k of kat) {
         if (k.hidden) continue;
         wiersze.push('', k.querySelector('[data-pk-nazwa]')!.textContent!.toUpperCase());
         for (const p of k.querySelectorAll<HTMLLIElement>('[data-pk-p]:not([hidden])')) {
-          const ile = p.querySelector('[data-pk-ilosc]')!.textContent;
-          wiersze.push(`${odh.has(p.dataset.pkP!) ? '☑' : '☐'} ${p.querySelector('.pk-poz__nazwa')!.textContent}${ile ? ' (' + ile + ')' : ''}`);
+          const ilosc = p.querySelector('[data-pk-ilosc]')!.textContent;
+          wiersze.push(`${odh.has(p.dataset.pkP!) ? '☑' : '☐'} ${p.querySelector('.pk-poz__nazwa')!.textContent}${ilosc ? ' (' + ilosc + ')' : ''}`);
         }
       }
-      const tekst = wiersze.join('\n');
+      return wiersze.join('\n');
+    };
+    $('[data-pk-kopiuj]').addEventListener('click', async () => {
+      const t = tekst();
       let ok = false;
       try {
-        await navigator.clipboard.writeText(tekst);
+        await navigator.clipboard.writeText(t);
         ok = true;
       } catch {
         // starsze przeglądarki i strona bez uprawnień do schowka: zaznaczenie ukrytego pola
         const p = document.createElement('textarea');
-        p.value = tekst;
+        p.value = t;
         p.setAttribute('readonly', '');
         p.style.cssText = 'position:fixed;opacity:0';
         document.body.append(p);
@@ -503,6 +869,63 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
         p.remove();
       }
       stan.textContent = ok ? 'Skopiowano. Wklej listę do notatek albo wiadomości.' : 'Nie udało się skopiować. Użyj przycisku Drukuj listę.';
+    });
+    $('[data-pk-zapisz]').addEventListener('click', () => {
+      const u = czytaj();
+      const nazwa = ['lista-pakowania', norm(u.cel).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''), u.od].filter(Boolean).join('-') + '.txt';
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(new Blob(['﻿' + tekst() + '\n\n' + ZN + '\n' + JSON.stringify(dane()) + '\n'], { type: 'text/plain;charset=utf-8' }));
+      a.download = nazwa;
+      document.body.append(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+      stan.textContent = `Zapisano plik ${nazwa}. Znajdziesz go w pobranych plikach.`;
+    });
+
+    // Przyjęcie zapisu (pamięć albo plik): sprawdza kształt, odtwarza formularz i listę. Zwraca false przy złym kształcie.
+    const przyjmij = (z: any, plik: boolean) => {
+      const u = z && z.u;
+      if (!u || typeof u !== 'object' || !Array.isArray(z.o) || (z.v !== undefined && z.v !== 1) || (plik && z.v !== 1)) return false;
+      if (!['kobieta', 'mezczyzna', 'para', 'para_dzieci', 'sam_dzieci'].includes(u.sklad)) return false;
+      const kid = kat.map((k) => k.dataset.pkKat);
+      odh.clear();
+      z.o.forEach((id: unknown) => typeof id === 'string' && odh.add(id.slice(0, 40)));
+      w = (Array.isArray(z.w) ? z.w : [])
+        .filter((o: W) => o && /^wl-\d+$/.test(o.id) && kid.includes(o.k) && typeof o.n === 'string' && o.n.trim())
+        .map((o: W) => ({ id: o.id, k: o.k, n: tx(o.n), q: Math.min(99, Math.max(1, Math.round(Number(o.q)) || 1)) }));
+      x = (Array.isArray(z.x) ? z.x : []).filter((id: unknown) => typeof id === 'string').map((id: string) => id.slice(0, 40));
+      ile = {};
+      for (const [k, v] of Object.entries(z.i && typeof z.i === 'object' ? z.i : {})) if (Number(v) >= 1 && Number(v) <= 99) ile[k] = Math.round(Number(v));
+      ustaw(u);
+      renderW();
+      zapisuj = true;
+      return true;
+    };
+    const plik = $<HTMLInputElement>('[data-pk-plik]');
+    $('[data-pk-wgraj]').addEventListener('click', () => plik.click());
+    plik.addEventListener('change', async () => {
+      const pl = plik.files?.[0];
+      plik.value = '';
+      if (!pl) return;
+      let z = null;
+      try {
+        const t = pl.size < 3e5 ? await pl.text() : '';
+        const i = t.lastIndexOf(ZN);
+        z = JSON.parse(i < 0 ? t : t.slice(i + ZN.length));
+      } catch {
+        /* nie JSON: komunikat niżej */
+      }
+      if (!przyjmij(z, true)) {
+        stan.textContent = 'To nie jest plik pomocnika pakowania.';
+        return;
+      }
+      generuj();
+      const u = czytaj();
+      const p = okres(u.od, u.do);
+      const reszta = [u.cel, p ? zakres(u.od, u.do) : ''].filter(Boolean).join(', ');
+      stan.textContent = `Wgrano listę z ${new Date(z.d).toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' })}${reszta ? ': ' + reszta : ''}.`;
+      $('[data-pk-przywrocono]').hidden = true;
     });
 
     const komunikat = $('[data-pk-przywrocono]');
@@ -514,19 +937,23 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
       }
       zapisuj = false;
       odh.clear();
+      m = null;
+      reczny = otw = false;
+      w = [];
+      x = [];
+      ile = {};
+      renderW();
       f.reset();
       komunikat.hidden = true;
+      stan.textContent = '';
       generuj();
-      f.querySelector<HTMLInputElement>('input[name="sklad"]:checked')!.focus();
+      el.cel.focus();
     });
 
-    // Start: przywrócenie zapisu albo ustawienia domyślne z HTML.
+    // Start: przywrócenie zapisu (także starego, bez celu) albo ustawienia domyślne z HTML.
     try {
       const z = JSON.parse(localStorage.getItem(KLUCZ) || 'null');
-      if (z && z.u && Array.isArray(z.o)) {
-        ustaw(z.u);
-        z.o.forEach((id: string) => odh.add(id));
-        zapisuj = true;
+      if (przyjmij(z, false)) {
         const kiedy = new Date(z.d).toLocaleString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
         $('[data-pk-przywrocono-tekst]').textContent = `Przywrócono twoją ostatnią listę z ${kiedy}.`;
         komunikat.hidden = false;

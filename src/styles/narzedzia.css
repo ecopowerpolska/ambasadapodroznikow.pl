@@ -141,7 +141,7 @@ fieldset.nz-grupa > .nz-legenda {
 }
 
 .nz-zaznacz input,
-.pk-poz__wiersz input {
+.pk-poz__et input {
   flex: none;
   width: 1.375rem;
   height: 1.375rem;
@@ -327,7 +327,7 @@ fieldset.nz-grupa > .nz-legenda {
 }
 
 .pk-kategorie {
-  columns: 22rem 3;
+  columns: 26rem 3;
   column-gap: var(--o-8);
   margin-top: var(--o-8);
 }
@@ -389,6 +389,7 @@ fieldset.nz-grupa > .nz-legenda {
 }
 
 .pk-poz__ile {
+  display: none;
   flex: none;
   color: #0f3e47;
   font-size: var(--t-1);
@@ -397,7 +398,7 @@ fieldset.nz-grupa > .nz-legenda {
   text-align: right;
 }
 
-.pk-poz__wiersz:has(input:checked) .pk-poz__nazwa {
+.pk-poz__et:has(input:checked) .pk-poz__nazwa {
   color: #4d5b5c;
   text-decoration: line-through;
   text-decoration-thickness: 2px;
@@ -548,7 +549,13 @@ fieldset.nz-grupa > .nz-legenda {
   .pk .nz-form,
   .pk-postep,
   .pk-akcje,
-  .pk-poz__wiersz input {
+  .pk-zrodlo,
+  .pk-dodaj,
+  .pk-usuniete,
+  .pk-q,
+  .pk-poz__jed,
+  .pk-poz__usun,
+  .pk-poz__et input {
     display: none !important;
   }
 
@@ -614,7 +621,7 @@ fieldset.nz-grupa > .nz-legenda {
   }
 
   .pk-poz__nazwa,
-  .pk-poz__wiersz:has(input:checked) .pk-poz__nazwa {
+  .pk-poz__et:has(input:checked) .pk-poz__nazwa {
     color: #000;
     text-decoration: none;
   }
@@ -625,11 +632,12 @@ fieldset.nz-grupa > .nz-legenda {
     font-size: 12pt;
   }
 
-  .pk-poz__wiersz:has(input:checked) .pk-poz__nazwa::before {
+  .pk-poz__et:has(input:checked) .pk-poz__nazwa::before {
     content: '☑';
   }
 
   .pk-poz__ile {
+    display: inline;
     color: #000;
     font-size: 10pt;
   }
@@ -639,6 +647,182 @@ fieldset.nz-grupa > .nz-legenda {
     color: #000;
     font-size: 8pt;
   }
+}
+
+/* ── runda 2: cel, daty, klimat, aktywności, edycja listy, plik ── */
+.pk-lb {
+  max-height: 14rem;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  border: 2px solid #0f3e47;
+  border-radius: min(var(--promien-karty), 6px);
+  background: #fbf8f1;
+  list-style: none;
+}
+
+.pk-lb[hidden] {
+  display: none;
+}
+
+.pk-lb li {
+  display: flex;
+  align-items: center;
+  min-height: var(--cel-dotyku);
+  padding: var(--o-2) var(--o-3);
+  color: #1a2a2e;
+  font-size: var(--t-2);
+  cursor: pointer;
+}
+
+.pk-lb li + li {
+  border-top: 1px solid rgb(205 191 159 / .6);
+}
+
+.pk-lb li:hover,
+.pk-lb li[aria-selected='true'] {
+  background: #0f3e47;
+  color: #f6f0e4;
+}
+
+.pk-daty {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--o-3) var(--o-4);
+  margin-bottom: var(--o-3);
+}
+
+.pk-daty > * {
+  min-width: 0;
+}
+
+.pk-daty .nz-wejscie {
+  min-width: 0;
+  padding-inline: var(--o-2);
+}
+
+.pk-klimat {
+  gap: var(--o-3);
+}
+
+.pk-klimat__wiersz {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--o-3) var(--o-4);
+}
+
+.pk-klimat__info {
+  flex: 1 1 18rem;
+  margin: 0;
+  color: #1a2a2e;
+  font-size: var(--t-3, 1.125rem);
+  font-weight: 600;
+}
+
+.pk-zrodlo {
+  margin-top: var(--o-3);
+  font-size: var(--t-0, 0.875rem);
+}
+
+.pk-zrodlo a {
+  color: #0f3e47;
+}
+
+.pk-akcje__pomoc {
+  flex: 1 1 100%;
+  margin: 0;
+}
+
+.pk-plik[hidden] {
+  display: none;
+}
+
+.pk-poz__et {
+  display: flex;
+  flex: 1 1 8rem;
+  min-width: 0;
+  align-items: center;
+  gap: var(--o-3);
+  min-height: var(--cel-dotyku);
+  cursor: pointer;
+}
+
+.pk-q {
+  flex: none;
+  width: 3.5rem;
+  min-height: var(--cel-dotyku);
+  padding-inline: var(--o-2);
+  text-align: center;
+  font-weight: 700;
+}
+
+.pk-poz__jed {
+  flex: none;
+  min-width: 0;
+  color: #0f3e47;
+  font-size: var(--t-1);
+  font-weight: 700;
+}
+
+.pk-poz__usun {
+  flex: none;
+  min-width: var(--cel-dotyku);
+  min-height: var(--cel-dotyku);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #0f3e47;
+  font: inherit;
+  font-size: var(--t-1);
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.pk-poz__usun:focus-visible,
+.pk-q:focus-visible {
+  outline: 3px solid #a8452a;
+  outline-offset: 2px;
+}
+
+@media (max-width: 40rem) {
+  .pk-kat {
+    padding-inline: var(--o-3);
+  }
+
+  .pk-poz__wiersz {
+    gap: var(--o-2);
+  }
+
+  .pk-q {
+    width: 3rem;
+  }
+}
+
+.pk-dodaj {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--o-2);
+  margin-top: var(--o-3);
+}
+
+.pk-dodaj > input:first-child {
+  flex: 1 1 10rem;
+  width: auto;
+}
+
+.pk-dodaj__q {
+  flex: none;
+  width: 4.5rem;
+}
+
+.pk-usuniete {
+  margin-top: var(--o-6);
+}
+
+.pk-usuniete[hidden] {
+  display: none;
 }
 
 /* == szczepienia == */
