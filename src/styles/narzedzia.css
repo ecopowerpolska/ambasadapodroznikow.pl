@@ -730,6 +730,18 @@ fieldset.nz-grupa > .nz-legenda {
   color: #0f3e47;
 }
 
+/* zdanie klimatu i trasy w nagłówku listy: tylko w druku (na ekranie są w formularzu) */
+.pk-zd {
+  display: none;
+}
+
+@media print {
+  .pk-zd {
+    display: block;
+    font-size: 9pt;
+  }
+}
+
 .pk-zrodlo {
   margin-top: var(--o-3);
   font-size: var(--t-0, 0.875rem);
@@ -807,6 +819,24 @@ fieldset.nz-grupa > .nz-legenda {
 
   .pk-q {
     width: 3rem;
+  }
+
+  /* ilość z dopiskiem („8 szt., po 4 na osobę”) schodzi pod nazwę, żeby nie ściskać nazwy na telefonie */
+  .pk-poz__wiersz:has(.pk-poz__jed:not(:empty)) {
+    flex-wrap: wrap;
+    row-gap: 0;
+  }
+
+  .pk-poz__wiersz:has(.pk-poz__jed:not(:empty)) .pk-poz__et {
+    flex-basis: 100%;
+  }
+
+  .pk-poz__wiersz:has(.pk-poz__jed:not(:empty)) .pk-q {
+    margin-left: calc(1.375rem + var(--o-3));
+  }
+
+  .pk-poz__wiersz:has(.pk-poz__jed:not(:empty)) .pk-poz__jed {
+    flex: 1 1 auto;
   }
 }
 

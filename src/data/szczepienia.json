@@ -36,7 +36,9 @@
    "malaria.poziom": "tak = wysokie ryzyko w całym kraju lub jego większości; czesciowo = ryzyko tylko w części kraju albo niskie lub bardzo niskie; nie = brak ryzyka według źródła; sprawdz = źródło nie podaje"
   },
   "bez": "Bez dawek, nazw handlowych szczepionek, nazw leków i cen. Danych nie skopiowano z żadnego kalkulatora ani repozytorium.",
-  "przygotowanie": "Rozpoznanie R2, R3, R4 i weryfikacja W2 (2026-11-18): odczyt stron źródłowych."
+  "przygotowanie": "Rozpoznanie R2, R3, R4, weryfikacja W2 (60 krajów) i uzupełnienie B4 (48 krajów, odczyt stron krajów TravelHealthPro z tytułem strony sprawdzonym przed wpisem): 2026-11-18.",
+  "liczba_krajow": 108,
+  "uzupelnienie_b4": "Kraje dodane 2026-11-18: dane odczytane wprost ze stron krajów TravelHealthPro (sekcje Certificate requirements, Most travellers, Some travellers, Malaria), nazwa kraju w tytule strony sprawdzona; malaria „nie” tylko z listy WHO (15.07.2025) lub tekstu źródła, w pozostałych przypadkach „sprawdz”."
  },
  "kraje": [
   {
@@ -79,6 +81,223 @@
      "data_odczytu": "2026-11-18"
     }
    ]
+  },
+  {
+   "kraj": "Andora",
+   "iso2": "AD",
+   "region": "Europa",
+   "inne_nazwy": [],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "wścieklizna"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 2012 r. GIS: w żadnym kraju europejskim nie ma rodzimej transmisji malarii."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/andorra",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Armenia",
+   "iso2": "AM",
+   "region": "Europa",
+   "inne_nazwy": [
+    "Erywań"
+   ],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec",
+    "dur brzuszny"
+   ],
+   "zalecane_niektorzy": [
+    "WZW B",
+    "odra",
+    "wścieklizna"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 2011 r."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/armenia",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Austria",
+   "iso2": "AT",
+   "region": "Europa",
+   "inne_nazwy": [
+    "Wiedeń"
+   ],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "wścieklizna",
+    "kleszczowe zapalenie mózgu"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 1963 r. GIS: w żadnym kraju europejskim nie ma rodzimej transmisji malarii."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/austria",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Azerbejdżan",
+   "iso2": "AZ",
+   "region": "Europa",
+   "inne_nazwy": [
+    "Baku"
+   ],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "WZW B",
+    "odra",
+    "wścieklizna",
+    "gruźlica (BCG)",
+    "dur brzuszny"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała Azerbejdżan za wolny od malarii w 2023 r.; TravelHealthPro: „There is no risk of malaria in Azerbaijan”."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/azerbaijan",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Belgia",
+   "iso2": "BE",
+   "region": "Europa",
+   "inne_nazwy": [
+    "Bruksela"
+   ],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "wścieklizna",
+    "kleszczowe zapalenie mózgu"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 1963 r. GIS: w żadnym kraju europejskim nie ma rodzimej transmisji malarii."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/belgium",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Bośnia i Hercegowina",
+   "iso2": "BA",
+   "region": "Europa",
+   "inne_nazwy": [
+    "Bośnia",
+    "Sarajewo"
+   ],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "WZW A",
+    "WZW B",
+    "odra",
+    "wścieklizna",
+    "kleszczowe zapalenie mózgu",
+    "dur brzuszny"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 1973 r. GIS: w żadnym kraju europejskim nie ma rodzimej transmisji malarii."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/bosnia-and-herzegovina",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
   },
   {
    "kraj": "Bułgaria",
@@ -217,12 +436,198 @@
    ]
   },
   {
+   "kraj": "Czechy",
+   "iso2": "CZ",
+   "region": "Europa",
+   "inne_nazwy": [
+    "Czechia",
+    "Praga"
+   ],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "WZW A",
+    "wścieklizna",
+    "kleszczowe zapalenie mózgu"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 1963 r. GIS: w żadnym kraju europejskim nie ma rodzimej transmisji malarii."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/czechia",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Dania",
+   "iso2": "DK",
+   "region": "Europa",
+   "inne_nazwy": [
+    "Kopenhaga"
+   ],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "wścieklizna",
+    "kleszczowe zapalenie mózgu"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 1963 r. GIS: w żadnym kraju europejskim nie ma rodzimej transmisji malarii."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/denmark",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Estonia",
+   "iso2": "EE",
+   "region": "Europa",
+   "inne_nazwy": [
+    "Tallin"
+   ],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "wścieklizna",
+    "kleszczowe zapalenie mózgu"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 2012 r. GIS: w żadnym kraju europejskim nie ma rodzimej transmisji malarii."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/estonia",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Finlandia",
+   "iso2": "FI",
+   "region": "Europa",
+   "inne_nazwy": [
+    "Helsinki",
+    "Laponia"
+   ],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "wścieklizna",
+    "kleszczowe zapalenie mózgu"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 1963 r. GIS: w żadnym kraju europejskim nie ma rodzimej transmisji malarii."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/finland",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Francja",
+   "iso2": "FR",
+   "region": "Europa",
+   "inne_nazwy": [
+    "Korsyka",
+    "Paryż",
+    "Lazurowe Wybrzeże"
+   ],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "wścieklizna",
+    "kleszczowe zapalenie mózgu"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 2012 r. GIS: w żadnym kraju europejskim nie ma rodzimej transmisji malarii."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/france",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
    "kraj": "Grecja",
    "iso2": "GR",
    "region": "Europa",
    "inne_nazwy": [
     "Kreta",
-    "Rodos"
+    "Rodos",
+    "Korfu"
    ],
    "wymagane": [],
    "zalecane_wiekszosc": [
@@ -292,7 +697,11 @@
    "inne_nazwy": [
     "Wyspy Kanaryjskie",
     "Teneryfa",
-    "Majorka"
+    "Majorka",
+    "Fuerteventura",
+    "Gran Canaria",
+    "Ibiza",
+    "Lanzarote"
    ],
    "wymagane": [],
    "zalecane_wiekszosc": [
@@ -320,6 +729,414 @@
      "data_odczytu": "2026-11-18"
     }
    ]
+  },
+  {
+   "kraj": "Holandia",
+   "iso2": "NL",
+   "region": "Europa",
+   "inne_nazwy": [
+    "Niderlandy",
+    "Amsterdam"
+   ],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "wścieklizna",
+    "kleszczowe zapalenie mózgu"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 1970 r. GIS: w żadnym kraju europejskim nie ma rodzimej transmisji malarii."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/netherlands",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Irlandia",
+   "iso2": "IE",
+   "region": "Europa",
+   "inne_nazwy": [
+    "Dublin"
+   ],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "wścieklizna"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 1963 r. GIS: w żadnym kraju europejskim nie ma rodzimej transmisji malarii."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/ireland",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Islandia",
+   "iso2": "IS",
+   "region": "Europa",
+   "inne_nazwy": [
+    "Reykjavik"
+   ],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "wścieklizna"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 1963 r. GIS: w żadnym kraju europejskim nie ma rodzimej transmisji malarii."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/iceland",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Litwa",
+   "iso2": "LT",
+   "region": "Europa",
+   "inne_nazwy": [
+    "Wilno"
+   ],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "WZW A",
+    "WZW B",
+    "wścieklizna",
+    "kleszczowe zapalenie mózgu",
+    "gruźlica (BCG)"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 2012 r. GIS: w żadnym kraju europejskim nie ma rodzimej transmisji malarii."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/lithuania",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Luksemburg",
+   "iso2": "LU",
+   "region": "Europa",
+   "inne_nazwy": [],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "wścieklizna"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 2012 r. GIS: w żadnym kraju europejskim nie ma rodzimej transmisji malarii."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/luxembourg",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Łotwa",
+   "iso2": "LV",
+   "region": "Europa",
+   "inne_nazwy": [
+    "Ryga"
+   ],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "WZW A",
+    "wścieklizna",
+    "kleszczowe zapalenie mózgu"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 2012 r. GIS: w żadnym kraju europejskim nie ma rodzimej transmisji malarii."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/latvia",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Macedonia Północna",
+   "iso2": "MK",
+   "region": "Europa",
+   "inne_nazwy": [
+    "Macedonia",
+    "Skopje",
+    "Ochryda"
+   ],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "WZW A",
+    "wścieklizna",
+    "dur brzuszny"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 1973 r. GIS: w żadnym kraju europejskim nie ma rodzimej transmisji malarii."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/north-macedonia",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Malta",
+   "iso2": "MT",
+   "region": "Europa",
+   "inne_nazwy": [
+    "Gozo"
+   ],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 9. miesiąca życia przy przylocie z kraju z ryzykiem żółtej gorączki albo po przesiadce dłuższej niż 12 h na lotnisku takiego kraju; w kraju brak ryzyka"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "wścieklizna"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 1963 r. GIS: w żadnym kraju europejskim nie ma rodzimej transmisji malarii."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/malta",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Niemcy",
+   "iso2": "DE",
+   "region": "Europa",
+   "inne_nazwy": [
+    "Berlin",
+    "Monachium"
+   ],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "polio",
+    "wścieklizna",
+    "kleszczowe zapalenie mózgu"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 1964 r. GIS: w żadnym kraju europejskim nie ma rodzimej transmisji malarii. TravelHealthPro (27.08.2026): sześć przypadków malarii, w tym dwa zgony, wśród osób pracujących na lotnisku we Frankfurcie; ryzyko dla ogółu nie wzrosło."
+   },
+   "uwagi": "Travel Health Canada (powiadomienie 508, 09.2026) wymienia Niemcy wśród krajów, z których po pobycie dłuższym niż 4 tygodnie zaleca się dawkę polio przed wyjazdem.",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/germany",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://travel.gc.ca/travelling/health-safety/travel-health-notices/508",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Norwegia",
+   "iso2": "NO",
+   "region": "Europa",
+   "inne_nazwy": [
+    "Oslo"
+   ],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "wścieklizna",
+    "kleszczowe zapalenie mózgu"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 1963 r. GIS: w żadnym kraju europejskim nie ma rodzimej transmisji malarii."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/norway",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Polska",
+   "iso2": "PL",
+   "region": "Europa",
+   "inne_nazwy": [],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "WZW A",
+    "wścieklizna",
+    "kleszczowe zapalenie mózgu"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 1967 r. GIS: w żadnym kraju europejskim nie ma rodzimej transmisji malarii."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/poland",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
   },
   {
    "kraj": "Portugalia",
@@ -357,6 +1174,232 @@
    ]
   },
   {
+   "kraj": "Rumunia",
+   "iso2": "RO",
+   "region": "Europa",
+   "inne_nazwy": [
+    "Bukareszt"
+   ],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "WZW B",
+    "odra",
+    "wścieklizna",
+    "kleszczowe zapalenie mózgu",
+    "gruźlica (BCG)"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 1967 r. GIS: w żadnym kraju europejskim nie ma rodzimej transmisji malarii. TravelHealthPro (07.2025): pojedynczy przypadek u mieszkańca Bukaresztu bez podróży za granicę."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/romania",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Serbia",
+   "iso2": "RS",
+   "region": "Europa",
+   "inne_nazwy": [
+    "Belgrad"
+   ],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "WZW A",
+    "odra",
+    "wścieklizna",
+    "kleszczowe zapalenie mózgu",
+    "dur brzuszny"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 1973 r. GIS: w żadnym kraju europejskim nie ma rodzimej transmisji malarii."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/serbia",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Słowacja",
+   "iso2": "SK",
+   "region": "Europa",
+   "inne_nazwy": [
+    "Bratysława"
+   ],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "WZW A",
+    "wścieklizna",
+    "kleszczowe zapalenie mózgu"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 1963 r. GIS: w żadnym kraju europejskim nie ma rodzimej transmisji malarii."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/slovakia",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Słowenia",
+   "iso2": "SI",
+   "region": "Europa",
+   "inne_nazwy": [
+    "Lublana"
+   ],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "WZW A",
+    "wścieklizna",
+    "kleszczowe zapalenie mózgu"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 1973 r. GIS: w żadnym kraju europejskim nie ma rodzimej transmisji malarii."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/slovenia",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Szwajcaria",
+   "iso2": "CH",
+   "region": "Europa",
+   "inne_nazwy": [
+    "Zurych",
+    "Genewa"
+   ],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "wścieklizna",
+    "kleszczowe zapalenie mózgu"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 1963 r. GIS: w żadnym kraju europejskim nie ma rodzimej transmisji malarii."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/switzerland",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Szwecja",
+   "iso2": "SE",
+   "region": "Europa",
+   "inne_nazwy": [
+    "Sztokholm"
+   ],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "wścieklizna",
+    "kleszczowe zapalenie mózgu"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 1963 r. GIS: w żadnym kraju europejskim nie ma rodzimej transmisji malarii."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/sweden",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
    "kraj": "Turcja",
    "iso2": "TR",
    "region": "Europa",
@@ -385,10 +1428,129 @@
    ]
   },
   {
+   "kraj": "Ukraina",
+   "iso2": "UA",
+   "region": "Europa",
+   "inne_nazwy": [
+    "Kijów"
+   ],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "WZW B",
+    "odra",
+    "wścieklizna",
+    "kleszczowe zapalenie mózgu",
+    "gruźlica (BCG)",
+    "dur brzuszny"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 2012 r. GIS: w żadnym kraju europejskim nie ma rodzimej transmisji malarii."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/ukraine",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Węgry",
+   "iso2": "HU",
+   "region": "Europa",
+   "inne_nazwy": [
+    "Budapeszt"
+   ],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "wścieklizna",
+    "kleszczowe zapalenie mózgu"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 1964 r. GIS: w żadnym kraju europejskim nie ma rodzimej transmisji malarii."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/hungary",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Wielka Brytania",
+   "iso2": "GB",
+   "region": "Europa",
+   "inne_nazwy": [
+    "Anglia",
+    "Szkocja",
+    "Londyn",
+    "UK"
+   ],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "polio",
+    "wścieklizna"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 1963 r. GIS: w żadnym kraju europejskim nie ma rodzimej transmisji malarii."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/united-kingdom",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
    "kraj": "Włochy",
    "iso2": "IT",
    "region": "Europa",
-   "inne_nazwy": [],
+   "inne_nazwy": [
+    "Sycylia",
+    "Sardynia"
+   ],
    "wymagane": [],
    "zalecane_wiekszosc": [
     "tężec"
@@ -416,6 +1578,46 @@
      "data_odczytu": "2026-11-18"
     }
    ]
+  },
+  {
+   "kraj": "Algieria",
+   "iso2": "DZ",
+   "region": "Afryka",
+   "inne_nazwy": [],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 9. miesiąca życia przy przylocie z kraju z ryzykiem żółtej gorączki albo po przesiadce dłuższej niż 12 h na lotnisku takiego kraju; w kraju brak ryzyka"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "WZW B",
+    "odra",
+    "polio",
+    "wścieklizna",
+    "gruźlica (BCG)",
+    "dur brzuszny"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 2019 r."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/algeria",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
   },
   {
    "kraj": "Egipt",
@@ -1134,6 +2336,127 @@
    ]
   },
   {
+   "kraj": "Katar",
+   "iso2": "QA",
+   "region": "Bliski Wschód",
+   "inne_nazwy": [
+    "Doha"
+   ],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 9. miesiąca życia przy przylocie z kraju z ryzykiem żółtej gorączki (w kraju brak ryzyka)"
+    },
+    {
+     "szczepienie": "polio",
+     "warunek": "dowód szczepienia może być wymagany od części podróżnych"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "WZW A",
+    "WZW B",
+    "odra",
+    "wścieklizna",
+    "gruźlica (BCG)",
+    "dur brzuszny"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 2012 r."
+   },
+   "uwagi": "Polio: źródło mówi, że dowód szczepienia przeciw polio może być potrzebny niektórym podróżnym; sprawdź w WHO International Travel and Health.",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/qatar",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Liban",
+   "iso2": "LB",
+   "region": "Bliski Wschód",
+   "inne_nazwy": [
+    "Bejrut"
+   ],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "cholera",
+    "WZW B",
+    "odra",
+    "wścieklizna",
+    "dur brzuszny"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 2012 r."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/lebanon",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Oman",
+   "iso2": "OM",
+   "region": "Bliski Wschód",
+   "inne_nazwy": [
+    "Maskat"
+   ],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 9. miesiąca życia przy przylocie z kraju z ryzykiem żółtej gorączki albo po przesiadce dłuższej niż 12 h na lotnisku takiego kraju; do listy WHO Oman dodaje Rwandę i Tanzanię; w kraju brak ryzyka"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "denga",
+    "WZW A",
+    "WZW B",
+    "wścieklizna",
+    "dur brzuszny"
+   ],
+   "malaria": {
+    "poziom": "sprawdz",
+    "opis": "TravelHealthPro nie ma dla Omanu sekcji o malarii, a WHO nie wymienia kraju na liście krajów wolnych od malarii. Sprawdź stronę kraju w źródle."
+   },
+   "uwagi": "Wymóg certyfikatu dotyczy też przylotu z Rwandy i Tanzanii, których nie ma na liście WHO krajów z ryzykiem żółtej gorączki.",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/oman",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
    "kraj": "Zjednoczone Emiraty Arabskie",
    "iso2": "AE",
    "region": "Bliski Wschód",
@@ -1407,6 +2730,86 @@
    ]
   },
   {
+   "kraj": "Kazachstan",
+   "iso2": "KZ",
+   "region": "Azja",
+   "inne_nazwy": [
+    "Astana",
+    "Ałmaty"
+   ],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat przy przylocie z kraju z ryzykiem żółtej gorączki albo po przesiadce na lotnisku takiego kraju (źródło nie podaje wieku); w kraju brak ryzyka"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "WZW A",
+    "WZW B",
+    "odra",
+    "wścieklizna",
+    "kleszczowe zapalenie mózgu",
+    "gruźlica (BCG)",
+    "dur brzuszny"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 2012 r."
+   },
+   "uwagi": "Źródło nie podaje, od jakiego wieku obowiązuje certyfikat; sprawdź przed wyjazdem.",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/kazakhstan",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Kirgistan",
+   "iso2": "KG",
+   "region": "Azja",
+   "inne_nazwy": [
+    "Biszkek"
+   ],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "WZW B",
+    "odra",
+    "wścieklizna",
+    "kleszczowe zapalenie mózgu",
+    "gruźlica (BCG)",
+    "dur brzuszny"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 2016 r."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/kyrgyzstan",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
    "kraj": "Korea Południowa",
    "iso2": "KR",
    "region": "Azja",
@@ -1549,6 +2952,43 @@
      "data_odczytu": "2026-11-18"
     }
    ]
+  },
+  {
+   "kraj": "Mongolia",
+   "iso2": "MN",
+   "region": "Azja",
+   "inne_nazwy": [
+    "Ułan Bator"
+   ],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec",
+    "dur brzuszny"
+   ],
+   "zalecane_niektorzy": [
+    "WZW B",
+    "odra",
+    "wścieklizna",
+    "kleszczowe zapalenie mózgu",
+    "gruźlica (BCG)"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 1963 r."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/mongolia",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
   },
   {
    "kraj": "Nepal",
@@ -1700,6 +3140,43 @@
    ]
   },
   {
+   "kraj": "Tajwan",
+   "iso2": "TW",
+   "region": "Azja",
+   "inne_nazwy": [
+    "Tajpej"
+   ],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "czikungunia",
+    "denga",
+    "WZW A",
+    "WZW B",
+    "japońskie zapalenie mózgu",
+    "wścieklizna",
+    "gruźlica (BCG)"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała Tajwan za wolny od malarii w listopadzie 1965 r. (przypis do listy WHO)."
+   },
+   "uwagi": "Źródło: kraj nie podał wymogów dotyczących certyfikatu żółtej gorączki; w kraju brak ryzyka.",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/taiwan",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
    "kraj": "Uzbekistan",
    "iso2": "UZ",
    "region": "Azja",
@@ -1759,6 +3236,79 @@
    ]
   },
   {
+   "kraj": "Bahamy",
+   "iso2": "BS",
+   "region": "Ameryka Północna i Karaiby",
+   "inne_nazwy": [],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 1. roku życia przy przylocie z kraju z ryzykiem żółtej gorączki albo po przesiadce dłuższej niż 12 h na lotnisku takiego kraju; w kraju brak ryzyka"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "denga",
+    "WZW A",
+    "wścieklizna"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 2012 r."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/bahamas",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Barbados",
+   "iso2": "BB",
+   "region": "Ameryka Północna i Karaiby",
+   "inne_nazwy": [],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 1. roku życia przy przylocie z kraju z ryzykiem żółtej gorączki (z wyjątkiem Gujany i wyspy Trynidad, o ile nie ma tam ogniska); w kraju brak ryzyka"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "czikungunia",
+    "denga",
+    "WZW A",
+    "wścieklizna"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 1968 r."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/barbados",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
    "kraj": "Dominikana",
    "iso2": "DO",
    "region": "Ameryka Północna i Karaiby",
@@ -1795,6 +3345,45 @@
     }
    ],
    "zweryfikowano": "W2, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Jamajka",
+   "iso2": "JM",
+   "region": "Ameryka Północna i Karaiby",
+   "inne_nazwy": [],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 1. roku życia przy przylocie z kraju z ryzykiem żółtej gorączki albo po przesiadce dłuższej niż 12 h na lotnisku takiego kraju; w kraju brak ryzyka"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "czikungunia",
+    "denga",
+    "WZW B",
+    "wścieklizna",
+    "dur brzuszny"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 1966 r."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/jamaica",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
   },
   {
    "kraj": "Kanada",
@@ -2020,6 +3609,84 @@
    "zweryfikowano": "W2, TravelHealthPro, 2026-11-18"
   },
   {
+   "kraj": "Chile",
+   "iso2": "CL",
+   "region": "Ameryka Środkowa i Południowa",
+   "inne_nazwy": [
+    "Santiago",
+    "Patagonia"
+   ],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "WZW A",
+    "wścieklizna",
+    "dur brzuszny"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 1968 r."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/chile",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Ekwador",
+   "iso2": "EC",
+   "region": "Ameryka Środkowa i Południowa",
+   "inne_nazwy": [
+    "Galapagos",
+    "Quito"
+   ],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 1. roku życia przy przylocie z Brazylii, Demokratycznej Republiki Konga lub Ugandy albo po przesiadce dłuższej niż 12 h na lotnisku w tych krajach"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "czikungunia",
+    "denga",
+    "WZW B",
+    "wścieklizna",
+    "gruźlica (BCG)",
+    "dur brzuszny",
+    "żółta gorączka (od 9. miesiąca życia; Amazonia na wschód od Andów poniżej 2300 m i prowincja Esmeraldas; źródło nie zaleca szczepienia przy trasie ograniczonej do zachodu kraju o niskim potencjale narażenia, m.in. prowincji Guayas i Pichincha)"
+   ],
+   "malaria": {
+    "poziom": "czesciowo",
+    "opis": "Niskie ryzyko na kontynencie poniżej 1500 m, w tym na wybrzeżu i w Amazonii. Brak ryzyka na Galapagos i w Guayaquil."
+   },
+   "uwagi": "Źródło opisuje, że czasowy wymóg certyfikatu dla przylotów z Peru, Kolumbii, Boliwii i Brazylii (maj–sierpień 2025) zniesiono 28.08.2025; aktualna lista wymogu: Brazylia, DR Konga, Uganda.",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/ecuador",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
    "kraj": "Kolumbia",
    "iso2": "CO",
    "region": "Ameryka Środkowa i Południowa",
@@ -2088,6 +3755,46 @@
    ]
   },
   {
+   "kraj": "Panama",
+   "iso2": "PA",
+   "region": "Ameryka Środkowa i Południowa",
+   "inne_nazwy": [],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 1. roku życia przy przylocie z kraju z ryzykiem żółtej gorączki; Panama ma ryzyko tylko w części kraju"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "tężec",
+    "dur brzuszny"
+   ],
+   "zalecane_niektorzy": [
+    "czikungunia",
+    "denga",
+    "WZW A",
+    "wścieklizna",
+    "gruźlica (BCG)",
+    "żółta gorączka (od 9. miesiąca życia; tereny na wschód od Kanału: Darién, Kuna Yala, Emberá, wschodnie części Colón i Panamy; nie dla miasta Panama, strefy Kanału ani zachodu kraju)"
+   ],
+   "malaria": {
+    "poziom": "czesciowo",
+    "opis": "Niskie ryzyko na wschód od strefy Kanału, bardzo niskie na zachód od niej, brak ryzyka w mieście Panama i w strefie Kanału. Listopad 2026: krajowy alert malaryczny po nieoczekiwanych przypadkach (Ancón, Panama Este, Kuna Yala, Darién)."
+   },
+   "uwagi": "Listopad 2026: ministerstwo zdrowia Panamy ogłosiło krajowy alert malaryczny (przypadki m.in. w Ancón, Panama Este, Kuna Yala, Darién).",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/panama",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
    "kraj": "Peru",
    "iso2": "PE",
    "region": "Ameryka Środkowa i Południowa",
@@ -2116,6 +3823,41 @@
      "data_odczytu": "2026-11-18"
     }
    ]
+  },
+  {
+   "kraj": "Urugwaj",
+   "iso2": "UY",
+   "region": "Ameryka Środkowa i Południowa",
+   "inne_nazwy": [
+    "Montevideo"
+   ],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "czikungunia",
+    "denga",
+    "WZW A",
+    "wścieklizna",
+    "dur brzuszny"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 2012 r."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/uruguay",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
   },
   {
    "kraj": "Australia",
@@ -2154,6 +3896,47 @@
    ]
   },
   {
+   "kraj": "Fidżi",
+   "iso2": "FJ",
+   "region": "Oceania",
+   "inne_nazwy": [
+    "Fiji"
+   ],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 1. roku życia przy przylocie z kraju z ryzykiem żółtej gorączki albo po przesiadce dłuższej niż 12 h na lotnisku takiego kraju; w kraju brak ryzyka"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "denga",
+    "WZW A",
+    "WZW B",
+    "wścieklizna",
+    "gruźlica (BCG)",
+    "dur brzuszny"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 1963 r."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/fiji",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
+  },
+  {
    "kraj": "Nowa Zelandia",
    "iso2": "NZ",
    "region": "Oceania",
@@ -2178,6 +3961,47 @@
      "data_odczytu": "2026-11-18"
     }
    ]
+  },
+  {
+   "kraj": "Polinezja Francuska",
+   "iso2": "PF",
+   "region": "Oceania",
+   "inne_nazwy": [
+    "Tahiti",
+    "Bora Bora"
+   ],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 1. roku życia przy przylocie z kraju z ryzykiem żółtej gorączki albo po przesiadce dłuższej niż 12 h na lotnisku takiego kraju; w kraju brak ryzyka"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "denga",
+    "WZW A",
+    "WZW B",
+    "wścieklizna",
+    "dur brzuszny"
+   ],
+   "malaria": {
+    "poziom": "sprawdz",
+    "opis": "TravelHealthPro nie ma dla Polinezji Francuskiej sekcji o malarii, a WHO nie wymienia jej na swojej liście. Sprawdź stronę kraju w źródle."
+   },
+   "uwagi": "Malaria: źródło nie podaje ryzyka, a WHO nie ma Polinezji Francuskiej na swojej liście; sprawdź w źródle.",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/french-polynesia",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "B4, TravelHealthPro, 2026-11-18"
   }
  ]
 }

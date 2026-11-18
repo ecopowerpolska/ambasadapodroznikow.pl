@@ -30,7 +30,12 @@ type Pozycja = {
   trasa?: string;
   link?: boolean;
   blog?: boolean;
-  warianty?: Record<string, { n?: string; u?: string; l?: boolean }>;
+  warianty?: Record<string, { n?: string; u?: string; l?: boolean; k?: string }>;
+  bez_akt?: string[];
+  noc?: string;
+  plyn?: boolean;
+  uwaga_samolot?: string;
+  kalk?: boolean;
 };
 
 // Link do wpisu o międzynarodowym prawie jazdy: wpis ma datę 7.12.2026, więc link wchodzi do HTML dopiero, gdy wpis jest opublikowany
@@ -82,7 +87,7 @@ const AKT = [
 ];
 const TRANSPORT = [
   ['samolot', 'Samolot'],
-  ['samochod', 'Samochód'],
+  ['samochod', 'Własny samochód'],
   ['pociag', 'Pociąg lub autokar'],
 ];
 // Ustawienia domyślne = stan HTML (pierwsze wejście bez zapisu nie przesuwa układu).
@@ -305,6 +310,7 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
       <div>
         <h2 id="pk-tytul" class="pk-tytul">Lista do spakowania</h2>
         <p class="pk-opis" data-pk-opis></p>
+        <p class="pk-opis pk-zd" data-pk-zd></p>
         <p class="pk-data-druku" data-pk-data></p>
       </div>
       <div class="pk-postep">
@@ -351,6 +357,10 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
                   data-j={p.jedn}
                   data-t={p.trasa}
                   data-wr={p.warianty ? JSON.stringify(p.warianty) : undefined}
+                  data-ba={lista(p.bez_akt)}
+                  data-nc={p.noc ? p.noc[0] : undefined}
+                  data-pl={p.plyn ? '' : undefined}
+                  data-us={p.uwaga_samolot}
                   hidden
                 >
                   <div class="pk-poz__wiersz">
@@ -363,7 +373,7 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
                     <span class="pk-poz__ile" data-pk-ilosc />
                     <button class="pk-poz__usun" type="button" aria-label={`Usuń: ${p.nazwa}`}>Usuń</button>
                   </div>
-                  {(p.uwaga || p.warianty) && (
+                  {(p.uwaga || p.warianty || p.plyn || p.uwaga_samolot) && (
                     <p class="pk-poz__uwaga" hidden={!p.uwaga}>
                       <span data-pk-uw>{p.uwaga}</span>
                       {p.link && (
@@ -372,6 +382,12 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
                           <a href="https://www.gov.pl/web/dyplomacja/informacje-dla-podrozujacych" rel="noopener" data-pk-gov>
                             Informacje dla podróżujących (gov.pl)
                           </a>
+                        </>
+                      )}
+                      {p.kalk && (
+                        <>
+                          {' '}
+                          <a href="/zdrowie/szczepienia-przed-wyjazdem/">Kalkulator szczepień przed wyjazdem</a>
                         </>
                       )}
                       {p.blog && POKAZ_LINK_MPJ && (
@@ -438,10 +454,11 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
     const lista = $('[data-pk-lista]');
     const stan = $('[data-pk-stan]');
     const odh = new Set<string>();
-    type M = { n: string; k?: string; a?: string[]; t: number[]; d: number[]; c?: string };
+    type M = { n: string; k?: string; a?: string[]; t: number[]; d: number[]; tx?: number[]; tn?: number[]; c?: string };
     type S = { n: string; c: string };
-    type Kr = { pj?: string; ue?: boolean; eog?: boolean; dowod?: boolean; ekuz?: boolean; waluta?: string; gniazdko?: string[]; kraj?: string };
-    type Tr = { a: string; b: string; pl: boolean; same: boolean; inny: boolean; tryb: string; dowod: boolean; ekuz: boolean; walInna: boolean; wb: string; gnInne: boolean; gb: string[]; pozaUE: boolean; mpj: boolean; auto: boolean; pj: string; nz: string[]; w: Record<string, string> };
+    type Sz = { zg?: string; ryzyko_zg?: boolean; inne?: string[]; uwagi_szcz?: string[] };
+    type Kr = { pj?: string; ue?: boolean; eog?: boolean; dowod?: boolean; ekuz?: boolean; waluta?: string; gniazdko?: string[]; kraj?: string; szcz?: Sz };
+    type Tr = { a: string; b: string; pl: boolean; same: boolean; inny: boolean; tryb: string; dowod: boolean; ekuz: boolean; walInna: boolean; wb: string; gnInne: boolean; gb: string[]; pozaUE: boolean; daleko: boolean; mpj: boolean; auto: boolean; pj: string; nz: string[]; sz?: Sz; szT: string; w: Record<string, string> };
     const SPOL: S = { n: 'Polska', c: 'Polska' };
     let s: S | null = SPOL;
     type W = { id: string; k: string; n: string; q: number };
@@ -494,7 +511,8 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
       el.do.value = dat(u.do);
       el.do.min = el.od.value;
       const mm = u.m;
-      m = mm && typeof mm.n === 'string' && Array.isArray(mm.t) && mm.t.length === 12 && Array.isArray(mm.d) && mm.d.length === 12 ? { n: tx(mm.n), k: tx(mm.k), t: mm.t.map(Number), d: mm.d.map(Number), c: tx(mm.c) || undefined } : null;
+      const t12 = (v: unknown) => (Array.isArray(v) && v.length === 12 ? v.map(Number) : undefined);
+      m = mm && typeof mm.n === 'string' && t12(mm.t) && t12(mm.d) ? { n: tx(mm.n), k: tx(mm.k), t: t12(mm.t)!, d: t12(mm.d)!, tx: t12(mm.tx), tn: t12(mm.tn), c: tx(mm.c) || undefined } : null;
       reczny = otw = !!u.r;
       el.dzieci.value = String(Number(u.dzieci) || 1);
       (Array.isArray(u.wiek) ? u.wiek : []).forEach((v, i) => v && i < 4 && (wiek(i + 1).value = v));
@@ -530,7 +548,11 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
         .then((r) => r.json())
         .then((j) => {
           baza = (j.m as E[]).map((e) => ({ e, h: [e.n, ...(e.a || []), e.k || ''].map(norm) }));
-          if (m && !m.c) m.c = kc(baza.find((b) => b.e.n === m!.n)?.e || { n: m.n });
+          if (m && (!m.c || !m.tx)) {
+            const e = baza.find((b) => b.e.n === m!.n)?.e;
+            m.c ||= kc(e || { n: m.n });
+            if (e) (m.tx = e.tx), (m.tn = e.tn);
+          }
           blad = false;
         })
         .catch(() => {
@@ -555,7 +577,7 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
     const kb: (() => void)[] = [];
     const pokazAll = () => kb.forEach((f) => f());
     const wybierz = (e: E) => {
-      m = { n: e.n, k: e.k, t: e.t, d: e.d, c: kc(e) };
+      m = { n: e.n, k: e.k, t: e.t, d: e.d, tx: e.tx, tn: e.tn, c: kc(e) };
       el.cel.value = e.n;
       reczny = otw = false;
       zapisuj = true;
@@ -646,9 +668,13 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
       const pj = eb?.pj || 'sprawdz';
       const auto = !!(u.transport === 'samochod' || u.wyn) && inny;
       const mpj = auto && (aUE ? pj !== 'pl' : true);
+      // świadectwo szczepień (żółta gorączka) z kraje.json `szcz`: '' = bez pozycji, wszyscy | ryzyko (start z kraju z ryzykiem) | sprawdz (brak danych)
+      const sz = eb?.szcz;
+      const zr = ea?.szcz?.ryzyko_zg;
+      const szT = !inny ? '' : !sz ? 'sprawdz' : sz.zg === 'wszyscy' ? 'wszyscy' : sz.zg !== 'z_ryzyka' || zr === false ? '' : zr ? 'ryzyko' : 'sprawdz';
       return {
         a: A.c, b: B.c, pl, same, inny, tryb, dowod, ekuz, walInna, wb, gnInne, gb,
-        pozaUE: inny && !(eb && (eb.ue || eb.eog)), mpj, auto, pj,
+        pozaUE: inny && !bUE, daleko: inny && !(aUE && bUE), mpj, auto, pj, sz, szT,
         nz: inny ? [...(ea ? [] : [A.c]), ...(eb ? [] : [B.c])] : [],
         w: {
           paszport: tryb,
@@ -657,11 +683,12 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
           gotowka: walInna ? (wb ? 'waluta' : 'nieznana') : '',
           przejsciowka: gnInne ? (gb.length ? 'typ' : 'nieznane') : '',
           prawo_jazdy_mpj: pl ? pj : 'obcy',
+          swiadectwo_szczepien: szT,
         },
       };
     };
     const warunek = (t: Tr, w: string) =>
-      w === 'inny_kraj' ? t.inny : w === 'poza_dowod' ? t.inny && !t.dowod : w === 'ekuz' ? t.ekuz : w === 'inna_waluta' ? t.walInna : w === 'inne_gniazdko' ? t.gnInne : w === 'poza_ue' ? t.pozaUE : w === 'mpj' ? t.mpj : true;
+      w === 'inny_kraj' ? t.inny : w === 'poza_dowod' ? t.inny && !t.dowod : w === 'ekuz' ? t.ekuz : w === 'inna_waluta' ? t.walInna : w === 'inne_gniazdko' ? t.gnInne : w === 'poza_ue' ? t.pozaUE : w === 'daleko' ? t.daleko : w === 'szcz' ? !!t.szT : w === 'mpj' ? t.mpj : true;
     const zdanieTrasy = (t: Tr) => {
       if (t.same) return `Podróż w obrębie kraju (${t.a}): paszport, EKUZ, adapter do gniazdek i wymiana waluty nie są potrzebne.`;
       const DOK: Record<string, string> = {
@@ -672,21 +699,36 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
       };
       const nz = t.nz.length ? `Nie znam szczegółów wjazdu dla: ${t.nz.join(', ')}. ${t.pl ? 'Sprawdź gov.pl.' : 'Sprawdź w konsulacie.'} ` : '';
       const pjz = !t.auto ? '' : !t.mpj ? `, prawo jazdy: ${t.pl ? 'polskie' : 'krajowe'} wystarczy` : !t.pl ? ', prawo jazdy: sprawdź dla swojego kraju' : t.pj === 'sprawdz' ? ', prawo jazdy: sprawdź, czy potrzebne MPJ' : `, prawo jazdy: potrzebne MPJ (wzór ${t.pj === 'mpj1949' ? 1949 : 1968})`;
-      return `${nz}${t.a} → ${t.b}: ${DOK[t.tryb]}, ${t.ekuz ? 'EKUZ działa' : 'bez EKUZ'}, ${t.walInna ? (t.wb ? 'waluta ' + t.wb : 'waluta nieznana') : 'ta sama waluta'}, ${t.gnInne ? (t.gb.length ? 'adapter typu ' + t.gb.join('/') : 'adapter (typ gniazdek nieznany)') : 'gniazdka pasują'}${pjz}.`;
+      const sz = t.sz;
+      const ZG = 'Świadectwo szczepień przeciw żółtej gorączce: ';
+      const szz = !sz
+        ? 'Świadectwo szczepień: sprawdź w kalkulatorze szczepień.'
+        : (t.szT === 'wszyscy'
+            ? ZG + 'wymagane od wszystkich przybywających.'
+            : t.szT === 'ryzyko'
+              ? ZG + 'wymagane (przylot z kraju z ryzykiem żółtej gorączki).'
+              : sz.zg !== 'z_ryzyka'
+                ? 'Świadectwo szczepień: niewymagane.'
+                : t.szT
+                  ? ZG + 'wymagane przy przylocie z kraju z ryzykiem żółtej gorączki; sprawdź w kalkulatorze szczepień.'
+                  : ZG + `niewymagane przy bezpośrednim przylocie (start: ${t.a}); przy przesiadce ponad 12 h w kraju z ryzykiem żółtej gorączki wymagane.`) +
+          (sz.ryzyko_zg ? ' W kraju jest ryzyko żółtej gorączki: o szczepienie zapytaj lekarza medycyny podróży.' : '') +
+          (sz.inne?.length ? ` Wymagane też: ${sz.inne.join(', ')}.` : '') +
+          (sz.uwagi_szcz?.length ? ` Uwagi: ${sz.uwagi_szcz.join('; ').replace(/\.?$/, '.')}` : '');
+      return `${nz}${t.a} → ${t.b}: ${DOK[t.tryb]}, ${t.ekuz ? 'EKUZ działa' : 'bez EKUZ'}, ${t.walInna ? (t.wb ? 'waluta ' + t.wb : 'waluta nieznana') : 'ta sama waluta'}, ${t.gnInne ? (t.gb.length ? 'adapter typu ' + t.gb.join('/') : 'adapter (typ gniazdek nieznany)') : 'gniazdka pasują'}${pjz}. ${szz}`;
     };
     // nazwa i uwaga pozycji zależne od trasy (data-wr); link gov.pl tylko przy starcie z Polski
-    const wariant = (p: HTMLLIElement, t: Tr | null) => {
-      const wr = JSON.parse(p.dataset.wr!);
+    type V = { n?: string; u?: string; l?: boolean; b?: boolean; k?: string };
+    const wariant = (p: HTMLLIElement, t: Tr | null, v: V | undefined, dop: string) => {
       const ne = p.querySelector('.pk-poz__nazwa')!;
       const ue = p.querySelector('[data-pk-uw]');
       p.dataset.n0 ??= ne.textContent!;
       p.dataset.u0 ??= ue?.textContent ?? '';
-      const v = t && wr[t.w[p.dataset.pkP!]];
       const n = v?.n ? v.n.replace('{w}', t!.wb).replace('{g}', t!.gb.join('/')) : p.dataset.n0;
       ne.textContent = n;
       p.querySelector('.pk-q')!.setAttribute('aria-label', 'Ilość: ' + n);
       p.querySelector('.pk-poz__usun')!.setAttribute('aria-label', 'Usuń: ' + n);
-      const u = v?.u ?? p.dataset.u0;
+      const u = ((v?.u ?? p.dataset.u0) + dop).trim();
       if (ue) {
         ue.textContent = u;
         (ue.parentElement as HTMLElement).hidden = !u;
@@ -710,20 +752,25 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
     };
     const dniTxt = (n: number) => (n === 1 ? '1 dzień' : `${n} dni`);
     const pogoda = (p: { A: number; B: number; n: number }, mi: M) => {
-      let T = 0, D = 0;
+      let T = 0, D = 0, X = 0, N = 0;
       const lim = Math.min(p.n, 366);
+      const dn = !!(mi.tx && mi.tn);
       for (let i = 0; i < lim; i++) {
         const mo = new Date(p.A + i * 864e5).getUTCMonth();
         T += mi.t[mo] / lim;
         D += mi.d[mo] / lim;
+        if (dn) (X += mi.tx![mo] / lim), (N += mi.tn![mo] / lim);
       }
       T = Math.round(T);
+      X = Math.round(X);
+      N = Math.round(N);
       const s = T >= 26 ? 'gorąco' : T >= 18 ? 'ciepło' : T >= 10 ? 'umiarkowanie' : T >= 0 ? 'zimno' : 'mróz';
       const a = new Date(p.A).getUTCMonth(), b = new Date(p.B).getUTCMonth();
       return {
         klimat: T >= 18 ? 'cieplo' : T >= 10 ? 'umiarkowanie' : 'zimno',
         deszcz: D >= 10,
-        zdanie: `${mi.n} ${a === b ? 'w ' + MW[a] : `od ${MG[a]} do ${MG[b]}`}: ok. ${T} °C, ${s}, ${D >= 10 ? 'często pada' : D >= 5 ? 'czasem deszcz' : 'mało deszczu'}.`,
+        noc: dn ? N : null,
+        zdanie: `${mi.n} ${a === b ? 'w ' + MW[a] : `od ${MG[a]} do ${MG[b]}`}: ${dn ? `w dzień ok. ${X} °C, w nocy ok. ${N} °C` : `ok. ${T} °C, ${s}`}, ${D >= 10 ? 'często pada' : D >= 5 ? 'czasem deszcz' : 'mało deszczu'}.`,
       };
     };
 
@@ -859,6 +906,7 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
       const zt = $('[data-pk-trasa]');
       zt.textContent = tr ? zdanieTrasy(tr) : '';
       zt.hidden = !tr;
+      $('[data-pk-zd]').textContent = [pg ? info : '', zt.textContent].filter(Boolean).join(' ');
       const zm = $<HTMLButtonElement>('[data-pk-zmien]');
       zm.hidden = !pg;
       zm.setAttribute('aria-expanded', String(!pg || otw));
@@ -871,10 +919,17 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
       root.querySelectorAll<HTMLElement>('[data-pk-wiek]').forEach((v) => (v.hidden = Number(v.dataset.pkWiek) > u.dzieci));
 
       const widoczne = new Set<string>();
+      const noc = pg?.noc;
+      const zimnaNoc = noc != null && noc < 10;
+      const lot = u.transport === 'samolot';
+      const DZ = ['niemowle', 'dziecko', 'nastolatek'];
+      const odm = (j: string, n: number) => (j !== 'par' ? j : n === 1 ? 'para' : n % 10 > 1 && n % 10 < 5 && (n % 100 < 10 || n % 100 > 20) ? 'pary' : 'par');
       for (const p of root.querySelectorAll<HTMLLIElement>('[data-pk-p]')) {
         const d = p.dataset;
         const id = d.pkP!;
-        const pasujace = d.k ? ludzie.filter((o) => d.k!.split(' ').includes(o)) : ludzie;
+        const v: V | undefined = d.wr && tr ? JSON.parse(d.wr)[tr.w[id]] : undefined;
+        const kk = v?.k || d.k;
+        const pasujace = kk ? ludzie.filter((o) => kk.split(' ').includes(o)) : ludzie;
         const prog = Number((u.podreczny && d.mdp) || d.md || 1);
         const ok =
           !x.includes(id) &&
@@ -882,26 +937,31 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
           jest(d.kl, klimat) &&
           (!d.a || d.a.split(' ').some((v) => u.akt.includes(v))) &&
           (d.dz === undefined || deszcz) &&
-          jest(d.tr, u.transport) &&
+          (!d.ba || !d.ba.split(' ').some((v) => u.akt.includes(v))) &&
+          (!d.nc || (d.nc === 'z' ? zimnaNoc : !zimnaNoc)) &&
+          (jest(d.tr, u.transport) || (u.wyn && !!d.tr?.split(' ').includes('wynajem'))) &&
           jest(d.s, u.sklad) &&
-          (!d.t || (tr ? warunek(tr, d.t) : d.t !== 'mpj')) &&
+          (!d.t || (tr ? warunek(tr, d.t) : d.t !== 'mpj' && d.t !== 'szcz')) &&
           u.dni >= prog &&
           !(d.pb === 'bez' && u.podreczny) &&
           !(d.pb === 'tylko' && !u.podreczny);
         p.hidden = !ok;
         if (!ok) continue;
         widoczne.add(id);
-        if (d.wr) wariant(p, tr);
+        const dop = (lot && d.us ? ' ' + d.us : '') + (lot && u.podreczny && d.pl !== undefined ? ' W bagażu podręcznym: opakowanie do 100 ml, w woreczku strunowym.' : '');
+        if (d.wr || d.us || d.pl !== undefined) wariant(p, tr, v, dop);
         const n = d.os !== undefined ? pasujace.length : 1;
-        const dzieci = pasujace.filter((o) => o === 'niemowle' || o === 'dziecko' || o === 'nastolatek').length;
+        const dzieci = pasujace.filter((o) => DZ.includes(o)).length;
         let q = Math.max(1, Math.round(licz(d.il || '1', { dni: u.dni, na_osobe: pasujace.length, na_dziecko: dzieci })));
         if (u.podreczny && d.mp) q = Math.min(q, Number(d.mp));
         const j = d.j || 'szt.';
         const razem = ile[id] || q * n;
-        const rozbicie = !ile[id] && n > 1 && q > 1 ? ` (${n} × ${q})` : '';
+        // „8 szt., po 4 na osobę” (Piotr 2026-11-18: bez „2 × 4”); same dzieci → „na dziecko”
+        const po = !ile[id] && n > 1 ? `, po ${q} na ${dzieci === n ? 'dziecko' : 'osobę'}` : '';
+        const jr = odm(j, razem);
         p.querySelector<HTMLInputElement>('.pk-q')!.value = String(razem);
-        p.querySelector('[data-pk-jed]')!.textContent = j === 'szt.' && !rozbicie ? '' : j + rozbicie;
-        p.querySelector('[data-pk-ilosc]')!.textContent = razem < 2 ? '' : `${razem} ${j}${rozbicie}`;
+        p.querySelector('[data-pk-jed]')!.textContent = j === 'szt.' && !po ? '' : jr + po;
+        p.querySelector('[data-pk-ilosc]')!.textContent = razem < 2 ? '' : `${razem} ${jr}${po}`;
         p.querySelector('input')!.checked = odh.has(id);
       }
       for (const id of [...odh]) if (!widoczne.has(id)) odh.delete(id);
@@ -1046,8 +1106,8 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
     $('[data-pk-drukuj]').addEventListener('click', () => window.print());
     const tekst = () => {
       const wiersze = ['Lista do spakowania: ' + $('[data-pk-opis]').textContent];
-      const zt = $('[data-pk-trasa]');
-      if (!zt.hidden) wiersze.push(zt.textContent!);
+      const zd = $('[data-pk-zd]').textContent;
+      if (zd) wiersze.push(zd);
       for (const k of kat) {
         if (k.hidden) continue;
         wiersze.push('', k.querySelector('[data-pk-nazwa]')!.textContent!.toUpperCase());
@@ -1140,7 +1200,7 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
     const doladuj = () => {
       if (!m) return;
       ladujK();
-      if (!m.c) laduj();
+      if (!m.c || !m.tx) laduj();
     };
     const komunikat = $('[data-pk-przywrocono]');
     $('[data-pk-od-nowa]').addEventListener('click', () => {

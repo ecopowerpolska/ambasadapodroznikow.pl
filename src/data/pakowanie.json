@@ -6,11 +6,11 @@
    "id": "unikalny klucz, bez polskich znaków; po nim przeglądarka pamięta odhaczenie",
    "nazwa": "tekst na liście",
    "kat": "id kategorii z listy `kategorie` (kolejność kategorii = kolejność na liście)",
-   "ilosc": "wzór ilości: liczba | dni | min(…) | max(…) | ceil(…) z + - * / oraz na_osobe | na_dziecko (liczba pasujących osób / dzieci)",
+   "ilosc": "wzór ilości: liczba | dni | min(…) | max(…) | ceil(…) z + - * / oraz na_osobe | na_dziecko (liczba pasujących osób / dzieci); dni = liczba nocy z dat, więc bielizna = dni + 1 (dzień powrotu)",
    "os": "true = ilość liczona na każdą pasującą osobę (np. bielizna), brak = jedna sztuka na całą grupę (np. apteczka)",
    "kto": "lista typów osób: kobieta | mezczyzna | nastolatek | dziecko | niemowle; pozycja jest, gdy jedzie choć jedna pasująca osoba; brak = wszyscy",
    "klimat": "cieplo | umiarkowanie | zimno; brak = każdy (zaznaczone narty i snowboard liczą się zawsze jako zimno)",
-   "transport": "samolot | samochod | pociag; brak = każdy",
+   "transport": "samolot | samochod (własne auto) | pociag | wynajem (zaznaczone „Wypożyczę auto na miejscu”, niezależnie od transportu); pozycja jest, gdy pasuje choć jedno; brak = każdy",
    "sklad": "kobieta | mezczyzna | para | para_dzieci | sam_dzieci; brak = każdy",
    "min_dni": "pozycja od tylu dni wyjazdu; min_dni_podreczny = próg przy samym bagażu podręcznym",
    "podreczny": "bez = znika przy samym bagażu podręcznym; tylko = pojawia się wyłącznie wtedy",
@@ -20,10 +20,15 @@
    "zrodlo": "kod źródła z `_meta.zrodla`",
    "aktywnosci": "plaza | zwiedzanie | wedrowki | narty | rower | wodne | bieganie | kemping | praca | uroczystosc; pozycja jest, gdy zaznaczono choć jedną z nich; brak = zawsze (zastąpiło pole typ, 2026-11-18)",
    "deszcz": "true = pozycja tylko gdy na miejscu często pada (>= 10 dni z opadem w miesiącu pobytu, wg klimat.json)",
-   "trasa": "warunek trasy (kraj startu → kraj celu, dane z public/dane/kraje.json); brak = bez warunku: inny_kraj | poza_dowod (start-cel wymaga paszportu) | ekuz | inna_waluta | inne_gniazdko | poza_ue | mpj (tylko gdy transport = samochód albo wypożyczenie auta na miejscu, inny kraj, `pj` celu ≠ pl; bez trasy pozycja się nie pokazuje). Bez znanej trasy pozycja jest widoczna.",
-   "warianty": "nazwa/uwaga zależne od trasy: {klucz:{n:nazwa,u:uwaga,l:true=pokaż link gov.pl przy starcie z Polski}}; w nazwie {w} = waluta celu, {g} = typy gniazdek celu",
+   "trasa": "warunek trasy (kraj startu → kraj celu, dane z public/dane/kraje.json); brak = bez warunku: inny_kraj | poza_dowod (start-cel wymaga paszportu) | ekuz | inna_waluta | inne_gniazdko | poza_ue | daleko (start albo cel poza UE/EOG/Szwajcarią, inny kraj) | szcz (świadectwo szczepień wg kraje.json `szcz`: wymagane od wszystkich, wymagane przy starcie z kraju z ryzykiem żółtej gorączki, albo brak danych = sprawdź w kalkulatorze; bez trasy pozycja się nie pokazuje) | mpj (tylko gdy transport = samochód albo wypożyczenie auta na miejscu, inny kraj, `pj` celu ≠ pl; bez trasy pozycja się nie pokazuje). Bez znanej trasy pozycja jest widoczna.",
+   "warianty": "nazwa/uwaga zależne od trasy: {klucz:{n:nazwa,u:uwaga,l:true=pokaż link gov.pl przy starcie z Polski}}; w nazwie {w} = waluta celu, {g} = typy gniazdek celu; `k` = lista osób (spacja), która zastępuje `kto` w tym wariancie",
    "link": "true = pod uwagą link do informacji dla podróżujących (gov.pl), pokazywany tylko przy starcie z Polski",
-   "blog": "true = pod uwagą link do wpisu o międzynarodowym prawie jazdy (renderowany tylko gdy wpis jest już opublikowany (data wpisu <= czas builda)); w wariantach `b` = pokaż ten link"
+   "blog": "true = pod uwagą link do wpisu o międzynarodowym prawie jazdy (renderowany tylko gdy wpis jest już opublikowany (data wpisu <= czas builda)); w wariantach `b` = pokaż ten link",
+   "bez_akt": "lista aktywności, przy których pozycja znika (np. kurtka przeciwdeszczowa, gdy jest kurtka górska)",
+   "noc": "zimna = tylko gdy średnia nocna temperatura pobytu (tn z klimat.json) < 10 °C; nie_zimna = znika wtedy; bez danych o nocy: zimna znika, nie_zimna zostaje",
+   "plyn": "true = przy samym bagażu podręcznym i samolocie uwaga dostaje dopisek o 100 ml i woreczku strunowym",
+   "uwaga_samolot": "dopisek uwagi pokazywany tylko przy samolocie",
+   "kalk": "true = pod uwagą link do kalkulatora szczepień (/zdrowie/szczepienia-przed-wyjazdem/)"
   },
   "zrodla": {
    "kvz": {
@@ -142,7 +147,8 @@
    "warianty": {
     "ten_kraj": {
      "n": "Dowód osobisty",
-     "u": "Paszport nie jest potrzebny. Weź dokument tożsamości (każda osoba, także niemowlę) i sprawdź jego ważność."
+     "u": "Paszport nie jest potrzebny. Dowód biorą dorośli (zameldowanie, kontrola biletów); dzieci w podróży po kraju go nie potrzebują.",
+     "k": "kobieta mezczyzna"
     },
     "dowod": {
      "n": "Dowód osobisty (wystarczy na granicę)",
@@ -200,14 +206,19 @@
     "bez_ekuz": {
      "u": "Tu karta EKUZ nie pomoże, więc koszty leczenia pokryje głównie polisa. Sprawdź jej sumę ubezpieczenia i zakres."
     }
-   }
+   },
+   "trasa": "inny_kraj"
   },
   {
    "id": "bilety",
-   "nazwa": "Bilety i karty pokładowe (wydruk lub w telefonie)",
+   "nazwa": "Bilety lub karty pokładowe (wydruk albo w telefonie)",
    "kat": "dokumenty",
    "ilosc": "1",
-   "zrodlo": "orange"
+   "zrodlo": "orange",
+   "transport": [
+    "samolot",
+    "pociag"
+   ]
   },
   {
    "id": "rezerwacje",
@@ -255,7 +266,7 @@
   },
   {
    "id": "legitymacja",
-   "nazwa": "Legitymacja szkolna lub studencka (zniżki)",
+   "nazwa": "Legitymacja szkolna (zniżki na bilety i wstępy)",
    "kat": "dokumenty",
    "ilosc": "1",
    "os": true,
@@ -272,19 +283,32 @@
    "ilosc": "1",
    "os": true,
    "kto": [
-    "dziecko",
     "niemowle",
-    "nastolatek"
+    "dziecko"
    ],
    "zrodlo": "travelplanet"
   },
   {
    "id": "swiadectwo_szczepien",
-   "nazwa": "Międzynarodowe świadectwo szczepień, jeśli kraj go wymaga",
+   "nazwa": "Międzynarodowe świadectwo szczepień",
    "kat": "dokumenty",
    "ilosc": "1",
-   "uwaga": "O szczepienia przed wyjazdem zapytaj lekarza medycyny podróży.",
-   "zrodlo": "wlasne"
+   "uwaga": "O szczepienie zapytaj lekarza medycyny podróży.",
+   "zrodlo": "wlasne",
+   "os": true,
+   "trasa": "szcz",
+   "kalk": true,
+   "warianty": {
+    "wszyscy": {
+     "n": "Międzynarodowe świadectwo szczepień (żółta gorączka): wymagane od wszystkich przybywających"
+    },
+    "ryzyko": {
+     "n": "Międzynarodowe świadectwo szczepień (żółta gorączka): wymagane, bo przylatujesz z kraju z ryzykiem"
+    },
+    "sprawdz": {
+     "n": "Międzynarodowe świadectwo szczepień: sprawdź w kalkulatorze, czy kraj go wymaga"
+    }
+   }
   },
   {
    "id": "zgoda_rodzica",
@@ -295,7 +319,8 @@
     "sam_dzieci"
    ],
    "uwaga": "Niektóre kraje i przewoźnicy jej wymagają. Sprawdź przepisy kraju przed wyjazdem.",
-   "zrodlo": "orange"
+   "zrodlo": "orange",
+   "trasa": "inny_kraj"
   },
   {
    "id": "prawo_jazdy",
@@ -303,7 +328,8 @@
    "kat": "dokumenty",
    "ilosc": "1",
    "transport": [
-    "samochod"
+    "samochod",
+    "wynajem"
    ],
    "zrodlo": "wlasne"
   },
@@ -338,6 +364,28 @@
    "zrodlo": "wlasne"
   },
   {
+   "id": "karta_kaucja",
+   "nazwa": "Karta kredytowa na kaucję za auto",
+   "kat": "dokumenty",
+   "transport": [
+    "wynajem"
+   ],
+   "uwaga": "Wypożyczalnie zwykle wymagają karty kredytowej (nie debetowej) na nazwisko kierowcy.",
+   "ilosc": "1",
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "rezerwacja_auta",
+   "nazwa": "Potwierdzenie rezerwacji auta",
+   "kat": "dokumenty",
+   "transport": [
+    "wynajem"
+   ],
+   "uwaga": "Przy odbiorze przeczytaj umowę (ubezpieczenie, udział własny, paliwo) i zrób zdjęcia auta ze wszystkich stron.",
+   "ilosc": "1",
+   "zrodlo": "wlasne"
+  },
+  {
    "id": "dowod_rejestracyjny",
    "nazwa": "Dowód rejestracyjny i polisa OC auta",
    "kat": "dokumenty",
@@ -365,7 +413,8 @@
    "nazwa": "Plan podróży zostawiony bliskiej osobie",
    "kat": "dokumenty",
    "ilosc": "1",
-   "zrodlo": "wlasne"
+   "zrodlo": "wlasne",
+   "min_dni": 4
   },
   {
    "id": "przekaski_droga",
@@ -380,24 +429,13 @@
    "kat": "w_drodze",
    "ilosc": "1",
    "transport": [
-    "samochod",
-    "pociag"
+    "samochod"
    ],
    "zrodlo": "wlasne"
   },
   {
-   "id": "butelka_pusta",
-   "nazwa": "Pusta butelka do napełnienia po kontroli bezpieczeństwa",
-   "kat": "w_drodze",
-   "ilosc": "1",
-   "transport": [
-    "samolot"
-   ],
-   "zrodlo": "wlasne"
-  },
-  {
-   "id": "torebka_plyny",
-   "nazwa": "Przezroczysta torebka na płyny (pojemniki do 100 ml)",
+   "id": "butelka",
+   "nazwa": "Butelka wielorazowa na wodę",
    "kat": "w_drodze",
    "ilosc": "1",
    "os": true,
@@ -406,11 +444,8 @@
     "mezczyzna",
     "nastolatek"
    ],
-   "transport": [
-    "samolot"
-   ],
-   "uwaga": "Zasady płynów sprawdź u przewoźnika i na lotnisku wylotu.",
-   "zrodlo": "kvz"
+   "uwaga_samolot": "Przez kontrolę na lotnisku przenieś ją pustą i napełnij za bramkami.",
+   "zrodlo": "wlasne"
   },
   {
    "id": "poduszka_podrozna",
@@ -427,7 +462,8 @@
     "samolot",
     "pociag"
    ],
-   "zrodlo": "wlasne"
+   "zrodlo": "wlasne",
+   "trasa": "daleko"
   },
   {
    "id": "zatyczki_uszu",
@@ -452,7 +488,7 @@
   },
   {
    "id": "szal_poklad",
-   "nazwa": "Lekki sweter lub szal na pokład (klimatyzacja)",
+   "nazwa": "Lekki sweter lub szal na drogę (klimatyzacja)",
    "kat": "w_drodze",
    "ilosc": "1",
    "os": true,
@@ -477,7 +513,14 @@
    ],
    "podreczny": "bez",
    "uwaga": "Na wypadek, gdyby walizka przyleciała później.",
-   "zrodlo": "wlasne"
+   "zrodlo": "wlasne",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ]
   },
   {
    "id": "dlugopis",
@@ -487,7 +530,8 @@
    "transport": [
     "samolot"
    ],
-   "zrodlo": "kvz"
+   "zrodlo": "kvz",
+   "trasa": "poza_dowod"
   },
   {
    "id": "ksiazka",
@@ -522,7 +566,7 @@
    "id": "bielizna",
    "nazwa": "Bielizna",
    "kat": "ubrania",
-   "ilosc": "min(dni,7)",
+   "ilosc": "min(dni+1,7)",
    "os": true,
    "kto": [
     "kobieta",
@@ -536,7 +580,7 @@
    "id": "skarpety",
    "nazwa": "Skarpetki",
    "kat": "ubrania",
-   "ilosc": "min(dni,7)",
+   "ilosc": "min(dni+1,7)",
    "os": true,
    "kto": [
     "kobieta",
@@ -574,8 +618,7 @@
     "nastolatek"
    ],
    "klimat": [
-    "cieplo",
-    "umiarkowanie"
+    "cieplo"
    ],
    "max_podreczny": 2,
    "zrodlo": "kvz"
@@ -584,7 +627,7 @@
    "id": "spodnie",
    "nazwa": "Długie spodnie",
    "kat": "ubrania",
-   "ilosc": "min(ceil(dni/4),3)",
+   "ilosc": "min(ceil(dni/5),2)",
    "os": true,
    "kto": [
     "kobieta",
@@ -628,6 +671,26 @@
    "klimat": [
     "cieplo"
    ],
+   "zrodlo": "wlasne",
+   "noc": "nie_zimna"
+  },
+  {
+   "id": "bluza_wieczor",
+   "nazwa": "Ciepła bluza lub polar na wieczory",
+   "kat": "ubrania",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ],
+   "klimat": [
+    "cieplo"
+   ],
+   "noc": "zimna",
+   "uwaga": "W nocy temperatura spada poniżej 10 °C.",
+   "ilosc": "1",
    "zrodlo": "wlasne"
   },
   {
@@ -642,7 +705,6 @@
     "nastolatek",
     "dziecko"
    ],
-   "min_dni": 2,
    "zrodlo": "wlasne"
   },
   {
@@ -660,7 +722,10 @@
    "klimat": [
     "umiarkowanie"
    ],
-   "zrodlo": "kvz"
+   "zrodlo": "kvz",
+   "bez_akt": [
+    "wedrowki"
+   ]
   },
   {
    "id": "kurtka_ciepla",
@@ -671,7 +736,13 @@
    "klimat": [
     "zimno"
    ],
-   "zrodlo": "wlasne"
+   "zrodlo": "wlasne",
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ]
   },
   {
    "id": "czapka_zimowa",
@@ -682,7 +753,13 @@
    "klimat": [
     "zimno"
    ],
-   "zrodlo": "wlasne"
+   "zrodlo": "wlasne",
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ]
   },
   {
    "id": "czapka_slonce",
@@ -760,8 +837,7 @@
    "zrodlo": "wlasne",
    "aktywnosci": [
     "zwiedzanie",
-    "wedrowki",
-    "praca"
+    "wedrowki"
    ]
   },
   {
@@ -896,7 +972,8 @@
     "mezczyzna",
     "nastolatek"
    ],
-   "zrodlo": "kvz"
+   "zrodlo": "kvz",
+   "plyn": true
   },
   {
    "id": "pasta_dziecko",
@@ -906,7 +983,8 @@
    "kto": [
     "dziecko"
    ],
-   "zrodlo": "wlasne"
+   "zrodlo": "wlasne",
+   "plyn": true
   },
   {
    "id": "nic",
@@ -930,7 +1008,8 @@
     "mezczyzna",
     "nastolatek"
    ],
-   "zrodlo": "kvz"
+   "zrodlo": "kvz",
+   "plyn": true
   },
   {
    "id": "zel_szampon",
@@ -942,11 +1021,12 @@
   },
   {
    "id": "kosmetyki_mini",
-   "nazwa": "Kosmetyki w małych opakowaniach (do 100 ml)",
+   "nazwa": "Kosmetyki w małych opakowaniach",
    "kat": "higiena",
    "ilosc": "1",
    "podreczny": "tylko",
-   "zrodlo": "wlasne"
+   "zrodlo": "wlasne",
+   "plyn": true
   },
   {
    "id": "grzebien",
@@ -985,7 +1065,8 @@
    "kto": [
     "kobieta"
    ],
-   "zrodlo": "wlasne"
+   "zrodlo": "wlasne",
+   "plyn": true
   },
   {
    "id": "higiena_intymna",
@@ -1002,7 +1083,8 @@
    "nazwa": "Krem nawilżający",
    "kat": "higiena",
    "ilosc": "1",
-   "zrodlo": "wlasne"
+   "zrodlo": "wlasne",
+   "plyn": true
   },
   {
    "id": "krem_filtr",
@@ -1013,7 +1095,12 @@
     "cieplo",
     "umiarkowanie"
    ],
-   "zrodlo": "kvz"
+   "zrodlo": "kvz",
+   "bez_akt": [
+    "plaza",
+    "wodne"
+   ],
+   "plyn": true
   },
   {
    "id": "pomadka",
@@ -1038,15 +1125,15 @@
    "nazwa": "Żel antybakteryjny do rąk",
    "kat": "higiena",
    "ilosc": "1",
-   "zrodlo": "travelplanet"
+   "zrodlo": "travelplanet",
+   "plyn": true
   },
   {
    "id": "obcinaczka",
-   "nazwa": "Cążki do paznokci (w bagażu rejestrowanym)",
+   "nazwa": "Cążki do paznokci",
    "kat": "higiena",
    "ilosc": "1",
    "min_dni": 7,
-   "podreczny": "bez",
    "zrodlo": "kvz"
   },
   {
@@ -1056,14 +1143,18 @@
    "ilosc": "1",
    "min_dni": 2,
    "podreczny": "bez",
-   "zrodlo": "wlasne"
+   "zrodlo": "wlasne",
+   "bez_akt": [
+    "kemping"
+   ]
   },
   {
    "id": "okulary_korekcyjne",
    "nazwa": "Okulary korekcyjne lub soczewki z płynem (jeśli nosisz)",
    "kat": "higiena",
    "ilosc": "1",
-   "zrodlo": "wlasne"
+   "zrodlo": "wlasne",
+   "plyn": true
   },
   {
    "id": "recznik",
@@ -1073,17 +1164,18 @@
    "zrodlo": "wlasne",
    "aktywnosci": [
     "wedrowki",
-    "plaza"
+    "kemping"
    ]
   },
   {
    "id": "pranie",
-   "nazwa": "Płyn do prania ręcznego i sznurek z klamerkami",
+   "nazwa": "Środek do prania ręcznego (płyn lub listki) i sznurek z klamerkami",
    "kat": "higiena",
    "ilosc": "1",
    "min_dni": 8,
    "min_dni_podreczny": 4,
-   "zrodlo": "wlasne"
+   "zrodlo": "wlasne",
+   "plyn": true
   },
   {
    "id": "kosmetyczka",
@@ -1093,8 +1185,27 @@
    "zrodlo": "kvz"
   },
   {
+   "id": "woreczek_plyny",
+   "nazwa": "Woreczek strunowy 1 l na płyny (pojemniki do 100 ml)",
+   "kat": "higiena",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ],
+   "transport": [
+    "samolot"
+   ],
+   "podreczny": "tylko",
+   "uwaga": "Na kontroli bezpieczeństwa wyjmujesz go z bagażu. Płyny, kremy, żele i pasty muszą być w pojemnikach do 100 ml i zmieścić się w jednym zamykanym woreczku 1 l na osobę, inaczej zostaną na lotnisku.",
+   "ilosc": "1",
+   "zrodlo": "wlasne"
+  },
+  {
    "id": "leki_stale",
-   "nazwa": "Leki brane na stałe, w oryginalnych opakowaniach",
+   "nazwa": "Leki brane na stałe (jeśli bierzesz), w oryginalnych opakowaniach",
    "kat": "apteczka",
    "ilosc": "1",
    "uwaga": "Zapas na cały wyjazd i kilka dni więcej, w bagażu podręcznym. Zapytaj lekarza lub farmaceutę.",
@@ -1102,7 +1213,7 @@
   },
   {
    "id": "recepta",
-   "nazwa": "Recepta lub zaświadczenie lekarza na leki zabierane w drogę",
+   "nazwa": "Recepta lub zaświadczenie lekarza na leki w bagażu (jeśli je bierzesz)",
    "kat": "apteczka",
    "ilosc": "1",
    "transport": [
@@ -1142,7 +1253,8 @@
    "kat": "apteczka",
    "ilosc": "1",
    "uwaga": "Rodzaj leku i dawkę dobierze lekarz lub farmaceuta.",
-   "zrodlo": "triverna"
+   "zrodlo": "triverna",
+   "min_dni": 3
   },
   {
    "id": "zoladek",
@@ -1155,7 +1267,8 @@
     "nastolatek"
    ],
    "uwaga": "Rodzaj leku i dawkę dobierze lekarz lub farmaceuta.",
-   "zrodlo": "kvz"
+   "zrodlo": "kvz",
+   "min_dni": 3
   },
   {
    "id": "lokomocja",
@@ -1175,7 +1288,7 @@
   },
   {
    "id": "plastry",
-   "nazwa": "Plastry z opatrunkiem i plastry na otarcia",
+   "nazwa": "Plastry z opatrunkiem",
    "kat": "apteczka",
    "ilosc": "1",
    "zrodlo": "kvz"
@@ -1185,21 +1298,34 @@
    "nazwa": "Gaziki jałowe i środek do odkażania ran",
    "kat": "apteczka",
    "ilosc": "1",
-   "zrodlo": "travelplanet"
+   "zrodlo": "travelplanet",
+   "plyn": true
   },
   {
    "id": "bandaz",
    "nazwa": "Bandaż elastyczny, nożyczki i rękawiczki jednorazowe",
    "kat": "apteczka",
    "ilosc": "1",
-   "zrodlo": "wlasne"
+   "zrodlo": "wlasne",
+   "aktywnosci": [
+    "wedrowki",
+    "narty",
+    "rower",
+    "kemping",
+    "bieganie",
+    "wodne"
+   ]
   },
   {
    "id": "termometr",
    "nazwa": "Termometr",
    "kat": "apteczka",
    "ilosc": "1",
-   "zrodlo": "travelplanet"
+   "zrodlo": "travelplanet",
+   "kto": [
+    "niemowle",
+    "dziecko"
+   ]
   },
   {
    "id": "po_opalaniu",
@@ -1209,7 +1335,8 @@
    "klimat": [
     "cieplo"
    ],
-   "zrodlo": "triverna"
+   "zrodlo": "triverna",
+   "plyn": true
   },
   {
    "id": "repelent",
@@ -1225,8 +1352,11 @@
    "aktywnosci": [
     "plaza",
     "wedrowki",
-    "zwiedzanie"
-   ]
+    "zwiedzanie",
+    "kemping",
+    "rower"
+   ],
+   "plyn": true
   },
   {
    "id": "ukaszenia",
@@ -1237,7 +1367,14 @@
     "cieplo",
     "umiarkowanie"
    ],
-   "zrodlo": "travelplanet"
+   "zrodlo": "travelplanet",
+   "plyn": true,
+   "aktywnosci": [
+    "plaza",
+    "wedrowki",
+    "kemping",
+    "rower"
+   ]
   },
   {
    "id": "kleszcze",
@@ -1251,7 +1388,8 @@
    "zrodlo": "triverna",
    "aktywnosci": [
     "wedrowki",
-    "plaza"
+    "kemping",
+    "rower"
    ]
   },
   {
@@ -1263,7 +1401,8 @@
     "dziecko",
     "niemowle"
    ],
-   "zrodlo": "travelplanet"
+   "zrodlo": "travelplanet",
+   "plyn": true
   },
   {
    "id": "aspirator",
@@ -1283,7 +1422,8 @@
    "kto": [
     "niemowle"
    ],
-   "zrodlo": "travelplanet"
+   "zrodlo": "travelplanet",
+   "plyn": true
   },
   {
    "id": "pecherze",
@@ -1352,7 +1492,6 @@
    "kat": "elektronika",
    "ilosc": "1",
    "min_dni": 3,
-   "podreczny": "bez",
    "zrodlo": "kvz"
   },
   {
@@ -1373,11 +1512,21 @@
    "nazwa": "Mapy offline pobrane w telefonie",
    "kat": "elektronika",
    "ilosc": "1",
+   "zrodlo": "wlasne",
+   "trasa": "poza_ue"
+  },
+  {
+   "id": "internet_roaming",
+   "nazwa": "Internet za granicą: pakiet roamingowy albo eSIM",
+   "kat": "elektronika",
+   "trasa": "poza_ue",
+   "uwaga": "Roaming jak w kraju działa tylko w UE i EOG. Poza nimi sprawdź ceny u operatora albo kup eSIM na miejsce.",
+   "ilosc": "1",
    "zrodlo": "wlasne"
   },
   {
    "id": "aparat",
-   "nazwa": "Aparat fotograficzny z ładowarką i kartą pamięci",
+   "nazwa": "Aparat fotograficzny z ładowarką i kartą pamięci (jeśli zabierasz)",
    "kat": "elektronika",
    "ilosc": "1",
    "zrodlo": "wlasne",
@@ -1413,7 +1562,8 @@
    "kat": "elektronika",
    "ilosc": "1",
    "transport": [
-    "samochod"
+    "samochod",
+    "wynajem"
    ],
    "zrodlo": "kvz"
   },
@@ -1440,7 +1590,7 @@
   },
   {
    "id": "chusteczki_dziecko",
-   "nazwa": "Chusteczki nawilżane, druga paczka w bagażu rejestrowanym",
+   "nazwa": "Zapas chusteczek nawilżanych dla dziecka",
    "kat": "dzieci",
    "ilosc": "1",
    "kto": [
@@ -1467,12 +1617,12 @@
    "kto": [
     "niemowle"
    ],
-   "uwaga": "W samolocie jedzenie dla niemowlęcia zgłoś na kontroli bezpieczeństwa.",
+   "uwaga": "W samolocie jedzenie i mleko dla niemowlęcia mogą przekraczać 100 ml; zgłoś je na kontroli bezpieczeństwa.",
    "zrodlo": "travelplanet"
   },
   {
    "id": "butelka_dziecko",
-   "nazwa": "Butelka lub kubek niekapek",
+   "nazwa": "Bidon, butelka lub kubek niekapek dziecka",
    "kat": "dzieci",
    "ilosc": "1",
    "os": true,
@@ -1551,6 +1701,21 @@
    "transport": [
     "samochod"
    ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "fotelik_wynajem",
+   "nazwa": "Fotelik dla dziecka do wypożyczonego auta: zarezerwuj w wypożyczalni albo weź swój",
+   "kat": "dzieci",
+   "os": true,
+   "kto": [
+    "dziecko",
+    "niemowle"
+   ],
+   "transport": [
+    "wynajem"
+   ],
+   "ilosc": "1",
    "zrodlo": "wlasne"
   },
   {
@@ -1719,17 +1884,19 @@
   },
   {
    "id": "parasol",
-   "nazwa": "Parasol lub namiot plażowy",
+   "nazwa": "Parasol plażowy lub namiot UV (cień dla dziecka)",
    "kat": "plaza",
    "ilosc": "1",
    "kto": [
     "dziecko",
     "niemowle"
    ],
-   "podreczny": "bez",
    "zrodlo": "triverna",
    "aktywnosci": [
     "plaza"
+   ],
+   "transport": [
+    "samochod"
    ]
   },
   {
@@ -1759,7 +1926,6 @@
    "kto": [
     "dziecko"
    ],
-   "podreczny": "bez",
    "zrodlo": "triverna",
    "aktywnosci": [
     "plaza"
@@ -1787,6 +1953,9 @@
    "zrodlo": "wlasne",
    "aktywnosci": [
     "plaza"
+   ],
+   "bez_akt": [
+    "wodne"
    ]
   },
   {
@@ -1928,30 +2097,14 @@
    ]
   },
   {
-   "id": "bidon",
-   "nazwa": "Butelka lub bidon na szlak",
-   "kat": "gory",
-   "ilosc": "1",
-   "os": true,
-   "kto": [
-    "kobieta",
-    "mezczyzna",
-    "nastolatek",
-    "dziecko"
-   ],
-   "zrodlo": "wlasne",
-   "aktywnosci": [
-    "wedrowki"
-   ]
-  },
-  {
    "id": "termos",
    "nazwa": "Termos",
    "kat": "gory",
    "ilosc": "1",
    "zrodlo": "wlasne",
    "aktywnosci": [
-    "wedrowki"
+    "wedrowki",
+    "narty"
    ]
   },
   {
@@ -1979,7 +2132,7 @@
    "nazwa": "Gwizdek i naładowany telefon z numerem ratunkowym w górach",
    "kat": "gory",
    "ilosc": "1",
-   "uwaga": "W Polsce GOPR i TOPR: 985 lub 601 100 300, w całej UE: 112.",
+   "uwaga": "Zapisz numer ratunkowy w górach kraju, do którego jedziesz (w Polsce GOPR i TOPR: 985 lub 601 100 300, w UE: 112).",
    "zrodlo": "wlasne",
    "aktywnosci": [
     "wedrowki"
@@ -2145,7 +2298,8 @@
    "zrodlo": "wlasne",
    "aktywnosci": [
     "narty"
-   ]
+   ],
+   "plyn": true
   },
   {
    "id": "ogrzewacze",
@@ -2173,6 +2327,17 @@
    "aktywnosci": [
     "narty"
    ]
+  },
+  {
+   "id": "polisa_narty",
+   "nazwa": "Polisa obejmująca narty (ratownictwo i OC narciarza)",
+   "kat": "zima",
+   "aktywnosci": [
+    "narty"
+   ],
+   "uwaga": "Zwykła polisa podróżna często wyłącza sporty zimowe. Sprawdź jej zakres.",
+   "ilosc": "1",
+   "zrodlo": "wlasne"
   },
   {
    "id": "plecak_dzienny",
@@ -2210,12 +2375,14 @@
    "kat": "miasto",
    "ilosc": "1",
    "klimat": [
-    "umiarkowanie"
+    "umiarkowanie",
+    "cieplo"
    ],
    "zrodlo": "wlasne",
    "aktywnosci": [
     "zwiedzanie"
-   ]
+   ],
+   "deszcz": true
   },
   {
    "id": "torba_zakupy",
@@ -2225,17 +2392,8 @@
    "zrodlo": "wlasne",
    "aktywnosci": [
     "zwiedzanie"
-   ]
-  },
-  {
-   "id": "butelka_miasto",
-   "nazwa": "Butelka wielorazowa",
-   "kat": "miasto",
-   "ilosc": "1",
-   "zrodlo": "wlasne",
-   "aktywnosci": [
-    "zwiedzanie"
-   ]
+   ],
+   "min_dni": 3
   },
   {
    "id": "stroj_biznes",
@@ -2266,6 +2424,9 @@
    "zrodlo": "wlasne",
    "aktywnosci": [
     "praca"
+   ],
+   "bez_akt": [
+    "uroczystosc"
    ]
   },
   {
@@ -2292,7 +2453,8 @@
    "podreczny": "bez",
    "zrodlo": "wlasne",
    "aktywnosci": [
-    "praca"
+    "praca",
+    "uroczystosc"
    ]
   },
   {
@@ -2345,6 +2507,13 @@
    "zrodlo": "wlasne",
    "transport": [
     "samochod"
+   ],
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
    ]
   },
   {
@@ -2465,9 +2634,14 @@
    "zrodlo": "wlasne",
    "aktywnosci": [
     "plaza",
+    "zwiedzanie",
     "wedrowki",
     "narty",
-    "zwiedzanie"
+    "rower",
+    "wodne",
+    "bieganie",
+    "kemping",
+    "uroczystosc"
    ]
   },
   {
@@ -2505,23 +2679,6 @@
     "kobieta",
     "mezczyzna",
     "nastolatek"
-   ],
-   "aktywnosci": [
-    "rower"
-   ],
-   "zrodlo": "wlasne"
-  },
-  {
-   "id": "bidon_rower",
-   "nazwa": "Bidon na rower",
-   "kat": "rower",
-   "ilosc": "1",
-   "os": true,
-   "kto": [
-    "kobieta",
-    "mezczyzna",
-    "nastolatek",
-    "dziecko"
    ],
    "aktywnosci": [
     "rower"
@@ -2582,6 +2739,22 @@
    "zrodlo": "wlasne"
   },
   {
+   "id": "karta_nurka",
+   "nazwa": "Karta nurka (certyfikat) i logbook, jeśli nurkujesz z butlą",
+   "kat": "plaza",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek"
+   ],
+   "aktywnosci": [
+    "wodne"
+   ],
+   "ilosc": "1",
+   "zrodlo": "wlasne"
+  },
+  {
    "id": "worek_wodoszczelny",
    "nazwa": "Worek wodoszczelny na telefon i dokumenty",
    "kat": "plaza",
@@ -2601,7 +2774,8 @@
     "plaza"
    ],
    "uwaga": "Po kąpieli nałóż go ponownie.",
-   "zrodlo": "wlasne"
+   "zrodlo": "wlasne",
+   "plyn": true
   },
   {
    "id": "buty_bieganie",
@@ -2826,7 +3000,13 @@
     "dziecko"
    ],
    "deszcz": true,
-   "zrodlo": "wlasne"
+   "zrodlo": "wlasne",
+   "klimat": [
+    "cieplo"
+   ],
+   "bez_akt": [
+    "zwiedzanie"
+   ]
   },
   {
    "id": "woreczki_mokre",

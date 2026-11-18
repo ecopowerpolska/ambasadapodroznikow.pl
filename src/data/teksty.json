@@ -161,9 +161,9 @@
         "adres": "/podroze/pomocnik-pakowania/",
         "nazwaKrotka": "Pomocnik pakowania",
         "tytul": "Darmowy pomocnik pakowania",
-        "opis": "Wpisz, skąd i dokąd jedziesz oraz kiedy, zaznacz, kto jedzie i co będziesz robić, a lista zrobi się sama. Lista dopasuje się też do trasy: dowód albo paszport, EKUZ, waluta, gniazdka i prawo jazdy. Odhaczaj, poprawiaj, drukuj albo zapisz na komputer.",
+        "opis": "Wpisz, skąd i dokąd jedziesz oraz kiedy, zaznacz, kto jedzie i co będziesz robić, a lista zrobi się sama. Lista dopasuje się też do trasy: dowód albo paszport, EKUZ, waluta, gniazdka, prawo jazdy i to, czy kraj wymaga świadectwa szczepień. Pogodę podaje osobno na dzień i na noc, a przy wypożyczeniu auta układa rzeczy na wynajem, nie na własny samochód. Odhaczaj, poprawiaj, drukuj albo zapisz na komputer.",
         "guzik": "Ułóż listę",
-        "llms": "lista rzeczy do spakowania według kraju startu i celu (czy wystarczy dowód, czy paszport, EKUZ, waluta, gniazdka, międzynarodowe prawo jazdy), dat, osób, aktywności i transportu (klimat dobiera się sam); zapis do pliku i wgranie z powrotem; działa w przeglądarce, niczego nie wysyła"
+        "llms": "lista rzeczy do spakowania według kraju startu i celu (czy wystarczy dowód, czy paszport, EKUZ, waluta, gniazdka, międzynarodowe prawo jazdy, świadectwo szczepień przeciw żółtej gorączce wg kraju), dat, osób, aktywności i transportu (klimat dobiera się sam, temperatura osobno w dzień i w nocy; osobne reguły dla własnego auta i wynajętego, płyny do 100 ml w woreczku przy samym bagażu podręcznym); zapis do pliku i wgranie z powrotem; działa w przeglądarce, niczego nie wysyła"
       },
       {
         "dzial": "zdrowie",
@@ -340,12 +340,12 @@
           "[Pomocnik pakowania](/podroze/pomocnik-pakowania/) i [kalkulator szczepień](/zdrowie/szczepienia-przed-wyjazdem/) działają w całości w twojej przeglądarce. Żeby po powrocie wszystko było tak, jak to zostawiłeś, zapisują ustawienia w pamięci przeglądarki na tym urządzeniu:"
         ],
         "lista": [
-          "ambasada-pakowanie (pamięć przeglądarki, localStorage): ustawienia pomocnika pakowania (kraj startu, cel, daty, aktywności, opcja wynajmu auta na miejscu), odhaczone, własne i usunięte pozycje, dane klimatu wybranego miejsca oraz data ostatniej zmiany;",
+          "ambasada-pakowanie (pamięć przeglądarki, localStorage): ustawienia pomocnika pakowania (kraj startu, cel, daty, aktywności, opcja wynajmu auta na miejscu), odhaczone, własne i usunięte pozycje, dane klimatu wybranego miejsca (średnie temperatury w dzień i w nocy oraz dni z deszczem) oraz data ostatniej zmiany;",
           "ambasada-szczepienia (pamięć przeglądarki, localStorage): ostatnio wybrany kraj i ustawienia kalkulatora szczepień."
         ],
         "akapityPo": [
           "Nie wysyłamy tych zapisów nigdzie: nie trafiają na nasz serwer ani do nikogo innego, a my ich nie widzimy. Zapis powstaje dopiero wtedy, gdy sam coś wybierzesz w narzędziu. To usługa, o którą sam prosisz, więc zapis jest niezbędny do jej wykonania i nie pytamy o niego w okienku zgody. Zapis pomocnika pakowania usuwa przycisk „Zacznij od nowa”, a oba zapisy usuniesz, czyszcząc dane tej strony w przeglądarce.",
-          "Plik z listą, który zapisujesz na komputerze, powstaje w twojej przeglądarce i nigdzie nie jest wysyłany; wgrywana później lista też zostaje u ciebie. Lista miejsc z klimatem i lista krajów (wjazd, EKUZ, waluta, gniazdka, prawo jazdy) to pliki z naszej własnej domeny, pobierane dopiero wtedy, gdy klikniesz w pole „Skąd jedziesz?” albo „Gdzie jedziesz?”.",
+          "Plik z listą, który zapisujesz na komputerze, powstaje w twojej przeglądarce i nigdzie nie jest wysyłany; wgrywana później lista też zostaje u ciebie. Lista miejsc z klimatem (z temperaturami w dzień i w nocy) i lista krajów (wjazd, EKUZ, waluta, gniazdka, prawo jazdy, świadectwo szczepień przeciw żółtej gorączce) to pliki z naszej własnej domeny, pobierane dopiero wtedy, gdy klikniesz w pole „Skąd jedziesz?” albo „Gdzie jedziesz?”.",
           "Dane pogodowe w pomocniku pochodzą z Open-Meteo.com (licencja CC BY 4.0): średnie miesięczne z lat 2023–2025 policzyliśmy sami i zapisaliśmy raz w pliku, więc przeglądarka nie łączy się z Open-Meteo. Dane o wjeździe (dowód albo paszport), karcie EKUZ, walutach, gniazdkach i międzynarodowym prawie jazdy pochodzą ze stron gov.pl i NFZ, z konwencji ONZ i z Wikipedii, z datą odczytu 18 listopada 2026 roku; to informacja, nie porada, więc przed wyjazdem sprawdź je na stronach urzędowych."
         ]
       },

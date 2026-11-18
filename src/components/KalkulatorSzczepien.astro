@@ -111,16 +111,28 @@ const RODZAJ = [
 
   <section class="szcz-wynik" data-szcz-wynik aria-live="polite" tabindex="-1" hidden></section>
 
+  <template data-szcz-wspolne>
+    <p class="szcz-wynik__meta" data-w="meta">
+      Dane ze źródeł z {dataOdczytu}. Wydruk z <span data-szcz-dzis>{dataOdczytu}</span>. Informacja, nie porada: decyzję podejmuje lekarz
+      medycyny podróży.
+    </p>
+    <p class="szcz-podpowiedz szcz-tylko-wiecej" data-w="wiecej">
+      Trekking, pobyt na wsi albo dłuższy wyjazd: źródła częściej zalecają wtedy szczepienia oznaczone niżej. Czy dotyczą ciebie, rozstrzyga
+      lekarz.
+    </p>
+    <p class="szcz-podpowiedz" data-w="cert">Certyfikat to wpis w Międzynarodowej Książeczce Szczepień. Liczy się cała trasa, z przesiadkami.</p>
+    <p class="szcz-podpowiedz szcz-tylko-dzieci" data-w="dzieci">
+      Z dziećmi: wymogi certyfikatów mają granice wieku (podane przy warunku), a część szczepień ma własne. Plan dla dziecka ustala lekarz; weź
+      na wizytę jego książeczkę szczepień.
+    </p>
+  </template>
+
   {
     dane.kraje.map((k) => (
       <template data-szcz-kraj={k.iso2}>
         <div class="szcz-wynik__glowa">
           <p class="etykieta">Wynik</p>
           <h2 class="szcz-wynik__tytul">Szczepienia przed wyjazdem: {k.kraj}</h2>
-          <p class="szcz-wynik__meta">
-            Dane ze źródeł z {dataOdczytu}. Wydruk z <span data-szcz-dzis>{dataOdczytu}</span>. Informacja, nie porada: decyzję podejmuje
-            lekarz medycyny podróży.
-          </p>
         </div>
         <div class={`szcz-malaria szcz-malaria--${k.malaria.poziom}`}>
           <p class="szcz-malaria__tytul">
@@ -131,10 +143,6 @@ const RODZAJ = [
             <p class="szcz-malaria__opis">Przed malarią chronią unikanie ukąszeń komarów i leki dobrane przez lekarza, nie szczepienie z tej listy.</p>
           )}
         </div>
-        <p class="szcz-podpowiedz szcz-tylko-wiecej">
-          Trekking, pobyt na wsi albo dłuższy wyjazd: źródła częściej zalecają wtedy szczepienia oznaczone niżej. Czy dotyczą ciebie, rozstrzyga
-          lekarz.
-        </p>
         <div class="szcz-karty">
           <div class="szcz-karta szcz-karta--wymagane">
             <h3 class="szcz-karta__tytul">Wymagane przy wjeździe</h3>
@@ -174,13 +182,6 @@ const RODZAJ = [
             </div>
           ))}
         </div>
-        {k.wymagane.length > 0 && (
-          <p class="szcz-podpowiedz">Certyfikat to wpis w Międzynarodowej Książeczce Szczepień. Liczy się cała trasa, z przesiadkami.</p>
-        )}
-        <p class="szcz-podpowiedz szcz-tylko-dzieci">
-          Z dziećmi: wymogi certyfikatów mają granice wieku (podane przy warunku), a część szczepień ma własne. Plan dla dziecka ustala lekarz;
-          weź na wizytę jego książeczkę szczepień.
-        </p>
         {k.uwagi && <p class="szcz-uwagi">{k.uwagi}</p>}
         <p class="nz-zrodlo szcz-wynik__zrodlo">
           Źródło dla tego kraju: <a href={stronaKraju(k)} rel="noopener">TravelHealthPro, strona kraju (po angielsku)</a>, odczyt {dataOdczytu}.
@@ -222,6 +223,7 @@ const RODZAJ = [
     const szukaj = pole('szukaj');
     const dzieci = pole('dzieci');
     const druk = f.querySelector<HTMLButtonElement>('[data-szcz-drukuj]')!;
+    const wspolne = document.querySelector<HTMLTemplateElement>('template[data-szcz-wspolne]')?.content;
     const pierwsza = sel.options[0];
     const grupy = [...sel.querySelectorAll('optgroup')].map((g) => [g, [...g.children]] as const);
     const norm = (t: string) => t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/ł/g, 'l');
@@ -237,6 +239,13 @@ const RODZAJ = [
       wynik.replaceChildren();
       if (!szablon) return;
       wynik.append(szablon.content.cloneNode(true));
+      // Akapity wspólne wszystkich krajów leżą w stronie raz (data-szcz-wspolne), tu wracają na swoje miejsca w wyniku.
+      const w = (n: string) => wspolne!.querySelector(`[data-w="${n}"]`)!.cloneNode(true) as HTMLElement;
+      const karty = wynik.querySelector('.szcz-karty')!;
+      wynik.querySelector('.szcz-wynik__tytul')?.after(w('meta'));
+      wynik.querySelector('.szcz-malaria')?.after(w('wiecej'));
+      karty.after(w('dzieci'));
+      if (karty.querySelector('.szcz-karta--wymagane li')) karty.after(w('cert'));
       wynik.classList.toggle('szcz-wynik--wiecej', dl === 'dluzej' || rodzaj === 'trekking');
       wynik.classList.toggle('szcz-wynik--dzieci', dzieci.checked);
       const dzis = wynik.querySelector('[data-szcz-dzis]');

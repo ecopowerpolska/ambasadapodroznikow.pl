@@ -21,7 +21,7 @@ async function pobierz(url) {
       const r = await fetch(url);
       if (r.ok) return await r.json();
       blad = new Error('HTTP ' + r.status);
-      await spij(r.status === 429 ? 20000 : 1500 * i);
+      await spij(r.status === 429 ? 65000 : 1500 * i);
     } catch (e) { blad = e; await spij(1500 * i); }
   }
   throw blad;
@@ -35,26 +35,29 @@ async function jeden(c) {
     if (!g.results?.length) throw new Error('brak wyniku geokodowania');
     la = Math.round(g.results[0].latitude * 100) / 100; lo = Math.round(g.results[0].longitude * 100) / 100;
   }
-  const a = await pobierz(`https://archive-api.open-meteo.com/v1/archive?latitude=${la}&longitude=${lo}&start_date=${OD}&end_date=${DO}&daily=temperature_2m_mean,precipitation_sum&timezone=auto`);
-  const dt = a.daily.time, tt = a.daily.temperature_2m_mean, pp = a.daily.precipitation_sum;
-  const sum = Array(12).fill(0), n = Array(12).fill(0), dni = Array(12).fill(0);
+  const a = await pobierz(`https://archive-api.open-meteo.com/v1/archive?latitude=${la}&longitude=${lo}&start_date=${OD}&end_date=${DO}&daily=temperature_2m_mean,temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=auto`);
+  const dt = a.daily.time, tt = a.daily.temperature_2m_mean, px = a.daily.temperature_2m_max, pn = a.daily.temperature_2m_min, pp = a.daily.precipitation_sum;
+  const sum = Array(12).fill(0), sx = Array(12).fill(0), sn = Array(12).fill(0), n = Array(12).fill(0), dni = Array(12).fill(0);
   dt.forEach((d, i) => {
     const m = +d.slice(5, 7) - 1;
-    if (tt[i] != null) { sum[m] += tt[i]; n[m]++; }
+    if (tt[i] != null && px[i] != null && pn[i] != null) { sum[m] += tt[i]; sx[m] += px[i]; sn[m] += pn[i]; n[m]++; }
     if (pp[i] != null && pp[i] >= 1) dni[m]++;
   });
   if (n.some((x) => x < 60)) throw new Error('za mało danych');
   const lat = LAT;
   const t = sum.map((s, m) => Math.round(s / n[m]));
+  const tx = sx.map((s, m) => Math.round(s / n[m]));
+  const tn = sn.map((s, m) => Math.round(s / n[m]));
   const d = dni.map((x) => Math.round(x / lat));
   const alias = [...new Set([bez(c.n), bez(c.en), ...(c.a || []).map(bez)].filter(Boolean))];
-  return { n: c.n, k: c.k, typ: c.typ, a: alias, la, lo, t, d };
+  return { n: c.n, k: c.k, typ: c.typ, a: alias, la, lo, t, tx, tn, d };
 }
 
 let wynik = [];
 const odNowa = process.argv.includes('--od-nowa');
 if (!odNowa && existsSync(czesc)) wynik = JSON.parse(readFileSync(czesc, 'utf8'));
 else if (!odNowa && existsSync(wyj)) wynik = JSON.parse(readFileSync(wyj, 'utf8')).m; // dobieranie brakujących do gotowego pliku
+wynik = wynik.filter((w) => !w.status && w.tx); // wznowienie: pomijamy błędy i pozycje bez tx
 const mam = new Set(wynik.map((w) => w.n + '|' + w.k + '|' + w.typ));
 let licz = 0;
 for (const c of cele) {
@@ -73,7 +76,7 @@ const doc = {
     atrybucja: 'Dane pogodowe: Open-Meteo.com (CC BY 4.0)',
     okres: `${OD}..${DO}`,
     odczyt: new Date().toISOString().slice(0, 10),
-    opis: 't: średnia temperatura miesięcy I–XII w °C (liczby całkowite), d: dni z opadem ≥ 1 mm w miesiącu (średnio), typ: miasto|kraj (kraj = stolica albo główny kurort), a: aliasy do szukania (małe litery, bez znaków diakrytycznych, PL i EN)',
+    opis: 't: średnia dobowa temperatura miesięcy I–XII w °C, tx: średnie dobowe maksimum (dzień), tn: średnie dobowe minimum (noc) — wszystko liczby całkowite, d: dni z opadem ≥ 1 mm w miesiącu (średnio), typ: miasto|kraj (kraj = stolica albo główny kurort), a: aliasy do szukania (małe litery, bez znaków diakrytycznych, PL i EN)',
   },
   m: dobre,
 };
