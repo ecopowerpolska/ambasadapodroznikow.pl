@@ -720,6 +720,16 @@ fieldset.nz-grupa > .nz-legenda {
   font-weight: 600;
 }
 
+.pk-trasa {
+  flex: 1 1 100%;
+  font-size: var(--t-2, 1rem);
+  font-weight: 500;
+}
+
+.pk-poz__uwaga a {
+  color: #0f3e47;
+}
+
 .pk-zrodlo {
   margin-top: var(--o-3);
   font-size: var(--t-0, 0.875rem);

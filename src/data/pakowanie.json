@@ -19,7 +19,11 @@
    "uwaga": "dopisek pod pozycją; przy lekach zawsze odsyła do lekarza lub farmaceuty, bez dawek i nazw handlowych",
    "zrodlo": "kod źródła z `_meta.zrodla`",
    "aktywnosci": "plaza | zwiedzanie | wedrowki | narty | rower | wodne | bieganie | kemping | praca | uroczystosc; pozycja jest, gdy zaznaczono choć jedną z nich; brak = zawsze (zastąpiło pole typ, 2026-11-18)",
-   "deszcz": "true = pozycja tylko gdy na miejscu często pada (>= 10 dni z opadem w miesiącu pobytu, wg klimat.json)"
+   "deszcz": "true = pozycja tylko gdy na miejscu często pada (>= 10 dni z opadem w miesiącu pobytu, wg klimat.json)",
+   "trasa": "warunek trasy (kraj startu → kraj celu, dane z public/dane/kraje.json); brak = bez warunku: inny_kraj | poza_dowod (start-cel wymaga paszportu) | ekuz | inna_waluta | inne_gniazdko | poza_ue | mpj (tylko gdy transport = samochód albo wypożyczenie auta na miejscu, inny kraj, `pj` celu ≠ pl; bez trasy pozycja się nie pokazuje). Bez znanej trasy pozycja jest widoczna.",
+   "warianty": "nazwa/uwaga zależne od trasy: {klucz:{n:nazwa,u:uwaga,l:true=pokaż link gov.pl przy starcie z Polski}}; w nazwie {w} = waluta celu, {g} = typy gniazdek celu",
+   "link": "true = pod uwagą link do informacji dla podróżujących (gov.pl), pokazywany tylko przy starcie z Polski",
+   "blog": "true = pod uwagą link do wpisu o międzynarodowym prawie jazdy (renderowany tylko gdy wpis jest już opublikowany (data wpisu <= czas builda)); w wariantach `b` = pokaż ten link"
   },
   "zrodla": {
    "kvz": {
@@ -134,7 +138,32 @@
    "ilosc": "1",
    "os": true,
    "uwaga": "Każda osoba, także niemowlę, potrzebuje własnego dokumentu. Sprawdź jego ważność.",
-   "zrodlo": "kvz"
+   "zrodlo": "kvz",
+   "warianty": {
+    "ten_kraj": {
+     "n": "Dowód osobisty",
+     "u": "Paszport nie jest potrzebny. Weź dokument tożsamości (każda osoba, także niemowlę) i sprawdź jego ważność."
+    },
+    "dowod": {
+     "n": "Dowód osobisty (wystarczy na granicę)",
+     "u": "Każda osoba, także niemowlę, potrzebuje własnego dokumentu. Sprawdź jego ważność."
+    },
+    "dowod_poza": {
+     "n": "Dowód osobisty (wystarczy na granicę)",
+     "u": "Dla obywateli UE; sprawdź zasady dla swojego obywatelstwa. Każda osoba, także niemowlę, potrzebuje własnego dokumentu. Sprawdź jego ważność.",
+     "l": true
+    },
+    "paszport": {
+     "n": "Paszport",
+     "u": "Każda osoba, także niemowlę, potrzebuje własnego paszportu. Sprawdź jego ważność (niektóre kraje wymagają co najmniej 6 miesięcy po wyjeździe) oraz wizę.",
+     "l": true
+    },
+    "paszport_obcy": {
+     "n": "Paszport",
+     "u": "Każda osoba, także niemowlę, potrzebuje własnego paszportu. Zasady wjazdu i wizy zależą od obywatelstwa, sprawdź w konsulacie kraju celu."
+    }
+   },
+   "link": true
   },
   {
    "id": "wiza",
@@ -142,23 +171,36 @@
    "kat": "dokumenty",
    "ilosc": "1",
    "uwaga": "Wymagania kraju sprawdź na gov.pl w informacjach dla podróżujących.",
-   "zrodlo": "wlasne"
+   "zrodlo": "wlasne",
+   "trasa": "poza_dowod",
+   "link": true,
+   "warianty": {
+    "obcy": {
+     "u": "Zasady wjazdu i wizy zależą od obywatelstwa, sprawdź w konsulacie kraju celu."
+    }
+   }
   },
   {
    "id": "karta_ekuz",
-   "nazwa": "Karta EKUZ (wyjazd do UE i EOG)",
+   "nazwa": "Karta EKUZ (EHIC)",
    "kat": "dokumenty",
    "ilosc": "1",
    "os": true,
-   "uwaga": "Działa tylko w publicznej służbie zdrowia krajów UE i EOG.",
-   "zrodlo": "orange"
+   "uwaga": "Działa tylko w publicznej służbie zdrowia krajów objętych kartą (UE, EOG, Szwajcaria, Wielka Brytania).",
+   "zrodlo": "orange",
+   "trasa": "ekuz"
   },
   {
    "id": "ubezpieczenie",
    "nazwa": "Polisa ubezpieczenia podróżnego (numer i telefon alarmowy ubezpieczyciela)",
    "kat": "dokumenty",
    "ilosc": "1",
-   "zrodlo": "orange"
+   "zrodlo": "orange",
+   "warianty": {
+    "bez_ekuz": {
+     "u": "Tu karta EKUZ nie pomoże, więc koszty leczenia pokryje głównie polisa. Sprawdź jej sumę ubezpieczenia i zakres."
+    }
+   }
   },
   {
    "id": "bilety",
@@ -193,7 +235,16 @@
    "nazwa": "Gotówka w walucie kraju na pierwsze wydatki",
    "kat": "dokumenty",
    "ilosc": "1",
-   "zrodlo": "kvz"
+   "zrodlo": "kvz",
+   "trasa": "inna_waluta",
+   "warianty": {
+    "waluta": {
+     "n": "Gotówka w {w} na pierwsze wydatki albo karta wielowalutowa"
+    },
+    "nieznana": {
+     "n": "Gotówka w walucie kraju na pierwsze wydatki albo karta wielowalutowa"
+    }
+   }
   },
   {
    "id": "numery_alarmowe",
@@ -257,6 +308,36 @@
    "zrodlo": "wlasne"
   },
   {
+   "id": "prawo_jazdy_mpj",
+   "nazwa": "Międzynarodowe prawo jazdy",
+   "kat": "dokumenty",
+   "ilosc": "1",
+   "trasa": "mpj",
+   "blog": true,
+   "warianty": {
+    "mpj1968": {
+     "n": "Międzynarodowe prawo jazdy — wzór konwencji wiedeńskiej 1968",
+     "u": "Do 35 zł w dowolnym starostwie, zwykle od ręki; ważne tylko razem z krajowym prawem jazdy.",
+     "b": true
+    },
+    "mpj1949": {
+     "n": "Międzynarodowe prawo jazdy — wzór konwencji genewskiej 1949",
+     "u": "Do 35 zł w dowolnym starostwie, zwykle od ręki; ważne tylko razem z krajowym prawem jazdy.",
+     "b": true
+    },
+    "sprawdz": {
+     "n": "Międzynarodowe prawo jazdy — sprawdź w ambasadzie, czy wymagane",
+     "u": "Do 35 zł w dowolnym starostwie, zwykle od ręki; ważne tylko razem z krajowym prawem jazdy.",
+     "b": true
+    },
+    "obcy": {
+     "n": "Międzynarodowe prawo jazdy — sprawdź dla swojego kraju, czy wymagane",
+     "u": "Zasady zależą od kraju, który wydał twoje prawo jazdy. Sprawdź je w urzędzie komunikacji swojego kraju."
+    }
+   },
+   "zrodlo": "wlasne"
+  },
+  {
    "id": "dowod_rejestracyjny",
    "nazwa": "Dowód rejestracyjny i polisa OC auta",
    "kat": "dokumenty",
@@ -264,7 +345,8 @@
    "transport": [
     "samochod"
    ],
-   "zrodlo": "wlasne"
+   "zrodlo": "wlasne",
+   "trasa": "inny_kraj"
   },
   {
    "id": "zielona_karta",
@@ -275,7 +357,8 @@
     "samochod"
    ],
    "uwaga": "Zapytaj ubezpieczyciela, czy kraj docelowy jej wymaga.",
-   "zrodlo": "wlasne"
+   "zrodlo": "wlasne",
+   "trasa": "poza_ue"
   },
   {
    "id": "plan_bliskim",
@@ -1252,7 +1335,16 @@
    "nazwa": "Przejściówka do gniazdek, jeśli kraj ma inne",
    "kat": "elektronika",
    "ilosc": "1",
-   "zrodlo": "kvz"
+   "zrodlo": "kvz",
+   "trasa": "inne_gniazdko",
+   "warianty": {
+    "typ": {
+     "n": "Adapter do gniazdek (typ {g})"
+    },
+    "nieznane": {
+     "n": "Adapter do gniazdek (sprawdź, jakie są gniazdka w kraju celu)"
+    }
+   }
   },
   {
    "id": "rozgaleziacz",

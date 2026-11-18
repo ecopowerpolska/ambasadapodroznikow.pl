@@ -2,10 +2,12 @@
 // PomocnikPakowania.astro — darmowy pomocnik pakowania (2026-11-18, runda 2). Formularz bez wysyłki; wszystko liczy przeglądarka.
 // Cała lista (src/data/pakowanie.json) jest w HTML jako ukryte pozycje z filtrami w atrybutach data-*;
 // skrypt niżej pokazuje pasujące, liczy ilości, dobiera klimat z celu i dat (public/dane/klimat.json, ładowany leniwie),
+// uwzględnia trasę (kraj startu i celu, public/dane/kraje.json: dowód/paszport, EKUZ, waluta, gniazdka),
 // pozwala usuwać pozycje, dopisywać własne, zapisać listę do pliku .txt i wgrać ją z powrotem; stan trzyma w localStorage
 // (klucz ambasada-pakowanie: ustawienia, odhaczenia, własne i usunięte pozycje, data). Bez JS widać formularz i komunikat.
 import '../styles/narzedzia.css';
 import dane from '../data/pakowanie.json';
+import { adresWpisu, opublikowane } from '../lib/wpisy';
 
 type Pozycja = {
   id: string;
@@ -25,8 +27,17 @@ type Pozycja = {
   max_podreczny?: number;
   jedn?: string;
   uwaga?: string;
+  trasa?: string;
+  link?: boolean;
+  blog?: boolean;
+  warianty?: Record<string, { n?: string; u?: string; l?: boolean }>;
 };
 
+// Link do wpisu o międzynarodowym prawie jazdy: wpis ma datę 7.12.2026, więc link wchodzi do HTML dopiero, gdy wpis jest opublikowany
+// (ta sama funkcja, którą filtrowane są daty przyszłe); do tego czasu adres dałby 404. Przebudowa w Actions z harmonogramu włączy go sama.
+const WPIS_MPJ = 'miedzynarodowe-prawo-jazdy-jak-zdobyc-ile-kosztuje';
+const POKAZ_LINK_MPJ = (await opublikowane()).some((w) => w.id === WPIS_MPJ);
+const BLOG_MPJ = adresWpisu(WPIS_MPJ);
 const przedmioty = dane.przedmioty as Pozycja[];
 const kategorie = dane.kategorie.map((k) => ({ ...k, pozycje: przedmioty.filter((p) => p.kat === k.id) }));
 const lista = (w?: string[]) => (w && w.length ? w.join(' ') : undefined);
@@ -86,6 +97,27 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
 
   <form class="nz-form szklo szklo--jasne" data-pk-form aria-label="Parametry wyjazdu">
     <div class="nz-grupa">
+      <label class="nz-legenda" for="pk-skad">Skąd jedziesz?</label>
+      <input
+        class="nz-wejscie"
+        id="pk-skad"
+        name="skad"
+        type="text"
+        role="combobox"
+        aria-expanded="false"
+        aria-controls="pk-skad-lb"
+        aria-autocomplete="list"
+        autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
+        maxlength="60"
+        value="Polska"
+        placeholder="Miasto lub kraj, np. Warszawa"
+      />
+      <ul class="pk-lb" id="pk-skad-lb" role="listbox" aria-label="Podpowiedzi miejsc startu" data-pk-lb2 hidden></ul>
+    </div>
+
+    <div class="nz-grupa">
       <label class="nz-legenda" for="pk-cel">Gdzie jedziesz?</label>
       <input
         class="nz-wejscie"
@@ -130,6 +162,7 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
         <p class="pk-klimat__info" id="pk-cel-info" data-pk-klimat-info aria-live="polite">Wpisz cel i daty, a klimat wybierze się sam. Możesz też wybrać go ręcznie.</p>
         <button class="guzik guzik--obrys" type="button" data-pk-zmien aria-expanded="true" hidden>Zmień</button>
       </div>
+      <p class="pk-klimat__info pk-trasa" data-pk-trasa aria-live="polite" hidden></p>
       <fieldset class="nz-grupa" data-pk-klimat>
         <legend class="nz-legenda">Klimat na miejscu</legend>
         <div class="nz-wybory">
@@ -241,6 +274,10 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
           ))
         }
       </div>
+      <label class="nz-zaznacz">
+        <input type="checkbox" name="wynajem" value="1" />
+        <span>Wypożyczę auto na miejscu</span>
+      </label>
     </fieldset>
 
     <div class="nz-grupa">
@@ -312,6 +349,8 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
                   data-os={p.os ? '' : undefined}
                   data-dz={p.deszcz ? '' : undefined}
                   data-j={p.jedn}
+                  data-t={p.trasa}
+                  data-wr={p.warianty ? JSON.stringify(p.warianty) : undefined}
                   hidden
                 >
                   <div class="pk-poz__wiersz">
@@ -324,7 +363,27 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
                     <span class="pk-poz__ile" data-pk-ilosc />
                     <button class="pk-poz__usun" type="button" aria-label={`Usuń: ${p.nazwa}`}>Usuń</button>
                   </div>
-                  {p.uwaga && <p class="pk-poz__uwaga">{p.uwaga}</p>}
+                  {(p.uwaga || p.warianty) && (
+                    <p class="pk-poz__uwaga" hidden={!p.uwaga}>
+                      <span data-pk-uw>{p.uwaga}</span>
+                      {p.link && (
+                        <>
+                          {' '}
+                          <a href="https://www.gov.pl/web/dyplomacja/informacje-dla-podrozujacych" rel="noopener" data-pk-gov>
+                            Informacje dla podróżujących (gov.pl)
+                          </a>
+                        </>
+                      )}
+                      {p.blog && POKAZ_LINK_MPJ && (
+                        <>
+                          {' '}
+                          <a href={BLOG_MPJ} data-pk-blog hidden>
+                            Jak zdobyć międzynarodowe prawo jazdy
+                          </a>
+                        </>
+                      )}
+                    </p>
+                  )}
                 </li>
               ))}
             </ul>
@@ -363,7 +422,7 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
 </div>
 
 <script>
-  // Pomocnik pakowania: cel i daty → klimat, filtr pozycji z atrybutów data-*, ilości ze wzorów, edycja listy,
+  // Pomocnik pakowania: skąd i dokąd + daty → klimat i reguły trasy, filtr pozycji z atrybutów data-*, ilości ze wzorów, edycja listy,
   // zapis i wgranie pliku, pamięć w localStorage. Bez bibliotek.
   const KLUCZ = 'ambasada-pakowanie';
   const ZN = '--- dane pomocnika (nie usuwaj tej części, pozwala wgrać listę z powrotem) ---';
@@ -379,7 +438,12 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
     const lista = $('[data-pk-lista]');
     const stan = $('[data-pk-stan]');
     const odh = new Set<string>();
-    type M = { n: string; k?: string; a?: string[]; t: number[]; d: number[] };
+    type M = { n: string; k?: string; a?: string[]; t: number[]; d: number[]; c?: string };
+    type S = { n: string; c: string };
+    type Kr = { pj?: string; ue?: boolean; eog?: boolean; dowod?: boolean; ekuz?: boolean; waluta?: string; gniazdko?: string[]; kraj?: string };
+    type Tr = { a: string; b: string; pl: boolean; same: boolean; inny: boolean; tryb: string; dowod: boolean; ekuz: boolean; walInna: boolean; wb: string; gnInne: boolean; gb: string[]; pozaUE: boolean; mpj: boolean; auto: boolean; pj: string; nz: string[]; w: Record<string, string> };
+    const SPOL: S = { n: 'Polska', c: 'Polska' };
+    let s: S | null = SPOL;
     type W = { id: string; k: string; n: string; q: number };
     let zapisuj = false;
     let m: M | null = null;
@@ -389,12 +453,14 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
     let x: string[] = [];
     let ile: Record<string, number> = {};
 
-    type Ust = { cel: string; m: M | null; od: string; do: string; r: boolean; sklad: string; para: string; rodzic: string; dzieci: number; wiek: string[]; akt: string[]; klimat: string; dni: number; transport: string; podreczny: boolean };
+    type Ust = { skad: string; s: S | null; cel: string; m: M | null; od: string; do: string; r: boolean; sklad: string; para: string; rodzic: string; dzieci: number; wiek: string[]; akt: string[]; klimat: string; dni: number; transport: string; podreczny: boolean; wyn: boolean };
 
     const dni = (v: unknown) => Math.min(30, Math.max(1, Math.round(Number(v)) || 1));
     const akt = () => [...f.querySelectorAll<HTMLInputElement>('input[name="akt"]')];
     const wiek = (n: number) => f.elements.namedItem('wiek' + n) as HTMLSelectElement;
     const czytaj = (): Ust => ({
+      skad: el.skad.value.trim(),
+      s,
       cel: el.cel.value.trim(),
       m,
       od: el.od.value,
@@ -410,36 +476,61 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
       dni: dni(el.dni.value),
       transport: el.transport.value,
       podreczny: el.podreczny.checked,
+      wyn: el.wynajem.checked,
     });
     const tx = (v: unknown, n = 60) => (typeof v === 'string' ? v.slice(0, n) : '');
     const dat = (v: unknown) => (typeof v === 'string' && /^\d{4}-\d\d-\d\d$/.test(v) ? v : '');
     const ustaw = (u: Ust & { typ?: string }) => {
       for (const k of ['sklad', 'para', 'rodzic', 'klimat', 'transport'] as const) if (u[k]) el[k].value = u[k];
+      if (u.skad === undefined && !u.s) {
+        el.skad.value = SPOL.n;
+        s = SPOL;
+      } else {
+        el.skad.value = tx(u.skad);
+        s = u.s && typeof u.s.n === 'string' && typeof u.s.c === 'string' && u.s.c ? { n: tx(u.s.n), c: tx(u.s.c) } : null;
+      }
       el.cel.value = tx(u.cel);
       el.od.value = dat(u.od);
       el.do.value = dat(u.do);
       el.do.min = el.od.value;
       const mm = u.m;
-      m = mm && typeof mm.n === 'string' && Array.isArray(mm.t) && mm.t.length === 12 && Array.isArray(mm.d) && mm.d.length === 12 ? { n: tx(mm.n), k: tx(mm.k), t: mm.t.map(Number), d: mm.d.map(Number) } : null;
+      m = mm && typeof mm.n === 'string' && Array.isArray(mm.t) && mm.t.length === 12 && Array.isArray(mm.d) && mm.d.length === 12 ? { n: tx(mm.n), k: tx(mm.k), t: mm.t.map(Number), d: mm.d.map(Number), c: tx(mm.c) || undefined } : null;
       reczny = otw = !!u.r;
       el.dzieci.value = String(Number(u.dzieci) || 1);
       (Array.isArray(u.wiek) ? u.wiek : []).forEach((v, i) => v && i < 4 && (wiek(i + 1).value = v));
       el.dni.value = el.dni_liczba.value = String(dni(u.dni));
       el.podreczny.checked = !!u.podreczny;
+      el.wynajem.checked = !!u.wyn;
       const a = Array.isArray(u.akt) ? u.akt : u.typ && STARE[u.typ] ? [STARE[u.typ]] : [];
       akt().forEach((c) => (c.checked = a.includes(c.value)));
     };
 
-    // ——— miejsca: podpowiedzi z public/dane/klimat.json (z własnej domeny, po pierwszym dotknięciu pola) ———
-    let baza: { e: M & { typ?: string }; h: string[] }[] | null = null;
+    // ——— miejsca: podpowiedzi z klimat.json i dane krajów z kraje.json (obie z własnej domeny, po pierwszym dotknięciu pola) ———
+    type E = M & { typ?: string };
+    let baza: { e: E; h: string[] }[] | null = null;
     let pob: Promise<void> | null = null;
+    let pobK: Promise<void> | null = null;
+    let K: Record<string, Kr> | null = null;
     let blad = false;
     const norm = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/ł/g, 'l').trim();
-    const laduj = () =>
-      (pob ||= fetch('/dane/klimat.json')
+    const kc = (e: { typ?: string; n: string; k?: string }) => (e.typ === 'kraj' ? e.n : e.k || e.n);
+    const ladujK = () =>
+      (pobK ||= fetch('/dane/kraje.json')
         .then((r) => r.json())
         .then((j) => {
-          baza = (j.m as (M & { typ?: string })[]).map((e) => ({ e, h: [e.n, ...(e.a || []), e.k || ''].map(norm) }));
+          K = j;
+        })
+        .catch(() => {
+          pobK = null;
+        })
+        .then(() => generuj()));
+    const laduj = () => {
+      ladujK();
+      return (pob ||= fetch('/dane/klimat.json')
+        .then((r) => r.json())
+        .then((j) => {
+          baza = (j.m as E[]).map((e) => ({ e, h: [e.n, ...(e.a || []), e.k || ''].map(norm) }));
+          if (m && !m.c) m.c = kc(baza.find((b) => b.e.n === m!.n)?.e || { n: m.n });
           blad = false;
         })
         .catch(() => {
@@ -448,10 +539,11 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
         })
         .then(() => {
           generuj();
-          pokaz();
+          pokazAll();
         }));
-    const szukaj = (s: string) => {
-      const q = norm(s);
+    };
+    const szukaj = (q0: string) => {
+      const q = norm(q0);
       if (q.length < 2 || !baza) return [];
       const sc = (b: { h: string[] }) => (b.h[0].startsWith(q) ? 0 : b.h.slice(1, -1).some((y) => y.startsWith(q)) ? 1 : 2);
       return baza
@@ -460,61 +552,150 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
         .slice(0, 8)
         .map((b) => b.e);
     };
-    const lb = $('[data-pk-lb]');
-    let wyn: (M & { typ?: string })[] = [];
-    let ak = -1;
-    const pokaz = () => {
-      wyn = document.activeElement === el.cel && !m ? szukaj(el.cel.value) : [];
-      ak = -1;
-      lb.replaceChildren(
-        ...wyn.map((e, i) => {
-          const o = document.createElement('li');
-          o.id = 'pk-o' + i;
-          o.setAttribute('role', 'option');
-          o.textContent = e.typ === 'kraj' ? e.n + (e.k && e.k !== e.n ? ` (dane: ${e.k})` : '') : e.k ? `${e.n}, ${e.k}` : e.n;
-          return o;
-        }),
-      );
-      lb.hidden = !wyn.length;
-      el.cel.setAttribute('aria-expanded', String(!lb.hidden));
-      el.cel.removeAttribute('aria-activedescendant');
-    };
-    const ruch = (i: number) => {
-      ak = (i + wyn.length) % wyn.length;
-      [...lb.children].forEach((o, j) => o.setAttribute('aria-selected', String(j === ak)));
-      el.cel.setAttribute('aria-activedescendant', 'pk-o' + ak);
-      lb.children[ak].scrollIntoView({ block: 'nearest' });
-    };
-    const wybierz = (e: M) => {
-      m = { n: e.n, k: e.k, t: e.t, d: e.d };
+    const kb: (() => void)[] = [];
+    const pokazAll = () => kb.forEach((f) => f());
+    const wybierz = (e: E) => {
+      m = { n: e.n, k: e.k, t: e.t, d: e.d, c: kc(e) };
       el.cel.value = e.n;
       reczny = otw = false;
       zapisuj = true;
-      pokaz();
+      pokazAll();
       generuj();
     };
-    el.cel.addEventListener('focus', () => {
-      laduj();
-      pokaz();
-    });
-    el.cel.addEventListener('blur', () => {
-      lb.hidden = true;
-      el.cel.setAttribute('aria-expanded', 'false');
-    });
-    el.cel.addEventListener('keydown', (e) => {
-      const k = (e as KeyboardEvent).key;
-      if (k === 'ArrowDown' && wyn.length) ruch(ak + 1);
-      else if (k === 'ArrowUp' && wyn.length) ruch(ak < 0 ? -1 : ak - 1);
-      else if (k === 'Enter' && ak >= 0) wybierz(wyn[ak]);
-      else if (k === 'Escape' && !lb.hidden) lb.hidden = true;
-      else return;
-      e.preventDefault();
-    });
-    lb.addEventListener('mousedown', (e) => {
-      e.preventDefault();
-      const i = [...lb.children].indexOf((e.target as Element).closest('li')!);
-      if (i >= 0) wybierz(wyn[i]);
-    });
+    const wybierzSkad = (e: E) => {
+      s = { n: e.n, c: kc(e) };
+      el.skad.value = e.n;
+      zapisuj = true;
+      pokazAll();
+      generuj();
+    };
+    // Autouzupełniacz (combobox): jedna implementacja dla pól „Skąd” i „Dokąd”.
+    const kombi = (inp: HTMLInputElement, lb: HTMLElement, pre: string, wybrane: () => boolean, wyb: (e: E) => void) => {
+      let wyn: E[] = [];
+      let ak = -1;
+      kb.push(() => {
+        wyn = document.activeElement === inp && !wybrane() ? szukaj(inp.value) : [];
+        ak = -1;
+        lb.replaceChildren(
+          ...wyn.map((e, i) => {
+            const o = document.createElement('li');
+            o.id = pre + i;
+            o.setAttribute('role', 'option');
+            o.textContent = e.typ === 'kraj' ? e.n + (e.k && e.k !== e.n ? ` (dane: ${e.k})` : '') : e.k ? `${e.n}, ${e.k}` : e.n;
+            return o;
+          }),
+        );
+        lb.hidden = !wyn.length;
+        inp.setAttribute('aria-expanded', String(!lb.hidden));
+        inp.removeAttribute('aria-activedescendant');
+      });
+      const ruch = (i: number) => {
+        ak = (i + wyn.length) % wyn.length;
+        [...lb.children].forEach((o, j) => o.setAttribute('aria-selected', String(j === ak)));
+        inp.setAttribute('aria-activedescendant', pre + ak);
+        lb.children[ak].scrollIntoView({ block: 'nearest' });
+      };
+      inp.addEventListener('focus', () => {
+        laduj();
+        pokazAll();
+      });
+      inp.addEventListener('blur', () => {
+        lb.hidden = true;
+        inp.setAttribute('aria-expanded', 'false');
+      });
+      inp.addEventListener('keydown', (e) => {
+        const k = e.key;
+        if (k === 'ArrowDown' && wyn.length) ruch(ak + 1);
+        else if (k === 'ArrowUp' && wyn.length) ruch(ak < 0 ? -1 : ak - 1);
+        else if (k === 'Enter' && ak >= 0) wyb(wyn[ak]);
+        else if (k === 'Escape' && !lb.hidden) lb.hidden = true;
+        else return;
+        e.preventDefault();
+      });
+      lb.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        const i = [...lb.children].indexOf((e.target as Element).closest('li')!);
+        if (i >= 0) wyb(wyn[i]);
+      });
+    };
+    kombi(el.cel, $('[data-pk-lb]'), 'pk-o', () => !!m, wybierz);
+    kombi(el.skad, $('[data-pk-lb2]'), 'pk-s', () => !!s, wybierzSkad);
+
+    // ——— trasa: kraj startu → kraj celu (public/dane/kraje.json); null = trasa nieznana, lista bez zawężeń ———
+    const trasa = (u: Ust): Tr | null => {
+      if (!K || !m?.c || !s?.c) return null;
+      const rozw = (c: string) => {
+        const e = K![c];
+        const r = e?.kraj && K![e.kraj] ? e.kraj : c;
+        return { c: r, e: K![r] || null };
+      };
+      const A = rozw(s.c), B = rozw(m.c);
+      const ue = (x: { c: string; e: Kr | null }) => !!(x.e && (x.e.ue || x.e.eog)) || x.c === 'Szwajcaria';
+      const ea = A.e, eb = B.e;
+      const same = A.c === B.c;
+      const inny = !same;
+      const aUE = ue(A), bUE = ue(B);
+      const dowod = inny && aUE && (bUE || eb?.dowod === true);
+      const pl = A.c === 'Polska';
+      const tryb = !inny ? 'ten_kraj' : dowod ? (bUE ? 'dowod' : 'dowod_poza') : aUE ? 'paszport' : 'paszport_obcy';
+      const ekuz = inny && ea?.ekuz === true && eb?.ekuz === true;
+      const wa = ea?.waluta, wb = eb?.waluta || '';
+      const walInna = inny && (!wa || !wb || wa !== wb);
+      const ga = ea?.gniazdko || [], gb = eb?.gniazdko || [];
+      const gnInne = inny && (!ga.length || !gb.length || !ga.some((t) => gb.includes(t)));
+      const pj = eb?.pj || 'sprawdz';
+      const auto = !!(u.transport === 'samochod' || u.wyn) && inny;
+      const mpj = auto && (aUE ? pj !== 'pl' : true);
+      return {
+        a: A.c, b: B.c, pl, same, inny, tryb, dowod, ekuz, walInna, wb, gnInne, gb,
+        pozaUE: inny && !(eb && (eb.ue || eb.eog)), mpj, auto, pj,
+        nz: inny ? [...(ea ? [] : [A.c]), ...(eb ? [] : [B.c])] : [],
+        w: {
+          paszport: tryb,
+          wiza: inny && !dowod && !pl ? 'obcy' : '',
+          ubezpieczenie: inny && !ekuz ? 'bez_ekuz' : '',
+          gotowka: walInna ? (wb ? 'waluta' : 'nieznana') : '',
+          przejsciowka: gnInne ? (gb.length ? 'typ' : 'nieznane') : '',
+          prawo_jazdy_mpj: pl ? pj : 'obcy',
+        },
+      };
+    };
+    const warunek = (t: Tr, w: string) =>
+      w === 'inny_kraj' ? t.inny : w === 'poza_dowod' ? t.inny && !t.dowod : w === 'ekuz' ? t.ekuz : w === 'inna_waluta' ? t.walInna : w === 'inne_gniazdko' ? t.gnInne : w === 'poza_ue' ? t.pozaUE : w === 'mpj' ? t.mpj : true;
+    const zdanieTrasy = (t: Tr) => {
+      if (t.same) return `Podróż w obrębie kraju (${t.a}): paszport, EKUZ, adapter do gniazdek i wymiana waluty nie są potrzebne.`;
+      const DOK: Record<string, string> = {
+        dowod: 'dowód osobisty wystarczy',
+        dowod_poza: 'dowód osobisty wystarczy (dla obywateli UE; sprawdź dla swojego obywatelstwa)',
+        paszport: 'paszport (sprawdź wizę)',
+        paszport_obcy: 'paszport, sprawdź wizę i zasady wjazdu dla swojego obywatelstwa',
+      };
+      const nz = t.nz.length ? `Nie znam szczegółów wjazdu dla: ${t.nz.join(', ')}. ${t.pl ? 'Sprawdź gov.pl.' : 'Sprawdź w konsulacie.'} ` : '';
+      const pjz = !t.auto ? '' : !t.mpj ? `, prawo jazdy: ${t.pl ? 'polskie' : 'krajowe'} wystarczy` : !t.pl ? ', prawo jazdy: sprawdź dla swojego kraju' : t.pj === 'sprawdz' ? ', prawo jazdy: sprawdź, czy potrzebne MPJ' : `, prawo jazdy: potrzebne MPJ (wzór ${t.pj === 'mpj1949' ? 1949 : 1968})`;
+      return `${nz}${t.a} → ${t.b}: ${DOK[t.tryb]}, ${t.ekuz ? 'EKUZ działa' : 'bez EKUZ'}, ${t.walInna ? (t.wb ? 'waluta ' + t.wb : 'waluta nieznana') : 'ta sama waluta'}, ${t.gnInne ? (t.gb.length ? 'adapter typu ' + t.gb.join('/') : 'adapter (typ gniazdek nieznany)') : 'gniazdka pasują'}${pjz}.`;
+    };
+    // nazwa i uwaga pozycji zależne od trasy (data-wr); link gov.pl tylko przy starcie z Polski
+    const wariant = (p: HTMLLIElement, t: Tr | null) => {
+      const wr = JSON.parse(p.dataset.wr!);
+      const ne = p.querySelector('.pk-poz__nazwa')!;
+      const ue = p.querySelector('[data-pk-uw]');
+      p.dataset.n0 ??= ne.textContent!;
+      p.dataset.u0 ??= ue?.textContent ?? '';
+      const v = t && wr[t.w[p.dataset.pkP!]];
+      const n = v?.n ? v.n.replace('{w}', t!.wb).replace('{g}', t!.gb.join('/')) : p.dataset.n0;
+      ne.textContent = n;
+      p.querySelector('.pk-q')!.setAttribute('aria-label', 'Ilość: ' + n);
+      p.querySelector('.pk-poz__usun')!.setAttribute('aria-label', 'Usuń: ' + n);
+      const u = v?.u ?? p.dataset.u0;
+      if (ue) {
+        ue.textContent = u;
+        (ue.parentElement as HTMLElement).hidden = !u;
+      }
+      const a = p.querySelector<HTMLElement>('[data-pk-gov]');
+      if (a) a.hidden = !((v ? v.l : true) && (!t || t.pl));
+      const bl = p.querySelector<HTMLElement>('[data-pk-blog]');
+      if (bl) bl.hidden = !v?.b;
+    };
 
     // ——— daty i klimat ———
     const okres = (od: string, dk: string) => {
@@ -600,19 +781,20 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
               : napis('sklad').replace(/^./, (c) => c.toUpperCase());
       const p = okres(u.od, u.do);
       return [
-        u.cel,
+        u.cel ? (u.skad ? `${u.skad} → ${u.cel}` : u.cel) : '',
         p ? `${zakres(u.od, u.do)} (${dniTxt(p.n)})` : dniTxt(u.dni),
         kto,
         ...[...f.querySelectorAll('input[name="akt"]:checked + span')].map((s) => s.textContent!.trim().toLowerCase()),
         napis('klimat'),
         napis('transport'),
+        u.wyn ? 'auto na miejscu' : '',
         u.podreczny ? 'tylko bagaż podręczny' : '',
       ]
         .filter(Boolean)
         .join(', ');
     };
 
-    const dane = () => ({ v: 1, u: czytaj(), o: [...odh], w, x, i: ile, d: Date.now() });
+    const dane = () => ({ v: 2, u: czytaj(), o: [...odh], w, x, i: ile, d: Date.now() });
     const zapisz = () => {
       if (!zapisuj) return;
       try {
@@ -659,6 +841,7 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
       const pg = m && per ? pogoda(per, m) : null;
       if (pg && !reczny) el.klimat.value = pg.klimat;
       const u = czytaj();
+      const tr = trasa(u);
       const ludzie = osoby(u);
       const klimat = u.akt.includes('narty') ? 'zimno' : u.klimat;
       const deszcz = !!pg?.deszcz;
@@ -673,6 +856,9 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
               : 'Wpisz cel i daty, a klimat wybierze się sam. Możesz też wybrać go ręcznie.'
         : pg.zdanie + (reczny ? ` Ręcznie wybrano: ${napis('klimat')}.` : '');
       $('[data-pk-klimat-info]').textContent = info;
+      const zt = $('[data-pk-trasa]');
+      zt.textContent = tr ? zdanieTrasy(tr) : '';
+      zt.hidden = !tr;
       const zm = $<HTMLButtonElement>('[data-pk-zmien]');
       zm.hidden = !pg;
       zm.setAttribute('aria-expanded', String(!pg || otw));
@@ -698,12 +884,14 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
           (d.dz === undefined || deszcz) &&
           jest(d.tr, u.transport) &&
           jest(d.s, u.sklad) &&
+          (!d.t || (tr ? warunek(tr, d.t) : d.t !== 'mpj')) &&
           u.dni >= prog &&
           !(d.pb === 'bez' && u.podreczny) &&
           !(d.pb === 'tylko' && !u.podreczny);
         p.hidden = !ok;
         if (!ok) continue;
         widoczne.add(id);
+        if (d.wr) wariant(p, tr);
         const n = d.os !== undefined ? pasujace.length : 1;
         const dzieci = pasujace.filter((o) => o === 'niemowle' || o === 'dziecko' || o === 'nastolatek').length;
         let q = Math.max(1, Math.round(licz(d.il || '1', { dni: u.dni, na_osobe: pasujace.length, na_dziecko: dzieci })));
@@ -734,7 +922,12 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
         laduj();
         if (m && t.value !== m.n) m = null;
         reczny = otw = false;
-        pokaz();
+        pokazAll();
+      }
+      if (nm === 'skad') {
+        laduj();
+        if (s && t.value !== s.n) s = null;
+        pokazAll();
       }
       if (nm === 'od' || nm === 'do') {
         reczny = otw = false;
@@ -763,6 +956,18 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
         const q = norm(t.value);
         const b = q && baza.find((y) => y.h.slice(0, -1).includes(q));
         if (b) wybierz(b.e);
+      }
+      if (t.name === 'skad') {
+        const q = norm(t.value);
+        if (!q) {
+          s = SPOL;
+          t.value = SPOL.n;
+          zapisuj = true;
+          generuj();
+        } else if (!s && baza) {
+          const b = baza.find((y) => y.h.slice(0, -1).includes(q));
+          if (b) wybierzSkad(b.e);
+        }
       }
     });
     f.addEventListener('submit', (e) => {
@@ -841,6 +1046,8 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
     $('[data-pk-drukuj]').addEventListener('click', () => window.print());
     const tekst = () => {
       const wiersze = ['Lista do spakowania: ' + $('[data-pk-opis]').textContent];
+      const zt = $('[data-pk-trasa]');
+      if (!zt.hidden) wiersze.push(zt.textContent!);
       for (const k of kat) {
         if (k.hidden) continue;
         wiersze.push('', k.querySelector('[data-pk-nazwa]')!.textContent!.toUpperCase());
@@ -886,7 +1093,7 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
     // Przyjęcie zapisu (pamięć albo plik): sprawdza kształt, odtwarza formularz i listę. Zwraca false przy złym kształcie.
     const przyjmij = (z: any, plik: boolean) => {
       const u = z && z.u;
-      if (!u || typeof u !== 'object' || !Array.isArray(z.o) || (z.v !== undefined && z.v !== 1) || (plik && z.v !== 1)) return false;
+      if (!u || typeof u !== 'object' || !Array.isArray(z.o) || (z.v !== undefined && z.v !== 1 && z.v !== 2) || (plik && !z.v)) return false;
       if (!['kobieta', 'mezczyzna', 'para', 'para_dzieci', 'sam_dzieci'].includes(u.sklad)) return false;
       const kid = kat.map((k) => k.dataset.pkKat);
       odh.clear();
@@ -921,6 +1128,7 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
         return;
       }
       generuj();
+      doladuj();
       const u = czytaj();
       const p = okres(u.od, u.do);
       const reszta = [u.cel, p ? zakres(u.od, u.do) : ''].filter(Boolean).join(', ');
@@ -928,6 +1136,12 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
       $('[data-pk-przywrocono]').hidden = true;
     });
 
+    // po odtworzeniu zapisu: dane krajów (i klimat, gdy zapis starszy nie niesie kraju celu) potrzebne do reguł trasy
+    const doladuj = () => {
+      if (!m) return;
+      ladujK();
+      if (!m.c) laduj();
+    };
     const komunikat = $('[data-pk-przywrocono]');
     $('[data-pk-od-nowa]').addEventListener('click', () => {
       try {
@@ -938,6 +1152,7 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
       zapisuj = false;
       odh.clear();
       m = null;
+      s = SPOL;
       reczny = otw = false;
       w = [];
       x = [];
@@ -962,5 +1177,6 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
       /* uszkodzony zapis: start od ustawień domyślnych */
     }
     generuj();
+    doladuj();
   }
 </script>
