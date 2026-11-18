@@ -1,0 +1,1043 @@
+/* narzedzia.css — darmowe narzędzia magazynu (2026-11-18): pomocnik pakowania, kalkulator szczepień.
+   Importuje go komponent narzędzia (nie layout), więc trafia tylko na strony z narzędziem.
+   Tokeny, guziki, pigułki i szkło: motyw.css i efekty.css. Tu tylko układ formularza i listy.
+   Kolory wyłącznie z par policzonych w motyw.css: #1a2a2e, #4d5b5c, #0f3e47 na piasku i karcie, #f6f0e4 na #0f3e47.
+   Ruch tylko pod prefers-reduced-motion: no-preference. Cele dotyku: var(--cel-dotyku) = 44 px. */
+
+/* ══ WSPÓLNE: FORMULARZ NARZĘDZIA ══ */
+.nz-sekcja {
+  padding-block: var(--o-8) var(--o-16);
+}
+
+.nz-form {
+  display: grid;
+  gap: var(--o-6);
+  padding: var(--o-6) var(--o-4);
+}
+
+@media (min-width: 48rem) {
+  .nz-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--o-8) var(--o-12);
+    padding: var(--o-8);
+  }
+
+  .nz-grupa--szeroka {
+    grid-column: 1 / -1;
+  }
+}
+
+.nz-grupa {
+  display: grid;
+  align-content: start;
+  gap: var(--o-3);
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.nz-grupa[hidden] {
+  display: none;
+}
+
+.nz-legenda {
+  padding: 0;
+  font-family: var(--font-nagl);
+  font-size: var(--t-4);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--tekst);
+}
+
+/* fieldset: legenda nie siedzi w siatce, więc odstęp pod nią dokładamy ręcznie */
+fieldset.nz-grupa > .nz-legenda {
+  margin-bottom: var(--o-3);
+}
+
+.nz-etykieta {
+  font-size: var(--t-2);
+  font-weight: 600;
+}
+
+.nz-pomoc {
+  color: var(--tekst);
+  font-size: var(--t-1);
+}
+
+.nz-wybory {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--o-2);
+}
+
+/* pigułka-wybór: pole radio zostaje w drzewie dostępności i w kolejności Tab, widać tylko napis */
+.nz-wybor,
+.nz-zaznacz {
+  position: relative;
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.nz-wybor input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.nz-wybor span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--cel-dotyku);
+  padding: var(--o-2) var(--o-4);
+  border: 2px solid #0f3e47;
+  border-radius: var(--promien-pigulki);
+  background: #fbf8f1;
+  color: #1a2a2e;
+  font-size: var(--t-2);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.nz-wybor--kwadrat span {
+  min-width: var(--cel-dotyku);
+  padding-inline: var(--o-3);
+}
+
+.nz-wybor input:checked + span {
+  background: #0f3e47;
+  color: #f6f0e4;
+}
+
+.nz-wybor input:checked + span::before {
+  content: '✓';
+  margin-right: var(--o-2);
+}
+
+.nz-wybor--kwadrat input:checked + span::before {
+  content: none;
+}
+
+.nz-wybor:hover span {
+  box-shadow: var(--cien-twardy);
+}
+
+.nz-wybor input:focus-visible + span {
+  outline: 3px solid #a8452a;
+  outline-offset: 2px;
+}
+
+.nz-zaznacz {
+  align-items: center;
+  gap: var(--o-3);
+  min-height: var(--cel-dotyku);
+  font-size: var(--t-2);
+  font-weight: 600;
+}
+
+.nz-zaznacz input,
+.pk-poz__wiersz input {
+  flex: none;
+  width: 1.375rem;
+  height: 1.375rem;
+  margin: 0;
+  accent-color: #0f3e47;
+  cursor: pointer;
+}
+
+.nz-wejscie {
+  width: 100%;
+  min-height: var(--cel-dotyku);
+  padding: var(--o-2) var(--o-3);
+  border: 2px solid #4d5b5c;
+  border-radius: min(var(--promien-karty), 6px);
+  background: #fbf8f1;
+  color: #1a2a2e;
+  font: inherit;
+  font-size: var(--t-2);
+}
+
+.nz-pole {
+  display: grid;
+  gap: var(--o-1);
+}
+
+.nz-pole[hidden] {
+  display: none;
+}
+
+.nz-suwak {
+  width: 100%;
+  min-height: var(--cel-dotyku);
+  margin: 0;
+  accent-color: #0f3e47;
+  cursor: pointer;
+}
+
+.nz-akcje {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--o-3) var(--o-6);
+}
+
+.nz-bez-js {
+  margin-top: var(--o-6);
+  padding: var(--o-4) var(--o-6);
+  border-left: 4px solid #a8452a;
+  background: var(--powierzchnia);
+  color: #1a2a2e;
+  font-weight: 600;
+}
+
+/* ══ POMOCNIK PAKOWANIA ══ */
+.pk-przywrocono {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--o-3) var(--o-6);
+  margin-bottom: var(--o-6);
+  padding: var(--o-3) var(--o-4);
+  border-left: 4px solid #0f3e47;
+  background: var(--powierzchnia);
+  color: #1a2a2e;
+  font-size: var(--t-2);
+}
+
+.pk-przywrocono[hidden] {
+  display: none;
+}
+
+.pk-od-nowa {
+  color: #1a2a2e;
+}
+
+.pk-dzieci {
+  display: grid;
+  gap: var(--o-4);
+}
+
+.pk-wieki {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr));
+  gap: var(--o-3) var(--o-4);
+}
+
+.pk-dni {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 5.5rem;
+  align-items: center;
+  gap: var(--o-4);
+}
+
+.pk-dni__liczba {
+  text-align: center;
+  font-weight: 700;
+}
+
+.pk-lista {
+  margin-top: var(--o-12);
+}
+
+.pk-lista:focus {
+  outline: none;
+}
+
+.pk-lista:focus-visible {
+  outline: 3px solid #a8452a;
+  outline-offset: 4px;
+}
+
+@media (scripting: none) {
+  .pk-lista {
+    display: none;
+  }
+}
+
+.pk-glowa {
+  display: grid;
+  gap: var(--o-4) var(--o-8);
+  padding-bottom: var(--o-6);
+  border-bottom: 1px solid var(--linia);
+}
+
+@media (min-width: 56rem) {
+  .pk-glowa {
+    grid-template-columns: minmax(0, 1fr) minmax(16rem, 22rem);
+    align-items: end;
+  }
+
+  .pk-akcje {
+    grid-column: 1 / -1;
+  }
+}
+
+.pk-tytul {
+  font-size: var(--t-sekcji);
+  line-height: 1.05;
+}
+
+.pk-opis {
+  margin-top: var(--o-2);
+  color: #1a2a2e;
+  font-family: var(--font-nagl);
+  font-size: var(--t-4);
+  line-height: 1.35;
+}
+
+.pk-data-druku {
+  display: none;
+}
+
+.pk-postep__napis {
+  font-size: var(--t-2);
+  font-weight: 700;
+}
+
+.pk-postep__tor {
+  height: 0.75rem;
+  margin-top: var(--o-2);
+  overflow: hidden;
+  border: 1px solid #0f3e47;
+  border-radius: var(--promien-pigulki);
+  background: #fbf8f1;
+}
+
+.pk-postep__pasek {
+  height: 100%;
+  background: #0f3e47;
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.pk-akcje {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--o-3);
+}
+
+.pk-akcje__stan {
+  font-size: var(--t-2);
+}
+
+.pk-kategorie {
+  columns: 22rem 3;
+  column-gap: var(--o-8);
+  margin-top: var(--o-8);
+}
+
+.pk-kat {
+  break-inside: avoid;
+  margin-bottom: var(--o-6);
+  padding: var(--o-4) var(--o-4) var(--o-3);
+  border: 1px solid var(--linia);
+  border-radius: var(--promien-karty);
+  background: #fbf8f1;
+  box-shadow: var(--cien-miekki);
+}
+
+.pk-kat[hidden],
+.pk-poz[hidden] {
+  display: none;
+}
+
+.pk-kat__tytul {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--o-3);
+  margin-bottom: var(--o-2);
+  font-size: var(--t-4);
+}
+
+.pk-kat__ile {
+  flex: none;
+  color: #4d5b5c;
+  font-family: var(--font-tekst);
+  font-size: var(--t-1);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.pk-kat__lista {
+  list-style: none;
+}
+
+.pk-poz + .pk-poz {
+  border-top: 1px solid rgb(205 191 159 / .5);
+}
+
+.pk-poz__wiersz {
+  display: flex;
+  align-items: center;
+  gap: var(--o-3);
+  min-height: var(--cel-dotyku);
+  padding-block: var(--o-1);
+  font-size: var(--t-2);
+  line-height: 1.35;
+  cursor: pointer;
+}
+
+.pk-poz__nazwa {
+  flex: 1;
+}
+
+.pk-poz__ile {
+  flex: none;
+  color: #0f3e47;
+  font-size: var(--t-1);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.pk-poz__wiersz:has(input:checked) .pk-poz__nazwa {
+  color: #4d5b5c;
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+}
+
+.pk-poz__uwaga {
+  margin: 0 0 var(--o-2) calc(1.375rem + var(--o-3));
+  color: #4d5b5c;
+  font-size: var(--t-1);
+  line-height: 1.4;
+}
+
+.pk-kat__link {
+  margin-top: var(--o-2);
+  font-size: var(--t-1);
+}
+
+.pk-kat__link a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--cel-dotyku);
+  color: #8f3a22;
+}
+
+/* ══ STRONA POMOCNIKA: hero i tekst ══ */
+.nz-hero {
+  padding-bottom: var(--o-2);
+}
+
+/* telefon: formularz zaraz pod zdjęciem hero (integrator 2026-11-18) */
+.nz-hero + .nz-sekcja {
+  padding-top: var(--o-4);
+}
+
+.nz-hero__uklad {
+  display: grid;
+  gap: var(--o-6);
+  align-items: center;
+  padding-block: var(--o-6) var(--o-4);
+}
+
+.nz-hero__tytul {
+  font-size: clamp(2rem, 4.2vw, 3.5rem);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+}
+
+.nz-hero__wstep {
+  margin-top: var(--o-4);
+  color: #1a2a2e;
+  font-family: var(--font-nagl);
+  font-size: clamp(var(--t-3), 2.2vw, var(--t-4));
+  line-height: 1.4;
+}
+
+.nz-hero__zdjecie {
+  margin: 0;
+}
+
+.nz-hero__zdjecie img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+/* Zdjęcie widać wszędzie (Piotr 16.11: ładnie, nie nudno; integrator 2026-11-18): na telefonie w 3:2 pod H1 i zdaniem,
+   formularz zaraz pod nim; od 56rem obok tekstu. Jedyny obraz z fetchpriority=high na stronie. */
+@media (min-width: 56rem) {
+  .nz-hero {
+    padding-bottom: var(--o-6);
+  }
+
+  .nz-hero + .nz-sekcja {
+    padding-top: var(--o-8);
+  }
+
+  .nz-hero__uklad {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    gap: var(--o-12);
+    padding-block: var(--o-8) var(--o-4);
+  }
+}
+
+.nz-tekst {
+  padding: var(--o-6);
+}
+
+.nz-tekst > :first-child {
+  margin-top: 0;
+}
+
+@media (min-width: 48rem) {
+  .nz-tekst {
+    padding: var(--o-8) var(--o-12);
+  }
+}
+
+.nz-zrodlo {
+  color: #4d5b5c;
+  font-size: var(--t-1);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pk-postep__pasek {
+    transition: transform var(--ruch-plynny);
+  }
+
+  .nz-wybor span {
+    transition: background-color var(--ruch-szybki), color var(--ruch-szybki), box-shadow var(--ruch-szybki);
+  }
+}
+
+/* ══ DRUK: sama lista — tytuł, parametry jednym zdaniem, data, kategorie z kwadracikami ══ */
+@media print {
+  @page {
+    margin: 14mm;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .naglowek,
+  .stopka,
+  .skip,
+  .zgoda,
+  .jezyk,
+  .okruszki,
+  .postep,
+  .nz-bez-druku {
+    display: none !important;
+  }
+
+  .wejscie {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .sekcja--aurora::before,
+  .sekcja--aurora::after {
+    content: none !important;
+  }
+
+  .pk-przywrocono,
+  .pk .nz-form,
+  .pk-postep,
+  .pk-akcje,
+  .pk-poz__wiersz input {
+    display: none !important;
+  }
+
+  .pk-lista {
+    margin: 0;
+  }
+
+  .pk-glowa {
+    display: block;
+    padding-bottom: 3mm;
+    border-bottom: 1px solid #000;
+  }
+
+  .pk-tytul {
+    color: #000;
+    font-size: 20pt;
+  }
+
+  .pk-opis,
+  .pk-data-druku {
+    display: block;
+    color: #000;
+    font-size: 11pt;
+  }
+
+  .pk-kategorie {
+    columns: 2;
+    column-gap: 8mm;
+    margin-top: 5mm;
+  }
+
+  .pk-kat {
+    margin-bottom: 4mm;
+    padding: 0;
+    border: 0;
+    background: none;
+    box-shadow: none;
+  }
+
+  .pk-kat__tytul {
+    color: #000;
+    font-size: 12pt;
+  }
+
+  .pk-kat__ile,
+  .pk-kat__link {
+    display: none;
+  }
+
+  .pk-poz + .pk-poz {
+    border-top: 0;
+  }
+
+  .pk-poz {
+    break-inside: avoid;
+  }
+
+  .pk-poz__wiersz {
+    min-height: 0;
+    padding-block: 0.6mm;
+    color: #000;
+    font-size: 10pt;
+  }
+
+  .pk-poz__nazwa,
+  .pk-poz__wiersz:has(input:checked) .pk-poz__nazwa {
+    color: #000;
+    text-decoration: none;
+  }
+
+  .pk-poz__nazwa::before {
+    content: '☐';
+    margin-right: 2mm;
+    font-size: 12pt;
+  }
+
+  .pk-poz__wiersz:has(input:checked) .pk-poz__nazwa::before {
+    content: '☑';
+  }
+
+  .pk-poz__ile {
+    color: #000;
+    font-size: 10pt;
+  }
+
+  .pk-poz__uwaga {
+    margin: 0 0 1mm 6mm;
+    color: #000;
+    font-size: 8pt;
+  }
+}
+
+/* == szczepienia == */
+/* Kalkulator szczepień (W2, 2026-11-18): strona /zdrowie/szczepienia-przed-wyjazdem/, komponent KalkulatorSzczepien.astro.
+   Wspólne klasy formularza (.nz-*) z bloku wyżej. Tekst wyłącznie #1a2a2e / #4d5b5c / #0f3e47 na jasnych tłach (pary z motyw.css);
+   tła poziomów malarii to jasne odcienie piasku (#1a2a2e na nich ≥ 12:1), poziom zawsze także słowem, nie samym kolorem. */
+.szcz-zastrzezenie {
+  margin-bottom: var(--o-8);
+  padding: var(--o-4) var(--o-6);
+  border-left: 4px solid #a8452a;
+  border-radius: 0 min(var(--promien-karty), 6px) min(var(--promien-karty), 6px) 0;
+  background: var(--powierzchnia);
+  color: #1a2a2e;
+  font-size: var(--t-2);
+  line-height: 1.5;
+}
+
+.szcz-zastrzezenie--dol {
+  margin: var(--o-12) 0 0;
+}
+
+.szcz-opcjonalnie {
+  color: #4d5b5c;
+  font-family: var(--font-tekst);
+  font-size: var(--t-1);
+  font-weight: 400;
+}
+
+.szcz-kraj {
+  display: grid;
+  gap: var(--o-4);
+}
+
+@media (min-width: 48rem) {
+  .szcz-kraj {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--o-6);
+  }
+}
+
+.szcz-form select.nz-wejscie {
+  cursor: pointer;
+}
+
+.szcz-form .nz-wejscie:focus-visible {
+  outline: 3px solid #a8452a;
+  outline-offset: 2px;
+}
+
+.szcz-form .nz-akcje {
+  margin-top: var(--o-4);
+}
+
+.szcz-form [hidden] {
+  display: none;
+}
+
+.szcz-h3 {
+  font-size: var(--t-5);
+  line-height: 1.15;
+}
+
+/* ── wynik ── */
+.szcz-wynik {
+  margin-top: var(--o-12);
+}
+
+.szcz-wynik[hidden] {
+  display: none;
+}
+
+.szcz-wynik:focus {
+  outline: none;
+}
+
+.szcz-wynik:focus-visible {
+  outline: 3px solid #a8452a;
+  outline-offset: 4px;
+}
+
+.szcz-wynik__glowa {
+  padding-bottom: var(--o-4);
+  border-bottom: 1px solid var(--linia);
+}
+
+.szcz-wynik__tytul {
+  font-size: var(--t-sekcji);
+  line-height: 1.05;
+  overflow-wrap: anywhere;
+}
+
+.szcz-wynik__meta {
+  margin-top: var(--o-3);
+  color: #4d5b5c;
+  font-size: var(--t-2);
+}
+
+.szcz-malaria {
+  margin-top: var(--o-6);
+  padding: var(--o-4) var(--o-6);
+  border: 1px solid var(--linia);
+  border-left: 8px solid #4d5b5c;
+  border-radius: min(var(--promien-karty), 6px);
+  background: #ece3d0;
+  color: #1a2a2e;
+}
+
+.szcz-malaria--tak {
+  border-left-color: #a8452a;
+  background: #f4e1d8;
+}
+
+.szcz-malaria--czesciowo {
+  border-left-color: #8f3a22;
+  border-left-style: double;
+  background: #f3ead8;
+}
+
+.szcz-malaria--nie {
+  border-left-color: #0f3e47;
+  background: #e3ece9;
+}
+
+.szcz-malaria__tytul {
+  font-family: var(--font-nagl);
+  font-size: var(--t-4);
+  line-height: 1.25;
+}
+
+.szcz-malaria__opis {
+  margin-top: var(--o-2);
+  font-size: var(--t-2);
+  line-height: 1.5;
+}
+
+.szcz-podpowiedz,
+.szcz-uwagi {
+  margin-top: var(--o-4);
+  color: #1a2a2e;
+  font-size: var(--t-2);
+  line-height: 1.5;
+}
+
+.szcz-uwagi {
+  padding-left: var(--o-4);
+  border-left: 3px solid var(--linia);
+}
+
+.szcz-karty {
+  display: grid;
+  gap: var(--o-4);
+  margin-top: var(--o-6);
+}
+
+@media (min-width: 60rem) {
+  .szcz-karty {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--o-6);
+    align-items: start;
+  }
+}
+
+.szcz-karta {
+  padding: var(--o-4) var(--o-6) var(--o-6);
+  border: 1px solid var(--linia);
+  border-radius: var(--promien-karty);
+  background: #fbf8f1;
+  box-shadow: var(--cien-miekki);
+  color: #1a2a2e;
+}
+
+.szcz-karta--wymagane {
+  border-top: 4px solid #0f3e47;
+}
+
+.szcz-karta__tytul {
+  margin-bottom: var(--o-3);
+  font-size: var(--t-4);
+  line-height: 1.2;
+}
+
+.szcz-karta__lista {
+  padding-left: var(--o-6);
+}
+
+.szcz-karta__lista li {
+  font-size: var(--t-2);
+  line-height: 1.45;
+}
+
+.szcz-karta__lista li + li {
+  margin-top: var(--o-2);
+}
+
+.szcz-pusto {
+  color: #4d5b5c;
+  font-size: var(--t-2);
+}
+
+/* wyróżnienia zależne od formularza: klasy .szcz-wynik--wiecej (dłużej / trekking) i .szcz-wynik--dzieci stawia skrypt */
+.szcz-tylko-wiecej,
+.szcz-tylko-dzieci,
+.szcz-wazne__znak {
+  display: none;
+}
+
+.szcz-wynik--wiecej .szcz-tylko-wiecej,
+.szcz-wynik--dzieci .szcz-tylko-dzieci {
+  display: block;
+}
+
+.szcz-wynik--wiecej .szcz-moze-wazne {
+  margin-inline: calc(-1 * var(--o-2));
+  padding: var(--o-1) var(--o-2);
+  border-radius: 4px;
+  background: #f4e1d8;
+  font-weight: 600;
+}
+
+.szcz-wynik--wiecej .szcz-wazne__znak {
+  display: inline-flex;
+}
+
+.szcz-wazne__znak {
+  margin-top: var(--o-1);
+  border-color: #8f3a22;
+  color: #8f3a22;
+  font-size: 0.8125rem;
+  vertical-align: middle;
+}
+
+.szcz-wynik__zrodlo {
+  margin-top: var(--o-6);
+}
+
+.szcz-wynik__zrodlo a,
+.szcz-linki a,
+.szcz-zawsze a {
+  color: #8f3a22;
+}
+
+/* ── stałe bloki: zawsze sprawdź, linki ── */
+.szcz-zawsze,
+.szcz-linki {
+  margin-top: var(--o-12);
+  padding: var(--o-6);
+  border: 1px solid var(--linia);
+  border-radius: var(--promien-karty);
+  background: #fbf8f1;
+  color: #1a2a2e;
+}
+
+.szcz-zawsze ul {
+  margin-top: var(--o-4);
+  padding-left: var(--o-6);
+}
+
+.szcz-zawsze li + li {
+  margin-top: var(--o-2);
+}
+
+.szcz-zawsze .nz-zrodlo,
+.szcz-linki .nz-zrodlo {
+  margin-top: var(--o-4);
+}
+
+.szcz-linki__siatka {
+  display: grid;
+  gap: var(--o-6);
+  margin-top: var(--o-4);
+}
+
+@media (min-width: 56rem) {
+  .szcz-zawsze,
+  .szcz-linki {
+    padding: var(--o-8);
+  }
+
+  .szcz-linki__siatka {
+    grid-template-columns: 3fr 2fr;
+    gap: var(--o-12);
+  }
+}
+
+.szcz-linki__grupa {
+  font-family: var(--font-tekst);
+  font-size: var(--t-2);
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.szcz-linki ul {
+  margin-top: var(--o-2);
+  list-style: none;
+}
+
+.szcz-linki li a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--cel-dotyku);
+  overflow-wrap: anywhere;
+}
+
+.szcz-tekst {
+  margin-top: var(--o-12);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .szcz-wynik:not([hidden]) {
+    animation: szcz-wejscie var(--ruch-wejscia) both;
+  }
+}
+
+@keyframes szcz-wejscie {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* ── druk: tylko wynik (kraj, data, karty, malaria, uwagi, źródło kraju) i linki urzędowe z adresami ── */
+@media print {
+  .szcz-strona {
+    padding: 0;
+  }
+
+  .szcz-zastrzezenie,
+  .szcz-zawsze,
+  .szcz-wynik--wiecej .szcz-wazne__znak {
+    display: none !important;
+  }
+
+  .szcz-wynik {
+    margin-top: 0;
+    animation: none !important;
+  }
+
+  .szcz-wynik__tytul {
+    color: #000;
+    font-size: 18pt;
+  }
+
+  .szcz-wynik__meta,
+  .szcz-wynik__zrodlo,
+  .szcz-podpowiedz,
+  .szcz-uwagi,
+  .szcz-malaria__opis,
+  .szcz-karta__lista li,
+  .szcz-linki li {
+    color: #000;
+    font-size: 10pt;
+  }
+
+  .szcz-malaria,
+  .szcz-karta,
+  .szcz-linki {
+    padding: 2mm 3mm;
+    border: 1px solid #000;
+    background: none;
+    box-shadow: none;
+    break-inside: avoid;
+  }
+
+  .szcz-malaria {
+    border-left-width: 3mm;
+  }
+
+  .szcz-karty {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 3mm;
+    margin-top: 3mm;
+  }
+
+  .szcz-karta__tytul,
+  .szcz-malaria__tytul {
+    color: #000;
+    font-size: 12pt;
+  }
+
+  .szcz-wynik--wiecej .szcz-moze-wazne {
+    background: none;
+  }
+
+  .szcz-linki {
+    margin-top: 5mm;
+  }
+
+  .szcz-linki li a {
+    min-height: 0;
+  }
+
+  .szcz-wynik__zrodlo a::after,
+  .szcz-linki a::after {
+    content: ' (' attr(href) ')';
+    color: #000;
+    font-size: 8pt;
+  }
+
+  .szcz-wynik a,
+  .szcz-linki a {
+    color: #000;
+  }
+}

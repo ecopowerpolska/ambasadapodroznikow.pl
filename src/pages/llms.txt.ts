@@ -4,6 +4,7 @@ import type { APIRoute } from 'astro';
 import { t } from '../lib/tekst';
 import { opublikowane, polecaneRozne, adresWpisu, bezHtml } from '../lib/wpisy';
 import { DZIALY, adresDzialu, nazwaDzialu } from '../lib/dzialy';
+import { NARZEDZIA } from '../lib/narzedzia';
 
 export const GET: APIRoute = async () => {
   const baza = new URL('/', import.meta.env.SITE).href.replace(/\/$/, '');
@@ -25,6 +26,9 @@ export const GET: APIRoute = async () => {
     `- [O nas](${baza}/o-nas/): kim jesteśmy`,
     `- [Polityka prywatności](${baza}/polityka-prywatnosci/): bez własnych cookies i bez analityki`,
     `- [Kanał RSS](${baza}/rss.xml): nowe wpisy`,
+    '',
+    '## Darmowe narzędzia',
+    ...NARZEDZIA.map((n) => `- [${n.tytul}](${baza}${n.adres}): ${n.llms}`),
     '',
     'Pod każdym wpisem na blogu można zostawić publiczny komentarz (formularz pod artykułem); komentarze nie wchodzą do tego pliku.',
     '',

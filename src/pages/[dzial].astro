@@ -10,6 +10,7 @@ import { t } from '../lib/tekst';
 import { DZIALY, adresDzialu, nazwaDzialu, type Dzial } from '../lib/dzialy';
 import { adresWpisu, zDzialu } from '../lib/wpisy';
 import { adresBezwzgledny, okruszki } from '../lib/schemat';
+import { narzedziaDzialu } from '../lib/narzedzia';
 
 export function getStaticPaths() {
   return DZIALY.map((dzial) => ({ params: { dzial } }));
@@ -20,6 +21,7 @@ const wpisy = await zDzialu(dzial);
 const [wiodacy, ...reszta] = wpisy;
 const nazwa = nazwaDzialu(dzial);
 const inne = DZIALY.filter((d) => d !== dzial);
+const narzedzia = narzedziaDzialu(dzial);
 
 const pozycje = [
   { nazwa: t('interfejs.okruszki_glowna'), adres: '/' },
@@ -55,6 +57,29 @@ const schemat = [
       <p class="podstrona-glowa__wstep glowa-dzialu__wstep">{t(`dzialy.${dzial}.wstep`)}</p>
     </div>
   </div>
+  {
+    narzedzia.map((n) => (
+      <aside class="kontener narzedzie-dzialu" aria-labelledby={`narzedzie-${n.dzial}`}>
+        <div class="narzedzie-dzialu__karta szklo szklo--jasne wejscie">
+          <svg class="narzedzie-dzialu__znak" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M9 11l2 2 4-4M8 3h8a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" />
+          </svg>
+          <div class="narzedzie-dzialu__tekst">
+            <p class="narzedzie-dzialu__pigulki">
+              <span class="pigulka pigulka--akcent">{t('narzedzia.etykieta')}</span>
+              <span class="pigulka">{t('narzedzia.darmowe')}</span>
+            </p>
+            <h2 id={`narzedzie-${n.dzial}`} class="narzedzie-dzialu__tytul">{n.tytul}</h2>
+            <p class="narzedzie-dzialu__opis">{n.opis}</p>
+          </div>
+          <a class="guzik guzik--twardy narzedzie-dzialu__guzik" href={n.adres}>
+            {n.guzik}
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+          </a>
+        </div>
+      </aside>
+    ))
+  }
   <section class="kontener sekcja" aria-label={nazwa}>
     {
       wiodacy ? (
@@ -108,5 +133,91 @@ const schemat = [
 
   .glowa-dzialu__wstep {
     max-width: none;
+  }
+
+  /* Karta narzędzia nad wpisami (podróże, zdrowie): szkło jasne (#1a2a2e na szkle, pary w efekty.css), pigułka akcent
+     i guzik twardy = istniejące pary (--guzik-tekst na --guzik-tlo). Na telefonie jedna kolumna, od 48rem guzik z prawej. */
+  .narzedzie-dzialu {
+    margin-top: var(--o-6);
+  }
+
+  .narzedzie-dzialu + .sekcja {
+    padding-top: var(--o-8);
+  }
+
+  .narzedzie-dzialu__karta {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--o-4);
+    align-items: center;
+    padding: var(--o-6);
+    border-radius: var(--promien-karty, 6px);
+  }
+
+  .narzedzie-dzialu__znak {
+    width: 3rem;
+    height: 3rem;
+    padding: 0.625rem;
+    border-radius: 50%;
+    background: var(--morze);
+    fill: none;
+    stroke: #f6f0e4;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .narzedzie-dzialu__pigulki {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--o-2);
+  }
+
+  .narzedzie-dzialu__tytul {
+    margin-top: var(--o-3);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    line-height: 1.12;
+    text-wrap: balance;
+  }
+
+  .narzedzie-dzialu__opis {
+    margin-top: var(--o-2);
+    font-size: var(--t-3);
+  }
+
+  .narzedzie-dzialu__guzik {
+    justify-self: start;
+  }
+
+  .narzedzie-dzialu__guzik svg {
+    width: 1.125rem;
+    height: 1.125rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  @media (min-width: 48rem) {
+    .narzedzie-dzialu__karta {
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: var(--o-6);
+      padding: var(--o-8);
+    }
+
+    .narzedzie-dzialu__guzik {
+      justify-self: end;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .narzedzie-dzialu__guzik svg {
+      transition: transform var(--ruch-szybki);
+    }
+
+    .narzedzie-dzialu__guzik:hover svg {
+      transform: translateX(3px);
+    }
   }
 </style>

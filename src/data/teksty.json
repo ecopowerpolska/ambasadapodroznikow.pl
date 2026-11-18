@@ -151,6 +151,31 @@
       "wstep": "Najgorszy wyjazd to ten, z którego wraca się chorym. Piszemy o apteczce i o tym, jak dbać o siebie w czasie podróży. Porady lekarza nie zastąpimy i tego nie udajemy."
     }
   },
+  "narzedzia": {
+    "etykieta": "Narzędzie",
+    "darmowe": "Za darmo",
+    "kolumnaStopki": "Narzędzia",
+    "lista": [
+      {
+        "dzial": "podroze",
+        "adres": "/podroze/pomocnik-pakowania/",
+        "nazwaKrotka": "Pomocnik pakowania",
+        "tytul": "Darmowy pomocnik pakowania",
+        "opis": "Zaznacz, kto jedzie i gdzie, a lista zrobi się sama. Odhaczaj, drukuj i wracaj do niej, bo zostaje w twojej przeglądarce.",
+        "guzik": "Ułóż listę",
+        "llms": "lista rzeczy do spakowania według osób, klimatu, rodzaju wyjazdu, liczby dni i transportu; działa w przeglądarce, niczego nie wysyła"
+      },
+      {
+        "dzial": "zdrowie",
+        "adres": "/zdrowie/szczepienia-przed-wyjazdem/",
+        "nazwaKrotka": "Kalkulator szczepień",
+        "tytul": "Szczepienia przed wyjazdem: kalkulator dla {kraje} kierunków",
+        "opis": "Wybierz kraj, a zobaczysz, czego wymaga granica, co zalecają źródła medyczne i czy jest tam malaria. Z linkami do stron urzędowych.",
+        "guzik": "Sprawdź kierunek",
+        "llms": "kalkulator szczepień i ryzyka malarii dla {kraje} kierunków (dane TravelHealthPro, GIS i WHO z datą odczytu) z linkami do źródeł urzędowych; informacja, nie porada lekarska"
+      }
+    ]
+  },
   "polecamy": {
     "tytulKarty": "Polecamy | Ambasada Podróżników",
     "opisMeta": "Pięć firm, które polecamy: projekt wnętrz, remont, meble na wymiar, wylewki i strony internetowe.",
@@ -275,7 +300,7 @@
   },
   "polityka": {
     "tytulKarty": "Polityka prywatności | Ambasada Podróżników",
-    "opisMeta": "Polityka prywatności ambasadapodroznikow.pl: administrator, komentarze pod wpisami, Cloudflare Turnstile i sieć Cloudflare, hosting, zdjęcia w zapowiedziach, cookies i brak analityki.",
+    "opisMeta": "Polityka prywatności ambasadapodroznikow.pl: administrator, komentarze pod wpisami, pamięć narzędzi w przeglądarce, Cloudflare Turnstile i sieć Cloudflare, hosting, zdjęcia w zapowiedziach, cookies i brak analityki.",
     "h1": "Polityka prywatności",
     "lead": "Ta strona nie ma analityki, reklam ani kont i nie ustawia własnych plików cookies. Pod wpisami możesz za to zostawić komentarz, więc niżej opisujemy, jakie dane wtedy przetwarzamy, a także co technicznie widzą Cloudflare, hosting i serwery firm, których zapowiedzi pokazujemy.",
     "dataAktualizacji": "2026-11-18",
@@ -286,7 +311,7 @@
         "id": "zakres",
         "naglowek": "Jaka to strona",
         "akapity": [
-          "ambasadapodroznikow.pl to strona z wpisami do czytania. Nie ma kont, sklepu ani newslettera. Jedyne, co możesz tu sam wpisać, to komentarz pod wpisem, opisany niżej."
+          "ambasadapodroznikow.pl to strona z wpisami do czytania i dwoma darmowymi narzędziami. Nie ma kont, sklepu ani newslettera. Jedyne, co możesz tu sam wysłać, to komentarz pod wpisem, opisany niżej. Ustawienia narzędzi zostają w twojej przeglądarce."
         ],
         "lista": [],
         "akapityPo": []
@@ -306,6 +331,20 @@
           "Cel: publikacja i moderacja komentarzy oraz odpowiedź na e-mail, jeśli go podałeś. Podstawą jest twoja zgoda wyrażona przez wysłanie komentarza (art. 6 ust. 1 lit. a RODO), a dla skrótu adresu IP i ochrony przed spamem nasz uzasadniony interes (art. 6 ust. 1 lit. f RODO). Podpis i treść są konieczne, żeby komentarz mógł się ukazać; e-mail podajesz dobrowolnie.",
           "Komentarze zapisujemy na serwerze LH.pl Sp. z o.o. w Polsce, na zapleczu api.ecopowerpolska.pl, które należy do tej samej spółki, co strona. O każdym nowym komentarzu dostaje wiadomość redakcja (skrzynka {email}). Komentarz z więcej niż dwoma linkami pokazujemy dopiero po sprawdzeniu. Linki w komentarzach mają oznaczenie rel=\"ugc nofollow\", więc nie przekazują mocy stronom, do których prowadzą. Usuwamy spam i treści bezprawne.",
           "Komentarz przechowujemy do czasu jego usunięcia albo twojego żądania. Żeby go usunąć, napisz o to komentarzem pod tym samym wpisem albo wiadomością na adres {email}; podaj wpis i swój podpis. Zgodę możesz wycofać w każdej chwili, prosząc o usunięcie komentarza; nie wpływa to na zgodność z prawem przetwarzania przed jej wycofaniem."
+        ]
+      },
+      {
+        "id": "narzedzia",
+        "naglowek": "Pamięć narzędzi w przeglądarce",
+        "akapity": [
+          "[Pomocnik pakowania](/podroze/pomocnik-pakowania/) i [kalkulator szczepień](/zdrowie/szczepienia-przed-wyjazdem/) działają w całości w twojej przeglądarce. Żeby po powrocie wszystko było tak, jak to zostawiłeś, zapisują ustawienia w pamięci przeglądarki na tym urządzeniu:"
+        ],
+        "lista": [
+          "ambasada-pakowanie (pamięć przeglądarki, localStorage): ustawienia pomocnika pakowania, odhaczone pozycje i data ostatniej zmiany;",
+          "ambasada-szczepienia (pamięć przeglądarki, localStorage): ostatnio wybrany kraj i ustawienia kalkulatora szczepień."
+        ],
+        "akapityPo": [
+          "Nie wysyłamy tych zapisów nigdzie: nie trafiają na nasz serwer ani do nikogo innego, a my ich nie widzimy. Zapis powstaje dopiero wtedy, gdy sam coś wybierzesz w narzędziu. To usługa, o którą sam prosisz, więc zapis jest niezbędny do jej wykonania i nie pytamy o niego w okienku zgody. Zapis pomocnika pakowania usuwa przycisk „Zacznij od nowa”, a oba zapisy usuniesz, czyszcząc dane tej strony w przeglądarce."
         ]
       },
       {
@@ -412,7 +451,7 @@
         "id": "zmiany",
         "naglowek": "Zmiany polityki",
         "akapity": [
-          "Politykę zmieniamy, gdy zmienia się sposób działania strony. Ta wersja obowiązuje od 18 listopada 2026 roku; dodaliśmy w niej tłumaczenie strony (GTranslate i Google) i okienko zgody. Poprzednia, z 4 listopada 2026 roku, dodała komentarze pod wpisami, Cloudflare Turnstile i sieć Cloudflare."
+          "Politykę zmieniamy, gdy zmienia się sposób działania strony. Ta wersja obowiązuje od 18 listopada 2026 roku; dodaliśmy w niej tłumaczenie strony (GTranslate i Google), okienko zgody i pamięć dwóch darmowych narzędzi w przeglądarce. Poprzednia, z 4 listopada 2026 roku, dodała komentarze pod wpisami, Cloudflare Turnstile i sieć Cloudflare."
         ],
         "lista": [],
         "akapityPo": []

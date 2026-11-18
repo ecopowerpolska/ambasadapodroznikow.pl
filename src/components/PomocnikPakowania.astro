@@ -1,0 +1,539 @@
+---
+// PomocnikPakowania.astro — darmowy pomocnik pakowania (2026-11-18). Formularz bez wysyłki; wszystko liczy przeglądarka.
+// Cała lista (src/data/pakowanie.json) jest w HTML jako ukryte pozycje z filtrami w atrybutach data-pk-*;
+// skrypt niżej tylko pokazuje pasujące, liczy ilości i pamięta stan w localStorage (klucz ambasada-pakowanie, zapis
+// funkcjonalny: ustawienia formularza, odhaczenia, data). Bez JS widać formularz i komunikat. Style: src/styles/narzedzia.css.
+import '../styles/narzedzia.css';
+import dane from '../data/pakowanie.json';
+
+type Pozycja = {
+  id: string;
+  nazwa: string;
+  kat: string;
+  ilosc: string;
+  os?: boolean;
+  kto?: string[];
+  klimat?: string[];
+  typ?: string[];
+  transport?: string[];
+  sklad?: string[];
+  min_dni?: number;
+  min_dni_podreczny?: number;
+  podreczny?: string;
+  max_podreczny?: number;
+  jedn?: string;
+  uwaga?: string;
+};
+
+const przedmioty = dane.przedmioty as Pozycja[];
+const kategorie = dane.kategorie.map((k) => ({ ...k, pozycje: przedmioty.filter((p) => p.kat === k.id) }));
+const lista = (w?: string[]) => (w && w.length ? w.join(' ') : undefined);
+
+const KTO = [
+  ['kobieta', 'Kobieta'],
+  ['mezczyzna', 'Mężczyzna'],
+  ['para', 'Para'],
+  ['para_dzieci', 'Para z dziećmi'],
+  ['sam_dzieci', 'Sam(a) z dziećmi'],
+];
+const PARA = [
+  ['km', 'Kobieta i mężczyzna'],
+  ['kk', 'Dwie kobiety'],
+  ['mm', 'Dwóch mężczyzn'],
+];
+const RODZIC = [
+  ['kobieta', 'Kobieta'],
+  ['mezczyzna', 'Mężczyzna'],
+];
+const WIEK = [
+  ['niemowle', 'Niemowlę (0–2 lata)'],
+  ['dziecko', 'Dziecko (3–12 lat)'],
+  ['nastolatek', 'Nastolatek (13–17 lat)'],
+];
+const KLIMAT = [
+  ['cieplo', 'Ciepło'],
+  ['umiarkowanie', 'Umiarkowanie'],
+  ['zimno', 'Zimno'],
+];
+const TYP = [
+  ['plaza', 'Plaża'],
+  ['miasto', 'Miasto'],
+  ['gory', 'Góry'],
+  ['zima', 'Zima i narty'],
+  ['biznes', 'Wyjazd służbowy'],
+];
+const TRANSPORT = [
+  ['samolot', 'Samolot'],
+  ['samochod', 'Samochód'],
+  ['pociag', 'Pociąg lub autokar'],
+];
+// Ustawienia domyślne = stan HTML (pierwsze wejście bez zapisu nie przesuwa układu).
+const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat: 'umiarkowanie', typ: 'miasto', transport: 'samolot', dni: 7 };
+---
+
+<div class="pk" data-pakowanie>
+  <p class="pk-przywrocono" data-pk-przywrocono hidden>
+    <span data-pk-przywrocono-tekst></span>
+    <button class="guzik guzik--obrys pk-od-nowa" type="button" data-pk-od-nowa>Zacznij od nowa</button>
+  </p>
+
+  <form class="nz-form szklo szklo--jasne" data-pk-form aria-label="Parametry wyjazdu">
+    <fieldset class="nz-grupa nz-grupa--szeroka">
+      <legend class="nz-legenda">Kto jedzie</legend>
+      <div class="nz-wybory">
+        {
+          KTO.map(([w, n]) => (
+            <label class="nz-wybor">
+              <input type="radio" name="sklad" value={w} checked={w === DOM.sklad} />
+              <span>{n}</span>
+            </label>
+          ))
+        }
+      </div>
+    </fieldset>
+
+    <fieldset class="nz-grupa" data-pk-para>
+      <legend class="nz-legenda">Para</legend>
+      <div class="nz-wybory">
+        {
+          PARA.map(([w, n]) => (
+            <label class="nz-wybor">
+              <input type="radio" name="para" value={w} checked={w === DOM.para} />
+              <span>{n}</span>
+            </label>
+          ))
+        }
+      </div>
+    </fieldset>
+
+    <fieldset class="nz-grupa" data-pk-rodzic hidden>
+      <legend class="nz-legenda">Dorosły</legend>
+      <div class="nz-wybory">
+        {
+          RODZIC.map(([w, n]) => (
+            <label class="nz-wybor">
+              <input type="radio" name="rodzic" value={w} checked={w === DOM.rodzic} />
+              <span>{n}</span>
+            </label>
+          ))
+        }
+      </div>
+    </fieldset>
+
+    <fieldset class="nz-grupa nz-grupa--szeroka" data-pk-dzieci hidden>
+      <legend class="nz-legenda">Dzieci</legend>
+      <div class="pk-dzieci">
+        <div class="nz-wybory" role="radiogroup" aria-label="Liczba dzieci">
+          {
+            [1, 2, 3, 4].map((n) => (
+              <label class="nz-wybor nz-wybor--kwadrat">
+                <input type="radio" name="dzieci" value={String(n)} checked={String(n) === DOM.dzieci} />
+                <span>{n}</span>
+              </label>
+            ))
+          }
+        </div>
+        <div class="pk-wieki">
+          {
+            [1, 2, 3, 4].map((n) => (
+              <label class="nz-pole" data-pk-wiek={n} hidden={n > 1}>
+                <span class="nz-etykieta">Wiek dziecka {n}</span>
+                <select class="nz-wejscie" name={`wiek${n}`}>
+                  {WIEK.map(([w, opis]) => <option value={w} selected={w === 'dziecko'}>{opis}</option>)}
+                </select>
+              </label>
+            ))
+          }
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset class="nz-grupa">
+      <legend class="nz-legenda">Klimat na miejscu</legend>
+      <div class="nz-wybory">
+        {
+          KLIMAT.map(([w, n]) => (
+            <label class="nz-wybor">
+              <input type="radio" name="klimat" value={w} checked={w === DOM.klimat} />
+              <span>{n}</span>
+            </label>
+          ))
+        }
+      </div>
+    </fieldset>
+
+    <fieldset class="nz-grupa">
+      <legend class="nz-legenda">Rodzaj wyjazdu</legend>
+      <div class="nz-wybory">
+        {
+          TYP.map(([w, n]) => (
+            <label class="nz-wybor">
+              <input type="radio" name="typ" value={w} checked={w === DOM.typ} />
+              <span>{n}</span>
+            </label>
+          ))
+        }
+      </div>
+    </fieldset>
+
+    <div class="nz-grupa">
+      <label class="nz-legenda" for="pk-dni">Na ile dni</label>
+      <div class="pk-dni">
+        <input class="nz-suwak" id="pk-dni" type="range" name="dni" min="1" max="30" step="1" value={DOM.dni} aria-describedby="pk-dni-opis" />
+        <input class="nz-wejscie pk-dni__liczba" type="number" name="dni_liczba" min="1" max="30" step="1" inputmode="numeric" value={DOM.dni} aria-label="Liczba dni" />
+      </div>
+      <p class="nz-pomoc" id="pk-dni-opis">Od 1 do 30 dni. Na dłuższy wyjazd zaznacz 30 i licz na pranie.</p>
+    </div>
+
+    <fieldset class="nz-grupa">
+      <legend class="nz-legenda">Transport</legend>
+      <div class="nz-wybory">
+        {
+          TRANSPORT.map(([w, n]) => (
+            <label class="nz-wybor">
+              <input type="radio" name="transport" value={w} checked={w === DOM.transport} />
+              <span>{n}</span>
+            </label>
+          ))
+        }
+      </div>
+    </fieldset>
+
+    <div class="nz-grupa">
+      <span class="nz-legenda">Bagaż</span>
+      <label class="nz-zaznacz">
+        <input type="checkbox" name="podreczny" value="1" />
+        <span>Tylko bagaż podręczny</span>
+      </label>
+    </div>
+
+    <div class="nz-grupa nz-grupa--szeroka nz-akcje">
+      <button class="guzik guzik--twardy" type="submit">Pokaż listę</button>
+      <p class="nz-pomoc">Lista zmienia się od razu po każdej zmianie wyboru.</p>
+    </div>
+  </form>
+
+  <noscript>
+    <p class="nz-bez-js">Lista potrzebuje włączonego JavaScriptu. Włącz go w przeglądarce i odśwież stronę.</p>
+  </noscript>
+
+  <section class="pk-lista" aria-labelledby="pk-tytul" data-pk-lista tabindex="-1">
+    <div class="pk-glowa">
+      <div>
+        <h2 id="pk-tytul" class="pk-tytul">Lista do spakowania</h2>
+        <p class="pk-opis" data-pk-opis></p>
+        <p class="pk-data-druku" data-pk-data></p>
+      </div>
+      <div class="pk-postep">
+        <p class="pk-postep__napis" data-pk-licznik aria-live="polite">Spakowane 0 z 0</p>
+        <div class="pk-postep__tor" aria-hidden="true"><div class="pk-postep__pasek" data-pk-pasek></div></div>
+      </div>
+      <div class="pk-akcje">
+        <button class="guzik guzik--twardy" type="button" data-pk-drukuj>Drukuj listę</button>
+        <button class="guzik guzik--obrys" type="button" data-pk-kopiuj>Kopiuj listę</button>
+        <span class="pk-akcje__stan" role="status" data-pk-stan></span>
+      </div>
+    </div>
+
+    <div class="pk-kategorie">
+      {
+        kategorie.map((k) => (
+          <section class="pk-kat" data-pk-kat={k.id} aria-labelledby={`pk-k-${k.id}`} hidden>
+            <h3 class="pk-kat__tytul" id={`pk-k-${k.id}`}>
+              <span data-pk-nazwa>{k.nazwa}</span> <span class="pk-kat__ile" data-pk-ile></span>
+            </h3>
+            <ul class="pk-kat__lista">
+              {k.pozycje.map((p) => (
+                <li
+                  class="pk-poz"
+                  data-pk-p={p.id}
+                  data-k={lista(p.kto)}
+                  data-kl={lista(p.klimat)}
+                  data-t={lista(p.typ)}
+                  data-tr={lista(p.transport)}
+                  data-s={lista(p.sklad)}
+                  data-md={p.min_dni}
+                  data-mdp={p.min_dni_podreczny}
+                  data-pb={p.podreczny}
+                  data-mp={p.max_podreczny}
+                  data-il={p.ilosc === '1' ? undefined : p.ilosc}
+                  data-os={p.os ? '' : undefined}
+                  data-j={p.jedn}
+                  hidden
+                >
+                  <label class="pk-poz__wiersz">
+                    <input type="checkbox" />
+                    <span class="pk-poz__nazwa">{p.nazwa}</span>
+                    <span class="pk-poz__ile" data-pk-ilosc />
+                  </label>
+                  {p.uwaga && <p class="pk-poz__uwaga">{p.uwaga}</p>}
+                </li>
+              ))}
+            </ul>
+            {'link' in k && k.link && (
+              <p class="pk-kat__link">
+                Więcej: <a href={k.link}>apteczka podróżnika, co spakować i o co zapytać farmaceutę</a>
+              </p>
+            )}
+          </section>
+        ))
+      }
+    </div>
+  </section>
+</div>
+
+<script>
+  // Pomocnik pakowania: filtr pozycji z atrybutów data-*, ilości ze wzorów, pamięć w localStorage. Bez bibliotek.
+  const KLUCZ = 'ambasada-pakowanie';
+  const root = document.querySelector<HTMLElement>('[data-pakowanie]');
+  if (root) {
+    const $ = <T extends Element = HTMLElement>(s: string) => root.querySelector<T>(s)!;
+    const f = $<HTMLFormElement>('[data-pk-form]');
+    const el = f.elements as unknown as Record<string, RadioNodeList & HTMLInputElement>;
+    const poz = [...root.querySelectorAll<HTMLLIElement>('[data-pk-p]')];
+    const kat = [...root.querySelectorAll<HTMLElement>('[data-pk-kat]')];
+    const lista = $('[data-pk-lista]');
+    const odh = new Set<string>();
+    let zapisuj = false;
+
+    type Ust = { sklad: string; para: string; rodzic: string; dzieci: number; wiek: string[]; klimat: string; typ: string; dni: number; transport: string; podreczny: boolean };
+
+    const dni = (v: unknown) => Math.min(30, Math.max(1, Math.round(Number(v)) || 1));
+    const czytaj = (): Ust => ({
+      sklad: el.sklad.value,
+      para: el.para.value,
+      rodzic: el.rodzic.value,
+      dzieci: Number(el.dzieci.value) || 1,
+      wiek: [1, 2, 3, 4].map((n) => (f.elements.namedItem('wiek' + n) as HTMLSelectElement).value),
+      klimat: el.klimat.value,
+      typ: el.typ.value,
+      dni: dni(el.dni.value),
+      transport: el.transport.value,
+      podreczny: el.podreczny.checked,
+    });
+    const ustaw = (u: Ust) => {
+      for (const k of ['sklad', 'para', 'rodzic', 'klimat', 'typ', 'transport'] as const) if (u[k]) el[k].value = u[k];
+      el.dzieci.value = String(u.dzieci);
+      u.wiek.forEach((w, i) => w && ((f.elements.namedItem('wiek' + (i + 1)) as HTMLSelectElement).value = w));
+      el.dni.value = el.dni_liczba.value = String(dni(u.dni));
+      el.podreczny.checked = !!u.podreczny;
+    };
+
+    // Wzór ilości: liczby, dni, na_osobe, na_dziecko, + - * /, nawiasy, min/max/ceil. Mały parser zamiast eval.
+    const FN: Record<string, (...a: number[]) => number> = { min: Math.min, max: Math.max, ceil: Math.ceil };
+    const licz = (w: string, v: Record<string, number>) => {
+      const t = w.match(/\d+|[a-z_]+|[-+*/(),]/g) || [];
+      let i = 0;
+      const wyr = (): number => {
+        let a = skl();
+        while (t[i] === '+' || t[i] === '-') a = t[i++] === '+' ? a + skl() : a - skl();
+        return a;
+      };
+      const skl = (): number => {
+        let a = czy();
+        while (t[i] === '*' || t[i] === '/') a = t[i++] === '*' ? a * czy() : a / czy();
+        return a;
+      };
+      const czy = (): number => {
+        const x = t[i++];
+        if (x === '(') { const a = wyr(); i++; return a; }
+        if (/^\d/.test(x)) return +x;
+        if (t[i] === '(' && FN[x]) {
+          i++;
+          const r = [wyr()];
+          while (t[i] === ',') { i++; r.push(wyr()); }
+          i++;
+          return FN[x](...r);
+        }
+        return v[x] || 0;
+      };
+      return wyr();
+    };
+
+    const PARY: Record<string, string[]> = { km: ['kobieta', 'mezczyzna'], kk: ['kobieta', 'kobieta'], mm: ['mezczyzna', 'mezczyzna'] };
+    const zDziecmi = (u: Ust) => u.sklad === 'para_dzieci' || u.sklad === 'sam_dzieci';
+    const osoby = (u: Ust) => {
+      const dorosli = u.sklad === 'kobieta' || u.sklad === 'mezczyzna' ? [u.sklad] : u.sklad === 'sam_dzieci' ? [u.rodzic] : PARY[u.para] || PARY.km;
+      return dorosli.concat(zDziecmi(u) ? u.wiek.slice(0, u.dzieci) : []);
+    };
+
+    const napis = (n: string) => (f.querySelector(`input[name="${n}"]:checked + span`)?.textContent || '').trim();
+    const opis = (u: Ust) => {
+      const d = u.dzieci;
+      const ile = `z ${d} ${d === 1 ? 'dzieckiem' : 'dziećmi'}`;
+      const WIEK: Record<string, string> = { niemowle: 'niemowlę', dziecko: '3–12 lat', nastolatek: 'nastolatek' };
+      const wieki = zDziecmi(u) ? ` (${u.wiek.slice(0, d).map((w) => WIEK[w]).join(', ')})` : '';
+      const kto =
+        u.sklad === 'para'
+          ? 'Para' + (u.para === 'km' ? '' : ` (${napis('para').toLowerCase()})`)
+          : u.sklad === 'para_dzieci'
+            ? `Para ${ile}${wieki}`
+            : u.sklad === 'sam_dzieci'
+              ? `${napis('rodzic')} ${ile}${wieki}`
+              : napis('sklad');
+      return [kto, napis('typ').toLowerCase(), napis('klimat').toLowerCase(), u.dni === 1 ? '1 dzień' : `${u.dni} dni`, napis('transport').toLowerCase()]
+        .concat(u.podreczny ? ['tylko bagaż podręczny'] : [])
+        .join(', ');
+    };
+
+    const zapisz = () => {
+      if (!zapisuj) return;
+      try {
+        localStorage.setItem(KLUCZ, JSON.stringify({ u: czytaj(), o: [...odh], d: Date.now() }));
+      } catch {
+        /* pamięć wyłączona albo pełna: lista działa bez zapisu */
+      }
+    };
+
+    const licznik = () => {
+      let wszystkie = 0, spakowane = 0;
+      for (const k of kat) {
+        if (k.hidden) continue;
+        const w = [...k.querySelectorAll<HTMLLIElement>('[data-pk-p]:not([hidden])')];
+        const z = w.filter((p) => odh.has(p.dataset.pkP!)).length;
+        wszystkie += w.length;
+        spakowane += z;
+        k.querySelector('[data-pk-ile]')!.textContent = `${z}/${w.length}`;
+      }
+      $('[data-pk-licznik]').textContent = `Spakowane ${spakowane} z ${wszystkie}`;
+      $('[data-pk-pasek]').style.transform = `scaleX(${wszystkie ? spakowane / wszystkie : 0})`;
+    };
+
+    const generuj = () => {
+      const u = czytaj();
+      const ludzie = osoby(u);
+      const klimat = u.typ === 'zima' ? 'zimno' : u.klimat;
+      const jest = (a: string | undefined, w: string) => !a || a.split(' ').includes(w);
+      $('[data-pk-para]').hidden = !(u.sklad === 'para' || u.sklad === 'para_dzieci');
+      $('[data-pk-rodzic]').hidden = u.sklad !== 'sam_dzieci';
+      $('[data-pk-dzieci]').hidden = !zDziecmi(u);
+      root.querySelectorAll<HTMLElement>('[data-pk-wiek]').forEach((w) => (w.hidden = Number(w.dataset.pkWiek) > u.dzieci));
+
+      const widoczne = new Set<string>();
+      for (const p of poz) {
+        const d = p.dataset;
+        const pasujace = d.k ? ludzie.filter((o) => d.k!.split(' ').includes(o)) : ludzie;
+        const prog = Number((u.podreczny && d.mdp) || d.md || 1);
+        const ok =
+          pasujace.length > 0 &&
+          jest(d.kl, klimat) &&
+          jest(d.t, u.typ) &&
+          jest(d.tr, u.transport) &&
+          jest(d.s, u.sklad) &&
+          u.dni >= prog &&
+          !(d.pb === 'bez' && u.podreczny) &&
+          !(d.pb === 'tylko' && !u.podreczny);
+        p.hidden = !ok;
+        if (!ok) continue;
+        widoczne.add(d.pkP!);
+        const n = d.os !== undefined ? pasujace.length : 1;
+        const dzieci = pasujace.filter((o) => o === 'niemowle' || o === 'dziecko' || o === 'nastolatek').length;
+        let q = Math.max(1, Math.round(licz(d.il || '1', { dni: u.dni, na_osobe: pasujace.length, na_dziecko: dzieci })));
+        if (u.podreczny && d.mp) q = Math.min(q, Number(d.mp));
+        const razem = q * n, j = d.j || 'szt.';
+        p.querySelector('[data-pk-ilosc]')!.textContent = razem < 2 ? '' : n > 1 && q > 1 ? `${razem} ${j} (${n} × ${q})` : `${razem} ${j}`;
+        p.querySelector('input')!.checked = odh.has(d.pkP!);
+      }
+      for (const id of [...odh]) if (!widoczne.has(id)) odh.delete(id);
+      for (const k of kat) k.hidden = !k.querySelector('[data-pk-p]:not([hidden])');
+      $('[data-pk-opis]').textContent = opis(u);
+      $('[data-pk-data]').textContent = 'Lista z dnia ' + new Date().toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' });
+      licznik();
+      zapisz();
+    };
+
+    // Zdarzenia formularza: suwak i pole liczby trzymają tę samą wartość.
+    f.addEventListener('input', (e) => {
+      const t = e.target as HTMLInputElement;
+      if (t.name === 'dni_liczba') {
+        if (t.value === '') return;
+        el.dni.value = String(dni(t.value));
+      }
+      if (t.name === 'dni') el.dni_liczba.value = t.value;
+      zapisuj = true;
+      generuj();
+    });
+    f.addEventListener('change', (e) => {
+      const t = e.target as HTMLInputElement;
+      if (t.name === 'dni_liczba') t.value = el.dni.value;
+    });
+    f.addEventListener('submit', (e) => {
+      e.preventDefault();
+      zapisuj = true;
+      generuj();
+      lista.focus();
+    });
+    lista.addEventListener('change', (e) => {
+      const t = e.target as HTMLInputElement;
+      const id = t.closest<HTMLElement>('[data-pk-p]')?.dataset.pkP;
+      if (!id) return;
+      t.checked ? odh.add(id) : odh.delete(id);
+      zapisuj = true;
+      licznik();
+      zapisz();
+    });
+
+    $('[data-pk-drukuj]').addEventListener('click', () => window.print());
+
+    const stan = $('[data-pk-stan]');
+    $('[data-pk-kopiuj]').addEventListener('click', async () => {
+      const wiersze = ['Lista do spakowania: ' + $('[data-pk-opis]').textContent];
+      for (const k of kat) {
+        if (k.hidden) continue;
+        wiersze.push('', k.querySelector('[data-pk-nazwa]')!.textContent!.toUpperCase());
+        for (const p of k.querySelectorAll<HTMLLIElement>('[data-pk-p]:not([hidden])')) {
+          const ile = p.querySelector('[data-pk-ilosc]')!.textContent;
+          wiersze.push(`${odh.has(p.dataset.pkP!) ? '☑' : '☐'} ${p.querySelector('.pk-poz__nazwa')!.textContent}${ile ? ' (' + ile + ')' : ''}`);
+        }
+      }
+      const tekst = wiersze.join('\n');
+      let ok = false;
+      try {
+        await navigator.clipboard.writeText(tekst);
+        ok = true;
+      } catch {
+        // starsze przeglądarki i strona bez uprawnień do schowka: zaznaczenie ukrytego pola
+        const p = document.createElement('textarea');
+        p.value = tekst;
+        p.setAttribute('readonly', '');
+        p.style.cssText = 'position:fixed;opacity:0';
+        document.body.append(p);
+        p.select();
+        ok = document.execCommand('copy');
+        p.remove();
+      }
+      stan.textContent = ok ? 'Skopiowano. Wklej listę do notatek albo wiadomości.' : 'Nie udało się skopiować. Użyj przycisku Drukuj listę.';
+    });
+
+    const komunikat = $('[data-pk-przywrocono]');
+    $('[data-pk-od-nowa]').addEventListener('click', () => {
+      try {
+        localStorage.removeItem(KLUCZ);
+      } catch {
+        /* bez pamięci nie ma czego czyścić */
+      }
+      zapisuj = false;
+      odh.clear();
+      f.reset();
+      komunikat.hidden = true;
+      generuj();
+      f.querySelector<HTMLInputElement>('input[name="sklad"]:checked')!.focus();
+    });
+
+    // Start: przywrócenie zapisu albo ustawienia domyślne z HTML.
+    try {
+      const z = JSON.parse(localStorage.getItem(KLUCZ) || 'null');
+      if (z && z.u && Array.isArray(z.o)) {
+        ustaw(z.u);
+        z.o.forEach((id: string) => odh.add(id));
+        zapisuj = true;
+        const kiedy = new Date(z.d).toLocaleString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+        $('[data-pk-przywrocono-tekst]').textContent = `Przywrócono twoją ostatnią listę z ${kiedy}.`;
+        komunikat.hidden = false;
+      }
+    } catch {
+      /* uszkodzony zapis: start od ustawień domyślnych */
+    }
+    generuj();
+  }
+</script>

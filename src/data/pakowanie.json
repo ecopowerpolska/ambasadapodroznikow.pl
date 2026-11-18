@@ -1,0 +1,2370 @@
+{
+ "_meta": {
+  "opis": "Dane darmowego pomocnika pakowania (/podroze/pomocnik-pakowania/). Pozycje filtruje i liczy skrypt w src/components/PomocnikPakowania.astro.",
+  "data": "2026-11-18",
+  "pola": {
+   "id": "unikalny klucz, bez polskich znaków; po nim przeglądarka pamięta odhaczenie",
+   "nazwa": "tekst na liście",
+   "kat": "id kategorii z listy `kategorie` (kolejność kategorii = kolejność na liście)",
+   "ilosc": "wzór ilości: liczba | dni | min(…) | max(…) | ceil(…) z + - * / oraz na_osobe | na_dziecko (liczba pasujących osób / dzieci)",
+   "os": "true = ilość liczona na każdą pasującą osobę (np. bielizna), brak = jedna sztuka na całą grupę (np. apteczka)",
+   "kto": "lista typów osób: kobieta | mezczyzna | nastolatek | dziecko | niemowle; pozycja jest, gdy jedzie choć jedna pasująca osoba; brak = wszyscy",
+   "klimat": "cieplo | umiarkowanie | zimno; brak = każdy (wyjazd typu zima liczy się zawsze jako zimno)",
+   "typ": "plaza | miasto | gory | zima | biznes; brak = każdy",
+   "transport": "samolot | samochod | pociag; brak = każdy",
+   "sklad": "kobieta | mezczyzna | para | para_dzieci | sam_dzieci; brak = każdy",
+   "min_dni": "pozycja od tylu dni wyjazdu; min_dni_podreczny = próg przy samym bagażu podręcznym",
+   "podreczny": "bez = znika przy samym bagażu podręcznym; tylko = pojawia się wyłącznie wtedy",
+   "max_podreczny": "górna granica ilości przy samym bagażu podręcznym (resztę się dopiera)",
+   "jedn": "jednostka ilości, domyślnie szt.",
+   "uwaga": "dopisek pod pozycją; przy lekach zawsze odsyła do lekarza lub farmaceuty, bez dawek i nazw handlowych",
+   "zrodlo": "kod źródła z `_meta.zrodla`"
+  },
+  "zrodla": {
+   "kvz": {
+    "projekt": "packing-list, Kevin van Zonneveld",
+    "adres": "https://github.com/kvz/packing-list",
+    "licencja": "MIT",
+    "odczyt": "2026-11-18",
+    "nota": "Copyright (c) 2013 Kevin van Zonneveld. Licensed under MIT: http://kvz.io/licenses/LICENSE-MIT",
+    "tekst_licencji": "Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.",
+    "zakres": "Pozycje z kodem kvz to polska adaptacja listy z tego projektu (wybór, przekład, ilości dopasowane do wzorów tego pliku), nie przekład dosłowny."
+   },
+   "travelplanet": {
+    "adres": "https://www.travelplanet.pl/blog/co-zabrac-na-wakacje-z-dzieckiem-gotowa-lista-rzeczy-do-spakowania/",
+    "odczyt": "2026-11-18",
+    "uwaga": "pomysł pozycji, tekst własny"
+   },
+   "triverna": {
+    "adres": "https://triverna.pl/blog/co-zabrac-na-wakacje-z-dzieckiem",
+    "odczyt": "2026-11-18",
+    "uwaga": "pomysł pozycji, tekst własny"
+   },
+   "orange": {
+    "adres": "https://www.orange.pl/poradnik/co-zabrac-na-wakacje-z-dzieckiem-lista/",
+    "odczyt": "2026-11-18",
+    "uwaga": "pomysł pozycji, tekst własny"
+   },
+   "wlasne": {
+    "uwaga": "pozycje opracowane przez redakcję"
+   }
+  }
+ },
+ "kategorie": [
+  {
+   "id": "dokumenty",
+   "nazwa": "Dokumenty i pieniądze"
+  },
+  {
+   "id": "w_drodze",
+   "nazwa": "W drodze"
+  },
+  {
+   "id": "ubrania",
+   "nazwa": "Ubrania i buty"
+  },
+  {
+   "id": "higiena",
+   "nazwa": "Higiena i kosmetyki"
+  },
+  {
+   "id": "apteczka",
+   "nazwa": "Apteczka",
+   "link": "/blog/apteczka-podroznika-co-spakowac/"
+  },
+  {
+   "id": "elektronika",
+   "nazwa": "Elektronika"
+  },
+  {
+   "id": "dzieci",
+   "nazwa": "Dla dzieci"
+  },
+  {
+   "id": "plaza",
+   "nazwa": "Plaża i woda"
+  },
+  {
+   "id": "gory",
+   "nazwa": "Góry i szlak"
+  },
+  {
+   "id": "zima",
+   "nazwa": "Zima i narty"
+  },
+  {
+   "id": "miasto",
+   "nazwa": "Miasto i zwiedzanie"
+  },
+  {
+   "id": "biznes",
+   "nazwa": "Wyjazd służbowy"
+  },
+  {
+   "id": "samochod",
+   "nazwa": "Samochód"
+  },
+  {
+   "id": "przed_wyjazdem",
+   "nazwa": "Przed wyjściem z domu"
+  }
+ ],
+ "przedmioty": [
+  {
+   "id": "paszport",
+   "nazwa": "Paszport lub dowód osobisty",
+   "kat": "dokumenty",
+   "ilosc": "1",
+   "os": true,
+   "uwaga": "Każda osoba, także niemowlę, potrzebuje własnego dokumentu. Sprawdź jego ważność.",
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "wiza",
+   "nazwa": "Wiza lub elektroniczne zezwolenie na wjazd, jeśli kraj go wymaga",
+   "kat": "dokumenty",
+   "ilosc": "1",
+   "uwaga": "Wymagania kraju sprawdź na gov.pl w informacjach dla podróżujących.",
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "karta_ekuz",
+   "nazwa": "Karta EKUZ (wyjazd do UE i EOG)",
+   "kat": "dokumenty",
+   "ilosc": "1",
+   "os": true,
+   "uwaga": "Działa tylko w publicznej służbie zdrowia krajów UE i EOG.",
+   "zrodlo": "orange"
+  },
+  {
+   "id": "ubezpieczenie",
+   "nazwa": "Polisa ubezpieczenia podróżnego (numer i telefon alarmowy ubezpieczyciela)",
+   "kat": "dokumenty",
+   "ilosc": "1",
+   "zrodlo": "orange"
+  },
+  {
+   "id": "bilety",
+   "nazwa": "Bilety i karty pokładowe (wydruk lub w telefonie)",
+   "kat": "dokumenty",
+   "ilosc": "1",
+   "zrodlo": "orange"
+  },
+  {
+   "id": "rezerwacje",
+   "nazwa": "Potwierdzenia rezerwacji noclegów",
+   "kat": "dokumenty",
+   "ilosc": "1",
+   "zrodlo": "orange"
+  },
+  {
+   "id": "kopie_dokumentow",
+   "nazwa": "Zdjęcia dokumentów zapisane w telefonie i u bliskiej osoby",
+   "kat": "dokumenty",
+   "ilosc": "1",
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "karta_platnicza",
+   "nazwa": "Karta płatnicza i druga, zapasowa",
+   "kat": "dokumenty",
+   "ilosc": "1",
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "gotowka",
+   "nazwa": "Gotówka w walucie kraju na pierwsze wydatki",
+   "kat": "dokumenty",
+   "ilosc": "1",
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "numery_alarmowe",
+   "nazwa": "Kartka z numerami alarmowymi, adresem noclegu i telefonem do bliskich",
+   "kat": "dokumenty",
+   "ilosc": "1",
+   "zrodlo": "triverna"
+  },
+  {
+   "id": "legitymacja",
+   "nazwa": "Legitymacja szkolna lub studencka (zniżki)",
+   "kat": "dokumenty",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "nastolatek",
+    "dziecko"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "ksiazeczka_zdrowia",
+   "nazwa": "Książeczka zdrowia dziecka z kartą szczepień",
+   "kat": "dokumenty",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "dziecko",
+    "niemowle",
+    "nastolatek"
+   ],
+   "zrodlo": "travelplanet"
+  },
+  {
+   "id": "swiadectwo_szczepien",
+   "nazwa": "Międzynarodowe świadectwo szczepień, jeśli kraj go wymaga",
+   "kat": "dokumenty",
+   "ilosc": "1",
+   "uwaga": "O szczepienia przed wyjazdem zapytaj lekarza medycyny podróży.",
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "zgoda_rodzica",
+   "nazwa": "Pisemna zgoda drugiego rodzica na wyjazd dziecka",
+   "kat": "dokumenty",
+   "ilosc": "1",
+   "sklad": [
+    "sam_dzieci"
+   ],
+   "uwaga": "Niektóre kraje i przewoźnicy jej wymagają. Sprawdź przepisy kraju przed wyjazdem.",
+   "zrodlo": "orange"
+  },
+  {
+   "id": "prawo_jazdy",
+   "nazwa": "Prawo jazdy",
+   "kat": "dokumenty",
+   "ilosc": "1",
+   "transport": [
+    "samochod"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "dowod_rejestracyjny",
+   "nazwa": "Dowód rejestracyjny i polisa OC auta",
+   "kat": "dokumenty",
+   "ilosc": "1",
+   "transport": [
+    "samochod"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "zielona_karta",
+   "nazwa": "Zielona Karta, jeśli jedziesz autem poza UE",
+   "kat": "dokumenty",
+   "ilosc": "1",
+   "transport": [
+    "samochod"
+   ],
+   "uwaga": "Zapytaj ubezpieczyciela, czy kraj docelowy jej wymaga.",
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "plan_bliskim",
+   "nazwa": "Plan podróży zostawiony bliskiej osobie",
+   "kat": "dokumenty",
+   "ilosc": "1",
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "przekaski_droga",
+   "nazwa": "Przekąski na drogę",
+   "kat": "w_drodze",
+   "ilosc": "1",
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "woda_droga",
+   "nazwa": "Woda na drogę",
+   "kat": "w_drodze",
+   "ilosc": "1",
+   "transport": [
+    "samochod",
+    "pociag"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "butelka_pusta",
+   "nazwa": "Pusta butelka do napełnienia po kontroli bezpieczeństwa",
+   "kat": "w_drodze",
+   "ilosc": "1",
+   "transport": [
+    "samolot"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "torebka_plyny",
+   "nazwa": "Przezroczysta torebka na płyny (pojemniki do 100 ml)",
+   "kat": "w_drodze",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek"
+   ],
+   "transport": [
+    "samolot"
+   ],
+   "uwaga": "Zasady płynów sprawdź u przewoźnika i na lotnisku wylotu.",
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "poduszka_podrozna",
+   "nazwa": "Poduszka podróżna i opaska na oczy",
+   "kat": "w_drodze",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek"
+   ],
+   "transport": [
+    "samolot",
+    "pociag"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "zatyczki_uszu",
+   "nazwa": "Zatyczki do uszu",
+   "kat": "w_drodze",
+   "ilosc": "1",
+   "transport": [
+    "samolot",
+    "pociag"
+   ],
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "gumy_uszy",
+   "nazwa": "Gumy do żucia albo cukierki na start i lądowanie",
+   "kat": "w_drodze",
+   "ilosc": "1",
+   "transport": [
+    "samolot"
+   ],
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "szal_poklad",
+   "nazwa": "Lekki sweter lub szal na pokład (klimatyzacja)",
+   "kat": "w_drodze",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek"
+   ],
+   "transport": [
+    "samolot",
+    "pociag"
+   ],
+   "zrodlo": "triverna"
+  },
+  {
+   "id": "zmiana_podreczny",
+   "nazwa": "Zmiana bielizny i koszulki w bagażu podręcznym",
+   "kat": "w_drodze",
+   "ilosc": "1",
+   "transport": [
+    "samolot"
+   ],
+   "podreczny": "bez",
+   "uwaga": "Na wypadek, gdyby walizka przyleciała później.",
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "dlugopis",
+   "nazwa": "Długopis (formularze przy granicy)",
+   "kat": "w_drodze",
+   "ilosc": "1",
+   "transport": [
+    "samolot"
+   ],
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "ksiazka",
+   "nazwa": "Książka, czytnik albo pobrane filmy na drogę",
+   "kat": "w_drodze",
+   "ilosc": "1",
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "waga_bagazu",
+   "nazwa": "Ręczna waga do bagażu",
+   "kat": "w_drodze",
+   "ilosc": "1",
+   "transport": [
+    "samolot"
+   ],
+   "min_dni": 4,
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "zawieszka",
+   "nazwa": "Zawieszka z imieniem i telefonem na każdą torbę",
+   "kat": "w_drodze",
+   "ilosc": "1",
+   "transport": [
+    "samolot",
+    "pociag"
+   ],
+   "zrodlo": "orange"
+  },
+  {
+   "id": "bielizna",
+   "nazwa": "Bielizna",
+   "kat": "ubrania",
+   "ilosc": "min(dni,7)",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek"
+   ],
+   "max_podreczny": 4,
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "skarpety",
+   "nazwa": "Skarpetki",
+   "kat": "ubrania",
+   "ilosc": "min(dni,7)",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ],
+   "max_podreczny": 4,
+   "jedn": "par",
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "koszulki",
+   "nazwa": "Koszulki lub bluzki",
+   "kat": "ubrania",
+   "ilosc": "min(dni,6)",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek"
+   ],
+   "max_podreczny": 3,
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "spodenki",
+   "nazwa": "Krótkie spodenki lub spódnica",
+   "kat": "ubrania",
+   "ilosc": "min(ceil(dni/3),3)",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek"
+   ],
+   "klimat": [
+    "cieplo",
+    "umiarkowanie"
+   ],
+   "max_podreczny": 2,
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "spodnie",
+   "nazwa": "Długie spodnie",
+   "kat": "ubrania",
+   "ilosc": "min(ceil(dni/4),3)",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek"
+   ],
+   "max_podreczny": 1,
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "bluza",
+   "nazwa": "Bluza lub sweter",
+   "kat": "ubrania",
+   "ilosc": "min(ceil(dni/4),2)",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ],
+   "klimat": [
+    "umiarkowanie",
+    "zimno"
+   ],
+   "max_podreczny": 1,
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "bluza_lekka",
+   "nazwa": "Lekka bluza na chłodny wieczór",
+   "kat": "ubrania",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ],
+   "klimat": [
+    "cieplo"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "pizama",
+   "nazwa": "Piżama",
+   "kat": "ubrania",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ],
+   "min_dni": 2,
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "kurtka_deszcz",
+   "nazwa": "Kurtka przeciwdeszczowa",
+   "kat": "ubrania",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ],
+   "klimat": [
+    "umiarkowanie"
+   ],
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "kurtka_ciepla",
+   "nazwa": "Ciepła kurtka",
+   "kat": "ubrania",
+   "ilosc": "1",
+   "os": true,
+   "klimat": [
+    "zimno"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "czapka_zimowa",
+   "nazwa": "Czapka, szalik i rękawiczki",
+   "kat": "ubrania",
+   "ilosc": "1",
+   "os": true,
+   "klimat": [
+    "zimno"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "czapka_slonce",
+   "nazwa": "Czapka z daszkiem lub kapelusz",
+   "kat": "ubrania",
+   "ilosc": "1",
+   "os": true,
+   "klimat": [
+    "cieplo"
+   ],
+   "zrodlo": "orange"
+  },
+  {
+   "id": "okulary_slonce",
+   "nazwa": "Okulary przeciwsłoneczne",
+   "kat": "ubrania",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ],
+   "klimat": [
+    "cieplo",
+    "umiarkowanie"
+   ],
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "buty_wygodne",
+   "nazwa": "Wygodne buty do chodzenia (najlepiej na nogach w podróży)",
+   "kat": "ubrania",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "buty_zapas",
+   "nazwa": "Druga para butów",
+   "kat": "ubrania",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek"
+   ],
+   "min_dni": 5,
+   "podreczny": "bez",
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "sandaly",
+   "nazwa": "Sandały lub przewiewne buty",
+   "kat": "ubrania",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ],
+   "klimat": [
+    "cieplo"
+   ],
+   "typ": [
+    "miasto",
+    "gory",
+    "biznes"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "stroj_wyjscie",
+   "nazwa": "Strój na wieczorne wyjście",
+   "kat": "ubrania",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek"
+   ],
+   "typ": [
+    "miasto"
+   ],
+   "min_dni": 2,
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "pasek",
+   "nazwa": "Pasek",
+   "kat": "ubrania",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "mezczyzna"
+   ],
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "worek_brudne",
+   "nazwa": "Worek na brudne rzeczy",
+   "kat": "ubrania",
+   "ilosc": "1",
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "ubrania_dziecko",
+   "nazwa": "Komplety ubrań dziecka na dzień",
+   "kat": "ubrania",
+   "ilosc": "min(dni+1,8)",
+   "os": true,
+   "kto": [
+    "dziecko"
+   ],
+   "max_podreczny": 4,
+   "uwaga": "Jeden komplet zapasu na plamy i niespodzianki.",
+   "zrodlo": "travelplanet"
+  },
+  {
+   "id": "bielizna_dziecko",
+   "nazwa": "Majtki dziecka",
+   "kat": "ubrania",
+   "ilosc": "min(dni+2,9)",
+   "os": true,
+   "kto": [
+    "dziecko"
+   ],
+   "max_podreczny": 5,
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "body",
+   "nazwa": "Body i śpioszki",
+   "kat": "ubrania",
+   "ilosc": "min(dni*2,12)",
+   "os": true,
+   "kto": [
+    "niemowle"
+   ],
+   "max_podreczny": 6,
+   "zrodlo": "travelplanet"
+  },
+  {
+   "id": "pajacyk",
+   "nazwa": "Pajacyk lub śpiworek do spania",
+   "kat": "ubrania",
+   "ilosc": "2",
+   "os": true,
+   "kto": [
+    "niemowle"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "czapeczka",
+   "nazwa": "Czapeczka i skarpetki niemowlęcia",
+   "kat": "ubrania",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "niemowle"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "kombinezon",
+   "nazwa": "Ciepły kombinezon",
+   "kat": "ubrania",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "niemowle"
+   ],
+   "klimat": [
+    "zimno"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "szczoteczka",
+   "nazwa": "Szczoteczka do zębów",
+   "kat": "higiena",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ],
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "pasta",
+   "nazwa": "Pasta do zębów",
+   "kat": "higiena",
+   "ilosc": "1",
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek"
+   ],
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "pasta_dziecko",
+   "nazwa": "Pasta do zębów dla dzieci",
+   "kat": "higiena",
+   "ilosc": "1",
+   "kto": [
+    "dziecko"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "nic",
+   "nazwa": "Nić dentystyczna",
+   "kat": "higiena",
+   "ilosc": "1",
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "dezodorant",
+   "nazwa": "Dezodorant",
+   "kat": "higiena",
+   "ilosc": "1",
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek"
+   ],
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "zel_szampon",
+   "nazwa": "Żel pod prysznic i szampon",
+   "kat": "higiena",
+   "ilosc": "1",
+   "podreczny": "bez",
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "kosmetyki_mini",
+   "nazwa": "Kosmetyki w małych opakowaniach (do 100 ml)",
+   "kat": "higiena",
+   "ilosc": "1",
+   "podreczny": "tylko",
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "grzebien",
+   "nazwa": "Szczotka lub grzebień",
+   "kat": "higiena",
+   "ilosc": "1",
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "gumki",
+   "nazwa": "Gumki i spinki do włosów",
+   "kat": "higiena",
+   "ilosc": "1",
+   "kto": [
+    "kobieta"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "maszynka",
+   "nazwa": "Maszynka do golenia",
+   "kat": "higiena",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "mezczyzna"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "makijaz",
+   "nazwa": "Kosmetyki do makijażu i demakijażu",
+   "kat": "higiena",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "higiena_intymna",
+   "nazwa": "Podpaski, tampony lub kubeczek menstruacyjny",
+   "kat": "higiena",
+   "ilosc": "1",
+   "kto": [
+    "kobieta"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "krem_twarz",
+   "nazwa": "Krem nawilżający",
+   "kat": "higiena",
+   "ilosc": "1",
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "krem_filtr",
+   "nazwa": "Krem z filtrem UV",
+   "kat": "higiena",
+   "ilosc": "1",
+   "klimat": [
+    "cieplo",
+    "umiarkowanie"
+   ],
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "pomadka",
+   "nazwa": "Pomadka ochronna do ust",
+   "kat": "higiena",
+   "ilosc": "1",
+   "klimat": [
+    "cieplo",
+    "zimno"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "chusteczki",
+   "nazwa": "Chusteczki higieniczne i nawilżane",
+   "kat": "higiena",
+   "ilosc": "1",
+   "zrodlo": "travelplanet"
+  },
+  {
+   "id": "zel_rece",
+   "nazwa": "Żel antybakteryjny do rąk",
+   "kat": "higiena",
+   "ilosc": "1",
+   "zrodlo": "travelplanet"
+  },
+  {
+   "id": "obcinaczka",
+   "nazwa": "Cążki do paznokci (w bagażu rejestrowanym)",
+   "kat": "higiena",
+   "ilosc": "1",
+   "min_dni": 7,
+   "podreczny": "bez",
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "suszarka",
+   "nazwa": "Suszarka do włosów, jeśli nocleg jej nie ma",
+   "kat": "higiena",
+   "ilosc": "1",
+   "min_dni": 2,
+   "podreczny": "bez",
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "okulary_korekcyjne",
+   "nazwa": "Okulary korekcyjne lub soczewki z płynem (jeśli nosisz)",
+   "kat": "higiena",
+   "ilosc": "1",
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "recznik",
+   "nazwa": "Ręcznik szybkoschnący, jeśli nocleg go nie daje",
+   "kat": "higiena",
+   "ilosc": "1",
+   "typ": [
+    "gory",
+    "plaza"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "pranie",
+   "nazwa": "Płyn do prania ręcznego i sznurek z klamerkami",
+   "kat": "higiena",
+   "ilosc": "1",
+   "min_dni": 8,
+   "min_dni_podreczny": 4,
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "kosmetyczka",
+   "nazwa": "Kosmetyczka",
+   "kat": "higiena",
+   "ilosc": "1",
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "leki_stale",
+   "nazwa": "Leki brane na stałe, w oryginalnych opakowaniach",
+   "kat": "apteczka",
+   "ilosc": "1",
+   "uwaga": "Zapas na cały wyjazd i kilka dni więcej, w bagażu podręcznym. Zapytaj lekarza lub farmaceutę.",
+   "zrodlo": "triverna"
+  },
+  {
+   "id": "recepta",
+   "nazwa": "Recepta lub zaświadczenie lekarza na leki zabierane w drogę",
+   "kat": "apteczka",
+   "ilosc": "1",
+   "transport": [
+    "samolot"
+   ],
+   "uwaga": "Szczególnie przy lekach w płynie i w zastrzykach.",
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "przeciwbolowe",
+   "nazwa": "Lek przeciwbólowy i przeciwgorączkowy",
+   "kat": "apteczka",
+   "ilosc": "1",
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek"
+   ],
+   "uwaga": "Rodzaj leku i dawkę dobierze lekarz lub farmaceuta.",
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "przeciwbolowe_dziecko",
+   "nazwa": "Lek przeciwgorączkowy dla dziecka",
+   "kat": "apteczka",
+   "ilosc": "1",
+   "kto": [
+    "dziecko",
+    "niemowle"
+   ],
+   "uwaga": "Rodzaj leku i dawkę dobierze pediatra lub farmaceuta.",
+   "zrodlo": "triverna"
+  },
+  {
+   "id": "biegunka",
+   "nazwa": "Elektrolity w saszetkach i środek na biegunkę",
+   "kat": "apteczka",
+   "ilosc": "1",
+   "uwaga": "Rodzaj leku i dawkę dobierze lekarz lub farmaceuta.",
+   "zrodlo": "triverna"
+  },
+  {
+   "id": "zoladek",
+   "nazwa": "Środek na niestrawność i zgagę",
+   "kat": "apteczka",
+   "ilosc": "1",
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek"
+   ],
+   "uwaga": "Rodzaj leku i dawkę dobierze lekarz lub farmaceuta.",
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "lokomocja",
+   "nazwa": "Środek na chorobę lokomocyjną",
+   "kat": "apteczka",
+   "ilosc": "1",
+   "uwaga": "Rodzaj leku i dawkę dobierze lekarz lub farmaceuta.",
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "alergia",
+   "nazwa": "Lek przeciwhistaminowy (alergia, ukąszenia)",
+   "kat": "apteczka",
+   "ilosc": "1",
+   "uwaga": "Rodzaj leku i dawkę dobierze lekarz lub farmaceuta.",
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "plastry",
+   "nazwa": "Plastry z opatrunkiem i plastry na otarcia",
+   "kat": "apteczka",
+   "ilosc": "1",
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "gaziki",
+   "nazwa": "Gaziki jałowe i środek do odkażania ran",
+   "kat": "apteczka",
+   "ilosc": "1",
+   "zrodlo": "travelplanet"
+  },
+  {
+   "id": "bandaz",
+   "nazwa": "Bandaż elastyczny, nożyczki i rękawiczki jednorazowe",
+   "kat": "apteczka",
+   "ilosc": "1",
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "termometr",
+   "nazwa": "Termometr",
+   "kat": "apteczka",
+   "ilosc": "1",
+   "zrodlo": "travelplanet"
+  },
+  {
+   "id": "po_opalaniu",
+   "nazwa": "Preparat łagodzący po opalaniu",
+   "kat": "apteczka",
+   "ilosc": "1",
+   "klimat": [
+    "cieplo"
+   ],
+   "zrodlo": "triverna"
+  },
+  {
+   "id": "repelent",
+   "nazwa": "Środek odstraszający komary i kleszcze",
+   "kat": "apteczka",
+   "ilosc": "1",
+   "klimat": [
+    "cieplo",
+    "umiarkowanie"
+   ],
+   "typ": [
+    "plaza",
+    "gory",
+    "miasto"
+   ],
+   "uwaga": "Przy dzieciach wybierz preparat odpowiedni do wieku. Zapytaj farmaceutę.",
+   "zrodlo": "orange"
+  },
+  {
+   "id": "ukaszenia",
+   "nazwa": "Żel na ukąszenia owadów",
+   "kat": "apteczka",
+   "ilosc": "1",
+   "klimat": [
+    "cieplo",
+    "umiarkowanie"
+   ],
+   "zrodlo": "travelplanet"
+  },
+  {
+   "id": "kleszcze",
+   "nazwa": "Kleszczołapki lub pęseta do kleszczy",
+   "kat": "apteczka",
+   "ilosc": "1",
+   "klimat": [
+    "cieplo",
+    "umiarkowanie"
+   ],
+   "typ": [
+    "gory",
+    "plaza"
+   ],
+   "zrodlo": "triverna"
+  },
+  {
+   "id": "woda_morska",
+   "nazwa": "Woda morska do nosa",
+   "kat": "apteczka",
+   "ilosc": "1",
+   "kto": [
+    "dziecko",
+    "niemowle"
+   ],
+   "zrodlo": "travelplanet"
+  },
+  {
+   "id": "aspirator",
+   "nazwa": "Aspirator do nosa",
+   "kat": "apteczka",
+   "ilosc": "1",
+   "kto": [
+    "niemowle"
+   ],
+   "zrodlo": "travelplanet"
+  },
+  {
+   "id": "krem_odparzenia",
+   "nazwa": "Krem na odparzenia",
+   "kat": "apteczka",
+   "ilosc": "1",
+   "kto": [
+    "niemowle"
+   ],
+   "zrodlo": "travelplanet"
+  },
+  {
+   "id": "pecherze",
+   "nazwa": "Plastry na pęcherze",
+   "kat": "apteczka",
+   "ilosc": "1",
+   "typ": [
+    "gory",
+    "miasto"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "telefon",
+   "nazwa": "Telefon",
+   "kat": "elektronika",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "ladowarka",
+   "nazwa": "Ładowarka i kabel do telefonu",
+   "kat": "elektronika",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek"
+   ],
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "powerbank",
+   "nazwa": "Powerbank",
+   "kat": "elektronika",
+   "ilosc": "1",
+   "uwaga": "W samolocie tylko w bagażu podręcznym. Limit pojemności sprawdź u przewoźnika.",
+   "zrodlo": "orange"
+  },
+  {
+   "id": "przejsciowka",
+   "nazwa": "Przejściówka do gniazdek, jeśli kraj ma inne",
+   "kat": "elektronika",
+   "ilosc": "1",
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "rozgaleziacz",
+   "nazwa": "Ładowarka z kilkoma gniazdami USB albo mały rozgałęziacz",
+   "kat": "elektronika",
+   "ilosc": "1",
+   "min_dni": 3,
+   "podreczny": "bez",
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "sluchawki",
+   "nazwa": "Słuchawki",
+   "kat": "elektronika",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek"
+   ],
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "mapy_offline",
+   "nazwa": "Mapy offline pobrane w telefonie",
+   "kat": "elektronika",
+   "ilosc": "1",
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "aparat",
+   "nazwa": "Aparat fotograficzny z ładowarką i kartą pamięci",
+   "kat": "elektronika",
+   "ilosc": "1",
+   "typ": [
+    "miasto",
+    "gory",
+    "plaza"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "laptop",
+   "nazwa": "Laptop z zasilaczem",
+   "kat": "elektronika",
+   "ilosc": "1",
+   "typ": [
+    "biznes"
+   ],
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "adapter_prezentacja",
+   "nazwa": "Przejściówka do rzutnika lub monitora (HDMI, USB-C)",
+   "kat": "elektronika",
+   "ilosc": "1",
+   "typ": [
+    "biznes"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "ladowarka_auto",
+   "nazwa": "Ładowarka samochodowa i uchwyt na telefon",
+   "kat": "elektronika",
+   "ilosc": "1",
+   "transport": [
+    "samochod"
+   ],
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "tablet_dziecko",
+   "nazwa": "Tablet z bajkami pobranymi offline i słuchawki dla dziecka",
+   "kat": "elektronika",
+   "ilosc": "1",
+   "kto": [
+    "dziecko"
+   ],
+   "zrodlo": "orange"
+  },
+  {
+   "id": "pieluchy",
+   "nazwa": "Pieluchy na 2–3 dni (resztę kupisz na miejscu)",
+   "kat": "dzieci",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "niemowle"
+   ],
+   "zrodlo": "orange"
+  },
+  {
+   "id": "chusteczki_dziecko",
+   "nazwa": "Chusteczki nawilżane, druga paczka w bagażu rejestrowanym",
+   "kat": "dzieci",
+   "ilosc": "1",
+   "kto": [
+    "niemowle",
+    "dziecko"
+   ],
+   "zrodlo": "travelplanet"
+  },
+  {
+   "id": "podklad",
+   "nazwa": "Podkład do przewijania i worki na pieluchy",
+   "kat": "dzieci",
+   "ilosc": "1",
+   "kto": [
+    "niemowle"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "jedzenie_niemowle",
+   "nazwa": "Mleko, kaszki i słoiczki na drogę",
+   "kat": "dzieci",
+   "ilosc": "1",
+   "kto": [
+    "niemowle"
+   ],
+   "uwaga": "W samolocie jedzenie dla niemowlęcia zgłoś na kontroli bezpieczeństwa.",
+   "zrodlo": "travelplanet"
+  },
+  {
+   "id": "butelka_dziecko",
+   "nazwa": "Butelka lub kubek niekapek",
+   "kat": "dzieci",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "niemowle",
+    "dziecko"
+   ],
+   "zrodlo": "travelplanet"
+  },
+  {
+   "id": "smoczki",
+   "nazwa": "Smoczki (z zapasem)",
+   "kat": "dzieci",
+   "ilosc": "2",
+   "os": true,
+   "kto": [
+    "niemowle"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "sliniaki",
+   "nazwa": "Śliniaki",
+   "kat": "dzieci",
+   "ilosc": "min(dni,5)",
+   "os": true,
+   "kto": [
+    "niemowle"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "wozek",
+   "nazwa": "Wózek spacerowy lub nosidło",
+   "kat": "dzieci",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "niemowle"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "lozeczko",
+   "nazwa": "Łóżeczko turystyczne (albo zapytaj nocleg)",
+   "kat": "dzieci",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "niemowle"
+   ],
+   "podreczny": "bez",
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "niania",
+   "nazwa": "Niania elektroniczna",
+   "kat": "dzieci",
+   "ilosc": "1",
+   "kto": [
+    "niemowle"
+   ],
+   "podreczny": "bez",
+   "zrodlo": "orange"
+  },
+  {
+   "id": "fotelik",
+   "nazwa": "Fotelik samochodowy dopasowany do wzrostu i wagi dziecka",
+   "kat": "dzieci",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "dziecko",
+    "niemowle"
+   ],
+   "transport": [
+    "samochod"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "kocyk",
+   "nazwa": "Kocyk na drogę",
+   "kat": "dzieci",
+   "ilosc": "1",
+   "kto": [
+    "dziecko",
+    "niemowle"
+   ],
+   "transport": [
+    "samolot",
+    "pociag"
+   ],
+   "zrodlo": "travelplanet"
+  },
+  {
+   "id": "przytulanka",
+   "nazwa": "Ulubiona przytulanka",
+   "kat": "dzieci",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "dziecko",
+    "niemowle"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "pudelko",
+   "nazwa": "Zamykane pudełko na przekąski",
+   "kat": "dzieci",
+   "ilosc": "1",
+   "kto": [
+    "dziecko"
+   ],
+   "zrodlo": "travelplanet"
+  },
+  {
+   "id": "zajecia",
+   "nazwa": "Kredki, kolorowanka i mała gra na drogę",
+   "kat": "dzieci",
+   "ilosc": "1",
+   "kto": [
+    "dziecko"
+   ],
+   "zrodlo": "orange"
+  },
+  {
+   "id": "ksiazeczki",
+   "nazwa": "Książeczki na wieczór",
+   "kat": "dzieci",
+   "ilosc": "1",
+   "kto": [
+    "dziecko",
+    "niemowle"
+   ],
+   "zrodlo": "triverna"
+  },
+  {
+   "id": "plecak_dziecko",
+   "nazwa": "Mały plecak dziecka",
+   "kat": "dzieci",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "dziecko"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "opaska",
+   "nazwa": "Opaska z numerem telefonu rodzica",
+   "kat": "dzieci",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "dziecko"
+   ],
+   "typ": [
+    "miasto",
+    "plaza",
+    "gory"
+   ],
+   "zrodlo": "orange"
+  },
+  {
+   "id": "nocnik",
+   "nazwa": "Nakładka na sedes lub nocnik turystyczny",
+   "kat": "dzieci",
+   "ilosc": "1",
+   "kto": [
+    "niemowle"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "stroj_kapielowy",
+   "nazwa": "Strój kąpielowy",
+   "kat": "plaza",
+   "ilosc": "2",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ],
+   "zrodlo": "travelplanet",
+   "typ": [
+    "plaza"
+   ]
+  },
+  {
+   "id": "pieluchy_wodne",
+   "nazwa": "Pieluchy do pływania",
+   "kat": "plaza",
+   "ilosc": "min(dni,5)",
+   "os": true,
+   "kto": [
+    "niemowle"
+   ],
+   "zrodlo": "travelplanet",
+   "typ": [
+    "plaza"
+   ]
+  },
+  {
+   "id": "recznik_plaza",
+   "nazwa": "Ręcznik plażowy",
+   "kat": "plaza",
+   "ilosc": "1",
+   "os": true,
+   "zrodlo": "kvz",
+   "typ": [
+    "plaza"
+   ]
+  },
+  {
+   "id": "klapki",
+   "nazwa": "Klapki",
+   "kat": "plaza",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ],
+   "zrodlo": "kvz",
+   "typ": [
+    "plaza"
+   ]
+  },
+  {
+   "id": "torba_plaza",
+   "nazwa": "Torba plażowa",
+   "kat": "plaza",
+   "ilosc": "1",
+   "zrodlo": "wlasne",
+   "typ": [
+    "plaza"
+   ]
+  },
+  {
+   "id": "parasol",
+   "nazwa": "Parasol lub namiot plażowy",
+   "kat": "plaza",
+   "ilosc": "1",
+   "kto": [
+    "dziecko",
+    "niemowle"
+   ],
+   "podreczny": "bez",
+   "zrodlo": "triverna",
+   "typ": [
+    "plaza"
+   ]
+  },
+  {
+   "id": "koszulka_uv",
+   "nazwa": "Koszulka z filtrem UV lub kombinezon do wody",
+   "kat": "plaza",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "dziecko",
+    "niemowle"
+   ],
+   "klimat": [
+    "cieplo"
+   ],
+   "zrodlo": "triverna",
+   "typ": [
+    "plaza"
+   ]
+  },
+  {
+   "id": "rekawki",
+   "nazwa": "Rękawki lub kamizelka do pływania",
+   "kat": "plaza",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "dziecko"
+   ],
+   "podreczny": "bez",
+   "zrodlo": "triverna",
+   "typ": [
+    "plaza"
+   ]
+  },
+  {
+   "id": "zabawki_piasek",
+   "nazwa": "Wiaderko i łopatka",
+   "kat": "plaza",
+   "ilosc": "1",
+   "kto": [
+    "dziecko",
+    "niemowle"
+   ],
+   "zrodlo": "triverna",
+   "typ": [
+    "plaza"
+   ]
+  },
+  {
+   "id": "etui_wodo",
+   "nazwa": "Wodoszczelne etui na telefon",
+   "kat": "plaza",
+   "ilosc": "1",
+   "zrodlo": "wlasne",
+   "typ": [
+    "plaza"
+   ]
+  },
+  {
+   "id": "buty_woda",
+   "nazwa": "Buty do wody (kamienista plaża)",
+   "kat": "plaza",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ],
+   "klimat": [
+    "cieplo"
+   ],
+   "zrodlo": "wlasne",
+   "typ": [
+    "plaza"
+   ]
+  },
+  {
+   "id": "parawan",
+   "nazwa": "Parawan",
+   "kat": "plaza",
+   "ilosc": "1",
+   "klimat": [
+    "umiarkowanie"
+   ],
+   "transport": [
+    "samochod"
+   ],
+   "zrodlo": "wlasne",
+   "typ": [
+    "plaza"
+   ]
+  },
+  {
+   "id": "plecak_gory",
+   "nazwa": "Plecak na szlak 20–30 l",
+   "kat": "gory",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek"
+   ],
+   "zrodlo": "wlasne",
+   "typ": [
+    "gory"
+   ]
+  },
+  {
+   "id": "buty_trekking",
+   "nazwa": "Buty trekkingowe",
+   "kat": "gory",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ],
+   "zrodlo": "wlasne",
+   "typ": [
+    "gory"
+   ]
+  },
+  {
+   "id": "kurtka_gory",
+   "nazwa": "Kurtka przeciwdeszczowa i wiatroszczelna",
+   "kat": "gory",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ],
+   "zrodlo": "triverna",
+   "typ": [
+    "gory"
+   ]
+  },
+  {
+   "id": "polar",
+   "nazwa": "Polar lub ciepła warstwa na szczyt",
+   "kat": "gory",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ],
+   "zrodlo": "wlasne",
+   "typ": [
+    "gory"
+   ]
+  },
+  {
+   "id": "czolowka",
+   "nazwa": "Latarka czołowa",
+   "kat": "gory",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek"
+   ],
+   "zrodlo": "triverna",
+   "typ": [
+    "gory"
+   ]
+  },
+  {
+   "id": "kijki",
+   "nazwa": "Kijki trekkingowe",
+   "kat": "gory",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek"
+   ],
+   "podreczny": "bez",
+   "zrodlo": "wlasne",
+   "typ": [
+    "gory"
+   ]
+  },
+  {
+   "id": "bidon",
+   "nazwa": "Butelka lub bidon na szlak",
+   "kat": "gory",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ],
+   "zrodlo": "wlasne",
+   "typ": [
+    "gory"
+   ]
+  },
+  {
+   "id": "termos",
+   "nazwa": "Termos",
+   "kat": "gory",
+   "ilosc": "1",
+   "zrodlo": "wlasne",
+   "typ": [
+    "gory"
+   ]
+  },
+  {
+   "id": "folia_nrc",
+   "nazwa": "Folia NRC (koc ratunkowy)",
+   "kat": "gory",
+   "ilosc": "1",
+   "zrodlo": "wlasne",
+   "typ": [
+    "gory"
+   ]
+  },
+  {
+   "id": "mapa_szlakow",
+   "nazwa": "Mapa szlaków papierowa lub offline",
+   "kat": "gory",
+   "ilosc": "1",
+   "zrodlo": "wlasne",
+   "typ": [
+    "gory"
+   ]
+  },
+  {
+   "id": "gwizdek",
+   "nazwa": "Gwizdek i naładowany telefon z numerem ratunkowym w górach",
+   "kat": "gory",
+   "ilosc": "1",
+   "uwaga": "W Polsce GOPR i TOPR: 985 lub 601 100 300, w całej UE: 112.",
+   "zrodlo": "wlasne",
+   "typ": [
+    "gory"
+   ]
+  },
+  {
+   "id": "nosidlo",
+   "nazwa": "Nosidło turystyczne",
+   "kat": "gory",
+   "ilosc": "1",
+   "kto": [
+    "niemowle"
+   ],
+   "zrodlo": "wlasne",
+   "typ": [
+    "gory"
+   ]
+  },
+  {
+   "id": "narty",
+   "nazwa": "Narty lub deska albo rezerwacja wypożyczalni",
+   "kat": "zima",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ],
+   "podreczny": "bez",
+   "zrodlo": "wlasne",
+   "typ": [
+    "zima"
+   ]
+  },
+  {
+   "id": "kask",
+   "nazwa": "Kask narciarski",
+   "kat": "zima",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ],
+   "podreczny": "bez",
+   "zrodlo": "wlasne",
+   "typ": [
+    "zima"
+   ]
+  },
+  {
+   "id": "gogle",
+   "nazwa": "Gogle",
+   "kat": "zima",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ],
+   "zrodlo": "wlasne",
+   "typ": [
+    "zima"
+   ]
+  },
+  {
+   "id": "kurtka_narty",
+   "nazwa": "Kurtka i spodnie narciarskie",
+   "kat": "zima",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ],
+   "zrodlo": "wlasne",
+   "typ": [
+    "zima"
+   ]
+  },
+  {
+   "id": "termo",
+   "nazwa": "Bielizna termoaktywna",
+   "kat": "zima",
+   "ilosc": "min(ceil(dni/3),3)",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ],
+   "zrodlo": "wlasne",
+   "typ": [
+    "zima"
+   ]
+  },
+  {
+   "id": "skarpety_narty",
+   "nazwa": "Skarpety narciarskie",
+   "kat": "zima",
+   "ilosc": "min(ceil(dni/2),4)",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ],
+   "jedn": "par",
+   "zrodlo": "wlasne",
+   "typ": [
+    "zima"
+   ]
+  },
+  {
+   "id": "rekawice_narty",
+   "nazwa": "Rękawice narciarskie",
+   "kat": "zima",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ],
+   "zrodlo": "wlasne",
+   "typ": [
+    "zima"
+   ]
+  },
+  {
+   "id": "komin",
+   "nazwa": "Komin lub kominiarka",
+   "kat": "zima",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ],
+   "zrodlo": "wlasne",
+   "typ": [
+    "zima"
+   ]
+  },
+  {
+   "id": "krem_zima",
+   "nazwa": "Krem z wysokim filtrem na stok",
+   "kat": "zima",
+   "ilosc": "1",
+   "zrodlo": "wlasne",
+   "typ": [
+    "zima"
+   ]
+  },
+  {
+   "id": "ogrzewacze",
+   "nazwa": "Ogrzewacze do rąk",
+   "kat": "zima",
+   "ilosc": "1",
+   "zrodlo": "wlasne",
+   "typ": [
+    "zima"
+   ]
+  },
+  {
+   "id": "karnet",
+   "nazwa": "Karnet na wyciągi (albo aplikacja ośrodka)",
+   "kat": "zima",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek",
+    "dziecko"
+   ],
+   "zrodlo": "wlasne",
+   "typ": [
+    "zima"
+   ]
+  },
+  {
+   "id": "plecak_dzienny",
+   "nazwa": "Mały plecak lub torba na dzień",
+   "kat": "miasto",
+   "ilosc": "1",
+   "zrodlo": "wlasne",
+   "typ": [
+    "miasto"
+   ]
+  },
+  {
+   "id": "saszetka",
+   "nazwa": "Saszetka lub torebka zamykana na zamek",
+   "kat": "miasto",
+   "ilosc": "1",
+   "zrodlo": "wlasne",
+   "typ": [
+    "miasto"
+   ]
+  },
+  {
+   "id": "bilet_miejski",
+   "nazwa": "Aplikacja lub bilet komunikacji miejskiej",
+   "kat": "miasto",
+   "ilosc": "1",
+   "zrodlo": "wlasne",
+   "typ": [
+    "miasto"
+   ]
+  },
+  {
+   "id": "parasolka",
+   "nazwa": "Składana parasolka",
+   "kat": "miasto",
+   "ilosc": "1",
+   "klimat": [
+    "umiarkowanie"
+   ],
+   "zrodlo": "wlasne",
+   "typ": [
+    "miasto"
+   ]
+  },
+  {
+   "id": "torba_zakupy",
+   "nazwa": "Składana torba na zakupy",
+   "kat": "miasto",
+   "ilosc": "1",
+   "zrodlo": "wlasne",
+   "typ": [
+    "miasto"
+   ]
+  },
+  {
+   "id": "butelka_miasto",
+   "nazwa": "Butelka wielorazowa",
+   "kat": "miasto",
+   "ilosc": "1",
+   "zrodlo": "wlasne",
+   "typ": [
+    "miasto"
+   ]
+  },
+  {
+   "id": "stroj_biznes",
+   "nazwa": "Strój na spotkania (garnitur, garsonka lub koszula)",
+   "kat": "biznes",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna"
+   ],
+   "zrodlo": "wlasne",
+   "typ": [
+    "biznes"
+   ]
+  },
+  {
+   "id": "buty_biznes",
+   "nazwa": "Eleganckie buty",
+   "kat": "biznes",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna"
+   ],
+   "podreczny": "bez",
+   "zrodlo": "wlasne",
+   "typ": [
+    "biznes"
+   ]
+  },
+  {
+   "id": "koszule",
+   "nazwa": "Koszule lub bluzki wizytowe",
+   "kat": "biznes",
+   "ilosc": "min(dni,5)",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna"
+   ],
+   "max_podreczny": 3,
+   "zrodlo": "wlasne",
+   "typ": [
+    "biznes"
+   ]
+  },
+  {
+   "id": "pokrowiec",
+   "nazwa": "Pokrowiec na garnitur lub sukienkę",
+   "kat": "biznes",
+   "ilosc": "1",
+   "podreczny": "bez",
+   "zrodlo": "wlasne",
+   "typ": [
+    "biznes"
+   ]
+  },
+  {
+   "id": "wizytowki",
+   "nazwa": "Wizytówki",
+   "kat": "biznes",
+   "ilosc": "1",
+   "zrodlo": "wlasne",
+   "typ": [
+    "biznes"
+   ]
+  },
+  {
+   "id": "notes",
+   "nazwa": "Notes i długopis",
+   "kat": "biznes",
+   "ilosc": "1",
+   "zrodlo": "wlasne",
+   "typ": [
+    "biznes"
+   ]
+  },
+  {
+   "id": "teczka",
+   "nazwa": "Wydruki dokumentów na spotkanie",
+   "kat": "biznes",
+   "ilosc": "1",
+   "zrodlo": "wlasne",
+   "typ": [
+    "biznes"
+   ]
+  },
+  {
+   "id": "trojkat",
+   "nazwa": "Trójkąt ostrzegawczy i gaśnica",
+   "kat": "samochod",
+   "ilosc": "1",
+   "uwaga": "Obowiązkowe w Polsce. Wyposażenie wymagane w innych krajach sprawdź przed wyjazdem.",
+   "zrodlo": "wlasne",
+   "transport": [
+    "samochod"
+   ]
+  },
+  {
+   "id": "kamizelki",
+   "nazwa": "Kamizelki odblaskowe dla każdej osoby",
+   "kat": "samochod",
+   "ilosc": "1",
+   "uwaga": "W wielu krajach wymagane w kabinie, w zasięgu ręki.",
+   "zrodlo": "wlasne",
+   "transport": [
+    "samochod"
+   ]
+  },
+  {
+   "id": "apteczka_auto",
+   "nazwa": "Apteczka samochodowa",
+   "kat": "samochod",
+   "ilosc": "1",
+   "uwaga": "W części krajów obowiązkowa. Sprawdź przepisy kraju przejazdu.",
+   "zrodlo": "wlasne",
+   "transport": [
+    "samochod"
+   ]
+  },
+  {
+   "id": "winiety",
+   "nazwa": "Winiety lub opłaty za autostrady na trasie",
+   "kat": "samochod",
+   "ilosc": "1",
+   "zrodlo": "wlasne",
+   "transport": [
+    "samochod"
+   ]
+  },
+  {
+   "id": "lodowka",
+   "nazwa": "Torba termiczna lub lodówka turystyczna",
+   "kat": "samochod",
+   "ilosc": "1",
+   "zrodlo": "wlasne",
+   "transport": [
+    "samochod"
+   ]
+  },
+  {
+   "id": "koc_auto",
+   "nazwa": "Koc i poduszka do auta",
+   "kat": "samochod",
+   "ilosc": "1",
+   "min_dni": 2,
+   "zrodlo": "wlasne",
+   "transport": [
+    "samochod"
+   ]
+  },
+  {
+   "id": "worki_smieci",
+   "nazwa": "Worki na śmieci i ręcznik papierowy",
+   "kat": "samochod",
+   "ilosc": "1",
+   "zrodlo": "wlasne",
+   "transport": [
+    "samochod"
+   ]
+  },
+  {
+   "id": "pogoda",
+   "nazwa": "Sprawdź prognozę pogody na miejscu",
+   "kat": "przed_wyjazdem",
+   "ilosc": "1",
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "odprawa_online",
+   "nazwa": "Odpraw się online i pobierz karty pokładowe",
+   "kat": "przed_wyjazdem",
+   "ilosc": "1",
+   "transport": [
+    "samolot"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "limit_bagazu",
+   "nazwa": "Sprawdź wymiary i wagę bagażu u przewoźnika",
+   "kat": "przed_wyjazdem",
+   "ilosc": "1",
+   "transport": [
+    "samolot"
+   ],
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "lodowka_dom",
+   "nazwa": "Opróżnij lodówkę z nietrwałych produktów i wynieś śmieci",
+   "kat": "przed_wyjazdem",
+   "ilosc": "1",
+   "min_dni": 3,
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "kwiaty",
+   "nazwa": "Podlej kwiaty albo poproś o to sąsiada",
+   "kat": "przed_wyjazdem",
+   "ilosc": "1",
+   "min_dni": 3,
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "woda_gaz",
+   "nazwa": "Zakręć wodę i wyłącz urządzenia z gniazdek",
+   "kat": "przed_wyjazdem",
+   "ilosc": "1",
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "okna",
+   "nazwa": "Zamknij okna i drzwi balkonowe",
+   "kat": "przed_wyjazdem",
+   "ilosc": "1",
+   "zrodlo": "kvz"
+  },
+  {
+   "id": "autoodpowiedz",
+   "nazwa": "Ustaw automatyczną odpowiedź w poczcie",
+   "kat": "przed_wyjazdem",
+   "ilosc": "1",
+   "typ": [
+    "plaza",
+    "gory",
+    "zima",
+    "miasto"
+   ],
+   "min_dni": 4,
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "klucze",
+   "nazwa": "Klucze do domu (i zapasowe u kogoś bliskiego)",
+   "kat": "przed_wyjazdem",
+   "ilosc": "1",
+   "zrodlo": "wlasne"
+  }
+ ]
+}

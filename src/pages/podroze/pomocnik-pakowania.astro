@@ -1,0 +1,97 @@
+---
+// /podroze/pomocnik-pakowania/ — darmowy pomocnik pakowania (2026-11-18). Narzędzie: PomocnikPakowania.astro,
+// dane: src/data/pakowanie.json, style: src/styles/narzedzia.css. Strona statyczna; lista powstaje w przeglądarce.
+import Bazowy from '../../layouts/Bazowy.astro';
+import Okruszki from '../../components/Okruszki.astro';
+import Foto from '../../components/Foto.astro';
+import PomocnikPakowania from '../../components/PomocnikPakowania.astro';
+import { t } from '../../lib/tekst';
+import { adresBezwzgledny, okruszki } from '../../lib/schemat';
+
+const ADRES = '/podroze/pomocnik-pakowania/';
+const NAZWA = 'Darmowy pomocnik pakowania';
+const tytul = 'Darmowy pomocnik pakowania — lista rzeczy do spakowania na wyjazd';
+const opis =
+  'Zaznacz, kto jedzie, dokąd i na ile dni, a pomocnik ułoży listę rzeczy do spakowania. Odhaczaj, drukuj i wracaj do niej, bo zostaje w twojej przeglądarce.';
+
+const pozycje = [
+  { nazwa: t('interfejs.okruszki_glowna'), adres: '/' },
+  { nazwa: t('dzialy.podroze.nazwa', 'Podróże'), adres: '/podroze/' },
+  { nazwa: 'Pomocnik pakowania', adres: ADRES },
+];
+const schemat = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    '@id': `${adresBezwzgledny(ADRES)}#narzedzie`,
+    name: NAZWA,
+    url: adresBezwzgledny(ADRES),
+    description: opis,
+    applicationCategory: 'TravelApplication',
+    operatingSystem: 'Dowolny, w przeglądarce internetowej',
+    browserRequirements: 'Wymaga włączonego JavaScriptu',
+    inLanguage: 'pl-PL',
+    isAccessibleForFree: true,
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'PLN' },
+    isPartOf: { '@id': `${adresBezwzgledny('/')}#strona` },
+  },
+  okruszki(pozycje),
+];
+---
+
+<Bazowy {tytul} {opis} {schemat} podswietl="/podroze/">
+  <div class="sekcja--aurora nz-hero nz-bez-druku">
+    <Okruszki pozycje={pozycje} />
+    <div class="kontener nz-hero__uklad">
+      <div>
+        <p class="etykieta">Darmowe narzędzie</p>
+        <h1 class="nz-hero__tytul">{NAZWA}</h1>
+        <p class="nz-hero__wstep">Zaznacz, kto jedzie i gdzie, a lista zrobi się sama. Zostaje w twojej przeglądarce.</p>
+      </div>
+      <figure class="nz-hero__zdjecie">
+        <Foto
+          nazwa="podroze-mapa-akcesoria-07-www-3000x2003.webp"
+          widths={[400, 640, 960]}
+          sizes="(min-width: 76rem) 28rem, (min-width: 56rem) 38vw, calc(100vw - 2.5rem)"
+          priorytet
+          ramka
+        />
+      </figure>
+    </div>
+  </div>
+
+  <section class="kontener nz-sekcja" aria-label={NAZWA}>
+    <PomocnikPakowania />
+  </section>
+
+  <section class="kontener nz-sekcja nz-bez-druku" aria-labelledby="pk-jak">
+    <div class="proza szklo szklo--jasne nz-tekst wejscie">
+      <h2 id="pk-jak">Jak korzystać z pomocnika</h2>
+      <p>
+        Wybierz, kto jedzie, jaki klimat czeka na miejscu, jaki to wyjazd, ile potrwa i czym jedziesz. Lista ułoży się od razu i zmieni się
+        przy każdej zmianie wyboru. Ilości liczą się na każdą osobę, więc przy wyjeździe we czwórkę zobaczysz, ile koszulek i skarpet wziąć dla
+        wszystkich. Rzeczy wspólne, jak apteczka, ładowarka z kilkoma gniazdami czy przejściówka, są na liście raz.
+      </p>
+      <p>
+        Odhaczaj to, co już leży w torbie. Lista i twoje wybory zapisują się tylko w tej przeglądarce, na tym urządzeniu. Nie wysyłamy ich
+        nigdzie i nie potrzebujesz konta. Gdy wrócisz, zobaczysz ostatnią listę razem z odhaczeniami. Przycisk Zacznij od nowa kasuje zapis.
+        Listę możesz też wydrukować albo skopiować do notatek w telefonie.
+      </p>
+      <p>
+        Lista obejmuje rzeczy oczywiste, które najłatwiej zostawić w domu. Nie zna twojego kraju docelowego, więc nie sprawdzi wiz,
+        przepisów drogowych ani wymaganych szczepień (te sprawdzisz w naszym{' '}
+        <a href="/zdrowie/szczepienia-przed-wyjazdem/">kalkulatorze szczepień przed wyjazdem</a>). Przy lekach nie podaje dawek: o leki na drogę i szczepienia zapytaj lekarza lub
+        farmaceutę. Więcej o tym, co włożyć do apteczki, piszemy we wpisie{' '}
+        <a href="/blog/apteczka-podroznika-co-spakowac/">Apteczka podróżnika: co spakować i o co zapytać farmaceutę</a>.
+      </p>
+      <p>
+        Na krótki wyjazd przyda się też nasz sposób na <a href="/blog/weekend-w-drodze-pakowanie-w-20-minut/">pakowanie na weekend w 20 minut</a>.
+        Pozostałe teksty o drodze, plecaku i bagażniku znajdziesz w dziale <a href="/podroze/">Podróże</a>.
+      </p>
+      <p class="nz-zrodlo">
+        Część pozycji listy opracowaliśmy na podstawie projektu{' '}
+        <a href="https://github.com/kvz/packing-list" rel="nofollow">packing-list</a> Kevina van Zonneveld (licencja MIT).
+      </p>
+    </div>
+  </section>
+</Bazowy>

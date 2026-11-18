@@ -1,0 +1,2183 @@
+{
+ "_meta": {
+  "data_odczytu": "2026-11-18",
+  "zastrzezenie": "Informacja, nie porada medyczna. Decyzję o szczepieniach i lekach podejmuje lekarz medycyny podróży. Dane odczytane ze źródeł 18.11.2026; przed wyjazdem sprawdź aktualną stronę kraju w źródle.",
+  "zrodla": [
+   {
+    "nazwa": "TravelHealthPro (NaTHNaC, Wielka Brytania): strony krajów",
+    "url": "https://travelhealthpro.org.uk/countries",
+    "data_odczytu": "2026-11-18"
+   },
+   {
+    "nazwa": "GIS: szczepienia dla podróżujących do krajów tropikalnych",
+    "url": "https://www.gov.pl/web/gis/podrozujesz-do-krajow-tropikalnych-sprawdz-jakim-infekcjom-mozesz-zapobiec-dzieki-szczepieniom-ochronnym",
+    "data_odczytu": "2026-11-18"
+   },
+   {
+    "nazwa": "GIS: zalecane szczepienia dla podróżujących",
+    "url": "https://www.gov.pl/web/gis/zalecane-szczepienia-dla-podrozujacych",
+    "data_odczytu": "2026-11-18"
+   },
+   {
+    "nazwa": "GIS: profilaktyka malarii",
+    "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+    "data_odczytu": "2026-11-18"
+   },
+   {
+    "nazwa": "WHO: kraje i terytoria uznane za wolne od malarii (aktualizacja 15.07.2025)",
+    "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+    "data_odczytu": "2026-11-18"
+   }
+  ],
+  "pola": {
+   "wymagane": "wymogi certyfikatów przy wjeździe według Międzynarodowych Przepisów Zdrowotnych (IHR), z warunkiem",
+   "zalecane_wiekszosc": "TravelHealthPro: „Most travellers”",
+   "zalecane_niektorzy": "TravelHealthPro: „Some travellers”",
+   "malaria.poziom": "tak = wysokie ryzyko w całym kraju lub jego większości; czesciowo = ryzyko tylko w części kraju albo niskie lub bardzo niskie; nie = brak ryzyka według źródła; sprawdz = źródło nie podaje"
+  },
+  "bez": "Bez dawek, nazw handlowych szczepionek, nazw leków i cen. Danych nie skopiowano z żadnego kalkulatora ani repozytorium.",
+  "przygotowanie": "Rozpoznanie R2, R3, R4 i weryfikacja W2 (2026-11-18): odczyt stron źródłowych."
+ },
+ "kraje": [
+  {
+   "kraj": "Albania",
+   "iso2": "AL",
+   "region": "Europa",
+   "inne_nazwy": [],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 1. roku życia przy przylocie z kraju z ryzykiem żółtej gorączki"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "WZW B",
+    "wścieklizna",
+    "kleszczowe zapalenie mózgu",
+    "dur brzuszny"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO wymienia kraj wśród tych, w których malarii nie było albo zniknęła bez osobnych działań. GIS: w żadnym kraju europejskim nie ma rodzimej transmisji malarii."
+   },
+   "uwagi": "W samej Albanii żółtej gorączki nie ma; wymóg certyfikatu dotyczy przylotu z kraju z ryzykiem.",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/albania",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Bułgaria",
+   "iso2": "BG",
+   "region": "Europa",
+   "inne_nazwy": [],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "WZW B",
+    "wścieklizna",
+    "kleszczowe zapalenie mózgu",
+    "dur brzuszny"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 1965 r. GIS: w żadnym kraju europejskim nie ma rodzimej transmisji malarii."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/bulgaria",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Chorwacja",
+   "iso2": "HR",
+   "region": "Europa",
+   "inne_nazwy": [],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "WZW A",
+    "wścieklizna",
+    "kleszczowe zapalenie mózgu"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 1973 r. GIS: w żadnym kraju europejskim nie ma rodzimej transmisji malarii."
+   },
+   "uwagi": "Wścieklizna i kleszczowe zapalenie mózgu: przy zwiększonym ryzyku z pracy lub aktywności na wolnym powietrzu.",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/croatia",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Cypr",
+   "iso2": "CY",
+   "region": "Europa",
+   "inne_nazwy": [],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "wścieklizna"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 1967 r. GIS: w żadnym kraju europejskim nie ma rodzimej transmisji malarii."
+   },
+   "uwagi": "Wścieklizna: przy ryzyku zawodowym (laboratorium, kontakt z nietoperzami).",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/cyprus",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Czarnogóra",
+   "iso2": "ME",
+   "region": "Europa",
+   "inne_nazwy": [],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "WZW A",
+    "wścieklizna",
+    "dur brzuszny"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 1973 r. GIS: w żadnym kraju europejskim nie ma rodzimej transmisji malarii."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/montenegro",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Grecja",
+   "iso2": "GR",
+   "region": "Europa",
+   "inne_nazwy": [
+    "Kreta",
+    "Rodos"
+   ],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "wścieklizna"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO wymienia kraj wśród tych, w których malarii nie było albo zniknęła bez osobnych działań. GIS: w żadnym kraju europejskim nie ma rodzimej transmisji malarii. TravelHealthPro (12.09.2025): dwa prawdopodobne przypadki lokalnego zakażenia na wsi w środkowej Grecji, bez dalszych przypadków."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/greece",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Gruzja",
+   "iso2": "GE",
+   "region": "Europa",
+   "inne_nazwy": [],
+   "wymagane": [
+    {
+     "szczepienie": "polio",
+     "warunek": "dowód szczepienia może być wymagany od części podróżnych"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec",
+    "dur brzuszny"
+   ],
+   "zalecane_niektorzy": [
+    "WZW B",
+    "odra",
+    "wścieklizna",
+    "gruźlica (BCG) (części dzieci i osób pracujących na miejscu)"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Według źródła: brak ryzyka malarii (certyfikat WHO z 01.2025). Zalecane unikanie ukąszeń."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/georgia",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Hiszpania",
+   "iso2": "ES",
+   "region": "Europa",
+   "inne_nazwy": [
+    "Wyspy Kanaryjskie",
+    "Teneryfa",
+    "Majorka"
+   ],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "wścieklizna"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 1964 r. GIS: w żadnym kraju europejskim nie ma rodzimej transmisji malarii."
+   },
+   "uwagi": "Wścieklizna: TravelHealthPro opisuje szersze zalecenie dla Ceuty i Melilli (m.in. pobyt dłuższy niż miesiąc).",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/spain",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Portugalia",
+   "iso2": "PT",
+   "region": "Europa",
+   "inne_nazwy": [
+    "Madera",
+    "Azory"
+   ],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "wścieklizna"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 1973 r. GIS: w żadnym kraju europejskim nie ma rodzimej transmisji malarii."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/portugal",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Turcja",
+   "iso2": "TR",
+   "region": "Europa",
+   "inne_nazwy": [],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "WZW B",
+    "odra",
+    "wścieklizna",
+    "dur brzuszny"
+   ],
+   "malaria": {
+    "poziom": "czesciowo",
+    "opis": "Według źródła: ryzyko bardzo niskie („very low”). Leków przeciwmalarycznych nie zaleca się; zalecana świadomość ryzyka i unikanie ukąszeń."
+   },
+   "uwagi": "Dur brzuszny i WZW B: przy zwiększonym ryzyku.",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/turkey",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Włochy",
+   "iso2": "IT",
+   "region": "Europa",
+   "inne_nazwy": [],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "wścieklizna",
+    "kleszczowe zapalenie mózgu"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 1970 r. GIS: w żadnym kraju europejskim nie ma rodzimej transmisji malarii."
+   },
+   "uwagi": "Kleszczowe zapalenie mózgu: przy zwiększonym ryzyku (las, kemping, wędrówki, praca w terenie).",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/italy",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/profilaktyka-malarii",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Egipt",
+   "iso2": "EG",
+   "region": "Afryka",
+   "inne_nazwy": [
+    "Hurghada",
+    "Szarm el-Szejk"
+   ],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 9. miesiąca życia przy przylocie z kraju z ryzykiem żółtej gorączki albo po przesiadce dłuższej niż 12 h na lotnisku takiego kraju"
+    },
+    {
+     "szczepienie": "polio",
+     "warunek": "dowód szczepienia może być wymagany od części podróżnych"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "denga",
+    "WZW B",
+    "wścieklizna",
+    "dur brzuszny"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała Egipt za wolny od malarii w 2024 r."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/egypt",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Etiopia",
+   "iso2": "ET",
+   "region": "Afryka",
+   "inne_nazwy": [],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "źródło opisuje wymóg certyfikatu, także przy wyjeździe z kraju; warunki sprawdź na stronie kraju"
+    },
+    {
+     "szczepienie": "polio",
+     "warunek": "dowód szczepienia może być wymagany przy wyjeździe z kraju"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec",
+    "dur brzuszny"
+   ],
+   "zalecane_niektorzy": [
+    "czikungunia",
+    "cholera",
+    "denga",
+    "WZW B",
+    "odra",
+    "meningokoki",
+    "polio",
+    "wścieklizna",
+    "gruźlica (BCG)",
+    "żółta gorączka"
+   ],
+   "malaria": {
+    "poziom": "czesciowo",
+    "opis": "Wysokie ryzyko poniżej 2000 m; brak ryzyka w Addis Abebie i powyżej 2000 m (według źródła). Gorączka zwykle pierwszym objawem; pilna diagnoza."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/ethiopia",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Kenia",
+   "iso2": "KE",
+   "region": "Afryka",
+   "inne_nazwy": [],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 1. roku życia przy przylocie z kraju z ryzykiem żółtej gorączki"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec",
+    "dur brzuszny"
+   ],
+   "zalecane_niektorzy": [
+    "czikungunia",
+    "cholera",
+    "denga",
+    "WZW B",
+    "odra",
+    "polio",
+    "wścieklizna",
+    "meningokoki",
+    "gruźlica (BCG)",
+    "żółta gorączka (od 9. miesiąca życia; m.in. parki Tsavo, Masai Mara, jezioro Nakuru)"
+   ],
+   "malaria": {
+    "poziom": "tak",
+    "opis": "Wysokie ryzyko w całym kraju; bardzo niskie w Nairobi i powyżej 2500 m n.p.m."
+   },
+   "uwagi": "Żółta gorączka występuje tylko w części kraju; o szczepieniu przy pobycie wyłącznie w Nairobi, Mombasie czy na północnym wschodzie decyduje lekarz.",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/kenya",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Madagaskar",
+   "iso2": "MG",
+   "region": "Afryka",
+   "inne_nazwy": [],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 9. miesiąca życia przy przylocie z kraju z ryzykiem żółtej gorączki albo po przesiadce dłuższej niż 12 h na lotnisku takiego kraju"
+    },
+    {
+     "szczepienie": "polio",
+     "warunek": "dowód szczepienia może być wymagany przy pobycie 4 tygodnie lub dłużej"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec",
+    "dur brzuszny"
+   ],
+   "zalecane_niektorzy": [
+    "czikungunia",
+    "denga",
+    "WZW B",
+    "odra",
+    "polio",
+    "wścieklizna",
+    "gruźlica (BCG)"
+   ],
+   "malaria": {
+    "poziom": "tak",
+    "opis": "Według źródła: wysokie ryzyko malarii. Objawy od 8 dni do roku po ukąszeniu; grupy wyższego ryzyka: ciężarne, niemowlęta, osoby starsze, odwiedzający rodzinę."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/madagascar",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Maroko",
+   "iso2": "MA",
+   "region": "Afryka",
+   "inne_nazwy": [],
+   "wymagane": [
+    {
+     "szczepienie": "polio",
+     "warunek": "dowód szczepienia może być wymagany od części podróżnych"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec",
+    "dur brzuszny"
+   ],
+   "zalecane_niektorzy": [
+    "WZW B",
+    "odra",
+    "wścieklizna",
+    "gruźlica (BCG)"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 2010 r."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/morocco",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Mauritius",
+   "iso2": "MU",
+   "region": "Afryka",
+   "inne_nazwy": [],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 1. roku życia przy przylocie z krajów, które Mauritius uznaje za kraje z ryzykiem (jego lista różni się od listy WHO)"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "czikungunia",
+    "denga",
+    "WZW A",
+    "WZW B",
+    "wścieklizna",
+    "dur brzuszny"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Według źródła: brak ryzyka malarii. Zalecane unikanie ukąszeń."
+   },
+   "uwagi": "TravelHealthPro (powołując się na WHO): wpis o żółtej gorączce jest ważny dożywotnio od 11.07.2016.",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/mauritius",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Namibia",
+   "iso2": "NA",
+   "region": "Afryka",
+   "inne_nazwy": [],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 9. miesiąca życia przy przylocie z kraju z ryzykiem żółtej gorączki albo po przesiadce dłuższej niż 12 h na lotnisku takiego kraju"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec",
+    "dur brzuszny"
+   ],
+   "zalecane_niektorzy": [
+    "cholera",
+    "denga",
+    "WZW B",
+    "odra",
+    "polio",
+    "wścieklizna",
+    "gruźlica (BCG)"
+   ],
+   "malaria": {
+    "poziom": "czesciowo",
+    "opis": "Wysokie ryzyko cały rok: regiony Kavango Wschodnie, Kavango Zachodnie, Zambezi. Wysokie w grudniu–kwietniu: Kunene, Omusati, Oshana, Ohangwena, Oshikoto, Omaheke, Otjozondjupa (w maju–listopadzie niskie). Reszta kraju: bardzo niskie. Unikanie ukąszeń."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/namibia",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Republika Południowej Afryki",
+   "iso2": "ZA",
+   "region": "Afryka",
+   "inne_nazwy": [
+    "RPA"
+   ],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 1. roku życia przy przylocie z kraju z ryzykiem żółtej gorączki albo po przesiadce dłuższej niż 12 h na lotnisku takiego kraju"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec",
+    "dur brzuszny"
+   ],
+   "zalecane_niektorzy": [
+    "cholera",
+    "WZW B",
+    "odra",
+    "wścieklizna",
+    "gruźlica (BCG)"
+   ],
+   "malaria": {
+    "poziom": "czesciowo",
+    "opis": "Ryzyko zależy od regionu. Sezon przenoszenia zwykle wrzesień–maj. Mpumalanga i Limpopo, w tym Park Kruger (nisko położone): leki zalecane we wrześniu–maju, w czerwcu–sierpniu ryzyko bardzo niskie. Północny wschód KwaZulu-Natal: niskie lub bardzo niskie w sezonie. Reszta kraju: brak ryzyka. Unikanie ukąszeń cały rok."
+   },
+   "uwagi": "Wścieklizna: przy zwiększonym ryzyku, w tym przy kontakcie z fokami na wybrzeżu.",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/south-africa",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Rwanda",
+   "iso2": "RW",
+   "region": "Afryka",
+   "inne_nazwy": [],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 1. roku życia przy przylocie z kraju z ryzykiem żółtej gorączki"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec",
+    "dur brzuszny"
+   ],
+   "zalecane_niektorzy": [
+    "czikungunia",
+    "cholera",
+    "denga",
+    "WZW B",
+    "odra",
+    "meningokoki",
+    "wścieklizna",
+    "gruźlica (BCG)",
+    "żółta gorączka"
+   ],
+   "malaria": {
+    "poziom": "tak",
+    "opis": "Według źródła: wysokie ryzyko malarii. Gorączka zwykle pierwszym objawem; objawy od 8 dni do roku po ukąszeniu."
+   },
+   "uwagi": "Źródło ocenia narażenie na żółtą gorączkę jako niskie.",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/rwanda",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Senegal",
+   "iso2": "SN",
+   "region": "Afryka",
+   "inne_nazwy": [],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 9. miesiąca życia przy przylocie z kraju z ryzykiem żółtej gorączki albo po przesiadce na lotnisku takiego kraju"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec",
+    "dur brzuszny",
+    "żółta gorączka (od 9. miesiąca życia)"
+   ],
+   "zalecane_niektorzy": [
+    "czikungunia",
+    "cholera",
+    "denga",
+    "WZW B",
+    "odra",
+    "meningokoki",
+    "wścieklizna",
+    "gruźlica (BCG)"
+   ],
+   "malaria": {
+    "poziom": "tak",
+    "opis": "Według źródła: wysokie ryzyko malarii; gorączka 38 st. C i więcej zwykle pierwszym objawem; zalecane połączenie unikania ukąszeń i leków wg lekarza."
+   },
+   "uwagi": "W Senegalu żółta gorączka występuje: TravelHealthPro wymienia to szczepienie wśród zalecanych większości podróżnych.",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/senegal",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "W2, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Seszele",
+   "iso2": "SC",
+   "region": "Afryka",
+   "inne_nazwy": [],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 1. roku życia przy przylocie z kraju z ryzykiem żółtej gorączki albo po przesiadce dłuższej niż 12 h na lotnisku takiego kraju; według źródła zwolnione są osoby po 60. roku życia"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "czikungunia",
+    "denga",
+    "WZW A",
+    "WZW B",
+    "wścieklizna",
+    "dur brzuszny"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO wymienia kraj wśród tych, w których malarii nie było albo zniknęła bez osobnych działań."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/seychelles",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Tanzania z Zanzibarem",
+   "iso2": "TZ",
+   "region": "Afryka",
+   "inne_nazwy": [
+    "Zanzibar"
+   ],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 1. roku życia przy przylocie z kraju z ryzykiem żółtej gorączki albo po przesiadce dłuższej niż 12 h na lotnisku takiego kraju"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec",
+    "dur brzuszny"
+   ],
+   "zalecane_niektorzy": [
+    "czikungunia",
+    "cholera",
+    "denga",
+    "WZW B",
+    "odra",
+    "meningokoki",
+    "polio",
+    "wścieklizna",
+    "gruźlica (BCG)",
+    "żółta gorączka"
+   ],
+   "malaria": {
+    "poziom": "tak",
+    "opis": "Według źródła: wysokie ryzyko poniżej 1800 m, w tym na Zanzibarze; powyżej 1800 m brak ryzyka (zalecane unikanie ukąszeń). Zalecane leki przeciwmalaryczne wg wskazań lekarza medycyny podróży. Gorączka 38 st. C i więcej wymaga pilnej diagnozy."
+   },
+   "uwagi": "Zanzibar nie ma osobnej strony w źródle: dane dotyczą całej Tanzanii.",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/tanzania",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Tunezja",
+   "iso2": "TN",
+   "region": "Afryka",
+   "inne_nazwy": [],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "WZW B",
+    "odra",
+    "wścieklizna",
+    "dur brzuszny"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO wymienia kraj wśród tych, w których malarii nie było albo zniknęła bez osobnych działań."
+   },
+   "uwagi": "Wścieklizna: przy pobycie dłuższym niż miesiąc i tam, gdzie pomoc po ugryzieniu jest trudno dostępna.",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/tunisia",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Uganda",
+   "iso2": "UG",
+   "region": "Afryka",
+   "inne_nazwy": [],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec",
+    "dur brzuszny",
+    "żółta gorączka"
+   ],
+   "zalecane_niektorzy": [
+    "czikungunia",
+    "cholera",
+    "denga",
+    "WZW B",
+    "odra",
+    "meningokoki",
+    "polio",
+    "wścieklizna",
+    "gruźlica (BCG)"
+   ],
+   "malaria": {
+    "poziom": "tak",
+    "opis": "Według źródła: wysokie ryzyko; gorączka zwykle pierwszym objawem; zalecany schemat ABCD (świadomość ryzyka, unikanie ukąszeń, leki, szybka diagnoza)."
+   },
+   "uwagi": "Według ministerstwa Ugandy kraj nie wymaga certyfikatów na podstawie IHR, ale żółta gorączka występuje w całym kraju; szczepienie jest wśród zalecanych większości podróżnych.",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/uganda",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Wyspy Zielonego Przylądka",
+   "iso2": "CV",
+   "region": "Afryka",
+   "inne_nazwy": [
+    "Republika Zielonego Przylądka",
+    "Cabo Verde"
+   ],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 1. roku życia przy przylocie z kraju z ryzykiem żółtej gorączki albo po przesiadce dłuższej niż 12 h na lotnisku takiego kraju"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec",
+    "dur brzuszny"
+   ],
+   "zalecane_niektorzy": [
+    "denga",
+    "WZW B",
+    "wścieklizna",
+    "gruźlica (BCG)"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Według źródła: brak ryzyka malarii. WHO uznała kraj za wolny od malarii w 2024 (według źródła). Unikanie ukąszeń."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/cape-verde",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Zambia",
+   "iso2": "ZM",
+   "region": "Afryka",
+   "inne_nazwy": [],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 1. roku życia przy przylocie z kraju z ryzykiem żółtej gorączki albo po przesiadce dłuższej niż 12 h na lotnisku takiego kraju"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec",
+    "dur brzuszny"
+   ],
+   "zalecane_niektorzy": [
+    "cholera",
+    "denga",
+    "WZW B",
+    "odra",
+    "polio",
+    "wścieklizna",
+    "żółta gorączka"
+   ],
+   "malaria": {
+    "poziom": "tak",
+    "opis": "Według źródła: wysokie ryzyko malarii; leki przeciwmalaryczne dobiera lekarz."
+   },
+   "uwagi": "Najnowsza wiadomość w źródle: cholera, 16.11.2026.",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/zambia",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Arabia Saudyjska",
+   "iso2": "SA",
+   "region": "Bliski Wschód",
+   "inne_nazwy": [],
+   "wymagane": [
+    {
+     "szczepienie": "meningokoki ACWY",
+     "warunek": "warunek wizy i wjazdu dla pielgrzymów (hadżdż, umra) i pracowników sezonowych, od 1. roku życia; szczepienie co najmniej 10 dni przed przyjazdem i nie wcześniej niż 5 lat przed nim"
+    },
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 9. miesiąca życia przy przylocie z kraju z ryzykiem żółtej gorączki albo po przesiadce dłuższej niż 12 h na lotnisku takiego kraju"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "szczepienia z kalendarza (odra, świnka, różyczka, tężec, błonica, polio)"
+   ],
+   "zalecane_niektorzy": [
+    "odra (niemowlęta od 6. miesiąca)",
+    "WZW A",
+    "WZW B",
+    "dur brzuszny",
+    "wścieklizna",
+    "denga",
+    "grypa (w określonych sytuacjach)"
+   ],
+   "malaria": {
+    "poziom": "czesciowo",
+    "opis": "Bardzo niskie ryzyko w prowincji Asir przy granicy z Jemenem, poniżej 2000 m. Brak ryzyka w Dżuddzie, Mekce, Medynie, Rijadzie i Ta’if."
+   },
+   "uwagi": "Meningokoki ACWY potwierdza także GIS.",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/saudi-arabia",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.gov.pl/web/gis/podrozujesz-do-krajow-tropikalnych-sprawdz-jakim-infekcjom-mozesz-zapobiec-dzieki-szczepieniom-ochronnym",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Izrael",
+   "iso2": "IL",
+   "region": "Bliski Wschód",
+   "inne_nazwy": [],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "odra",
+    "wścieklizna",
+    "dur brzuszny"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO wymienia kraj wśród tych, w których malarii nie było albo zniknęła bez osobnych działań."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/israel",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Jordania",
+   "iso2": "JO",
+   "region": "Bliski Wschód",
+   "inne_nazwy": [],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "WZW B",
+    "odra",
+    "wścieklizna",
+    "dur brzuszny"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO wymienia kraj wśród tych, w których malarii nie było albo zniknęła bez osobnych działań."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/jordan",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Zjednoczone Emiraty Arabskie",
+   "iso2": "AE",
+   "region": "Bliski Wschód",
+   "inne_nazwy": [
+    "Dubaj",
+    "Abu Zabi",
+    "ZEA"
+   ],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 9. miesiąca życia przy przylocie z kraju z ryzykiem żółtej gorączki albo po przesiadce dłuższej niż 12 h na lotnisku takiego kraju; w kraju brak ryzyka"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "WZW A (osoby o zwiększonym ryzyku)",
+    "WZW B",
+    "odra",
+    "wścieklizna",
+    "dur brzuszny"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 2007 r."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/united-arab-emirates",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Chiny",
+   "iso2": "CN",
+   "region": "Azja",
+   "inne_nazwy": [],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 9. miesiąca życia przy przylocie z kraju z ryzykiem żółtej gorączki albo po przesiadce dłuższej niż 12 h na lotnisku takiego kraju; dla Hongkongu i Makau źródło nie podaje wymogów"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec",
+    "dur brzuszny"
+   ],
+   "zalecane_niektorzy": [
+    "czikungunia",
+    "denga",
+    "WZW B",
+    "japońskie zapalenie mózgu",
+    "odra",
+    "wścieklizna",
+    "kleszczowe zapalenie mózgu",
+    "gruźlica (BCG)"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Według źródła: brak ryzyka malarii; WHO uznała Chiny za wolne od malarii w 2021 r."
+   },
+   "uwagi": "Kleszczowe zapalenie mózgu: ryzyko w części regionów. Dla Hongkongu i Makau źródło nie podaje wymogów.",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/china",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Filipiny",
+   "iso2": "PH",
+   "region": "Azja",
+   "inne_nazwy": [],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 9. miesiąca życia przy przylocie z kraju z ryzykiem żółtej gorączki (w kraju brak ryzyka)"
+    },
+    {
+     "szczepienie": "polio",
+     "warunek": "dowód szczepienia może być wymagany od części podróżnych"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec",
+    "dur brzuszny"
+   ],
+   "zalecane_niektorzy": [
+    "czikungunia",
+    "cholera (przy zwiększonym ryzyku)",
+    "denga",
+    "WZW B",
+    "japońskie zapalenie mózgu",
+    "odra",
+    "wścieklizna",
+    "gruźlica (BCG)"
+   ],
+   "malaria": {
+    "poziom": "czesciowo",
+    "opis": "Niskie ryzyko na terenach wiejskich poniżej 600 m n.p.m. na Luzon, Mindanao, Mindoro i Palawan. Brak ryzyka w miastach oraz na Boracay, Bohol, Catanduanes, Cebu i Leyte."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/philippines",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "W2, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Indie",
+   "iso2": "IN",
+   "region": "Azja",
+   "inne_nazwy": [],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 9. miesiąca życia, przy przylocie w ciągu 6 dni od wyjazdu z obszaru ryzyka"
+    },
+    {
+     "szczepienie": "polio",
+     "warunek": "dowód szczepienia może być wymagany od części podróżnych"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec",
+    "dur brzuszny"
+   ],
+   "zalecane_niektorzy": [
+    "czikungunia",
+    "cholera (przy zwiększonym ryzyku)",
+    "denga",
+    "WZW B",
+    "japońskie zapalenie mózgu",
+    "odra",
+    "wścieklizna",
+    "gruźlica (BCG)"
+   ],
+   "malaria": {
+    "poziom": "czesciowo",
+    "opis": "Ryzyko w stanach Mizoram, Odisha i Tripura. Reszta Indii, w tym Goa i Wyspy Andamańskie i Nikobarskie, niskie. Wyspy Lakszadiwy bez ryzyka."
+   },
+   "uwagi": "Odra: źródło opisuje wcześniejszą dawkę dla niemowląt od 6. miesiąca życia.",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/india",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Indonezja z Bali",
+   "iso2": "ID",
+   "region": "Azja",
+   "inne_nazwy": [
+    "Bali"
+   ],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 9. miesiąca życia przy przylocie z kraju z ryzykiem żółtej gorączki (w kraju brak ryzyka)"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec",
+    "dur brzuszny"
+   ],
+   "zalecane_niektorzy": [
+    "czikungunia",
+    "denga",
+    "WZW B",
+    "japońskie zapalenie mózgu",
+    "odra",
+    "wścieklizna",
+    "gruźlica (BCG)"
+   ],
+   "malaria": {
+    "poziom": "czesciowo",
+    "opis": "Wysokie ryzyko na Papui (Irian Jaya). Niskie na Bali, Lombok, Jawie i Sumatrze. Brak w Dżakarcie. Dla indonezyjskiego Borneo osobne zalecenia."
+   },
+   "uwagi": "Indonezja stawia dodatkowe wymogi szczepień przeciw meningokokom i polio części podróżnych WYJEŻDŻAJĄCYCH z kraju (źródło odsyła do WHO).",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/indonesia",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "W2, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Japonia",
+   "iso2": "JP",
+   "region": "Azja",
+   "inne_nazwy": [],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "denga",
+    "WZW B",
+    "japońskie zapalenie mózgu",
+    "wścieklizna",
+    "kleszczowe zapalenie mózgu"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO wymienia kraj wśród tych, w których malarii nie było albo zniknęła bez osobnych działań."
+   },
+   "uwagi": "Kleszczowe zapalenie mózgu: przypadki na Hokkaido, Honsiu i Kiusiu.",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/japan",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Kambodża",
+   "iso2": "KH",
+   "region": "Azja",
+   "inne_nazwy": [],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 1. roku życia przy przylocie z kraju z ryzykiem żółtej gorączki albo po przesiadce dłuższej niż 12 h na lotnisku takiego kraju"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec",
+    "dur brzuszny"
+   ],
+   "zalecane_niektorzy": [
+    "czikungunia",
+    "denga",
+    "WZW B",
+    "japońskie zapalenie mózgu",
+    "odra",
+    "wścieklizna",
+    "gruźlica (BCG)"
+   ],
+   "malaria": {
+    "poziom": "czesciowo",
+    "opis": "Niskie ryzyko w całym kraju. Bardzo niskie w rejonie Angkor i Tonle Sap (Siem Reap). Brak w Phnom Penh. W zachodnich prowincjach przy Tajlandii źródło opisuje oporność na jeden z leków; lek dobiera lekarz."
+   },
+   "uwagi": "Rejon Angkor i Tonle Sap (Siem Reap): ryzyko malarii bardzo niskie; Phnom Penh: brak.",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/cambodia",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Korea Południowa",
+   "iso2": "KR",
+   "region": "Azja",
+   "inne_nazwy": [
+    "Korea"
+   ],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "WZW A",
+    "WZW B",
+    "japońskie zapalenie mózgu (maj-listopad, głównie tereny rolnicze)",
+    "wścieklizna",
+    "gruźlica (BCG)"
+   ],
+   "malaria": {
+    "poziom": "czesciowo",
+    "opis": "Bardzo niskie ryzyko w północnej części kraju (Gangwon-do, Gyeonggi-do, Incheon przy DMZ). Profilaktyka lekowa nie jest zalecana."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/south-korea",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Laos",
+   "iso2": "LA",
+   "region": "Azja",
+   "inne_nazwy": [],
+   "wymagane": [
+    {
+     "szczepienie": "polio",
+     "warunek": "wpis o szczepieniu w Międzynarodowej Książeczce Szczepień przy pobycie 4 tygodnie lub dłużej"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec",
+    "dur brzuszny"
+   ],
+   "zalecane_niektorzy": [
+    "czikungunia",
+    "denga",
+    "WZW B",
+    "japońskie zapalenie mózgu",
+    "odra",
+    "polio",
+    "wścieklizna",
+    "gruźlica (BCG)"
+   ],
+   "malaria": {
+    "poziom": "czesciowo",
+    "opis": "Niskie ryzyko w całym kraju; w Vientiane bardzo niskie (bez leków zwykle). Pogranicza: z Mjanmą (Bokeo, Louang Namtha) i z Tajlandią (Champasak, Saravan); lek dobiera lekarz."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/laos",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Malediwy",
+   "iso2": "MV",
+   "region": "Azja",
+   "inne_nazwy": [],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 9. miesiąca życia przy przylocie z kraju z ryzykiem żółtej gorączki albo po przesiadce dłuższej niż 12 h na lotnisku takiego kraju; w kraju brak ryzyka"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "czikungunia",
+    "denga",
+    "WZW A (osoby o zwiększonym ryzyku)",
+    "WZW B",
+    "odra",
+    "wścieklizna",
+    "dur brzuszny"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 2015 r."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/maldives",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Malezja",
+   "iso2": "MY",
+   "region": "Azja",
+   "inne_nazwy": [],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 1. roku życia przy przylocie z kraju z ryzykiem żółtej gorączki albo po przesiadce dłuższej niż 12 h na lotnisku takiego kraju"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "czikungunia",
+    "denga",
+    "WZW B",
+    "japońskie zapalenie mózgu (cały rok; najwyższe ryzyko w Sarawak)",
+    "odra",
+    "wścieklizna",
+    "gruźlica (BCG)",
+    "dur brzuszny"
+   ],
+   "malaria": {
+    "poziom": "czesciowo",
+    "opis": "Niskie ryzyko w Malezji kontynentalnej. Malezyjskie Borneo ma osobne zalecenia (sprawdź w źródle)."
+   },
+   "uwagi": "Malezyjskie Borneo ma w źródle osobne zalecenia dotyczące malarii.",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/malaysia",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Nepal",
+   "iso2": "NP",
+   "region": "Azja",
+   "inne_nazwy": [],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 9. miesiąca życia przy przylocie z kraju z ryzykiem żółtej gorączki albo po przesiadce dłuższej niż 12 h na lotnisku takiego kraju"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec",
+    "dur brzuszny"
+   ],
+   "zalecane_niektorzy": [
+    "czikungunia",
+    "cholera",
+    "denga",
+    "WZW B",
+    "japońskie zapalenie mózgu (Terai, dolina Katmandu; szczyt maj–październik)",
+    "odra",
+    "wścieklizna",
+    "gruźlica (BCG)"
+   ],
+   "malaria": {
+    "poziom": "czesciowo",
+    "opis": "Niskie ryzyko poniżej 1500 m, zwłaszcza w dystrykcie Terai. Brak ryzyka w Katmandu i na typowych trekkingach himalajskich."
+   },
+   "uwagi": "Typowe trekkingi himalajskie i Katmandu: brak ryzyka malarii według źródła.",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/nepal",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "W2, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Singapur",
+   "iso2": "SG",
+   "region": "Azja",
+   "inne_nazwy": [],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 1. roku życia przy przylocie z kraju z ryzykiem żółtej gorączki albo po przesiadce dłuższej niż 12 h na lotnisku takiego kraju"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "czikungunia",
+    "denga",
+    "WZW B",
+    "japońskie zapalenie mózgu",
+    "wścieklizna (lyssawirus nietoperzy)",
+    "gruźlica (BCG)"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Według źródła: brak ryzyka malarii."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/singapore",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "W2, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Sri Lanka",
+   "iso2": "LK",
+   "region": "Azja",
+   "inne_nazwy": [],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 9. miesiąca życia przy przylocie z kraju z ryzykiem żółtej gorączki albo po przesiadce dłuższej niż 12 h na lotnisku takiego kraju"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "czikungunia",
+    "cholera",
+    "denga",
+    "WZW A",
+    "WZW B",
+    "japońskie zapalenie mózgu",
+    "odra",
+    "wścieklizna",
+    "gruźlica (BCG)",
+    "dur brzuszny"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Według źródła: brak ryzyka malarii. Zalecane unikanie ukąszeń komarów."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/sri-lanka",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Tajlandia",
+   "iso2": "TH",
+   "region": "Azja",
+   "inne_nazwy": [],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 9. miesiąca życia przy przylocie z kraju z ryzykiem żółtej gorączki albo po przesiadce dłuższej niż 12 h na lotnisku takiego kraju"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "czikungunia",
+    "denga",
+    "WZW B",
+    "japońskie zapalenie mózgu (obszary wiejskie, zwłaszcza maj–październik)",
+    "odra",
+    "wścieklizna",
+    "gruźlica (BCG)",
+    "dur brzuszny"
+   ],
+   "malaria": {
+    "poziom": "czesciowo",
+    "opis": "Niskie ryzyko na wiejskim pograniczu z Kambodżą, Laosem i Mjanmą. Brak ryzyka w Bangkoku, Chiang Mai, Chiang Rai, Pattaya, na Koh Samui i Koh Phangan."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/thailand",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Uzbekistan",
+   "iso2": "UZ",
+   "region": "Azja",
+   "inne_nazwy": [],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "odra",
+    "wścieklizna",
+    "gruźlica (BCG)",
+    "dur brzuszny"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Według źródła: brak ryzyka malarii. WHO uznała Uzbekistan za wolny od malarii w 2018 r."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/uzbekistan",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Wietnam",
+   "iso2": "VN",
+   "region": "Azja",
+   "inne_nazwy": [],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec",
+    "dur brzuszny"
+   ],
+   "zalecane_niektorzy": [
+    "czikungunia",
+    "denga",
+    "WZW B",
+    "japońskie zapalenie mózgu",
+    "odra",
+    "wścieklizna",
+    "gruźlica (BCG)"
+   ],
+   "malaria": {
+    "poziom": "czesciowo",
+    "opis": "Niskie ryzyko w części południowej i na wsi (m.in. Tay Ninh, Lam Dong, Dak Lak, Gia Lai, Kon Tum). Brak ryzyka w dużych miastach (Hanoi, Ho Chi Minh), delcie Rzeki Czerwonej, na wybrzeżu na północ od Nha Trang i na Phu Quoc."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/vietnam",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Dominikana",
+   "iso2": "DO",
+   "region": "Ameryka Północna i Karaiby",
+   "inne_nazwy": [
+    "Dominikana",
+    "Punta Cana"
+   ],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 1. roku życia przy przylocie ze stanów Minas Gerais, Espírito Santo, São Paulo i Rio de Janeiro w Brazylii albo po przesiadce dłuższej niż 12 h na lotnisku w tych stanach"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec",
+    "dur brzuszny"
+   ],
+   "zalecane_niektorzy": [
+    "cholera (przy zwiększonym ryzyku)",
+    "denga",
+    "wścieklizna",
+    "gruźlica (BCG)"
+   ],
+   "malaria": {
+    "poziom": "czesciowo",
+    "opis": "Niskie ryzyko w kraju; wyższe możliwe przy granicy z Haiti. Santiago i Santo Domingo bez ryzyka. Profilaktyka lekowa tylko wyjątkowo."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/dominican-republic",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "W2, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Kanada",
+   "iso2": "CA",
+   "region": "Ameryka Północna i Karaiby",
+   "inne_nazwy": [],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "wścieklizna (przy kontakcie z dzikimi zwierzętami, zwłaszcza lisami i nietoperzami)"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO wymienia kraj wśród tych, w których malarii nie było albo zniknęła bez osobnych działań."
+   },
+   "uwagi": "Wścieklizna: przy kontakcie z dzikimi zwierzętami, zwłaszcza lisami i nietoperzami.",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/canada",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Kuba",
+   "iso2": "CU",
+   "region": "Ameryka Północna i Karaiby",
+   "inne_nazwy": [],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 9. miesiąca życia przy przylocie z kraju z ryzykiem żółtej gorączki albo po przesiadce dłuższej niż 12 h na lotnisku takiego kraju; w kraju brak ryzyka"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "czikungunia",
+    "denga",
+    "wścieklizna",
+    "dur brzuszny"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 1973 r."
+   },
+   "uwagi": "",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/cuba",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Meksyk",
+   "iso2": "MX",
+   "region": "Ameryka Północna i Karaiby",
+   "inne_nazwy": [],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec",
+    "dur brzuszny"
+   ],
+   "zalecane_niektorzy": [
+    "czikungunia",
+    "denga",
+    "odra",
+    "wścieklizna"
+   ],
+   "malaria": {
+    "poziom": "czesciowo",
+    "opis": "Bardzo niskie ryzyko w całym kraju: świadomość ryzyka i unikanie ukąszeń; profilaktyka lekowa tylko w wyjątkowych sytuacjach według mapy w źródle."
+   },
+   "uwagi": "Źródło wspomina o ryzyku żółtej gorączki w części kraju; certyfikat nie jest wymagany.",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/mexico",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Stany Zjednoczone",
+   "iso2": "US",
+   "region": "Ameryka Północna i Karaiby",
+   "inne_nazwy": [
+    "USA",
+    "Ameryka"
+   ],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "wścieklizna (przy kontakcie z dzikimi zwierzętami, zwłaszcza lisami i nietoperzami)"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 1970 r."
+   },
+   "uwagi": "Wścieklizna: przy kontakcie z dzikimi zwierzętami, zwłaszcza lisami i nietoperzami.",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/usa",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Argentyna",
+   "iso2": "AR",
+   "region": "Ameryka Środkowa i Południowa",
+   "inne_nazwy": [],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "czikungunia",
+    "denga",
+    "wścieklizna",
+    "dur brzuszny",
+    "żółta gorączka (do prowincji Corrientes i Misiones, w tym wodospady Iguazú; nie dla osób po 60. roku życia ani przy podróży tylko na obszary niskiego ryzyka)"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Według źródła: brak ryzyka malarii. WHO uznała Argentynę za wolną od malarii w 2019 r."
+   },
+   "uwagi": "Żółta gorączka jest w Argentynie zalecana na części obszarów, nie wymagana przy wjeździe.",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/argentina",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "W2, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Boliwia",
+   "iso2": "BO",
+   "region": "Ameryka Środkowa i Południowa",
+   "inne_nazwy": [],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "dowód szczepienia od 1. roku życia przy przylocie z kraju z ryzykiem żółtej gorączki; MZ Boliwii zaleca kartę przy wizycie w obszarach wysokiego ryzyka"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec",
+    "dur brzuszny"
+   ],
+   "zalecane_niektorzy": [
+    "czikungunia",
+    "denga",
+    "WZW B",
+    "wścieklizna",
+    "gruźlica (BCG)",
+    "żółta gorączka (od 9. miesiąca życia, poniżej 2300 m na wschód od Andów; nie La Paz i Sucre)"
+   ],
+   "malaria": {
+    "poziom": "czesciowo",
+    "opis": "Niskie ryzyko w dorzeczu Amazonki i na wsi poniżej 2500 m. Brak ryzyka powyżej 2500 m."
+   },
+   "uwagi": "Ministerstwo zdrowia Boliwii zaleca kartę szczepień przy wizycie w obszarach wysokiego ryzyka żółtej gorączki.",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/bolivia",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Brazylia",
+   "iso2": "BR",
+   "region": "Ameryka Środkowa i Południowa",
+   "inne_nazwy": [],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec",
+    "dur brzuszny"
+   ],
+   "zalecane_niektorzy": [
+    "cholera (przy zwiększonym ryzyku)",
+    "denga",
+    "WZW B",
+    "wścieklizna",
+    "gruźlica (BCG)",
+    "żółta gorączka (od 9. miesiąca życia do wymienionych stanów i wybranych obszarów Bahia; nie Fortaleza, Recife)"
+   ],
+   "malaria": {
+    "poziom": "czesciowo",
+    "opis": "Niskie ryzyko w dorzeczu Amazonki, w tym Manaus. Bardzo niskie w reszcie kraju. Brak w okolicy wodospadów Iguaçu."
+   },
+   "uwagi": "Brak wymogu certyfikatu przy wjeździe; żółta gorączka występuje w części kraju, szczepienie jest wśród zaleceń dla części podróżnych.",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/brazil",
+     "data_odczytu": "2026-11-18"
+    }
+   ],
+   "zweryfikowano": "W2, TravelHealthPro, 2026-11-18"
+  },
+  {
+   "kraj": "Kolumbia",
+   "iso2": "CO",
+   "region": "Ameryka Środkowa i Południowa",
+   "inne_nazwy": [],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 1. roku życia przy przylocie z Angoli, Brazylii, DRK i Ugandy albo po przesiadce dłuższej niż 12 h na lotnisku takiego kraju; od 27.05.2025 kontrole dokumentów także w trakcie podróży wewnątrz kraju w związku z epidemią"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec",
+    "dur brzuszny"
+   ],
+   "zalecane_niektorzy": [
+    "czikungunia",
+    "denga",
+    "wścieklizna",
+    "gruźlica (BCG)",
+    "żółta gorączka (od 9. miesiąca życia do obszarów poniżej 2300 m; nie dla samych miast Barranquilla, Cali, Cartagena, Medellín ani Bogoty)"
+   ],
+   "malaria": {
+    "poziom": "czesciowo",
+    "opis": "Niskie ryzyko na wsi poniżej 1600 m n.p.m. Bardzo niskie powyżej 1600 m i w Cartagenie (leków nie zaleca się)."
+   },
+   "uwagi": "Od 27.05.2025 dokumenty szczepienia przeciw żółtej gorączce bywają sprawdzane także w podróży wewnątrz kraju (epidemia).",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/colombia",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Kostaryka",
+   "iso2": "CR",
+   "region": "Ameryka Środkowa i Południowa",
+   "inne_nazwy": [],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 9. miesiąca życia przy przylocie z kraju z ryzykiem żółtej gorączki (wyjątki: Argentyna, Panama); brak przy samym tranzycie w strefie tranzytu"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "czikungunia",
+    "denga",
+    "wścieklizna",
+    "dur brzuszny"
+   ],
+   "malaria": {
+    "poziom": "czesciowo",
+    "opis": "Niskie ryzyko w prowincji Limón (poza miastem Limón). Bardzo niskie w reszcie kraju, w tym w Limón (miasto). Profilaktyka lekowa tylko wyjątkowo w strefie niskiego ryzyka."
+   },
+   "uwagi": "Wymóg nie dotyczy przylotu z Argentyny i Panamy ani samej przesiadki w strefie tranzytowej.",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/costa-rica",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Peru",
+   "iso2": "PE",
+   "region": "Ameryka Środkowa i Południowa",
+   "inne_nazwy": [],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "WZW A",
+    "tężec",
+    "dur brzuszny"
+   ],
+   "zalecane_niektorzy": [
+    "czikungunia",
+    "denga",
+    "wścieklizna",
+    "gruźlica (BCG)",
+    "żółta gorączka (od 9. miesiąca życia, obszary poniżej 2300 m m.in. Amazonas, Cuzco, Loreto, Madre de Dios, Puno, Ucayali; nie dla Limy, Cuzco, Machu Picchu i szlaku Inków)"
+   ],
+   "malaria": {
+    "poziom": "czesciowo",
+    "opis": "Niskie ryzyko w amazońskiej części przy granicy z Brazylią (Loreto) i na wsi poniżej 2000 m. Brak w Limie i na wybrzeżu na południe od Chiclayo."
+   },
+   "uwagi": "Żółta gorączka występuje w części kraju; certyfikat nie jest wymagany.",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/peru",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Australia",
+   "iso2": "AU",
+   "region": "Oceania",
+   "inne_nazwy": [],
+   "wymagane": [
+    {
+     "szczepienie": "żółta gorączka",
+     "warunek": "certyfikat od 1. roku życia przy przylocie z kraju z ryzykiem żółtej gorączki (z wyjątkiem Galapagos) albo po przesiadce dłuższej niż 12 h na lotnisku takiego kraju; w kraju brak ryzyka"
+    }
+   ],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [
+    "WZW B",
+    "japońskie zapalenie mózgu (głównie grudzień-marzec; północ cały rok)",
+    "polio (pełny kurs; wykryty cVDPV2 w ściekach Perth, kwiecień 2026)",
+    "wścieklizna (szczególnie przy pracy z nietoperzami)"
+   ],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO uznała kraj za wolny od malarii w 1981 r. TravelHealthPro (06.06.2025): dwa przypadki zakażenia na miejscu u mieszkańców wysp Cieśniny Torresa."
+   },
+   "uwagi": "Polio: źródło podaje wykrycie wirusa w ściekach w Perth (kwiecień 2026) i zaleca pełny kurs szczepień.",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/australia",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "kraj": "Nowa Zelandia",
+   "iso2": "NZ",
+   "region": "Oceania",
+   "inne_nazwy": [],
+   "wymagane": [],
+   "zalecane_wiekszosc": [
+    "tężec"
+   ],
+   "zalecane_niektorzy": [],
+   "malaria": {
+    "poziom": "nie",
+    "opis": "Brak ryzyka: WHO wymienia kraj wśród tych, w których malarii nie było albo zniknęła bez osobnych działań."
+   },
+   "uwagi": "Źródło nie podaje zaleceń dla części podróżnych.",
+   "zrodla": [
+    {
+     "url": "https://travelhealthpro.org.uk/countries/new-zealand",
+     "data_odczytu": "2026-11-18"
+    },
+    {
+     "url": "https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who",
+     "data_odczytu": "2026-11-18"
+    }
+   ]
+  }
+ ]
+}

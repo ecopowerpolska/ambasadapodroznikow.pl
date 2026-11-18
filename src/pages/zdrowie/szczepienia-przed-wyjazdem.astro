@@ -1,0 +1,172 @@
+---
+// /zdrowie/szczepienia-przed-wyjazdem/ — kalkulator szczepień przed wyjazdem (2026-11-18). Narzędzie: KalkulatorSzczepien.astro,
+// dane: src/data/szczepienia.json, style: src/styles/narzedzia.css (blok „szczepienia”). Strona statyczna; wynik składa przeglądarka.
+// Treść informacyjna: bez dawek, nazw handlowych, nazw leków i cen; odsyła do lekarza medycyny podróży i do źródeł urzędowych.
+// JSON-LD: WebApplication + okruszki (świadomie bez MedicalWebPage).
+import Bazowy from '../../layouts/Bazowy.astro';
+import Okruszki from '../../components/Okruszki.astro';
+import Foto from '../../components/Foto.astro';
+import KalkulatorSzczepien from '../../components/KalkulatorSzczepien.astro';
+import dane from '../../data/szczepienia.json';
+import { t } from '../../lib/tekst';
+import { adresWpisu, opublikowane } from '../../lib/wpisy';
+import { adresBezwzgledny, okruszki } from '../../lib/schemat';
+
+const ADRES = '/zdrowie/szczepienia-przed-wyjazdem/';
+const H1 = 'Szczepienia przed wyjazdem: co sprawdzić zależnie od kierunku';
+const tytul = `Szczepienia przed wyjazdem: kalkulator dla ${dane.kraje.length} kierunków`;
+const opis =
+  'Wybierz kraj i sprawdź, które szczepienia są wymagane przy wjeździe, które zalecane i czy jest tam malaria. Z linkami do GIS, NFZ i TravelHealthPro.';
+const [r, m, d] = dane._meta.data_odczytu.split('-');
+const dataOdczytu = `${d}.${m}.${r}`;
+
+// Wpis o szczepieniach może mieć datę z przyszłości (oś czasu bloga): link pokazujemy dopiero, gdy wpis jest opublikowany.
+const WPIS = 'szczepienia-przed-podroza-kiedy-do-lekarza';
+const wpisGotowy = (await opublikowane()).some((w) => w.id === WPIS);
+
+const pozycje = [
+  { nazwa: t('interfejs.okruszki_glowna'), adres: '/' },
+  { nazwa: t('dzialy.zdrowie.nazwa', 'Zdrowie'), adres: '/zdrowie/' },
+  { nazwa: 'Szczepienia przed wyjazdem', adres: ADRES },
+];
+const schemat = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    '@id': `${adresBezwzgledny(ADRES)}#narzedzie`,
+    name: 'Szczepienia przed wyjazdem',
+    url: adresBezwzgledny(ADRES),
+    description: opis,
+    applicationCategory: 'TravelApplication',
+    operatingSystem: 'Dowolny, w przeglądarce internetowej',
+    browserRequirements: 'Wymaga włączonego JavaScriptu',
+    inLanguage: 'pl-PL',
+    isAccessibleForFree: true,
+    dateModified: dane._meta.data_odczytu,
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'PLN' },
+    isPartOf: { '@id': `${adresBezwzgledny('/')}#strona` },
+  },
+  okruszki(pozycje),
+];
+
+// Linki urzędowe: wyłącznie adresy potwierdzone odczytem 2026-11-18 (rozpoznanie R2, R3, R4 i W2).
+const LINKI = [
+  {
+    grupa: 'Polska: GIS, NFZ, PZH',
+    pozycje: [
+      ['GIS: szczepienia przed wyjazdem w tropiki (wymagane i zalecane)', 'https://www.gov.pl/web/gis/podrozujesz-do-krajow-tropikalnych-sprawdz-jakim-infekcjom-mozesz-zapobiec-dzieki-szczepieniom-ochronnym'],
+      ['GIS: zalecane szczepienia dla podróżujących', 'https://www.gov.pl/web/gis/zalecane-szczepienia-dla-podrozujacych'],
+      ['GIS: profilaktyka malarii', 'https://www.gov.pl/web/gis/profilaktyka-malarii'],
+      ['GIS: punkty szczepień przeciw żółtej gorączce (wykaz, plik do pobrania)', 'https://www.gov.pl/web/gis/punkty-szczepien-w-ktorych-wykonywane-sa-szczepienia-przeciw-zoltej-goraczce'],
+      ['GIS: informacje dla podróżujących', 'https://www.gov.pl/web/gis/informacje-dla-podrozujacych'],
+      ['Portal szczepienia.pzh.gov.pl: opisy szczepionek, m.in. przeciw żółtej gorączce', 'https://szczepienia.pzh.gov.pl/'],
+      ['Mapa zagrożeń zdrowotnych na świecie (wybór kraju)', 'https://zagrozeniazdrowotne.gssewarszawa.pl/'],
+      ['NFZ: EKUZ, w których krajach działa', 'https://www.nfz.gov.pl/ekuz/'],
+    ],
+  },
+  {
+    grupa: 'Źródła zagraniczne (po angielsku)',
+    pozycje: [
+      ['TravelHealthPro (NaTHNaC): zalecenia dla każdego kraju', 'https://travelhealthpro.org.uk/countries'],
+      ['CDC Yellow Book: żółta gorączka i malaria według kraju', 'https://www.cdc.gov/yellow-book/hcp/preparing-international-travelers/yellow-fever-vaccine-and-malaria-prevention-information-by-country.html'],
+      ['WHO: kraje uznane za wolne od malarii', 'https://www.who.int/teams/global-malaria-programme/elimination/countries-and-territories-certified-malaria-free-by-who'],
+    ],
+  },
+];
+---
+
+<Bazowy {tytul} {opis} {schemat} podswietl="/zdrowie/">
+  <div class="sekcja--aurora nz-hero nz-bez-druku">
+    <Okruszki pozycje={pozycje} />
+    <div class="kontener nz-hero__uklad">
+      <div>
+        <p class="etykieta">Darmowe narzędzie</p>
+        <h1 class="nz-hero__tytul">{H1}</h1>
+        <p class="nz-hero__wstep">
+          Wybierz kraj, a zobaczysz, czego wymaga granica, co zalecają źródła medyczne i czy jest tam malaria. {dane.kraje.length} kierunków,
+          dane z {dataOdczytu}.
+        </p>
+      </div>
+      <figure class="nz-hero__zdjecie">
+        <Foto
+          nazwa="technologia-dlon-ekran-mapa-pinezka-03-www-3000x2000.webp"
+          widths={[400, 640, 960]}
+          sizes="(min-width: 76rem) 28rem, (min-width: 56rem) 38vw, calc(100vw - 2.5rem)"
+          priorytet
+          ramka
+        />
+      </figure>
+    </div>
+  </div>
+
+  <section class="kontener nz-sekcja szcz-strona" aria-label="Kalkulator szczepień">
+    <p class="szcz-zastrzezenie" role="note">
+      <strong>To informacja, nie porada medyczna.</strong> O szczepieniach i lekach decyduje lekarz medycyny podróży, który zna twoje zdrowie
+      i trasę. Dane odczytaliśmy ze źródeł {dataOdczytu}; przed wyjazdem otwórz stronę kraju w źródle, bo zalecenia zmieniają się przy
+      epidemiach.
+    </p>
+
+    <KalkulatorSzczepien />
+
+    <section class="szcz-linki wejscie" aria-labelledby="szcz-linki-tytul">
+      <h2 id="szcz-linki-tytul" class="szcz-h3">Rządowe i urzędowe linki</h2>
+      <div class="szcz-linki__siatka">
+        {
+          LINKI.map((g) => (
+            <div>
+              <h3 class="szcz-linki__grupa">{g.grupa}</h3>
+              <ul>
+                {g.pozycje.map(([n, u]) => (
+                  <li>
+                    <a href={u} rel="noopener">
+                      {n}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+      <p class="nz-zrodlo">Adresy sprawdzone {dataOdczytu}.</p>
+    </section>
+
+    <div class="proza szklo szklo--jasne nz-tekst szcz-tekst wejscie nz-bez-druku">
+      <h2>Skąd są te dane i jak czytać wynik</h2>
+      <p>
+        Zalecenia dla krajów pochodzą z brytyjskiego serwisu TravelHealthPro, który prowadzi tamtejsze krajowe centrum zdrowia podróżnych
+        (NaTHNaC). Ogólne zasady i listę szczepień do uzupełnienia bierzemy z Głównego Inspektoratu Sanitarnego, a informację o krajach bez
+        malarii z listy WHO. Wszystko odczytaliśmy {dataOdczytu}. Przy każdym wyniku jest link do strony kraju, więc w kilka sekund sprawdzisz,
+        czy coś się zmieniło.
+      </p>
+      <p>
+        Karta „Wymagane przy wjeździe” to formalność na granicy, czyli certyfikat w Międzynarodowej Książeczce Szczepień. Najczęściej chodzi
+        o żółtą gorączkę i zwykle tylko o przylot z kraju, w którym ta choroba występuje, albo o dłuższą przesiadkę w takim kraju. Dlatego
+        liczy się cała trasa: safari w Kenii, a potem plaża na Zanzibarze to inna sytuacja niż sam Zanzibar. Karty z zaleceniami to już
+        ochrona ciebie, nie wymóg urzędu.
+      </p>
+      <p>
+        Według GIS szczepienia przed wyjazdem w tropiki warto zacząć nie później niż 6 tygodni przed wyjazdem, a NFZ ich nie refunduje.
+        Wydrukuj wynik i weź go na wizytę u lekarza medycyny podróży: uwzględni twój wiek, choroby, ciążę, dzieci i to, co już masz w
+        książeczce.
+      </p>
+      <p>
+        {
+          wpisGotowy && (
+            <>
+              Kiedy iść do lekarza, co z ważnością wpisu o żółtej gorączce i dlaczego EKUZ nie wystarczy poza Europą, opisujemy we wpisie{' '}
+              <a href={adresWpisu(WPIS)}>o szczepieniach przed podróżą</a>.{' '}
+            </>
+          )
+        }
+        Leki i opatrunki na drogę spakujesz według <a href="/blog/apteczka-podroznika-co-spakowac/">listy z apteczki podróżnika</a>, a resztę
+        bagażu ułoży <a href="/podroze/pomocnik-pakowania/">darmowy pomocnik pakowania</a>.
+      </p>
+    </div>
+
+    <p class="szcz-zastrzezenie szcz-zastrzezenie--dol" role="note">
+      Kalkulator nie zastępuje wizyty u lekarza. Nie podaje dawek, nazw szczepionek ani leków. Dane z {dataOdczytu}: przed wyjazdem sprawdź
+      źródło.
+    </p>
+  </section>
+</Bazowy>

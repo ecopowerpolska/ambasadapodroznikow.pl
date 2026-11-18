@@ -1,0 +1,286 @@
+---
+// KalkulatorSzczepien.astro — kalkulator „Szczepienia przed wyjazdem” (2026-11-18). Formularz bez wysyłki; nic nie wychodzi z przeglądarki.
+// Dane: src/data/szczepienia.json (źródła i data odczytu w `_meta`). Wynik KAŻDEGO kraju renderuje się tu do HTML jako <template>
+// (bez danych w JS: budżet JS strony 3 kB gzip, guard.config.json); skrypt tylko filtruje listę krajów, wstawia szablon wybranego kraju,
+// przełącza klasy (dłuższy wyjazd / trekking, dzieci) i pamięta wybór w localStorage (klucz ambasada-szczepienia, zapis funkcjonalny).
+// Bez dawek, nazw handlowych szczepionek, nazw leków i cen. Bez JS: formularz, komunikat <noscript> i linki urzędowe na stronie.
+import '../styles/narzedzia.css';
+import dane from '../data/szczepienia.json';
+
+type Kraj = (typeof dane.kraje)[number];
+const [r, m, d] = dane._meta.data_odczytu.split('-');
+const dataOdczytu = `${d}.${m}.${r}`;
+
+// Kolejność regionów = kolejność w danych (scalenie W2 sortuje je tak samo).
+const regiony: { nazwa: string; kraje: Kraj[] }[] = [];
+for (const k of dane.kraje) {
+  const g = regiony.find((x) => x.nazwa === k.region) ?? regiony[regiony.push({ nazwa: k.region, kraje: [] }) - 1];
+  g.kraje.push(k);
+}
+
+const MALARIA: Record<string, string> = { tak: 'tak', czesciowo: 'w części kraju albo niskie ryzyko', nie: 'nie', sprawdz: 'sprawdź w źródle' };
+// Przy trekkingu, wsi albo dłuższym pobycie te pozycje dostają wyróżnienie „bardziej dotyczy ciebie” (samo wyróżnienie, bez wyroku).
+const WAZNE = /^(wścieklizna|dur brzuszny|japońskie zapalenie mózgu|kleszczowe zapalenie mózgu)/;
+const stronaKraju = (k: Kraj) =>
+  k.zrodla.find((z) => z.url.startsWith('https://travelhealthpro.org.uk/'))?.url ?? 'https://travelhealthpro.org.uk/countries';
+
+const DLUGOSC = [
+  ['do2', 'Do 2 tygodni'],
+  ['2-4', '2–4 tygodnie'],
+  ['dluzej', 'Dłużej'],
+];
+const RODZAJ = [
+  ['kurort', 'Wypoczynek w kurorcie'],
+  ['zwiedzanie', 'Zwiedzanie'],
+  ['trekking', 'Trekking, wieś, wolontariat'],
+];
+---
+
+<div class="szcz" data-szczepienia>
+  <form class="nz-form szklo szklo--jasne szcz-form nz-bez-druku" data-szcz-form aria-label="Kierunek i rodzaj wyjazdu">
+    <div class="nz-grupa nz-grupa--szeroka szcz-kraj">
+      <div class="nz-pole">
+        <label class="nz-etykieta" for="szcz-szukaj">Szukaj kraju</label>
+        <input class="nz-wejscie" id="szcz-szukaj" name="szukaj" type="search" autocomplete="off" placeholder="np. Kenia, Bali, Zanzibar" />
+      </div>
+      <div class="nz-pole">
+        <label class="nz-etykieta" for="szcz-kraj">Kraj</label>
+        <select class="nz-wejscie" id="szcz-kraj" name="kraj">
+          <option value="">Wybierz kraj ({dane.kraje.length} kierunków)</option>
+          {
+            regiony.map((g) => (
+              <optgroup label={g.nazwa}>
+                {g.kraje.map((k) => (
+                  <option value={k.iso2} data-inne={k.inne_nazwy.join(' ') || undefined}>
+                    {k.kraj}
+                  </option>
+                ))}
+              </optgroup>
+            ))
+          }
+        </select>
+      </div>
+    </div>
+
+    <fieldset class="nz-grupa">
+      <legend class="nz-legenda">Jak długo <span class="szcz-opcjonalnie">(opcjonalnie)</span></legend>
+      <div class="nz-wybory">
+        {
+          DLUGOSC.map(([w, n], i) => (
+            <label class="nz-wybor">
+              <input type="radio" name="dlugosc" value={w} checked={i === 0} />
+              <span>{n}</span>
+            </label>
+          ))
+        }
+      </div>
+    </fieldset>
+
+    <fieldset class="nz-grupa">
+      <legend class="nz-legenda">Jaki wyjazd <span class="szcz-opcjonalnie">(opcjonalnie)</span></legend>
+      <div class="nz-wybory">
+        {
+          RODZAJ.map(([w, n], i) => (
+            <label class="nz-wybor">
+              <input type="radio" name="rodzaj" value={w} checked={i === 1} />
+              <span>{n}</span>
+            </label>
+          ))
+        }
+      </div>
+    </fieldset>
+
+    <div class="nz-grupa nz-grupa--szeroka">
+      <label class="nz-zaznacz">
+        <input type="checkbox" name="dzieci" />
+        <span>Jadę z dziećmi</span>
+      </label>
+      <div class="nz-akcje">
+        <button class="guzik guzik--twardy" type="submit">Pokaż szczepienia</button>
+        <button class="guzik guzik--obrys" type="button" data-szcz-drukuj hidden>Drukuj wynik</button>
+      </div>
+    </div>
+  </form>
+
+  <noscript>
+    <p class="nz-bez-js">
+      Kalkulator działa po włączeniu JavaScriptu w przeglądarce. Bez niego sprawdź kraj w źródłach urzędowych z listy niżej:
+      TravelHealthPro ma osobną stronę dla każdego kraju.
+    </p>
+  </noscript>
+
+  <section class="szcz-wynik" data-szcz-wynik aria-live="polite" tabindex="-1" hidden></section>
+
+  {
+    dane.kraje.map((k) => (
+      <template data-szcz-kraj={k.iso2}>
+        <div class="szcz-wynik__glowa">
+          <p class="etykieta">Wynik</p>
+          <h2 class="szcz-wynik__tytul">Szczepienia przed wyjazdem: {k.kraj}</h2>
+          <p class="szcz-wynik__meta">
+            Dane ze źródeł z {dataOdczytu}. Wydruk z <span data-szcz-dzis>{dataOdczytu}</span>. Informacja, nie porada: decyzję podejmuje
+            lekarz medycyny podróży.
+          </p>
+        </div>
+        <div class={`szcz-malaria szcz-malaria--${k.malaria.poziom}`}>
+          <p class="szcz-malaria__tytul">
+            Malaria: <strong>{MALARIA[k.malaria.poziom] ?? k.malaria.poziom}</strong>
+          </p>
+          <p class="szcz-malaria__opis">{k.malaria.opis}</p>
+          {(k.malaria.poziom === 'tak' || k.malaria.poziom === 'czesciowo') && (
+            <p class="szcz-malaria__opis">Przed malarią chronią unikanie ukąszeń komarów i leki dobrane przez lekarza, nie szczepienie z tej listy.</p>
+          )}
+        </div>
+        <p class="szcz-podpowiedz szcz-tylko-wiecej">
+          Trekking, pobyt na wsi albo dłuższy wyjazd: źródła częściej zalecają wtedy szczepienia oznaczone niżej. Czy dotyczą ciebie, rozstrzyga
+          lekarz.
+        </p>
+        <div class="szcz-karty">
+          <div class="szcz-karta szcz-karta--wymagane">
+            <h3 class="szcz-karta__tytul">Wymagane przy wjeździe</h3>
+            {k.wymagane.length ? (
+              <ul class="szcz-karta__lista">
+                {k.wymagane.map((w) => (
+                  <li>
+                    <strong>{w.szczepienie}</strong>: {w.warunek}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p class="szcz-pusto">Źródło nie podaje wymogu certyfikatu szczepienia przy wjeździe.</p>
+            )}
+          </div>
+          {[
+            ['Zalecane większości podróżnych', k.zalecane_wiekszosc, 'Źródło nie wymienia szczepień dla większości podróżnych.'],
+            ['Zalecane przy części wyjazdów', k.zalecane_niektorzy, 'Źródło nie wymienia szczepień dla części podróżnych.'],
+          ].map(([tytul, lista, pusto]) => (
+            <div class="szcz-karta">
+              <h3 class="szcz-karta__tytul">{tytul}</h3>
+              {(lista as string[]).length ? (
+                <ul class="szcz-karta__lista">
+                  {(lista as string[]).map((n) =>
+                    WAZNE.test(n) ? (
+                      <li class="szcz-moze-wazne">
+                        {n} <span class="pigulka szcz-wazne__znak">bardziej dotyczy ciebie</span>
+                      </li>
+                    ) : (
+                      <li>{n}</li>
+                    ),
+                  )}
+                </ul>
+              ) : (
+                <p class="szcz-pusto">{pusto}</p>
+              )}
+            </div>
+          ))}
+        </div>
+        {k.wymagane.length > 0 && (
+          <p class="szcz-podpowiedz">Certyfikat to wpis w Międzynarodowej Książeczce Szczepień. Liczy się cała trasa, z przesiadkami.</p>
+        )}
+        <p class="szcz-podpowiedz szcz-tylko-dzieci">
+          Z dziećmi: wymogi certyfikatów mają granice wieku (podane przy warunku), a część szczepień ma własne. Plan dla dziecka ustala lekarz;
+          weź na wizytę jego książeczkę szczepień.
+        </p>
+        {k.uwagi && <p class="szcz-uwagi">{k.uwagi}</p>}
+        <p class="nz-zrodlo szcz-wynik__zrodlo">
+          Źródło dla tego kraju: <a href={stronaKraju(k)} rel="noopener">TravelHealthPro, strona kraju (po angielsku)</a>, odczyt {dataOdczytu}.
+          Wymogi wjazdowe potwierdź też u przewoźnika i w ambasadzie kraju.
+        </p>
+      </template>
+    ))
+  }
+
+  <section class="szcz-zawsze wejscie" aria-labelledby="szcz-zawsze-tytul">
+    <h2 id="szcz-zawsze-tytul" class="szcz-h3">Zawsze sprawdź, niezależnie od kierunku</h2>
+    <ul>
+      <li>
+        <strong>Tężec, błonica, krztusiec i polio.</strong> GIS radzi dawkę przypominającą przeciw błonicy, tężcowi i polio, jeśli od
+        ostatniej minęło 8–10 lat.
+      </li>
+      <li>
+        <strong>Odra, świnka i różyczka.</strong> GIS zaleca przed każdym wyjazdem uzupełnić szczepienia z kalendarza, w tym przeciw
+        odrze.
+      </li>
+      <li><strong>WZW B.</strong> Jest na tej samej liście GIS szczepień do uzupełnienia przed wyjazdem.</li>
+    </ul>
+    <p class="nz-zrodlo">
+      Źródło: <a href="https://www.gov.pl/web/gis/zalecane-szczepienia-dla-podrozujacych" rel="noopener">GIS, zalecane szczepienia dla
+      podróżujących</a> i <a
+        href="https://www.gov.pl/web/gis/podrozujesz-do-krajow-tropikalnych-sprawdz-jakim-infekcjom-mozesz-zapobiec-dzieki-szczepieniom-ochronnym"
+        rel="noopener">GIS, szczepienia przed wyjazdem w tropiki</a>, odczyt {dataOdczytu}.
+    </p>
+  </section>
+</div>
+
+<script>
+  const f = document.querySelector<HTMLFormElement>('[data-szcz-form]');
+  const wynik = document.querySelector<HTMLElement>('[data-szcz-wynik]');
+  if (f && wynik) {
+    const KLUCZ = 'ambasada-szczepienia';
+    const pole = (n: string) => f.elements.namedItem(n) as HTMLInputElement & RadioNodeList & HTMLSelectElement;
+    const sel = pole('kraj');
+    const szukaj = pole('szukaj');
+    const dzieci = pole('dzieci');
+    const druk = f.querySelector<HTMLButtonElement>('[data-szcz-drukuj]')!;
+    const pierwsza = sel.options[0];
+    const grupy = [...sel.querySelectorAll('optgroup')].map((g) => [g, [...g.children]] as const);
+    const norm = (t: string) => t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/ł/g, 'l');
+
+    const pokaz = () => {
+      const szablon = document.querySelector<HTMLTemplateElement>(`template[data-szcz-kraj="${sel.value}"]`);
+      const dl = pole('dlugosc').value;
+      const rodzaj = pole('rodzaj').value;
+      try {
+        localStorage.setItem(KLUCZ, JSON.stringify({ k: sel.value, d: dl, r: rodzaj, z: dzieci.checked }));
+      } catch {}
+      druk.hidden = wynik.hidden = !szablon;
+      wynik.replaceChildren();
+      if (!szablon) return;
+      wynik.append(szablon.content.cloneNode(true));
+      wynik.classList.toggle('szcz-wynik--wiecej', dl === 'dluzej' || rodzaj === 'trekking');
+      wynik.classList.toggle('szcz-wynik--dzieci', dzieci.checked);
+      const dzis = wynik.querySelector('[data-szcz-dzis]');
+      if (dzis) dzis.textContent = new Date().toLocaleDateString('pl-PL');
+    };
+
+    const filtruj = () => {
+      const q = norm(szukaj.value.trim());
+      const byla = sel.value;
+      const pasujace: string[] = [];
+      sel.replaceChildren(pierwsza);
+      for (const [g, opcje] of grupy) {
+        const widoczne = opcje.filter((o) => !q || norm(`${o.textContent} ${(o as HTMLOptionElement).dataset.inne ?? ''}`).includes(q));
+        if (!widoczne.length) continue;
+        g.replaceChildren(...widoczne);
+        sel.append(g);
+        pasujace.push(...widoczne.map((o) => (o as HTMLOptionElement).value));
+      }
+      sel.value = q && pasujace.length === 1 ? pasujace[0] : pasujace.includes(byla) ? byla : '';
+      if (sel.value !== byla) pokaz();
+    };
+
+    f.addEventListener('submit', (e) => {
+      e.preventDefault();
+      pokaz();
+      if (!wynik.hidden) wynik.focus();
+    });
+    f.addEventListener('change', (e) => {
+      if (e.target !== szukaj) pokaz();
+    });
+    szukaj.addEventListener('input', filtruj);
+    druk.addEventListener('click', () => window.print());
+
+    try {
+      const z = JSON.parse(localStorage.getItem(KLUCZ) || 'null');
+      if (z && z.k) {
+        sel.value = z.k;
+        for (const [n, v] of [['dlugosc', z.d], ['rodzaj', z.r]]) {
+          const p = f.querySelector<HTMLInputElement>(`input[name="${n}"][value="${v}"]`);
+          if (p) p.checked = true;
+        }
+        dzieci.checked = !!z.z;
+        pokaz();
+      }
+    } catch {}
+  }
+</script>
