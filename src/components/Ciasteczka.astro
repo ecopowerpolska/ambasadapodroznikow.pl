@@ -108,8 +108,6 @@ import { t } from '../lib/tekst';
 </style>
 
 <script>
-  import { JEZYKI } from '../lib/jezyki';
-
   type Wybor = 'pelna' | 'niezbedne';
   const KLUCZ = 'ambasada-zgoda';
   const ROK = 365 * 864e5;
@@ -117,6 +115,9 @@ import { t } from '../lib/tekst';
   const w = window as unknown as { gtranslateSettings?: object; doGTranslate?: (para: string) => void };
   const baner = document.querySelector<HTMLElement>('[data-zgoda]')!;
   const wybory = document.querySelectorAll<HTMLSelectElement>('[data-jezyk]');
+  // Stopka dostaje w HTML tylko grupę „Najczęściej” (budżet HTML); resztę języków dokleja z nagłówka, zanim ktokolwiek kliknie.
+  const reszta = wybory[0]?.querySelectorAll('optgroup')[1];
+  wybory.forEach((s) => reszta && s.querySelectorAll('optgroup').length < 2 && s.append(reszta.cloneNode(true)));
 
   const czytaj = <T,>(k: string): T | null => {
     try {
@@ -140,7 +141,7 @@ import { t } from '../lib/tekst';
     (widzet ??= new Promise<void>((gotowe) => {
       w.gtranslateSettings = {
         default_language: 'pl',
-        languages: JEZYKI.map((j) => j.kod),
+        languages: Array.from(wybory[0].options, (o) => o.value), // kody z przełącznika = jedno źródło (lib/jezyki.ts)
         native_language_names: true,
         detect_browser_language: wykrywaj,
         wrapper_selector: '#gtranslate',
