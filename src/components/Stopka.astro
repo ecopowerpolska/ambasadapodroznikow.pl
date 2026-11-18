@@ -3,6 +3,7 @@
 // Bez nazwy spółki (jest w polityce), bez listy naszych stron, bez „Kanał RSS” (RSS tylko w <link rel=alternate>).
 import { t, wstaw, pobierz } from '../lib/tekst';
 import { DZIALY, adresDzialu, nazwaDzialu } from '../lib/dzialy';
+import Tlumacz from './Tlumacz.astro';
 
 // Rok BUDOWY (czas Warszawy). Codzienna przebudowa w Actions odświeża go po 1 stycznia.
 const rok = new Intl.DateTimeFormat('pl-PL', { year: 'numeric', timeZone: 'Europe/Warsaw' }).format(new Date());
@@ -33,6 +34,7 @@ const redakcja = (Array.isArray(pobierz('menu')) ? (pobierz('menu') as { nazwa?:
         <ul aria-labelledby="stopka-redakcja">
           {redakcja.map((p) => <li><a class="link-rosnacy" href={p.adres}>{p.nazwa}</a></li>)}
           <li><a class="link-rosnacy" href="/polityka-prywatnosci/">{t('stopka.polityka')}</a></li>
+          <li><button class="stopka__ciasteczka link-rosnacy" type="button" data-ciasteczka-otworz>{t('stopka.ciasteczka')}</button></li>
         </ul>
       </div>
     </nav>
@@ -42,10 +44,13 @@ const redakcja = (Array.isArray(pobierz('menu')) ? (pobierz('menu') as { nazwa?:
         <p class="stopka__nazwa">{t('stopka.redakcja')}</p>
         <p class="stopka__prawa">{wstaw(t('stopka.prawa'), { rok })}</p>
       </div>
-      <a class="stopka__gora" href="#tresc">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 19V5M5 12l7-7 7 7"></path></svg>
-        <span>{t('interfejs.doGory', 'Do góry')}</span>
-      </a>
+      <div class="stopka__akcje">
+        <Tlumacz miejsce="stopka" />
+        <a class="stopka__gora" href="#tresc">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 19V5M5 12l7-7 7 7"></path></svg>
+          <span>{t('interfejs.doGory', 'Do góry')}</span>
+        </a>
+      </div>
     </div>
   </div>
 </footer>
@@ -112,7 +117,21 @@ const redakcja = (Array.isArray(pobierz('menu')) ? (pobierz('menu') as { nazwa?:
     background-origin: content-box;
   }
 
-  .stopka a:focus-visible {
+  /* „Ustawienia ciasteczek” to przycisk (otwiera okienko zgody), wygląda jak sąsiednie linki kolumny. */
+  .stopka__ciasteczka {
+    display: inline-block;
+    padding: 0.625rem 0;
+    border: 0;
+    background-color: transparent;
+    background-origin: content-box;
+    color: inherit;
+    font: inherit;
+    text-align: start;
+    cursor: pointer;
+  }
+
+  .stopka a:focus-visible,
+  .stopka__ciasteczka:focus-visible {
     outline: 3px solid var(--na-morzu-akcent);
     outline-offset: 2px;
   }
@@ -125,6 +144,13 @@ const redakcja = (Array.isArray(pobierz('menu')) ? (pobierz('menu') as { nazwa?:
     gap: var(--o-4) var(--o-8);
     padding-top: var(--o-6);
     border-top: 1px solid var(--szklo-obrys);
+  }
+
+  .stopka__akcje {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--o-3);
   }
 
   .stopka__nazwa {

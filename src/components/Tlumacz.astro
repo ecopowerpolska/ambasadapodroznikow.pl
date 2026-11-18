@@ -1,0 +1,129 @@
+---
+// Tlumacz.astro — przełącznik języka (GTranslate, Piotr 2026-11-18). Własny <select> renderowany w HTML: widać go od
+// razu, ma stałą szerokość (najdłuższa nazwa), więc nie przesuwa układu, i nie łączy się z niczym przed wyborem.
+// Logika (ładowanie widżetu GTranslate, wykrywanie języka przeglądarki po zgodzie) jest w Ciasteczka.astro.
+// Widżet dostaje ukryty kontener #gtranslate (tylko w nagłówku): jego wykrywanie języka ustawia własny <select>.
+// notranslate + translate="no": nazwy języków zostają w swoich językach także na przetłumaczonej stronie.
+import { t } from '../lib/tekst';
+import { JEZYKI } from '../lib/jezyki';
+
+interface Props {
+  miejsce: 'naglowek' | 'stopka';
+}
+const { miejsce } = Astro.props;
+---
+
+<div class:list={['jezyk', 'notranslate', `jezyk--${miejsce}`]} translate="no">
+  <svg class="jezyk__glob" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"></path>
+  </svg>
+  <select class="jezyk__wybor" id={`jezyk-${miejsce}`} aria-label={t('interfejs.jezyk_aria')} data-jezyk>
+    {JEZYKI.map((j) => <option value={j.kod} lang={j.kod}>{j.nazwa}</option>)}
+  </select>
+  <span class="jezyk__kod" aria-hidden="true" data-jezyk-kod>PL</span>
+  <svg class="jezyk__strzalka" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"></path></svg>
+  {miejsce === 'naglowek' && <div id="gtranslate" hidden></div>}
+</div>
+
+<style>
+  /* Na morzu (nagłówek, stopka): #f6f0e4 na #0f3e47 i na szkle nagłówka (pary w motyw.css). */
+  .jezyk {
+    position: relative;
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    color: var(--na-morzu);
+  }
+
+  .jezyk__wybor {
+    min-height: var(--cel-dotyku);
+    padding: 0 2.25rem 0 2.5rem;
+    border: 1px solid var(--na-morzu-cichy);
+    border-radius: var(--promien-pigulki);
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-size: var(--t-2);
+    line-height: 1.2;
+    cursor: pointer;
+  }
+
+  .jezyk__wybor:hover {
+    border-color: var(--na-morzu-akcent);
+  }
+
+  .jezyk__wybor:focus-visible {
+    outline: 3px solid var(--na-morzu-akcent);
+    outline-offset: 2px;
+  }
+
+  /* Lista systemowa (Windows, Linux) rysuje opcje na własnym tle: ciemny tekst na jasnej karcie. */
+  .jezyk__wybor option {
+    background: #fbf8f1;
+    color: #1a2a2e;
+  }
+
+  .jezyk__glob,
+  .jezyk__strzalka {
+    position: absolute;
+    top: 50%;
+    width: 1.125rem;
+    height: 1.125rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.75;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+  .jezyk__glob {
+    left: 0.875rem;
+  }
+
+  .jezyk__strzalka {
+    right: 0.875rem;
+  }
+
+  .jezyk__kod {
+    display: none;
+  }
+
+  /* Pas nagłówka na komputerze: wersja zwarta (glob + kod „PL”), żeby menu zmieściło się w jednej linii. Nazwę języka
+     wybranej opcji chowa przezroczysty tekst; czytnik ekranu czyta ją z <select>, a kod nad nim stawia skrypt. */
+  @container naglowek (min-width: 67rem) {
+    .jezyk--naglowek .jezyk__wybor {
+      width: 6rem;
+      padding: 0 1.75rem 0 2.25rem;
+      color: transparent;
+      text-shadow: none;
+    }
+
+    .jezyk--naglowek .jezyk__kod {
+      display: block;
+      position: absolute;
+      left: 2.25rem;
+      font-size: var(--t-2);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      pointer-events: none;
+    }
+
+    .jezyk--naglowek .jezyk__glob {
+      left: 0.75rem;
+    }
+
+    .jezyk--naglowek .jezyk__strzalka {
+      right: 0.625rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .jezyk__wybor {
+      transition: border-color var(--ruch-szybki);
+    }
+  }
+</style>

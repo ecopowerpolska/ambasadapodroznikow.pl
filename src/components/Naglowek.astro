@@ -5,6 +5,7 @@
 // Szkło: data-naglowek → Ruch.astro dodaje data-przewiniety po 40 px; wtedy tło --szklo-tlo-mocne + rozmycie.
 // nadHero: przezroczysty nad pełnoekranowym zdjęciem (jasny tekst, przyciemnienie od góry), dopóki strona stoi na górze.
 import { t, pobierz } from '../lib/tekst';
+import Tlumacz from './Tlumacz.astro';
 
 interface Props {
   /** Adres działu, który menu ma podświetlić, gdy strona nie leży pod jego adresem (wpis /blog/<slug>/ → /<dzial>/). */
@@ -54,6 +55,7 @@ const pozycje = (Array.isArray(pobierz('menu')) ? (pobierz('menu') as { nazwa?: 
           ))
         }
       </ul>
+      <Tlumacz miejsce="naglowek" />
     </nav>
   </div>
 </header>
@@ -103,8 +105,8 @@ const pozycje = (Array.isArray(pobierz('menu')) ? (pobierz('menu') as { nazwa?: 
     background-size: 100% 2px, 0% 1px;
   }
 
-  /* Marka większa tam, gdzie pas ma zapas (zmierzony próg menu 61 rem + ok. 2,5 rem na większy krój). */
-  @container naglowek (min-width: 72rem) {
+  /* Marka większa tam, gdzie pas ma zapas (potrzeba 72,8 rem z przełącznikiem języka, CDP 2026-11-18). */
+  @container naglowek (min-width: 73rem) {
     .marka {
       font-size: 1.625rem;
     }
@@ -112,6 +114,23 @@ const pozycje = (Array.isArray(pobierz('menu')) ? (pobierz('menu') as { nazwa?: 
     .marka__znak {
       width: 2.5rem;
       height: 2.5rem;
+    }
+  }
+
+  /* Przełącznik języka (Tlumacz.astro): w panelu telefonu pod listą, w pasie po prawej od menu. */
+  .menu :global(.jezyk) {
+    margin-top: var(--o-6);
+  }
+
+  @container naglowek (min-width: 67rem) {
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: var(--o-2);
+    }
+
+    .menu :global(.jezyk) {
+      margin-top: 0;
     }
   }
 

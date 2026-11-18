@@ -1,6 +1,7 @@
 ---
 // Bazowy.astro — jedyny layout strony: head (canonical, OG, Twitter, JSON-LD), nagłówek, stopka.
-// Bez cookies, bez analityki, bez skryptów zewnętrznych, bez <ClientRouter /> (strona prawie statyczna).
+// Bez cookies, bez analityki, bez <ClientRouter /> (strona prawie statyczna). Jedyny skrypt zewnętrzny: GTranslate, ładowany
+// dopiero po zgodzie albo po ręcznym wyborze języka (Ciasteczka.astro, Piotr 2026-11-18).
 // Ruch (wejścia, licznik, nagłówek po przewinięciu, pasek postępu) = jeden skrypt inline z Ruch.astro, bez bibliotek.
 import '../styles/motyw.css';
 import '../styles/efekty.css';
@@ -8,6 +9,7 @@ import { getImage } from 'astro:assets';
 import Naglowek from '../components/Naglowek.astro';
 import Stopka from '../components/Stopka.astro';
 import Ruch from '../components/Ruch.astro';
+import Ciasteczka from '../components/Ciasteczka.astro';
 import { t } from '../lib/tekst';
 import { zdjecie, ZDJECIE_GLOWNE } from '../lib/zdjecia';
 
@@ -89,6 +91,7 @@ if (!og) {
       <slot />
     </main>
     <Stopka />
+    <Ciasteczka />
     <Ruch />
   </body>
 </html>

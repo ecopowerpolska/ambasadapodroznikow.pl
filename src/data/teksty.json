@@ -55,14 +55,24 @@
     "wiecejZDzialu": "Więcej z działu {dzial}",
     "podpisRedakcji": "Redakcja Ambasady Podróżników",
     "doGory": "Do góry",
-    "etykietaDzialu": "Dział"
+    "etykietaDzialu": "Dział",
+    "jezyk_aria": "Język strony"
   },
   "stopka": {
     "redakcja": "Redakcja Ambasady Podróżników",
     "polityka": "Polityka prywatności",
     "prawa": "© {rok} Redakcja Ambasady Podróżników",
     "kolumnaDzialy": "Działy",
-    "kolumnaRedakcja": "Redakcja"
+    "kolumnaRedakcja": "Redakcja",
+    "ciasteczka": "Ustawienia ciasteczek"
+  },
+  "ciasteczka": {
+    "aria": "Zgoda na ciasteczka",
+    "tytul": "Ciasteczka",
+    "tresc": "Używamy tylko ciasteczek i zapisów w przeglądarce potrzebnych do działania strony oraz tłumaczenia Google, które zapamiętuje wybrany język. Po zgodzie strona sama otworzy się w języku twojej przeglądarki. Nie mamy analityki ani reklam.",
+    "polityka": "Polityka prywatności",
+    "zgoda": "Zgadzam się",
+    "niezbedne": "Tylko niezbędne"
   },
   "glowna": {
     "tytulKarty": "Ambasada Podróżników: o wyjazdach i o domu",
@@ -268,7 +278,7 @@
     "opisMeta": "Polityka prywatności ambasadapodroznikow.pl: administrator, komentarze pod wpisami, Cloudflare Turnstile i sieć Cloudflare, hosting, zdjęcia w zapowiedziach, cookies i brak analityki.",
     "h1": "Polityka prywatności",
     "lead": "Ta strona nie ma analityki, reklam ani kont i nie ustawia własnych plików cookies. Pod wpisami możesz za to zostawić komentarz, więc niżej opisujemy, jakie dane wtedy przetwarzamy, a także co technicznie widzą Cloudflare, hosting i serwery firm, których zapowiedzi pokazujemy.",
-    "dataAktualizacji": "2026-11-04",
+    "dataAktualizacji": "2026-11-18",
     "administratorNaglowek": "Administrator danych",
     "administratorWstep": "Administratorem danych osobowych jest:",
     "sekcje": [
@@ -338,11 +348,29 @@
         "id": "cookies",
         "naglowek": "Pliki cookies i analityka",
         "akapity": [
-          "Strona nie ustawia własnych plików cookies, nie używa analityki, nie ładuje reklam ani skryptów śledzących. Nie pokazujemy okna zgody, bo nie używamy cookies, które by jej wymagały.",
+          "Strona nie ustawia własnych plików cookies, nie używa analityki, nie ładuje reklam ani skryptów śledzących. Okienko zgody pokazujemy z jednego powodu: tłumaczenia strony na inne języki, opisanego niżej.",
           "Wyjątkiem są dane techniczne zapisywane przez usługi Cloudflare. Ochrona sieci może ustawić techniczne ciasteczko, na przykład __cf_bm (wygasa po 30 minutach bezczynności) albo cf_clearance (zapamiętuje, że przeszedłeś weryfikację, żeby nie powtarzać jej przy każdym wejściu). Cloudflare opisuje je jako niezbędne technicznie do ochrony strony. Turnstile nie służy do śledzenia; jeśli jego działanie wymaga zapisu w przeglądarce, dotyczy to wyłącznie danych potrzebnych do weryfikacji. Przeglądarka może też sama zapisywać dane potrzebne technicznie, zgodnie ze swoimi ustawieniami."
         ],
         "lista": [],
         "akapityPo": []
+      },
+      {
+        "id": "tlumaczenie",
+        "naglowek": "Tłumaczenie strony i okienko zgody",
+        "akapity": [
+          "Stronę możesz czytać w innym języku: przełącznik języka jest w nagłówku i w stopce. Tłumaczy widżet GTranslate (GTranslate Inc.), a sam przekład robi usługa tłumaczenia Google (Google LLC, USA). Gdy tłumaczenie działa, przeglądarka pobiera skrypt z cdn.gtranslate.net i wysyła tekst strony do serwerów Google (translate-pa.googleapis.com) razem z adresem IP i danymi technicznymi zapytania. Google może przetwarzać te dane poza Europejskim Obszarem Gospodarczym, na zasadach opisanych w swojej [polityce prywatności](https://policies.google.com/privacy).",
+          "Przy pierwszej wizycie pokazujemy okienko zgody i do twojej decyzji nie ładujemy niczego z GTranslate ani z Google. Po kliknięciu „Zgadzam się” strona sama przełącza się na język twojej przeglądarki, jeśli jest na liście (na przykład angielski albo ukraiński), i robi to tylko raz. Po kliknięciu „Tylko niezbędne” nic nie tłumaczy się samo: tłumaczenie włącza się dopiero wtedy, gdy wybierzesz język z przełącznika. W przeglądarce zapisujemy:"
+        ],
+        "lista": [
+          "ambasada-zgoda (pamięć przeglądarki, localStorage): twoja decyzja z okienka zgody i jej data. Po 12 miesiącach pytamy ponownie;",
+          "__GT_TRANSLATE_LANGS (localStorage, zapisuje go GTranslate): wybrany język tłumaczenia, żeby kolejne strony otwierały się w nim od razu. Nie ma daty ważności; znika po powrocie do języka polskiego albo po wyczyszczeniu danych strony w przeglądarce;",
+          "gt_autoswitch (localStorage, zapisuje go GTranslate): znacznik, że język przeglądarki został już raz sprawdzony, żeby strona nie przełączała się sama przy każdej wizycie;",
+          "googtrans (ciasteczko): starsze wersje tłumaczenia Google zapisywały w nim wybrany język na czas sesji przeglądarki. Obecny widżet go nie ustawia, a „Tylko niezbędne” kasuje je, jeśli zostało."
+        ],
+        "akapityPo": [
+          "Podstawą automatycznego tłumaczenia i zapisu ambasada-zgoda jest twoja zgoda (art. 6 ust. 1 lit. a RODO oraz art. 399 Prawa komunikacji elektronicznej dla zapisu w przeglądarce). Ręczny wybór języka jest usługą, o którą sam prosisz, więc zapis wybranego języka jest wtedy niezbędny do jej wykonania.",
+          "Zgodę cofniesz w każdej chwili przyciskiem „Ustawienia ciasteczek” w stopce: wybierz „Tylko niezbędne”, a strona wróci do polskiego i usunie zapisy tłumaczenia. Cofnięcie zgody nie wpływa na zgodność z prawem tłumaczenia sprzed jej cofnięcia."
+        ]
       },
       {
         "id": "zapowiedzi",
@@ -384,7 +412,7 @@
         "id": "zmiany",
         "naglowek": "Zmiany polityki",
         "akapity": [
-          "Politykę zmieniamy, gdy zmienia się sposób działania strony. Ta wersja obowiązuje od 4 listopada 2026 roku; dodaliśmy w niej komentarze pod wpisami, Cloudflare Turnstile i sieć Cloudflare."
+          "Politykę zmieniamy, gdy zmienia się sposób działania strony. Ta wersja obowiązuje od 18 listopada 2026 roku; dodaliśmy w niej tłumaczenie strony (GTranslate i Google) i okienko zgody. Poprzednia, z 4 listopada 2026 roku, dodała komentarze pod wpisami, Cloudflare Turnstile i sieć Cloudflare."
         ],
         "lista": [],
         "akapityPo": []

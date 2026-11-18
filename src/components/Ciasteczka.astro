@@ -1,0 +1,203 @@
+---
+// Ciasteczka.astro — okienko zgody (Piotr 2026-11-18) i jedyny skrypt tłumaczenia (GTranslate) na stronie.
+// Model zgody: przed decyzją nie ładuje się nic zewnętrznego. „Zgadzam się” (ambasada-zgoda = pelna) → widżet GTranslate
+// z detect_browser_language: true, więc pierwsza wizyta z przeglądarką po angielsku albo ukraińsku przełącza stronę
+// sama (widżet robi to raz: znacznik gt_autoswitch w localStorage). „Tylko niezbędne” → bez wykrywania; widżet ładuje
+// się dopiero po wyborze języka z przełącznika (Tlumacz.astro), a powrót z innego języka czyści zapisy tłumaczenia.
+// Widżet GTranslate (stan 2026-11-18) pamięta język w localStorage (__GT_TRANSLATE_LANGS), nie w ciasteczku googtrans;
+// googtrans kasujemy mimo to przy „Tylko niezbędne”, gdyby zostało po starszej wersji.
+// Decyzja żyje 12 miesięcy, potem okienko wraca. Przycisk [data-ciasteczka-otworz] (stopka) otwiera je ponownie.
+import { t } from '../lib/tekst';
+---
+
+<section class="zgoda szklo" role="region" aria-label={t('ciasteczka.aria')} data-zgoda hidden>
+  <div class="zgoda__tekst">
+    <p class="zgoda__tytul">{t('ciasteczka.tytul')}</p>
+    <p>{t('ciasteczka.tresc')} <a href="/polityka-prywatnosci/#tlumaczenie">{t('ciasteczka.polityka')}</a></p>
+  </div>
+  <div class="zgoda__guziki">
+    <button class="guzik pigulka--akcent" type="button" data-zgoda-wybor="pelna">{t('ciasteczka.zgoda')}</button>
+    <button class="guzik guzik--obrys" type="button" data-zgoda-wybor="niezbedne">{t('ciasteczka.niezbedne')}</button>
+  </div>
+</section>
+
+<style>
+  /* Szkło (#f6f0e4 na --szklo-tlo, pary w motyw.css). position: fixed — nie przesuwa układu (CLS 0).
+     z-index 38: pod panelem menu telefonu (39) i nagłówkiem (40). */
+  .zgoda {
+    position: fixed;
+    inset: auto var(--o-3) max(var(--o-3), env(safe-area-inset-bottom)) var(--o-3);
+    z-index: 38;
+    display: grid;
+    gap: var(--o-3);
+    max-width: 44rem;
+    margin-inline: auto;
+    padding: var(--o-4);
+    box-shadow: var(--cien-uniesiony);
+    font-size: var(--t-1);
+    line-height: 1.5;
+  }
+
+  .zgoda[hidden] {
+    display: none;
+  }
+
+  .zgoda__tytul {
+    margin-bottom: var(--o-1);
+    font-family: var(--font-nagl);
+    font-size: var(--t-3);
+    font-weight: 600;
+  }
+
+  .zgoda a {
+    color: #f6f0e4;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .zgoda__guziki {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--o-2);
+  }
+
+  .zgoda__guziki .guzik {
+    flex: 1 1 9rem;
+    padding-inline: var(--o-4);
+  }
+
+  .zgoda .guzik:focus-visible {
+    outline: 3px solid #f6f0e4;
+    outline-offset: 2px;
+  }
+
+  /* Komputer: w prawym dolnym rogu, z dala od przycisków hero (lewa kolumna). */
+  @media (min-width: 48rem) {
+    .zgoda {
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: var(--o-4) var(--o-6);
+      max-width: 40rem;
+      margin-inline: auto 0;
+      padding: var(--o-4) var(--o-6);
+      inset-inline-end: var(--o-6);
+      inset-block-end: var(--o-6);
+    }
+
+    .zgoda__guziki {
+      flex-direction: column;
+    }
+
+    .zgoda__guziki .guzik {
+      flex: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .zgoda:not([hidden]) {
+      animation: zgoda-wsun 320ms cubic-bezier(.2, .7, .2, 1) both;
+    }
+  }
+
+  @keyframes zgoda-wsun {
+    from {
+      opacity: 0;
+      transform: translateY(1.5rem);
+    }
+  }
+</style>
+
+<script>
+  import { JEZYKI } from '../lib/jezyki';
+
+  type Wybor = 'pelna' | 'niezbedne';
+  const KLUCZ = 'ambasada-zgoda';
+  const ROK = 365 * 864e5;
+  const GT_JEZYK = '__GT_TRANSLATE_LANGS';
+  const w = window as unknown as { gtranslateSettings?: object; doGTranslate?: (para: string) => void };
+  const baner = document.querySelector<HTMLElement>('[data-zgoda]')!;
+  const wybory = document.querySelectorAll<HTMLSelectElement>('[data-jezyk]');
+
+  const czytaj = <T,>(k: string): T | null => {
+    try {
+      return JSON.parse(localStorage.getItem(k) || 'null');
+    } catch {
+      return null;
+    }
+  };
+  const zgoda = (): Wybor | null => {
+    const z = czytaj<{ wybor?: Wybor; data?: string }>(KLUCZ);
+    return z?.wybor && Date.now() - Date.parse(z.data || '') < ROK ? z.wybor : null;
+  };
+  const biezacy = () => czytaj<{ tgtLang?: string }>(GT_JEZYK)?.tgtLang || 'pl';
+  const ustawWybory = (kod: string) => {
+    wybory.forEach((s) => (s.value = kod));
+    document.querySelectorAll('[data-jezyk-kod]').forEach((e) => (e.textContent = kod.toUpperCase()));
+  };
+
+  let widzet: Promise<void> | undefined;
+  const zaladuj = (wykrywaj: boolean) =>
+    (widzet ??= new Promise<void>((gotowe) => {
+      w.gtranslateSettings = {
+        default_language: 'pl',
+        languages: JEZYKI.map((j) => j.kod),
+        native_language_names: true,
+        detect_browser_language: wykrywaj,
+        wrapper_selector: '#gtranslate',
+      };
+      const s = document.createElement('script');
+      s.src = 'https://cdn.gtranslate.net/widgets/latest/dropdown.js';
+      s.defer = true;
+      s.onload = () => {
+        // Wykrywanie (synchronicznie w skrypcie widżetu) ustawia jego ukryty <select>; nasze przełączniki biorą ten język.
+        const gt = document.querySelector<HTMLSelectElement>('#gtranslate select');
+        if (wykrywaj && gt?.value) ustawWybory(gt.value.split('|')[1]);
+        gotowe();
+      };
+      document.body.append(s);
+    }));
+
+  const pokaz = (widac: boolean) => (baner.hidden = !widac);
+
+  const zapisz = (wybor: Wybor) => {
+    localStorage.setItem(KLUCZ, JSON.stringify({ wybor, data: new Date().toISOString() }));
+    pokaz(false);
+    if (wybor === 'pelna') {
+      zaladuj(true);
+      return;
+    }
+    // Tylko niezbędne: bez automatu. Strona przetłumaczona (np. po wcześniejszej zgodzie) wraca do polskiego.
+    const byl = biezacy();
+    [GT_JEZYK, 'gt_autoswitch'].forEach((k) => localStorage.removeItem(k));
+    ['', `; domain=${location.hostname}`, `; domain=.${location.hostname}`].forEach(
+      (d) => (document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/${d}`),
+    );
+    if (byl !== 'pl') location.reload();
+  };
+
+  baner.addEventListener('click', (e) => {
+    const b = (e.target as HTMLElement).closest<HTMLButtonElement>('[data-zgoda-wybor]');
+    if (b) zapisz(b.dataset.zgodaWybor as Wybor);
+  });
+  document.querySelectorAll('[data-ciasteczka-otworz]').forEach((b) =>
+    b.addEventListener('click', () => {
+      pokaz(true);
+      baner.querySelector('button')?.focus();
+    }),
+  );
+
+  wybory.forEach((s) =>
+    s.addEventListener('change', () => {
+      const kod = s.value;
+      ustawWybory(kod);
+      // Ręczny wybór = prośba czytelnika: widżet ładuje się teraz także bez pełnej zgody.
+      zaladuj(false).then(() => w.doGTranslate?.(`pl|${kod}`));
+    }),
+  );
+
+  const z = zgoda();
+  ustawWybory(biezacy());
+  if (!z) pokaz(true);
+  if (z === 'pelna') zaladuj(true);
+  else if (biezacy() !== 'pl') zaladuj(false);
+</script>

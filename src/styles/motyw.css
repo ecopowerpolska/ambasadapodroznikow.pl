@@ -471,8 +471,10 @@ main {
 /* Pas z menu w jednej linii, 7 pozycji (teksty.json `menu`). Zmierzone CDP 2026-11-03 (Chrome headless, dist kopii W1):
    marka 20,3 rem + przerwa 0,75 + marginesy 4 + menu 38,7 rem przy odstępie pozycji 0,75 rem = 63,8 rem;
    przy odstępie 0,5 rem menu ma 35,2 rem, razem 60,3 rem → próg 61 rem (pas od ok. 990 px okna), szerszy odstęp od 66 rem.
+   2026-11-18 (W7, CDP): przełącznik języka w pasie (zwarty, 6 rem + odstęp) → potrzeba 66,8 rem przy odstępie 0,5,
+   70,3 rem przy 0,75 i 72,8 rem z większą marką (Naglowek.astro) → progi 67 / 70,5 / 73 rem (pas od ok. 1072 px okna).
    Poniżej progu przełącznik menu. Każda nowa pozycja menu = nowy pomiar i nowy próg. */
-@container naglowek (min-width: 61rem) {
+@container naglowek (min-width: 67rem) {
   .menu-przelacznik {
     display: none;
   }
@@ -508,7 +510,7 @@ main {
   }
 }
 
-@container naglowek (min-width: 66rem) {
+@container naglowek (min-width: 70.5rem) {
   .menu a {
     padding: 0 var(--o-3);
   }
