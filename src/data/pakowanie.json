@@ -18,9 +18,9 @@
    "jedn": "jednostka ilości, domyślnie szt.",
    "uwaga": "dopisek pod pozycją; przy lekach zawsze odsyła do lekarza lub farmaceuty, bez dawek i nazw handlowych",
    "zrodlo": "kod źródła z `_meta.zrodla`",
-   "aktywnosci": "plaza | zwiedzanie | wedrowki | narty | rower | wodne | bieganie | kemping | praca | uroczystosc; pozycja jest, gdy zaznaczono choć jedną z nich; brak = zawsze (zastąpiło pole typ, 2026-11-18)",
+   "aktywnosci": "plaza | zwiedzanie | wedrowki | safari | narty | rower | wodne | bieganie | kemping | praca | uroczystosc; pozycja jest, gdy zaznaczono choć jedną z nich; brak = zawsze (zastąpiło pole typ, 2026-11-18)",
    "deszcz": "true = pozycja tylko gdy na miejscu często pada (>= 10 dni z opadem w miesiącu pobytu, wg klimat.json)",
-   "trasa": "warunek trasy (kraj startu → kraj celu, dane z public/dane/kraje.json); brak = bez warunku: inny_kraj | poza_dowod (start-cel wymaga paszportu) | ekuz | inna_waluta | inne_gniazdko | poza_ue | daleko (start albo cel poza UE/EOG/Szwajcarią, inny kraj) | szcz (świadectwo szczepień wg kraje.json `szcz`: wymagane od wszystkich, wymagane przy starcie z kraju z ryzykiem żółtej gorączki, albo brak danych = sprawdź w kalkulatorze; bez trasy pozycja się nie pokazuje) | mpj (tylko gdy transport = samochód albo wypożyczenie auta na miejscu, inny kraj, `pj` celu ≠ pl; bez trasy pozycja się nie pokazuje). Bez znanej trasy pozycja jest widoczna.",
+   "trasa": "warunek trasy (kraj startu → kraj celu, dane z public/dane/kraje.json); brak = bez warunku: inny_kraj | poza_dowod (start-cel wymaga paszportu) | ekuz | inna_waluta | inne_gniazdko | poza_ue | daleko (start albo cel poza UE/EOG/Szwajcarią, inny kraj) | szcz (świadectwo albo szczepienie przeciw żółtej gorączce wg kraje.json `szcz`: wymagane od wszystkich, wymagane przy starcie z kraju z ryzykiem, zalecane (wariant zalec: kraj z ryzykiem żółtej gorączki, ale bez wymogu wjazdu z kraju startu), albo brak danych = sprawdź w kalkulatorze; bez trasy pozycja się nie pokazuje) | malaria (profilaktyka malarii wg kraje.json `malaria`: tak | czesciowo | sprawdz; nie = pozycja znika) | malaria_ryzyko (tylko gdy malaria tak albo czesciowo) | mpj (tylko gdy transport = samochód albo wypożyczenie auta na miejscu, inny kraj, `pj` celu ≠ pl; bez trasy pozycja się nie pokazuje). Bez znanej trasy pozycja jest widoczna.",
    "warianty": "nazwa/uwaga zależne od trasy: {klucz:{n:nazwa,u:uwaga,l:true=pokaż link gov.pl przy starcie z Polski}}; w nazwie {w} = waluta celu, {g} = typy gniazdek celu; `k` = lista osób (spacja), która zastępuje `kto` w tym wariancie",
    "link": "true = pod uwagą link do informacji dla podróżujących (gov.pl), pokazywany tylko przy starcie z Polski",
    "blog": "true = pod uwagą link do wpisu o międzynarodowym prawie jazdy (renderowany tylko gdy wpis jest już opublikowany (data wpisu <= czas builda)); w wariantach `b` = pokaż ten link",
@@ -97,6 +97,10 @@
   {
    "id": "gory",
    "nazwa": "Góry i szlak"
+  },
+  {
+   "id": "safari",
+   "nazwa": "Safari i przyroda"
   },
   {
    "id": "zima",
@@ -307,6 +311,10 @@
     },
     "sprawdz": {
      "n": "Międzynarodowe świadectwo szczepień: sprawdź w kalkulatorze, czy kraj go wymaga"
+    },
+    "zalec": {
+     "n": "Szczepienie przeciw żółtej gorączce: zapytaj lekarza medycyny podróży (wpis w Międzynarodowej Książeczce Szczepień)",
+     "u": "W kraju jest ryzyko żółtej gorączki, choć wjazd z Twojego kraju nie wymaga świadectwa. Szczepienie to decyzja lekarza medycyny podróży; umów wizytę z wyprzedzeniem."
     }
    }
   },
@@ -770,7 +778,10 @@
    "klimat": [
     "cieplo"
    ],
-   "zrodlo": "orange"
+   "zrodlo": "orange",
+   "bez_akt": [
+    "safari"
+   ]
   },
   {
    "id": "okulary_slonce",
@@ -1313,7 +1324,8 @@
     "rower",
     "kemping",
     "bieganie",
-    "wodne"
+    "wodne",
+    "safari"
    ]
   },
   {
@@ -1347,16 +1359,40 @@
     "cieplo",
     "umiarkowanie"
    ],
-   "uwaga": "Przy dzieciach wybierz preparat odpowiedni do wieku. Zapytaj farmaceutę.",
+   "uwaga": "Przy dzieciach wybierz preparat odpowiedni do wieku. Zapytaj farmaceutę. W krajach z malarią i na safari wybierz preparat z DEET.",
    "zrodlo": "orange",
    "aktywnosci": [
     "plaza",
     "wedrowki",
     "zwiedzanie",
     "kemping",
-    "rower"
+    "rower",
+    "safari"
    ],
    "plyn": true
+  },
+  {
+   "id": "profilaktyka_malarii",
+   "nazwa": "Profilaktyka malarii",
+   "kat": "apteczka",
+   "ilosc": "1",
+   "trasa": "malaria",
+   "kalk": true,
+   "zrodlo": "wlasne",
+   "warianty": {
+    "tak": {
+     "n": "Profilaktyka malarii: leki na receptę, zapytaj lekarza medycyny podróży 4–6 tygodni przed wyjazdem",
+     "u": "W kraju jest ryzyko malarii. Poza lekami chronią repelent z DEET, długie rękawy wieczorem i moskitiera."
+    },
+    "czesciowo": {
+     "n": "Profilaktyka malarii: leki na receptę, zapytaj lekarza medycyny podróży 4–6 tygodni przed wyjazdem",
+     "u": "Ryzyko tylko w części kraju, sprawdź region w kalkulatorze szczepień. Poza lekami chronią repelent z DEET, długie rękawy wieczorem i moskitiera."
+    },
+    "sprawdz": {
+     "n": "Malaria: sprawdź w kalkulatorze szczepień, czy w kraju jest ryzyko",
+     "u": "Nie mamy pewnych danych o malarii w tym kraju. Jeśli ryzyko jest, zapytaj lekarza medycyny podróży 4–6 tygodni przed wyjazdem."
+    }
+   }
   },
   {
    "id": "ukaszenia",
@@ -1373,7 +1409,8 @@
     "plaza",
     "wedrowki",
     "kemping",
-    "rower"
+    "rower",
+    "safari"
    ]
   },
   {
@@ -1433,7 +1470,8 @@
    "zrodlo": "wlasne",
    "aktywnosci": [
     "wedrowki",
-    "zwiedzanie"
+    "zwiedzanie",
+    "safari"
    ]
   },
   {
@@ -2150,6 +2188,108 @@
    "aktywnosci": [
     "wedrowki"
    ]
+  },
+  {
+   "id": "lornetka",
+   "nazwa": "Lornetka",
+   "kat": "safari",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek"
+   ],
+   "aktywnosci": [
+    "safari"
+   ],
+   "uwaga": "Jedna na osobę dorosłą i nastolatka, żeby nie czekać na swoją kolej.",
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "ubrania_stonowane",
+   "nazwa": "Ubrania w stonowanych kolorach (beż, khaki, oliwka)",
+   "kat": "safari",
+   "ilosc": "1",
+   "aktywnosci": [
+    "safari"
+   ],
+   "uwaga": "Unikaj czerni i granatu (przyciągają owady, w części Afryki muchy tse-tse) oraz jaskrawych barw, które płoszą zwierzęta.",
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "kapelusz_safari",
+   "nazwa": "Kapelusz z szerokim rondem",
+   "kat": "safari",
+   "ilosc": "1",
+   "os": true,
+   "aktywnosci": [
+    "safari"
+   ],
+   "uwaga": "Osłania kark i uszy; najlepiej z paskiem pod brodę, bo na pojeździe wieje.",
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "chusta_kurz",
+   "nazwa": "Chusta lub buff na kurz",
+   "kat": "safari",
+   "ilosc": "1",
+   "os": true,
+   "aktywnosci": [
+    "safari"
+   ],
+   "uwaga": "Przy jeździe po szutrowych drogach, także w otwartym aucie.",
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "latarka_safari",
+   "nazwa": "Latarka czołowa lub kieszonkowa",
+   "kat": "safari",
+   "ilosc": "1",
+   "os": true,
+   "kto": [
+    "kobieta",
+    "mezczyzna",
+    "nastolatek"
+   ],
+   "aktywnosci": [
+    "safari"
+   ],
+   "bez_akt": [
+    "wedrowki",
+    "kemping"
+   ],
+   "uwaga": "Do obozu i lodge’u, gdzie wieczorem bywają przerwy w prądzie.",
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "aparat_zoom",
+   "nazwa": "Aparat z teleobiektywem lub dużym zoomem, ładowarką i kartą pamięci (jeśli zabierasz)",
+   "kat": "safari",
+   "ilosc": "1",
+   "aktywnosci": [
+    "safari"
+   ],
+   "bez_akt": [
+    "zwiedzanie",
+    "wedrowki",
+    "plaza"
+   ],
+   "uwaga": "Zwierzęta zwykle są daleko; telefon rzadko wystarcza.",
+   "zrodlo": "wlasne"
+  },
+  {
+   "id": "moskitiera",
+   "nazwa": "Moskitiera podróżna",
+   "kat": "safari",
+   "ilosc": "1",
+   "os": true,
+   "aktywnosci": [
+    "safari"
+   ],
+   "trasa": "malaria_ryzyko",
+   "uwaga": "Przydaje się, gdy nocleg nie ma siatek w oknach ani moskitiery nad łóżkiem.",
+   "zrodlo": "wlasne"
   },
   {
    "id": "narty",

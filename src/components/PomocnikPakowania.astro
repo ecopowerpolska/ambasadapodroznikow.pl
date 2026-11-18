@@ -77,6 +77,7 @@ const AKT = [
   ['plaza', 'Plażowanie i kąpiele'],
   ['zwiedzanie', 'Zwiedzanie miasta'],
   ['wedrowki', 'Wędrówki i góry'],
+  ['safari', 'Safari i przyroda'],
   ['narty', 'Narty i snowboard'],
   ['rower', 'Rower'],
   ['wodne', 'Sporty wodne i nurkowanie'],
@@ -457,8 +458,8 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
     type M = { n: string; k?: string; a?: string[]; t: number[]; d: number[]; tx?: number[]; tn?: number[]; c?: string };
     type S = { n: string; c: string };
     type Sz = { zg?: string; ryzyko_zg?: boolean; inne?: string[]; uwagi_szcz?: string[] };
-    type Kr = { pj?: string; ue?: boolean; eog?: boolean; dowod?: boolean; ekuz?: boolean; waluta?: string; gniazdko?: string[]; kraj?: string; szcz?: Sz };
-    type Tr = { a: string; b: string; pl: boolean; same: boolean; inny: boolean; tryb: string; dowod: boolean; ekuz: boolean; walInna: boolean; wb: string; gnInne: boolean; gb: string[]; pozaUE: boolean; daleko: boolean; mpj: boolean; auto: boolean; pj: string; nz: string[]; sz?: Sz; szT: string; w: Record<string, string> };
+    type Kr = { pj?: string; ue?: boolean; eog?: boolean; dowod?: boolean; ekuz?: boolean; waluta?: string; gniazdko?: string[]; kraj?: string; szcz?: Sz; malaria?: string };
+    type Tr = { a: string; b: string; pl: boolean; same: boolean; inny: boolean; tryb: string; dowod: boolean; ekuz: boolean; walInna: boolean; wb: string; gnInne: boolean; gb: string[]; pozaUE: boolean; daleko: boolean; mpj: boolean; mal: string; auto: boolean; pj: string; nz: string[]; sz?: Sz; szT: string; w: Record<string, string> };
     const SPOL: S = { n: 'Polska', c: 'Polska' };
     let s: S | null = SPOL;
     type W = { id: string; k: string; n: string; q: number };
@@ -671,10 +672,14 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
       // świadectwo szczepień (żółta gorączka) z kraje.json `szcz`: '' = bez pozycji, wszyscy | ryzyko (start z kraju z ryzykiem) | sprawdz (brak danych)
       const sz = eb?.szcz;
       const zr = ea?.szcz?.ryzyko_zg;
-      const szT = !inny ? '' : !sz ? 'sprawdz' : sz.zg === 'wszyscy' ? 'wszyscy' : sz.zg !== 'z_ryzyka' || zr === false ? '' : zr ? 'ryzyko' : 'sprawdz';
+      const szP = !inny ? '' : !sz ? 'sprawdz' : sz.zg === 'wszyscy' ? 'wszyscy' : sz.zg !== 'z_ryzyka' || zr === false ? '' : zr ? 'ryzyko' : 'sprawdz';
+      // kraj z ryzykiem żółtej gorączki, ale bez wymogu wjazdu z kraju startu: zalecenie (zapytaj lekarza), nie świadectwo
+      const szT = !szP && inny && sz?.ryzyko_zg ? 'zalec' : szP;
+      // malaria z kraje.json: tak | czesciowo | nie | sprawdz; brak danych kraju = sprawdz; w obrębie kraju bez zdania
+      const mal = !inny ? '' : eb?.malaria || 'sprawdz';
       return {
         a: A.c, b: B.c, pl, same, inny, tryb, dowod, ekuz, walInna, wb, gnInne, gb,
-        pozaUE: inny && !bUE, daleko: inny && !(aUE && bUE), mpj, auto, pj, sz, szT,
+        pozaUE: inny && !bUE, daleko: inny && !(aUE && bUE), mpj, mal, auto, pj, sz, szT,
         nz: inny ? [...(ea ? [] : [A.c]), ...(eb ? [] : [B.c])] : [],
         w: {
           paszport: tryb,
@@ -684,11 +689,12 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
           przejsciowka: gnInne ? (gb.length ? 'typ' : 'nieznane') : '',
           prawo_jazdy_mpj: pl ? pj : 'obcy',
           swiadectwo_szczepien: szT,
+          profilaktyka_malarii: mal === 'nie' ? '' : mal,
         },
       };
     };
     const warunek = (t: Tr, w: string) =>
-      w === 'inny_kraj' ? t.inny : w === 'poza_dowod' ? t.inny && !t.dowod : w === 'ekuz' ? t.ekuz : w === 'inna_waluta' ? t.walInna : w === 'inne_gniazdko' ? t.gnInne : w === 'poza_ue' ? t.pozaUE : w === 'daleko' ? t.daleko : w === 'szcz' ? !!t.szT : w === 'mpj' ? t.mpj : true;
+      w === 'inny_kraj' ? t.inny : w === 'poza_dowod' ? t.inny && !t.dowod : w === 'ekuz' ? t.ekuz : w === 'inna_waluta' ? t.walInna : w === 'inne_gniazdko' ? t.gnInne : w === 'poza_ue' ? t.pozaUE : w === 'daleko' ? t.daleko : w === 'szcz' ? !!t.szT : w === 'malaria' ? !!t.w.profilaktyka_malarii : w === 'malaria_ryzyko' ? t.mal === 'tak' || t.mal === 'czesciowo' : w === 'mpj' ? t.mpj : true;
     const zdanieTrasy = (t: Tr) => {
       if (t.same) return `Podróż w obrębie kraju (${t.a}): paszport, EKUZ, adapter do gniazdek i wymiana waluty nie są potrzebne.`;
       const DOK: Record<string, string> = {
@@ -699,6 +705,7 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
       };
       const nz = t.nz.length ? `Nie znam szczegółów wjazdu dla: ${t.nz.join(', ')}. ${t.pl ? 'Sprawdź gov.pl.' : 'Sprawdź w konsulacie.'} ` : '';
       const pjz = !t.auto ? '' : !t.mpj ? `, prawo jazdy: ${t.pl ? 'polskie' : 'krajowe'} wystarczy` : !t.pl ? ', prawo jazdy: sprawdź dla swojego kraju' : t.pj === 'sprawdz' ? ', prawo jazdy: sprawdź, czy potrzebne MPJ' : `, prawo jazdy: potrzebne MPJ (wzór ${t.pj === 'mpj1949' ? 1949 : 1968})`;
+      const MAL: Record<string, string> = { tak: 'tak', czesciowo: 'w części kraju', nie: 'nie', sprawdz: 'sprawdź w kalkulatorze szczepień' };
       const sz = t.sz;
       const ZG = 'Świadectwo szczepień przeciw żółtej gorączce: ';
       const szz = !sz
@@ -709,13 +716,13 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
               ? ZG + 'wymagane (przylot z kraju z ryzykiem żółtej gorączki).'
               : sz.zg !== 'z_ryzyka'
                 ? 'Świadectwo szczepień: niewymagane.'
-                : t.szT
+                : t.szT === 'sprawdz'
                   ? ZG + 'wymagane przy przylocie z kraju z ryzykiem żółtej gorączki; sprawdź w kalkulatorze szczepień.'
                   : ZG + `niewymagane przy bezpośrednim przylocie (start: ${t.a}); przy przesiadce ponad 12 h w kraju z ryzykiem żółtej gorączki wymagane.`) +
           (sz.ryzyko_zg ? ' W kraju jest ryzyko żółtej gorączki: o szczepienie zapytaj lekarza medycyny podróży.' : '') +
           (sz.inne?.length ? ` Wymagane też: ${sz.inne.join(', ')}.` : '') +
           (sz.uwagi_szcz?.length ? ` Uwagi: ${sz.uwagi_szcz.join('; ').replace(/\.?$/, '.')}` : '');
-      return `${nz}${t.a} → ${t.b}: ${DOK[t.tryb]}, ${t.ekuz ? 'EKUZ działa' : 'bez EKUZ'}, ${t.walInna ? (t.wb ? 'waluta ' + t.wb : 'waluta nieznana') : 'ta sama waluta'}, ${t.gnInne ? (t.gb.length ? 'adapter typu ' + t.gb.join('/') : 'adapter (typ gniazdek nieznany)') : 'gniazdka pasują'}${pjz}. ${szz}`;
+      return `${nz}${t.a} → ${t.b}: ${DOK[t.tryb]}, ${t.ekuz ? 'EKUZ działa' : 'bez EKUZ'}, ${t.walInna ? (t.wb ? 'waluta ' + t.wb : 'waluta nieznana') : 'ta sama waluta'}, ${t.gnInne ? (t.gb.length ? 'adapter typu ' + t.gb.join('/') : 'adapter (typ gniazdek nieznany)') : 'gniazdka pasują'}${pjz}, malaria: ${MAL[t.mal] || MAL.sprawdz}. ${szz}`;
     };
     // nazwa i uwaga pozycji zależne od trasy (data-wr); link gov.pl tylko przy starcie z Polski
     type V = { n?: string; u?: string; l?: boolean; b?: boolean; k?: string };
@@ -941,7 +948,7 @@ const DOM = { sklad: 'para', para: 'km', rodzic: 'kobieta', dzieci: '1', klimat:
           (!d.nc || (d.nc === 'z' ? zimnaNoc : !zimnaNoc)) &&
           (jest(d.tr, u.transport) || (u.wyn && !!d.tr?.split(' ').includes('wynajem'))) &&
           jest(d.s, u.sklad) &&
-          (!d.t || (tr ? warunek(tr, d.t) : d.t !== 'mpj' && d.t !== 'szcz')) &&
+          (!d.t || (tr ? warunek(tr, d.t) : !['mpj', 'szcz', 'malaria', 'malaria_ryzyko'].includes(d.t))) &&
           u.dni >= prog &&
           !(d.pb === 'bez' && u.podreczny) &&
           !(d.pb === 'tylko' && !u.podreczny);
