@@ -2,6 +2,8 @@
 // Zapowiedź wpisu z naszej strony: tylko tytuł, 2–4 zdania i link „Czytaj dalej na <źródło>” z rel="nofollow"
 // (blok polecający; link w treści wpisu zostaje bez rel — schemat Piotra 2026-10-26).
 // Zdjęcie z RSS ładuje przeglądarka z serwera źródła (nasze strony); bez zdjęcia karta jest tekstowa.
+// Wygląd: jasna szklana karta na tle „aurora”, odnośnik jako pigułka terakota z twardym cieniem.
+// Odnośnik (href, rel, napis) jest pilnowany przez scripts/sprawdz-linki-firm.mjs — wygląd niesie <span> w środku.
 import { dataIso, dataPoPolsku, type Polecany } from '../lib/wpisy';
 import { t, wstaw } from '../lib/tekst';
 
@@ -14,7 +16,7 @@ const { wpis, napis = t('interfejs.czytajDalejNa') } = Astro.props;
 const d = wpis.data;
 ---
 
-<article class="karta karta--zapowiedz">
+<article class="karta karta--zapowiedz szklo szklo--jasne">
   {
     d.zdjecie && (
       <div class="karta__zdjecie">
@@ -28,7 +30,138 @@ const d = wpis.data;
       <time datetime={dataIso(d.data)}>{dataPoPolsku(d.data)}</time>
     </p>
     <h3 class="karta__tytul">{d.tytul}</h3>
-    <p>{d.opis}</p>
-    <a class="karta__czytaj" href={d.link} rel="nofollow">{wstaw(napis, { zrodlo: d.zrodlo })}</a>
+    <p class="karta__opis">{d.opis}</p>
+    <a class="karta__czytaj" href={d.link} rel="nofollow"><span class="karta__guzik guzik guzik--twardy">{wstaw(napis, { zrodlo: d.zrodlo })}</span></a>
   </div>
 </article>
+
+<style>
+  /* Barwy stałe (nie --morze/--akcent): .szklo--jasne nadpisuje --akcent na #1a2a2e, a .sekcja--morze odwraca --morze.
+     --tekst-cichy w .szklo--jasne = #1a2a2e (efekty.css), więc opis i data są w pełnym kolorze tekstu.
+     kontrast: #1a2a2e na #ebe7dc tekst 12,02:1; #4d5b5c na #ebe7dc tekst 5,73:1; #0f3e47 na #ebe7dc tekst 9,44:1
+       (#ebe7dc = szkło rgb(246 240 228 / .6; efekty.css daje .7 — jaśniej) nad blobem aurory teal 12 % na piasku — najciemniejsze tło pod szkłem)
+     kontrast: #4d5b5c na #f2e8db tekst 5,85:1 (to samo nad blobem terakoty 12 %)
+     kontrast: #f6f0e4 na #a8452a tekst 5,21:1 (guzik); #f6f0e4 na #8f3a22 tekst 6,62:1 (guzik :hover)
+     W .sekcja--morze szkło .6 nad #0f3e47 dałoby #4d5b5c ≈ 2,9:1 — tam karta ma krycie .96 (prawie pełny piasek). */
+  /* Panel (promień, cień, overflow, uniesienie przy :hover) daje globalne .karta z motyw.css; tu tylko szkło jasne. */
+  .karta--zapowiedz {
+    border-color: rgb(255 255 255 / 0.6);
+    background: rgb(246 240 228 / 0.92);
+  }
+
+  @supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .karta--zapowiedz {
+      background: var(--szklo-jasne, rgb(246 240 228 / 0.6));
+      -webkit-backdrop-filter: blur(var(--szklo-rozmycie, 16px)) saturate(140%);
+      backdrop-filter: blur(var(--szklo-rozmycie, 16px)) saturate(140%);
+    }
+
+    :global(.sekcja--morze) .karta--zapowiedz {
+      background: rgb(246 240 228 / 0.96);
+    }
+  }
+
+  .karta__tekst {
+    gap: var(--o-3);
+  }
+
+  .karta__meta {
+    margin: 0;
+    color: var(--tekst-cichy);
+    font-size: var(--t-2);
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.06em;
+  }
+
+  /* źródło i data w jednym wierszu; kropka na końcu źródła, więc zawinięty wiersz nie zaczyna się od „·” */
+  .karta__meta > * + *::before {
+    content: none;
+  }
+
+  .karta__meta > :not(:last-child)::after {
+    content: '·';
+    margin-inline: var(--o-2);
+    color: var(--tekst-cichy);
+    font-weight: 400;
+  }
+
+  .karta--zapowiedz .karta__zrodlo {
+    display: inline;
+    color: #0f3e47;
+    font-weight: 700;
+  }
+
+  .karta__tytul {
+    font-family: var(--font-nagl);
+    font-size: var(--t-4);
+    line-height: 1.2;
+  }
+
+  .karta__opis {
+    margin: 0;
+    color: var(--tekst-cichy);
+    font-size: var(--t-2);
+    line-height: 1.55;
+  }
+
+  /* Odnośnik zostaje nietknięty i nieprzesuwany (jego ::after z motyw.css rozciąga klik na całą kartę);
+     przesuwa się tylko <span> w środku — transform na <a> zamknąłby ::after w guziku. */
+  .karta__czytaj,
+  .karta:hover .karta__czytaj {
+    align-self: flex-start;
+    margin-top: auto;
+    padding-top: var(--o-3);
+    color: var(--guzik-tekst, #f6f0e4);
+    text-decoration: none;
+  }
+
+  .karta__guzik {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--cel-dotyku);
+    /* Długa nazwa źródła łamie napis na dwa wiersze (390 px): odstęp pionowy i interlinia, żeby tekst nie dotykał obrysu. */
+    padding: var(--o-2) var(--o-6);
+    border: 2px solid #0f3e47;
+    line-height: 1.25;
+    border-radius: var(--promien-pigulki, 999px);
+    background: var(--guzik-tlo, #a8452a);
+    color: var(--guzik-tekst, #f6f0e4);
+    font-size: var(--t-2);
+    font-weight: 700;
+    box-shadow: 3px 3px 0 #0f3e47;
+  }
+
+  .karta:hover .karta__guzik {
+    border-color: #0f3e47;
+    background: var(--guzik-tlo-hover, #8f3a22);
+    color: var(--guzik-tekst, #f6f0e4);
+    box-shadow: 1px 1px 0 #0f3e47;
+  }
+
+  .karta:has(a:focus-visible) {
+    outline: 3px solid #a8452a;
+    outline-offset: 2px;
+  }
+
+  :global(.sekcja--morze) .karta:has(a:focus-visible) {
+    outline-color: #e9b48f;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .karta__guzik {
+      transition:
+        transform var(--ruch-szybki, 160ms ease-out),
+        box-shadow var(--ruch-szybki, 160ms ease-out),
+        background-color var(--ruch-szybki, 160ms ease-out);
+    }
+
+    .karta:hover .karta__guzik {
+      transform: translate(2px, 2px);
+    }
+
+    .karta__czytaj:active .karta__guzik {
+      transform: translate(3px, 3px) scale(0.98);
+      box-shadow: 0 0 0 #0f3e47;
+    }
+  }
+</style>

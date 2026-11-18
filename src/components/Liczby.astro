@@ -1,0 +1,166 @@
+---
+// Pasek liczb pod hero: wpisy opublikowane, działy, polecane firmy — liczone przy budowaniu, prawdziwa liczba w HTML
+// od początku (licznik z Ruch.astro jest ozdobą). Szerokość cyfr zarezerwowana w `ch` (CLS 0).
+// Firmy liczone tym samym filtrem co /polecamy/ (polecamy.astro): nazwa niepusta i adres http(s).
+// Sparkline: wpisy na miesiąc z dat wpisów, tylko gdy dane dają co najmniej 3 miesiące.
+import { t, lista, pobierz } from '../lib/tekst';
+import { opublikowane } from '../lib/wpisy';
+import { DZIALY } from '../lib/dzialy';
+
+const wpisy = await opublikowane();
+const firmy = (Array.isArray(pobierz('polecamy.firmy')) ? (pobierz('polecamy.firmy') as Record<string, unknown>[]) : []).filter(
+  (f) => typeof f?.nazwa === 'string' && f.nazwa.trim() !== '' && typeof f?.adres === 'string' && /^https?:\/\//.test(f.adres.trim()),
+);
+
+// Wpisy na miesiąc (Europe/Warsaw), od najstarszego.
+const miesiac = new Intl.DateTimeFormat('en-CA', { year: 'numeric', month: '2-digit', timeZone: 'Europe/Warsaw' });
+const naMiesiac = new Map<string, number>();
+for (const w of wpisy) {
+  const k = miesiac.format(w.data.data);
+  naMiesiac.set(k, (naMiesiac.get(k) ?? 0) + 1);
+}
+const serie = [...naMiesiac.entries()].sort(([a], [b]) => a.localeCompare(b));
+const W = 120;
+const H = 32;
+const maks = Math.max(1, ...serie.map(([, n]) => n));
+const punkty =
+  serie.length >= 3
+    ? serie.map(([, n], i) => `${((i / (serie.length - 1)) * W).toFixed(1)},${(H - 2 - (n / maks) * (H - 4)).toFixed(1)}`).join(' ')
+    : '';
+const opisWykresu = serie.map(([k, n]) => `${k}: ${n}`).join(', ');
+
+// Odmiana po polsku: [1, 2–4 (bez 12–14), reszta], np. 1 wpis, 22 wpisy, 25 wpisów; formy w teksty.json (liczby.*).
+function odmien(n: number, klucz: string): string {
+  const [jeden, kilka, wiele] = lista(klucz);
+  if (!wiele) return `[brak: ${klucz}]`;
+  if (n === 1) return jeden;
+  const j = n % 10;
+  const d = n % 100;
+  return j >= 2 && j <= 4 && (d < 12 || d > 14) ? kilka : wiele;
+}
+
+const kafle = [
+  { n: wpisy.length, podpis: odmien(wpisy.length, 'liczby.wpisow'), wykres: punkty },
+  { n: DZIALY.length, podpis: odmien(DZIALY.length, 'liczby.dzialow'), wykres: '' },
+  { n: firmy.length, podpis: odmien(firmy.length, 'liczby.firm'), wykres: '' },
+];
+---
+
+<section class="liczby" aria-labelledby="liczby-naglowek">
+  <div class="kontener">
+    <h2 id="liczby-naglowek" class="etykieta liczby__naglowek">{t('liczby.naglowek')}</h2>
+    <ul class="liczby__kafle">
+      {
+        kafle.map((k) => (
+          <li class="szklo--jasne liczby__kafel">
+            <span class="liczby__cyfra" data-licznik style={`--cyfry:${String(k.n).length}`}>
+              {k.n}
+            </span>
+            <span class="liczby__podpis">{k.podpis}</span>
+            {k.wykres && (
+              <svg class="liczby__wykres" viewBox={`0 0 ${W} ${H}`} width={W} height={H} role="img" aria-label={opisWykresu}>
+                <polyline points={k.wykres} fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
+              </svg>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .liczby {
+    position: relative;
+    z-index: 1;
+    margin-top: calc(-1 * var(--o-16));
+  }
+
+  @media (min-width: 48rem) {
+    .liczby {
+      margin-top: calc(-1 * var(--o-24));
+    }
+  }
+
+  /* Nagłówek-etykieta leży jeszcze na dole hero, gdzie nakładka ma tylko ok. .67 krycia: pigułka dostaje własne ciemne szkło
+     (teal .9), żeby jasny napis nie zależał od zdjęcia (teal .9 na bieli #275158: #f6f0e4 ok. 8:1). */
+  .liczby__naglowek {
+    margin-bottom: var(--o-3);
+    border-color: var(--szklo-obrys, rgb(255 255 255 / 0.25));
+    background: var(--szklo-tlo-mocne, rgb(15 62 71 / 0.9));
+    color: var(--na-morzu);
+  }
+
+  /* Trzy kafle w rzędzie także na telefonie (cyfry są krótkie), żeby pasek nie zjadał trzech ekranów. */
+  .liczby__kafle {
+    display: grid;
+    gap: var(--o-2);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .liczby__kafel {
+    display: flex;
+    flex-direction: column;
+    gap: var(--o-1);
+    min-width: 0;
+    padding: var(--o-4) var(--o-3);
+    border: 1px solid var(--linia);
+    border-radius: var(--promien-karty, 6px);
+    background: var(--tlo);
+    box-shadow: var(--cien-miekki, 0 10px 30px rgb(26 42 46 / 0.12));
+    color: var(--tekst);
+  }
+
+  /* Szkło jasne tylko tam, gdzie przeglądarka je umie; bez niego pełne tło piasku (wyżej). Krycie .92, nie --szklo-jasne (.7):
+     przy .7 górna część kafla nad zdjęciem hero robiła szary pas (zrzut 1440, uwaga W1). Rozmycie zostaje jako ślad szkła. */
+  @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+    .liczby__kafel {
+      background: rgb(246 240 228 / 0.92);
+      -webkit-backdrop-filter: blur(var(--szklo-rozmycie, 16px)) saturate(140%);
+      backdrop-filter: blur(var(--szklo-rozmycie, 16px)) saturate(140%);
+    }
+  }
+
+  .liczby__cyfra {
+    display: inline-block;
+    min-width: calc(var(--cyfry, 2) * 1ch);
+    color: var(--morze);
+    font-family: var(--font-nagl);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  /* Pod jasnym szkłem (.92) może leżeć ciemny dół hero: tło złożone nad czernią #e2ddd2.
+     kontrast: #1a2a2e na #e2ddd2 tekst; kontrast: #0f3e47 na #e2ddd2 tekst (wyniki w meldunku W3). */
+  .liczby__podpis {
+    color: var(--tekst);
+    font-size: var(--t-1);
+    font-weight: 600;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+  }
+
+  @media (min-width: 48rem) {
+    .liczby__kafle {
+      gap: var(--o-4);
+    }
+
+    .liczby__kafel {
+      padding: var(--o-6);
+    }
+
+    .liczby__podpis {
+      font-size: var(--t-2);
+    }
+  }
+
+  .liczby__wykres {
+    margin-top: var(--o-2);
+    color: var(--morze); /* nietekst: #0f3e47 na #e2ddd2 (terakota nie wszędzie zdaje) */
+  }
+</style>

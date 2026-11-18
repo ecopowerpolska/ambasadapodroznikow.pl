@@ -1,6 +1,9 @@
 ---
-// Karta wpisu: zdjęcie 3:2 (albo plansza działu, gdy wpis nie ma zdjęcia), linia meta (dział jako odnośnik do działu, data, czas czytania), tytuł, opis.
-// Tytuł jest odnośnikiem rozciągniętym na całą kartę; etykieta działu leży nad nim warstwą (z-index) i prowadzi do działu.
+// Karta wpisu: zdjęcie 3:2 (albo plansza działu, gdy wpis nie ma zdjęcia) ze szklaną pigułką działu w lewym górnym rogu,
+// linia meta (data, czas czytania) kapitalikami, tytuł szeryfem, opis.
+// Tytuł jest JEDYNYM odnośnikiem do wpisu, rozciągniętym na całą kartę (::after); pigułka działu leży nad nim warstwą
+// i prowadzi do działu. Warianty: `glowna` (duża: zdjęcie wyższe, tytuł większy, opis w całości; od 44rem szerokości
+// karty zdjęcie i tekst obok siebie) i `wyrozniona` (ciemna karta „morze” z jasnym tekstem).
 import Foto from './Foto.astro';
 import { adresWpisu, czasCzytania, dataIso, dataPoPolsku, type Wpis } from '../lib/wpisy';
 import { adresDzialu, nazwaDzialu } from '../lib/dzialy';
@@ -8,15 +11,17 @@ import { t, wstaw } from '../lib/tekst';
 
 interface Props {
   wpis: Wpis;
-  /** Karta główna (najnowszy wpis): większe zdjęcie, tekst obok. */
+  /** Karta główna (najnowszy wpis): większe zdjęcie, większy tytuł, pełny opis. */
   glowna?: boolean;
+  /** Ciemna karta w barwie morza z jasnym tekstem (jeden akcent na sekcję). */
+  wyrozniona?: boolean;
   priorytet?: boolean;
   /** Na stronie działu etykieta działu jest zbędna (dział stoi w H1). */
   bezDzialu?: boolean;
   /** Poziom nagłówka tytułu: 2 na listach bez nagłówka sekcji, 3 pod H2 sekcji (domyślnie), 4 pod H3 bloku działu. */
   poziom?: 2 | 3 | 4;
 }
-const { wpis, glowna = false, priorytet = false, bezDzialu = false, poziom = 3 } = Astro.props;
+const { wpis, glowna = false, wyrozniona = false, priorytet = false, bezDzialu = false, poziom = 3 } = Astro.props;
 const d = wpis.data;
 const Tytul = (['h2', 'h3', 'h4'] as const)[poziom - 2];
 const minuty = czasCzytania(wpis);
@@ -26,35 +31,274 @@ const tag = d.tagi.find((x) => x.toLocaleLowerCase('pl') !== nazwaD.toLocaleLowe
 const haslo = tag ? tag.charAt(0).toLocaleUpperCase('pl') + tag.slice(1) : nazwaD;
 ---
 
-<article class:list={['karta', { 'karta--glowna': glowna }]}>
-  {
-    d.zdjecie ? (
-      <div class="karta__zdjecie">
-        <Foto
-          nazwa={d.zdjecie}
-          alt={d.alt}
-          widths={glowna ? [560, 800, 1100, 1400] : [380, 600, 800]}
-          sizes={glowna
-            ? '(min-width: 56rem) 55vw, calc(100vw - 2.5rem)'
-            : '(min-width: 76rem) 24rem, (min-width: 48rem) 45vw, calc(100vw - 2.5rem)'}
-          priorytet={priorytet}
-        />
-      </div>
-    ) : (
-      // Wpis bez zdjęcia: plansza w kolorze działu z jego nazwą (ozdoba; dział i tytuł są w tekście karty)
-      <div class={`karta__plansza plansza--${d.dzial}`} aria-hidden="true">
-        <span class="karta__plansza-dzial">{nazwaD}</span>
-        <span class="karta__plansza-haslo">{haslo}</span>
-      </div>
-    )
-  }
-  <div class="karta__tekst">
-    <p class="karta__meta">
-      {!bezDzialu && <a class="karta__dzial" href={adresDzialu(d.dzial)}>{nazwaDzialu(d.dzial)}</a>}
-      <time datetime={dataIso(d.data)}>{dataPoPolsku(d.data)}</time>
-      <span>{wstaw(t('interfejs.minCzytania'), { n: String(minuty) })}</span>
-    </p>
-    <Tytul class="karta__tytul"><a href={adresWpisu(wpis.id)}>{d.tytul}</a></Tytul>
-    <p>{d.opis}</p>
+<article class:list={['karta', 'karta--wpis', { 'karta--glowna': glowna, 'karta--wyrozniona karta--ciemna': wyrozniona }]}>
+  <div class="karta__uklad">
+    <div class="karta__media">
+      {
+        d.zdjecie ? (
+          <div class="karta__zdjecie">
+            <Foto
+              nazwa={d.zdjecie}
+              alt={d.alt}
+              widths={glowna ? [560, 800, 1100, 1400] : [380, 600, 800]}
+              sizes={glowna
+                ? '(min-width: 56rem) 55vw, calc(100vw - 2.5rem)'
+                : '(min-width: 76rem) 24rem, (min-width: 48rem) 45vw, calc(100vw - 2.5rem)'}
+              priorytet={priorytet}
+            />
+          </div>
+        ) : (
+          // Wpis bez zdjęcia: plansza w kolorze działu (ozdoba; dział i tytuł są w tekście karty).
+          // Gdy pigułka działu stoi na planszy, mała nazwa działu zostaje samą kreską (bez powtórzenia słowa).
+          <div class={`karta__plansza plansza--${d.dzial}`} aria-hidden="true">
+            <span class="karta__plansza-dzial">{bezDzialu ? nazwaD : ''}</span>
+            <span class="karta__plansza-haslo">{haslo}</span>
+          </div>
+        )
+      }
+      {!bezDzialu && <a class="karta__dzial szklo pigulka" href={adresDzialu(d.dzial)}>{nazwaD}</a>}
+    </div>
+    <div class="karta__tekst">
+      <p class="karta__meta">
+        <time datetime={dataIso(d.data)}>{dataPoPolsku(d.data)}</time>
+        <span>{wstaw(t('interfejs.minCzytania'), { n: String(minuty) })}</span>
+      </p>
+      <Tytul class="karta__tytul"><a class="link-rosnacy" href={adresWpisu(wpis.id)}>{d.tytul}</a></Tytul>
+      <p class="karta__lead">{d.opis}</p>
+    </div>
   </div>
 </article>
+
+<style>
+  /* Tokeny z efekty.css (W1): --karta-tlo, --tekst, --tekst-cichy, --akcent, --linia; .karta--ciemna podmienia je na ciemne,
+     .sekcja--morze .karta przywraca jasne. Pary (kontrast-wcag.py, 2026-11-16):
+     kontrast: #1a2a2e na #fbf8f1 tekst; #4d5b5c na #fbf8f1 tekst; #a8452a na #fbf8f1 tekst (karta jasna)
+     kontrast: #f6f0e4 na #0f3e47 tekst 10,28:1; #b9c9c6 na #0f3e47 tekst 6,79:1; #e9b48f na #0f3e47 tekst 6,33:1 (karta ciemna)
+     kontrast: #f6f0e4 na #27515a tekst — pigułka działu: szkło rgb(15 62 71 / .9) nad BIAŁYM pikselem zdjęcia
+     kontrast: #a8452a na #f6f0e4 nietekst 5,21:1 (fokus); #a8452a na #0f3e47 nietekst 1,97:1 ZA MAŁO → w .sekcja--morze fokus #e9b48f 6,33:1
+     obrys #cdbf9f na #f6f0e4 1,60:1 — ozdoba; granicę karty niesie tło i cień, nie obrys */
+  /* Panel karty (tło --karta-tlo, obrys 1 px, promień, cień, uniesienie i zoom przy :hover) jest GLOBALNY w motyw.css (W1).
+     Tu tylko: kontener zapytań i wewnętrzny układ (.karta__uklad), fokus, wariant główny, pigułka działu.
+     display:flex nadpisuje globalną siatkę .karta--glowna (7fr 5fr) — układ karty głównej robi zapytanie kontenera niżej. */
+  .karta {
+    --k-fokus: #a8452a;
+
+    container-type: inline-size;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* Ciemna sekcja: jasna karta zostaje jasna (czytelna), zmienia się tylko kolor fokusa obok ciemnego tła */
+  :global(.sekcja--morze) .karta {
+    --k-fokus: #e9b48f;
+  }
+
+  .karta__uklad {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+  }
+
+  .karta__media {
+    position: relative;
+  }
+
+  /* Plansza: barwy działu z palety bazowej — także w karcie ciemnej i na morzu, gdzie tokeny są odwrócone */
+  .karta__plansza {
+    --morze: #0f3e47;
+    --na-morzu: #f6f0e4;
+    --na-morzu-akcent: #e9b48f;
+    --akcent: #a8452a;
+    --tekst: #1a2a2e;
+    --tekst-cichy: #4d5b5c;
+    --powierzchnia-mocna: #e0d4b9;
+    border-radius: 0;
+  }
+
+  /* Szklana pigułka działu: lewy górny róg zdjęcia, nad rozciągniętym odnośnikiem tytułu (z-index).
+     Szkło mocne (--szklo-tlo-mocne), bo pod nim może leżeć najjaśniejszy piksel zdjęcia; barwy stałe, nie tokeny,
+     bo .karta--ciemna i .sekcja--morze odwracają --morze/--na-morzu. */
+  .karta__dzial,
+  .karta__dzial.pigulka.szklo {
+    position: absolute;
+    z-index: 1;
+    top: var(--o-3);
+    left: var(--o-3);
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--cel-dotyku);
+    margin: 0;
+    padding: 0 var(--o-4);
+    border: 1px solid var(--szklo-obrys, rgb(255 255 255 / 0.25));
+    border-radius: var(--promien-pigulki, 999px);
+    background: rgb(15 62 71 / 0.92);
+    color: #f6f0e4;
+    font-family: var(--font-tekst);
+    font-size: var(--t-1);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgb(15 62 71 / 0.25);
+  }
+
+  @supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .karta__dzial,
+    .karta__dzial.pigulka.szklo {
+      background: var(--szklo-tlo-mocne, rgb(15 62 71 / 0.9));
+      -webkit-backdrop-filter: blur(var(--szklo-rozmycie, 16px)) saturate(140%);
+      backdrop-filter: blur(var(--szklo-rozmycie, 16px)) saturate(140%);
+    }
+  }
+
+  .karta__dzial:hover,
+  .karta__dzial:active {
+    color: #f6f0e4;
+    opacity: 1;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.2em;
+  }
+
+  /* Fokus pigułki: jasny pierścień + ciemna obwódka — widoczny na każdym zdjęciu */
+  .karta .karta__dzial:focus-visible {
+    outline: 2px solid #f6f0e4;
+    outline-offset: 0;
+    box-shadow: 0 0 0 5px #0f3e47;
+  }
+
+  .karta__tekst {
+    gap: var(--o-2);
+  }
+
+  .karta__meta {
+    margin: 0;
+    color: var(--tekst-cichy);
+    font-size: var(--t-2);
+    font-variant-caps: all-small-caps;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.06em;
+  }
+
+  /* kropka na KOŃCU pozycji (nie na początku następnej): przy zawinięciu w wąskiej karcie wiersz nie zaczyna się od „·” */
+  .karta__meta > * + *::before {
+    content: none;
+  }
+
+  .karta__meta > :not(:last-child)::after {
+    content: '·';
+    margin-left: var(--o-2);
+    color: var(--tekst-cichy);
+  }
+
+  .karta__tytul {
+    font-family: var(--font-nagl);
+    font-size: var(--t-4);
+    line-height: 1.2;
+  }
+
+  /* .link-rosnacy (efekty.css) rośnie tu od najechania na CAŁĄ kartę; bez cienkiej linii spoczynkowej
+     (karta jest odnośnikiem w całości), bez podkreślenia z motyw.css */
+  .karta__tytul a,
+  .karta:hover .karta__tytul a {
+    color: var(--tekst);
+    text-decoration: none;
+    background-size: 0% 2px, 0% 1px;
+  }
+
+  .karta:hover .karta__tytul a,
+  .karta:focus-within .karta__tytul a {
+    color: var(--akcent);
+    background-size: 100% 2px, 0% 1px;
+  }
+
+  .karta p.karta__lead {
+    margin: 0;
+    color: var(--tekst-cichy);
+    font-size: var(--t-2);
+    line-height: 1.55;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    overflow: hidden;
+  }
+
+  /* Fokus: cała karta dostaje obwódkę, gdy fokus ma odnośnik tytułu (pigułka ma własny pierścień) */
+  .karta:has(a:focus-visible) {
+    outline: none;
+  }
+
+  .karta:has(.karta__tytul a:focus-visible) {
+    outline: 3px solid var(--k-fokus);
+    outline-offset: 2px;
+  }
+
+  .karta .karta__tytul a:focus-visible {
+    outline: none;
+  }
+
+  /* :hover robi motyw.css; to samo przy fokusie klawiatury w karcie */
+  .karta:focus-within {
+    box-shadow: var(--cien-uniesiony, 0 18px 40px rgb(26 42 46 / 0.18));
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .karta:focus-within {
+      transform: translateY(-4px);
+    }
+
+    .karta:focus-within .karta__zdjecie :global(img) {
+      transform: scale(1.04);
+    }
+
+    .karta__tytul a {
+      transition:
+        background-size var(--ruch-plynny, 320ms cubic-bezier(0.2, 0.7, 0.2, 1)),
+        color var(--ruch-szybki, 160ms ease-out);
+    }
+  }
+
+  /* ── Wariant główny: zdjęcie na pełną szerokość karty (wyższe), tytuł --t-5, opis w całości;
+        od 44rem szerokości KARTY (kontener, nie okno) zdjęcie i tekst obok siebie, tytuł --t-6 ── */
+  .karta--glowna {
+    margin-bottom: 0;
+  }
+
+  .karta--glowna .karta__tekst {
+    gap: var(--o-3);
+    padding: var(--o-6);
+  }
+
+  .karta--glowna .karta__tytul {
+    font-size: var(--t-5);
+    line-height: 1.12;
+  }
+
+  .karta--glowna p.karta__lead {
+    font-size: var(--t-3);
+    display: block;
+    -webkit-line-clamp: unset;
+    line-clamp: none;
+    overflow: visible;
+  }
+
+  @container (min-width: 44rem) {
+    .karta--glowna .karta__uklad {
+      display: grid;
+      grid-template-columns: 7fr 5fr;
+      align-items: center;
+    }
+
+    .karta--glowna .karta__tekst {
+      justify-content: center;
+      padding: var(--o-8);
+    }
+
+    .karta--glowna .karta__tytul {
+      font-size: var(--t-6);
+      line-height: 1.05;
+    }
+  }
+</style>

@@ -53,12 +53,16 @@
     "brakPolecanych": "Polecane firmy nie opublikowały jeszcze nowych wpisów.",
     "minCzytania": "{n} min czytania",
     "wiecejZDzialu": "Więcej z działu {dzial}",
-    "podpisRedakcji": "Redakcja Ambasady Podróżników"
+    "podpisRedakcji": "Redakcja Ambasady Podróżników",
+    "doGory": "Do góry",
+    "etykietaDzialu": "Dział"
   },
   "stopka": {
     "redakcja": "Redakcja Ambasady Podróżników",
     "polityka": "Polityka prywatności",
-    "prawa": "© {rok} Redakcja Ambasady Podróżników"
+    "prawa": "© {rok} Redakcja Ambasady Podróżników",
+    "kolumnaDzialy": "Działy",
+    "kolumnaRedakcja": "Redakcja"
   },
   "glowna": {
     "tytulKarty": "Ambasada Podróżników: o wyjazdach i o domu",
@@ -72,7 +76,33 @@
     "naglowekDzialy": "Według tematu",
     "zNaszychStronNaglowek": "Polecamy",
     "zNaszychStronWstep": "Firmy, które polecamy, też piszą. Tu są ich najnowsze wpisy.",
-    "zNaszychStronWszystkie": "Zobacz, kogo polecamy"
+    "zNaszychStronWszystkie": "Zobacz, kogo polecamy",
+    "ctaCzytaj": "Czytaj najnowsze",
+    "ctaPolecamy": "Zobacz, kogo polecamy",
+    "etykietaNajnowsze": "Świeżo z redakcji",
+    "etykietaDzialy": "Działy",
+    "etykietaPolecamy": "Z naszych stron"
+  },
+  "liczby": {
+    "naglowek": "Ambasada w liczbach",
+    "wpisow": [
+      "wpis",
+      "wpisy",
+      "wpisów"
+    ],
+    "dzialow": [
+      "dział",
+      "działy",
+      "działów"
+    ],
+    "firm": [
+      "polecana firma",
+      "polecane firmy",
+      "polecanych firm"
+    ]
+  },
+  "wpis": {
+    "postepCzytania": "Postęp czytania"
   },
   "dzialy": {
     "podroze": {
@@ -151,7 +181,9 @@
     "odwiedz": "Odwiedź {nazwa}",
     "naglowekZapowiedzi": "Co ostatnio napisali",
     "wstepZapowiedzi": "Najnowsze wpisy z blogów tych firm. Tu widzisz tytuł i kilka zdań, całość czytasz u nich.",
-    "czytajDalej": "Czytaj dalej na {zrodlo}"
+    "czytajDalej": "Czytaj dalej na {zrodlo}",
+    "etykieta": "Firmy",
+    "etykietaZapowiedzi": "Z ich blogów"
   },
   "o-nas": {
     "tytulKarty": "O nas: kto pisze Ambasadę Podróżników",
@@ -191,13 +223,15 @@
           "Osobnej strony kontaktowej nie ma. Najprościej odezwać się do redakcji komentarzem pod dowolnym wpisem: o każdym komentarzu wiemy."
         ]
       }
-    ]
+    ],
+    "etykieta": "Redakcja"
   },
   "blog": {
     "tytulKarty": "Wszystkie wpisy | Ambasada Podróżników",
     "opisMeta": "Wszystkie wpisy od najnowszego: podróże, dom, pasje, technologia i zdrowie. Pakowanie, pierwszy szlak, dom na czas wyjazdu i sprzęt w drodze.",
     "h1": "Wszystkie wpisy",
-    "wstep": "Wszystko, co napisaliśmy, od najnowszego wpisu. Jeśli wolisz jeden temat, wybierz dział w menu."
+    "wstep": "Wszystko, co napisaliśmy, od najnowszego wpisu. Jeśli wolisz jeden temat, wybierz dział w menu.",
+    "etykieta": "Blog"
   },
   "komentarze": {
     "naglowek": "Komentarze",
@@ -363,6 +397,7 @@
     "h1": "Nie ma tu takiej strony",
     "tekst": "Adres mógł się zmienić albo ma literówkę. Jeśli szukasz dawnego biura wyjazdów Ambasada Podróżników, to nie jest już jego strona.",
     "glowna": "Wróć na stronę główną",
-    "blog": "Zobacz wszystkie wpisy"
+    "blog": "Zobacz wszystkie wpisy",
+    "dzialyNaglowek": "Albo zajrzyj do działu"
   }
 }

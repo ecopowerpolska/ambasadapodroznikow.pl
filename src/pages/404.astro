@@ -1,16 +1,106 @@
 ---
 import Bazowy from '../layouts/Bazowy.astro';
 import { t } from '../lib/tekst';
+import { DZIALY, adresDzialu, nazwaDzialu } from '../lib/dzialy';
 ---
 
 <Bazowy tytul={t('e404.tytulKarty')} opis={t('e404.opisMeta')} bezIndeksu>
   <div class="kontener strona-404">
-    <p class="strona-404__liczba" aria-hidden="true">404</p>
-    <h1>{t('e404.h1')}</h1>
-    <p>{t('e404.tekst')}</p>
-    <div class="przyciski">
+    <p class="strona-404__liczba gradient-tekstu wejscie" aria-hidden="true">404</p>
+    <h1 class="wejscie" style="--i:1">{t('e404.h1')}</h1>
+    <p class="wejscie" style="--i:2">{t('e404.tekst')}</p>
+    <div class="przyciski wejscie" style="--i:3">
       <a class="przycisk" href="/">{t('e404.glowna')}</a>
-      <a class="przycisk" href="/blog/">{t('e404.blog')}</a>
+      <a class="przycisk przycisk--obrys" href="/blog/">{t('e404.blog')}</a>
     </div>
+    <nav class="strona-404__dzialy" aria-labelledby="e404-dzialy">
+      <p class="strona-404__etykieta wejscie" style="--i:4" id="e404-dzialy">{t('e404.dzialyNaglowek', 'Albo zajrzyj do działu')}</p>
+      <ul>
+        {
+          DZIALY.map((d, i) => (
+            <li class="wejscie" style={`--i:${5 + i}`}>
+              <a class="pigulka strona-404__pigulka" href={adresDzialu(d)}>{nazwaDzialu(d)}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
   </div>
 </Bazowy>
+
+<style>
+  .strona-404 {
+    padding-block: var(--o-16) var(--o-24);
+  }
+
+  /* Liczba to ozdoba (aria-hidden): .gradient-tekstu z efekty.css (teal → terakota, 8 s, stoi przy reduce,
+     zapasowo terakota). Rozmiar stały (clamp) — zero przesunięć układu. */
+  .strona-404__liczba {
+    font-family: var(--font-nagl);
+    font-size: clamp(6rem, 20vw, 14rem);
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+  }
+
+  .strona-404 h1 {
+    font-size: var(--t-sekcji);
+    line-height: 1.05;
+  }
+
+  .strona-404__dzialy {
+    margin-top: var(--o-12);
+  }
+
+  .strona-404__etykieta {
+    color: var(--tekst-cichy);
+    font-size: var(--t-1);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .strona-404__dzialy ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--o-3);
+    margin-top: var(--o-3);
+    list-style: none;
+  }
+
+  /* Pigułka działu: obrys 1 px teal na piasku, cel dotyku 44 px. */
+  .strona-404__pigulka {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--cel-dotyku);
+    padding: 0 var(--o-6);
+    border: 1px solid var(--morze);
+    border-radius: var(--promien-pigulki);
+    background: transparent;
+    color: var(--morze);
+    font-size: var(--t-2);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .strona-404__pigulka:hover {
+    background: var(--morze);
+    color: var(--na-morzu);
+    text-decoration: none;
+  }
+
+  .strona-404__pigulka:focus-visible {
+    outline: 3px solid var(--akcent);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .strona-404__pigulka {
+      transition: background-color var(--ruch-szybki), color var(--ruch-szybki), transform var(--ruch-szybki);
+    }
+
+    .strona-404__pigulka:active {
+      transform: scale(0.98);
+    }
+  }
+</style>

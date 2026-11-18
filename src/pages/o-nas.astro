@@ -20,31 +20,98 @@ const schemat = [okruszki(pozycje)];
 ---
 
 <Bazowy tytul={t('o-nas.tytulKarty')} opis={t('o-nas.opisMeta')} {schemat}>
-  <Okruszki pozycje={pozycje} />
-  <div class="kontener podstrona-glowa">
-    <h1>{t('o-nas.h1')}</h1>
-    <p class="podstrona-glowa__wstep">{t('o-nas.wstep')}</p>
-  </div>
-  <div class="kontener strona-tekst">
-    <div class="dwie-kolumny">
-      <div class="proza">
-        {lista('o-nas.akapity').map((a) => <p>{a}</p>)}
+  <div class="sekcja--aurora o-nas">
+    <Okruszki pozycje={pozycje} />
+    <div class="kontener podstrona-glowa">
+      <p class="etykieta">{t('o-nas.etykieta')}</p>
+      <h1 class="o-nas__tytul">{t('o-nas.h1')}</h1>
+      <p class="podstrona-glowa__wstep o-nas__wstep">{t('o-nas.wstep')}</p>
+    </div>
+    <div class="kontener strona-tekst">
+      <div class="o-nas__uklad">
+        <div class="proza szklo szklo--jasne o-nas__tekst">
+          {lista('o-nas.akapity').map((a) => <p>{a}</p>)}
+          {
+            sekcje.map((s) => (
+              <>
+                <h2>{s.naglowek}</h2>
+                {s.akapity.map((a) => <p>{a}</p>)}
+              </>
+            ))
+          }
+        </div>
         {
-          sekcje.map((s) => (
-            <>
-              <h2>{s.naglowek}</h2>
-              {s.akapity.map((a) => <p>{a}</p>)}
-            </>
-          ))
+          zdjecieNazwa && (
+            <figure class="o-nas__zdjecie">
+              <Foto nazwa={zdjecieNazwa} widths={[480, 720, 960, 1280]} sizes="(min-width: 56rem) 34rem, calc(100vw - 2.5rem)" priorytet ramka />
+            </figure>
+          )
         }
       </div>
-      {
-        zdjecieNazwa && (
-          <figure>
-            <Foto nazwa={zdjecieNazwa} widths={[480, 720, 960]} sizes="(min-width: 56rem) 40vw, calc(100vw - 2.5rem)" priorytet />
-          </figure>
-        )
-      }
     </div>
   </div>
 </Bazowy>
+
+<style>
+  /* Ekran dzielony (katalog nr 4): tekst w jasnym szkle po lewej, zdjęcie we własnej proporcji 3:2 po prawej (przyklejone
+     przy przewijaniu długiego tekstu); na telefonie jedna kolumna. Treść słowo w słowo z teksty.json `o-nas`. */
+  .o-nas__tytul {
+    margin-top: var(--o-3);
+    font-size: var(--t-sekcji, clamp(1.875rem, 4vw, 3.25rem));
+    line-height: 1.05;
+  }
+
+  @media (min-width: 48rem) {
+    .podstrona-glowa .o-nas__tytul {
+      font-size: var(--t-sekcji, clamp(1.875rem, 4vw, 3.25rem));
+    }
+  }
+
+  .o-nas__wstep {
+    max-width: none;
+  }
+
+  .o-nas__uklad {
+    display: grid;
+    gap: var(--o-8);
+    align-items: start;
+  }
+
+  .o-nas__tekst {
+    padding: var(--o-6);
+  }
+
+  .o-nas__tekst > :first-child {
+    margin-top: 0;
+  }
+
+  .o-nas__zdjecie {
+    margin: 0;
+  }
+
+  .o-nas__zdjecie :global(img) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    border: 1px solid var(--linia);
+    border-radius: var(--promien-karty, 6px);
+    box-shadow: var(--cien-miekki);
+  }
+
+  @media (min-width: 56rem) {
+    .o-nas__uklad {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: var(--o-12);
+    }
+
+    .o-nas__tekst {
+      padding: var(--o-8) var(--o-12);
+    }
+
+    .o-nas__zdjecie {
+      position: sticky;
+      top: calc(var(--wys-naglowka) + var(--o-6));
+    }
+  }
+</style>

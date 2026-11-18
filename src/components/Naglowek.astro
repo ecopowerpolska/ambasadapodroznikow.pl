@@ -2,13 +2,17 @@
 // Naglowek.astro — przyklejony pas w jednej linii. Progi zapytaniem kontenera (motyw.css), nie oknem (potwor-ux-ui §G1).
 // Menu z teksty.json `menu` (7 pozycji); próg pasa w motyw.css zmierzony CDP dla tych 7 pozycji.
 // Telefon: przełącznik menu (aria-expanded, Esc, klik poza panelem, inert na main i stopce).
+// Szkło: data-naglowek → Ruch.astro dodaje data-przewiniety po 40 px; wtedy tło --szklo-tlo-mocne + rozmycie.
+// nadHero: przezroczysty nad pełnoekranowym zdjęciem (jasny tekst, przyciemnienie od góry), dopóki strona stoi na górze.
 import { t, pobierz } from '../lib/tekst';
 
 interface Props {
   /** Adres działu, który menu ma podświetlić, gdy strona nie leży pod jego adresem (wpis /blog/<slug>/ → /<dzial>/). */
   podswietl?: string;
+  /** Strona z pełnoekranowym zdjęciem na górze <main> (Bazowy `heroPelny`). */
+  nadHero?: boolean;
 }
-const { podswietl } = Astro.props;
+const { podswietl, nadHero = false } = Astro.props;
 const sciezka = Astro.url.pathname;
 // Pozycje menu z teksty.json `menu` [{nazwa, adres}] — kolejność pliku = kolejność w pasie.
 const pozycje = (Array.isArray(pobierz('menu')) ? (pobierz('menu') as { nazwa?: unknown; adres?: unknown }[]) : [])
@@ -16,7 +20,7 @@ const pozycje = (Array.isArray(pobierz('menu')) ? (pobierz('menu') as { nazwa?: 
   .map((p) => ({ ...p, biezaca: p.adres === podswietl || (p.adres !== '/' && sciezka.startsWith(p.adres)) }));
 ---
 
-<header class="naglowek" id="naglowek">
+<header class:list={['naglowek', { 'naglowek--nad-hero': nadHero }]} id="naglowek" data-naglowek>
   <div class="naglowek__pas kontener">
     <a class="marka" href="/" aria-label={t('interfejs.marka_aria')} aria-current={sciezka === '/' ? 'page' : undefined}>
       <svg class="marka__znak" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
@@ -45,7 +49,7 @@ const pozycje = (Array.isArray(pobierz('menu')) ? (pobierz('menu') as { nazwa?: 
         {
           pozycje.map((p) => (
             <li>
-              <a href={p.adres} aria-current={p.biezaca ? (sciezka === p.adres ? 'page' : 'true') : undefined}>{p.nazwa}</a>
+              <a href={p.adres} aria-current={p.biezaca ? (sciezka === p.adres ? 'page' : 'true') : undefined}><span class="link-rosnacy">{p.nazwa}</span></a>
             </li>
           ))
         }
@@ -61,6 +65,62 @@ const pozycje = (Array.isArray(pobierz('menu')) ? (pobierz('menu') as { nazwa?: 
     .menu ul { display: flex; flex-wrap: wrap; gap: 0 1rem; }
   </style>
 </noscript>
+
+<style>
+  /* Stany pasa (szkło po przewinięciu, „nad hero”, otwarte menu, pasek postępu) są w motyw.css (W1: [data-przewiniety],
+     .naglowek--nad-hero). Tu tylko to, czego tam nie ma. */
+
+  /* Otwarte menu telefonu BEZ backdrop-filter: filtr robi z pasa blok zawierający dla position: fixed i panel menu
+     (inset od --wys-naglowka do dołu okna) zapadłby się do wysokości pasa, gdy menu otwiera się po przewinięciu. */
+  .naglowek[data-otwarte] {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    text-shadow: none;
+  }
+
+  /* Fokus 3 px brzoskwinia (#e9b48f) na morzu — terakota #a8452a na morzu byłaby niewidoczna. */
+  .marka:focus-visible,
+  .menu a:focus-visible,
+  .menu-przelacznik:focus-visible {
+    outline: 3px solid var(--na-morzu-akcent);
+    outline-offset: 2px;
+  }
+
+  /* Pozycje menu: podkreślenie rośnie od lewej; w pasie bez linii spoczynkowej .link-rosnacy (pas to nawigacja,
+     rozpoznawalna położeniem), bieżąca pozycja ma linię pełną. */
+  .menu a:hover,
+  .menu a[aria-current] {
+    text-decoration: none;
+  }
+
+  .menu .link-rosnacy {
+    background-size: 0% 2px, 0% 1px;
+  }
+
+  .menu a:hover .link-rosnacy,
+  .menu a:focus-visible .link-rosnacy,
+  .menu a[aria-current] .link-rosnacy {
+    background-size: 100% 2px, 0% 1px;
+  }
+
+  /* Marka większa tam, gdzie pas ma zapas (zmierzony próg menu 61 rem + ok. 2,5 rem na większy krój). */
+  @container naglowek (min-width: 72rem) {
+    .marka {
+      font-size: 1.625rem;
+    }
+
+    .marka__znak {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .menu-przelacznik:active {
+      transform: scale(0.98);
+    }
+  }
+</style>
 
 <script>
   const naglowek = document.getElementById('naglowek') as HTMLElement;

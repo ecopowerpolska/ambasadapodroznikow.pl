@@ -1,0 +1,426 @@
+/* efekty.css — szkło, głębia i ruch („maks wizualny”, decyzja Piotra 2026-11-16).
+   Importuje go layout Bazowy ZARAZ PO motyw.css (import '../styles/efekty.css'); motyw.css z niego korzysta
+   (tokeny --promien-*, --cien-*, --ruch-*, --t-hero, --t-sekcji), więc bez tego importu karty tracą cień i promień.
+   Kontrasty wszystkich par użytych tutaj są policzone i zapisane komentarzami na górze motyw.css.
+
+   Zasady ruchu: ciągły ruch wyłącznie transform/opacity; każda animacja i przejście pod
+   prefers-reduced-motion: no-preference; przy reduce wszystko stoi i jest widoczne bez JS. */
+
+:root {
+  /* ── szkło: krycie podniesione wobec zlecenia (.55 → .75, .78 → .9, jasne .6 → .7), bo przy .55 jasny tekst
+     na szkle nad piaskiem miał 3,06:1 (kolor wynikowy #778e8e). Teraz: .75 nad piaskiem = #496a6e (5,18:1),
+     nad bielą = #4b6e75 (4,89:1); .9 nad piaskiem = #265057 (7,82:1; #e9b48f 4,81:1). Na --szklo-tlo
+     wolno WYŁĄCZNIE tekst #f6f0e4 (cichy #b9c9c6 i akcent #e9b48f tam nie zdają). ── */
+  --szklo-tlo: rgb(15 62 71 / .75);
+  --szklo-tlo-mocne: rgb(15 62 71 / .9);
+  --szklo-jasne: rgb(246 240 228 / .7); /* nad czernią #aca8a0: #1a2a2e 6,27:1, #0f3e47 4,92:1; innego tekstu nie */
+  --szklo-obrys: rgb(255 255 255 / .25);
+  --szklo-rozmycie: 16px;
+
+  --cien-miekki: 0 10px 30px rgb(26 42 46 / .12);
+  --cien-uniesiony: 0 18px 40px rgb(26 42 46 / .18);
+  --cien-twardy: 3px 3px 0 var(--morze);
+
+  --promien-karty: 6px;
+  --promien-pigulki: 999px;
+
+  --ruch-szybki: 160ms ease-out;
+  --ruch-plynny: 320ms cubic-bezier(.2, .7, .2, 1);
+  --ruch-wejscia: 600ms cubic-bezier(.2, .7, .2, 1);
+
+  --t-hero: clamp(2.5rem, 6vw, 5.5rem);
+  --t-sekcji: clamp(1.875rem, 4vw, 3.25rem);
+
+  /* stałe barwy niezależne od lokalnych nadpisań tokenów (.sekcja--morze nadpisuje --morze) */
+  --morze-tlo: #0f3e47;
+  --morze-gleboki: #0a2c33;
+  --karta-tlo: #fbf8f1;
+  --guzik-tlo: #a8452a;
+  --guzik-tlo-hover: #8f3a22;
+  --guzik-tekst: #f6f0e4;
+}
+
+/* ══ SZKŁO ══ */
+.szklo {
+  /* tekst na szkle wyłącznie jasny i pełny (patrz :root) — komponenty w środku dziedziczą */
+  --tekst: #f6f0e4;
+  --tekst-cichy: #f6f0e4;
+  --akcent: #f6f0e4;
+  --akcent-mocny: #f6f0e4;
+  --linia: var(--szklo-obrys);
+  background: var(--szklo-tlo);
+  -webkit-backdrop-filter: blur(var(--szklo-rozmycie)) saturate(140%);
+  backdrop-filter: blur(var(--szklo-rozmycie)) saturate(140%);
+  border: 1px solid var(--szklo-obrys);
+  border-radius: var(--promien-karty);
+  box-shadow: var(--cien-miekki);
+  color: #f6f0e4;
+}
+
+.szklo :focus-visible {
+  outline-color: #f6f0e4;
+}
+
+.szklo--jasne {
+  --tekst: #1a2a2e;
+  --tekst-cichy: #1a2a2e;
+  --akcent: #1a2a2e;
+  --akcent-mocny: #0f3e47;
+  background: var(--szklo-jasne);
+  border-color: rgb(255 255 255 / .5);
+  color: #1a2a2e;
+}
+
+.szklo--jasne :focus-visible {
+  outline-color: #0f3e47;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .szklo {
+    background: rgb(15 62 71 / .92); /* #214c54 nad piaskiem: #f6f0e4 8,31:1 */
+  }
+
+  .szklo--jasne {
+    background: rgb(246 240 228 / .95);
+  }
+}
+
+/* ══ ETYKIETA nad H2 sekcji: pigułka obrysowa, kapitaliki ══ */
+.etykieta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--o-2);
+  margin-bottom: var(--o-3);
+  padding: var(--o-1) var(--o-3);
+  border: 1px solid currentColor;
+  border-radius: var(--promien-pigulki);
+  color: var(--akcent);
+  font-family: var(--font-tekst);
+  font-size: var(--t-1);
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+/* ══ PIGUŁKI (plakietki) ══ */
+.pigulka {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--o-1);
+  padding: var(--o-1) var(--o-3);
+  border: 1px solid var(--linia);
+  border-radius: var(--promien-pigulki);
+  background: var(--karta-tlo);
+  color: var(--tekst);
+  font-family: var(--font-tekst);
+  font-size: var(--t-1);
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
+}
+
+.pigulka--akcent {
+  border-color: var(--guzik-tlo);
+  background: var(--guzik-tlo);
+  color: var(--guzik-tekst);
+}
+
+/* pigułka szklana na zdjęciu karty: class="pigulka szklo szklo--jasne" */
+.pigulka.szklo {
+  border-radius: var(--promien-pigulki);
+  box-shadow: none;
+}
+
+a.pigulka:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+a.pigulka:active {
+  opacity: .85;
+}
+
+/* ══ GUZIKI: pigułka terakota; --twardy = akcent neobrutalny (twardy cień 3 px) ══ */
+.guzik {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--o-2);
+  min-height: var(--cel-dotyku);
+  padding: var(--o-2) var(--o-6);
+  border: 2px solid var(--guzik-tlo);
+  border-radius: var(--promien-pigulki);
+  background: var(--guzik-tlo);
+  color: var(--guzik-tekst);
+  font-family: var(--font-tekst);
+  font-size: var(--t-2);
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.guzik:hover {
+  border-color: var(--guzik-tlo-hover);
+  background: var(--guzik-tlo-hover);
+  color: var(--guzik-tekst);
+  text-decoration: none;
+}
+
+.guzik:active {
+  color: var(--guzik-tekst);
+}
+
+.guzik:disabled,
+.guzik[aria-disabled='true'] {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+/* guzik obrysowy: na szkle i na morzu jasny obrys i tekst dziedziczą się z koloru tła sekcji */
+.guzik--obrys {
+  border-color: currentColor;
+  background: transparent;
+  color: var(--tekst);
+}
+
+.guzik--obrys:hover {
+  border-color: var(--tekst);
+  background: var(--tekst);
+  color: var(--tlo);
+}
+
+.szklo .guzik--obrys:hover,
+.sekcja--morze .guzik--obrys:hover {
+  border-color: #f6f0e4;
+  background: #f6f0e4;
+  color: #0f3e47;
+}
+
+.guzik--twardy {
+  border-color: var(--morze);
+  box-shadow: var(--cien-twardy);
+}
+
+/* ══ LINK Z PODKREŚLENIEM ROSNĄCYM OD LEWEJ (spoczynek: cienka linia, więc link nie zależy od samego koloru) ══ */
+.link-rosnacy {
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor), linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%, 0 100%;
+  background-size: 0% 2px, 100% 1px;
+  padding-bottom: 2px;
+}
+
+.link-rosnacy:hover,
+.link-rosnacy:focus-visible {
+  background-size: 100% 2px, 100% 1px;
+  text-decoration: none;
+}
+
+/* ══ SEKCJA AURORA: dwa rozmyte bloby (teal, terakota; do 12 % krycia) na piasku ══
+   Kolor wynikowy w środku blobu: teal #dadbd1, terakota #eddbce. #a8452a na nich NIE zdaje (4,24 i 4,40),
+   więc akcent sekcji = #8f3a22 (5,38 i 5,59). */
+.sekcja--aurora {
+  --akcent: #8f3a22;
+  --akcent-mocny: #0f3e47;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  overflow: clip;
+  background: var(--tlo);
+}
+
+.sekcja--aurora::before,
+.sekcja--aurora::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  width: min(42rem, 90vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+.sekcja--aurora::before {
+  top: -12rem;
+  left: -10rem;
+  background: radial-gradient(circle, rgb(15 62 71 / .12), rgb(15 62 71 / 0) 70%);
+}
+
+.sekcja--aurora::after {
+  right: -12rem;
+  bottom: -14rem;
+  background: radial-gradient(circle, rgb(168 69 42 / .1), rgb(168 69 42 / 0) 70%);
+}
+
+.sekcja--aurora > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ══ SEKCJA MORZE: ciemny teal z jasnym tekstem; tokeny nadpisane lokalnie, komponenty w środku dziedziczą ══ */
+.sekcja--morze {
+  --tekst: #f6f0e4;
+  --tekst-cichy: #b9c9c6;
+  --akcent: #e9b48f;
+  --akcent-mocny: #f6f0e4;
+  --linia: rgb(185 201 198 / .35);
+  --morze: #f6f0e4;
+  --na-morzu: #0f3e47;
+  --powierzchnia: rgb(255 255 255 / .06);
+  --guzik-tlo: #e9b48f;
+  --guzik-tlo-hover: #f6f0e4;
+  --guzik-tekst: #1a2a2e;
+  background: linear-gradient(160deg, var(--morze-tlo), var(--morze-gleboki));
+  color: #f6f0e4;
+}
+
+.sekcja--morze :focus-visible {
+  outline-color: #e9b48f;
+}
+
+/* karta na morzu i karta ciemna: osobne zestawy tokenów (jasna wyspa na ciemnym / ciemna wyspa na jasnym) */
+.sekcja--morze .karta:not(.karta--ciemna) {
+  --tekst: #1a2a2e;
+  --tekst-cichy: #4d5b5c;
+  --akcent: #a8452a;
+  --akcent-mocny: #8f3a22;
+  --linia: #cdbf9f;
+  --morze: #0f3e47;
+  --na-morzu: #f6f0e4;
+  --powierzchnia: #ece3d0;
+  --guzik-tlo: #a8452a;
+  --guzik-tlo-hover: #8f3a22;
+  --guzik-tekst: #f6f0e4;
+  color: #1a2a2e;
+}
+
+.karta--ciemna {
+  --tekst: #f6f0e4;
+  --tekst-cichy: #b9c9c6;
+  --akcent: #e9b48f;
+  --akcent-mocny: #f6f0e4;
+  --linia: rgb(185 201 198 / .35);
+  --morze: #f6f0e4;
+  --na-morzu: #0f3e47;
+  --karta-tlo: #0f3e47;
+  border-color: transparent;
+  color: #f6f0e4;
+}
+
+.karta--ciemna:has(a:focus-visible) {
+  outline-color: #a8452a;
+}
+
+/* ══ WEJŚCIA: .wejscie (+ style="--i:N" dla kaskady), klasę .wejscie--widoczne dokłada obserwator (Ruch.astro).
+   Ukryte tylko gdy jest skrypt i nie ma prośby o mniej ruchu — bez JS treść stoi widoczna. Nigdy na hero (LCP). ══ */
+@media (prefers-reduced-motion: no-preference) and (scripting: enabled) {
+  .wejscie {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity var(--ruch-wejscia), transform var(--ruch-wejscia);
+    transition-delay: calc(var(--i, 0) * 80ms);
+  }
+
+  .wejscie--widoczne {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ══ KLATKI ══ */
+@keyframes oddech {
+  from { transform: scale(1); }
+  to { transform: scale(1.06); }
+}
+
+@keyframes aurora {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(6rem, 3rem, 0) scale(1.08); }
+  100% { transform: translate3d(-3rem, 5rem, 0) scale(.96); }
+}
+
+@keyframes gradient-tekstu {
+  from { background-position: 0% 50%; }
+  to { background-position: 100% 50%; }
+}
+
+/* ken burns na zdjęciu hero: class="oddech" na <img> (obraz LCP zostaje w pełni widoczny, rusza się tylko skala) */
+.oddech {
+  transform-origin: 50% 40%;
+}
+
+/* duża liczba 404 i inne napisy z przelewającym się gradientem; kolor zapasowy = terakota */
+.gradient-tekstu {
+  color: #a8452a;
+  background-image: linear-gradient(100deg, #0f3e47, #a8452a 45%, #0f3e47 90%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .oddech {
+    animation: oddech 20s ease-in-out infinite alternate;
+  }
+
+  .gradient-tekstu {
+    animation: gradient-tekstu 8s ease-in-out infinite alternate;
+  }
+
+  .guzik,
+  .pigulka {
+    transition: background-color var(--ruch-szybki), border-color var(--ruch-szybki), color var(--ruch-szybki),
+      transform var(--ruch-szybki), box-shadow var(--ruch-szybki);
+  }
+
+  .guzik:active {
+    transform: scale(.98);
+  }
+
+  .guzik--twardy:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 var(--morze);
+  }
+
+  .guzik--twardy:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--morze);
+  }
+
+  .link-rosnacy {
+    transition: background-size var(--ruch-plynny);
+  }
+}
+
+/* bloby ruszają się tylko na komputerze; na telefonie stoją (i nie trzymają osobnej warstwy) */
+@media (prefers-reduced-motion: no-preference) and (min-width: 64rem) {
+  .sekcja--aurora::before,
+  .sekcja--aurora::after {
+    will-change: transform;
+    animation: aurora 30s ease-in-out infinite alternate;
+  }
+
+  .sekcja--aurora::after {
+    animation-direction: alternate-reverse;
+    animation-duration: 36s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wejscie {
+    opacity: 1;
+    transform: none;
+  }
+
+  .oddech,
+  .gradient-tekstu,
+  .sekcja--aurora::before,
+  .sekcja--aurora::after {
+    animation: none;
+  }
+}

@@ -1,10 +1,13 @@
 ---
 // Bazowy.astro — jedyny layout strony: head (canonical, OG, Twitter, JSON-LD), nagłówek, stopka.
 // Bez cookies, bez analityki, bez skryptów zewnętrznych, bez <ClientRouter /> (strona prawie statyczna).
+// Ruch (wejścia, licznik, nagłówek po przewinięciu, pasek postępu) = jeden skrypt inline z Ruch.astro, bez bibliotek.
 import '../styles/motyw.css';
+import '../styles/efekty.css';
 import { getImage } from 'astro:assets';
 import Naglowek from '../components/Naglowek.astro';
 import Stopka from '../components/Stopka.astro';
+import Ruch from '../components/Ruch.astro';
 import { t } from '../lib/tekst';
 import { zdjecie, ZDJECIE_GLOWNE } from '../lib/zdjecia';
 
@@ -23,9 +26,13 @@ interface Props {
   bezKanonicznego?: boolean;
   /** Adres pozycji menu do podświetlenia, gdy strona leży poza jej adresem (wpis → jego dział). */
   podswietl?: string;
+  /** Pełnoekranowe zdjęcie na samej górze <main> (główna, wpis): nagłówek leży nad nim, przezroczysty do przewinięcia. */
+  heroPelny?: boolean;
+  /** Pasek postępu czytania (3 px, terakota) u góry okna — strona wpisu. */
+  postep?: boolean;
 }
 
-const { tytul, opis, typOg = 'website', obrazOg, obrazOgAlt, schemat = [], bezIndeksu = false, bezKanonicznego = false, podswietl } = Astro.props;
+const { tytul, opis, typOg = 'website', obrazOg, obrazOgAlt, schemat = [], bezIndeksu = false, bezKanonicznego = false, podswietl, heroPelny = false, postep = false } = Astro.props;
 const nazwa = t('marka.nazwa');
 const kanoniczny = new URL(Astro.url.pathname, import.meta.env.SITE);
 
@@ -72,13 +79,41 @@ if (!og) {
     <link rel="alternate" type="application/rss+xml" title={`${nazwa}: wpisy`} href="/rss.xml" />
 
     {schemat.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s).replace(/</g, '\\u003c')} />)}
+    <noscript><style>.wejscie{opacity:1!important;transform:none!important}</style></noscript>
   </head>
-  <body>
+  <body data-hero-pelny={heroPelny ? '' : undefined}>
+    {postep && <div class="postep" data-postep aria-hidden="true"></div>}
     <a class="skip" href="#tresc">{t('interfejs.przejdzDoTresci')}</a>
-    <Naglowek {podswietl} />
+    <Naglowek {podswietl} nadHero={heroPelny} />
     <main id="tresc" tabindex="-1">
       <slot />
     </main>
     <Stopka />
+    <Ruch />
   </body>
 </html>
+
+<style>
+  /* Pasek postępu: wygląd w motyw.css (.postep, W1). Tu pierwszeństwo osi przewijania CSS; bez niej --postep ustawia
+     Ruch.astro. Same długie właściwości — skrót `animation` z osią minifikator zlewa w zapis, który Chrome odrzuca. */
+  @supports (animation-timeline: scroll()) {
+    .postep {
+      animation-name: postep-pasek;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: scroll(root);
+    }
+  }
+
+  @keyframes postep-pasek {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+
+  /* Pasek idzie za ręką czytelnika, nie sam z siebie: globalne skrócenie animacji przy reduce by go zamroziło. */
+  @media (prefers-reduced-motion: reduce) {
+    .postep {
+      animation-duration: auto !important;
+    }
+  }
+</style>

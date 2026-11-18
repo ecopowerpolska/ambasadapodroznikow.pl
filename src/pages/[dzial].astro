@@ -47,19 +47,26 @@ const schemat = [
 ---
 
 <Bazowy tytul={t(`dzialy.${dzial}.tytulKarty`)} opis={t(`dzialy.${dzial}.opisMeta`)} {schemat} bezIndeksu={wpisy.length === 0}>
-  <Okruszki pozycje={pozycje} />
-  <div class="kontener podstrona-glowa">
-    <h1>{t(`dzialy.${dzial}.h1`)}</h1>
-    <p class="podstrona-glowa__wstep">{t(`dzialy.${dzial}.wstep`)}</p>
+  <div class="sekcja--aurora glowa-dzialu">
+    <Okruszki pozycje={pozycje} />
+    <div class="kontener podstrona-glowa">
+      <p class="etykieta">{t('interfejs.etykietaDzialu')}</p>
+      <h1 class="glowa-dzialu__tytul">{t(`dzialy.${dzial}.h1`)}</h1>
+      <p class="podstrona-glowa__wstep glowa-dzialu__wstep">{t(`dzialy.${dzial}.wstep`)}</p>
+    </div>
   </div>
-  <section class="kontener sekcja sekcja--bez-gory" aria-label={nazwa}>
+  <section class="kontener sekcja" aria-label={nazwa}>
     {
       wiodacy ? (
         <>
           <KartaWpisu wpis={wiodacy} glowna priorytet bezDzialu poziom={2} />
           {reszta.length > 0 && (
             <ul class="karty">
-              {reszta.map((w) => <li><KartaWpisu wpis={w} bezDzialu poziom={2} /></li>)}
+              {reszta.map((w, i) => (
+                <li class="wejscie" style={`--i:${i % 3}`}>
+                  <KartaWpisu wpis={w} bezDzialu poziom={2} />
+                </li>
+              ))}
             </ul>
           )}
         </>
@@ -75,3 +82,31 @@ const schemat = [
     </ul>
   </nav>
 </Bazowy>
+
+<style>
+  /* odstęp między dużą kartą główną a siatką reszty */
+  .karty {
+    margin-top: var(--o-8);
+  }
+
+  /* Krótkie tło aurora pod okruszkami i nagłówkiem działu (bloby rysuje .sekcja--aurora z efekty.css). */
+  .glowa-dzialu {
+    padding-bottom: var(--o-4);
+  }
+
+  .glowa-dzialu__tytul {
+    margin-top: var(--o-3);
+    font-size: var(--t-sekcji, clamp(1.875rem, 4vw, 3.25rem));
+    line-height: 1.05;
+  }
+
+  @media (min-width: 48rem) {
+    .podstrona-glowa .glowa-dzialu__tytul {
+      font-size: var(--t-sekcji, clamp(1.875rem, 4vw, 3.25rem));
+    }
+  }
+
+  .glowa-dzialu__wstep {
+    max-width: none;
+  }
+</style>

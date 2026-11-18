@@ -1,0 +1,11 @@
+---
+// Ruch.astro — cały ruch strony w jednym skrypcie inline (≤ 2,5 KB, bez bibliotek), wstawiany przed </body>.
+// Nagłówek [data-naglowek] dostaje data-przewiniety po 40 px; pasek [data-postep] dostaje --postep (gdy CSS nie ma osi przewijania).
+// .wejscie → .wejscie--widoczne przy wejściu w okno; [data-licznik] liczy od 0 do liczby, która JUŻ stoi w HTML.
+// Przy prefers-reduced-motion: reduce wszystko widoczne od razu, licznik nie rusza. Bez JS: <noscript> w Bazowy.astro.
+---
+
+{/* guard:allow AG025 jeden skrypt ruchu inline (≤ 2,5 KB, zero zapytań): stan nagłówka ustawiony synchronicznie na końcu body, przed pierwszym malowaniem */}
+<script is:inline>
+(()=>{const w=window,d=document,r=d.documentElement,nag=d.querySelector('[data-naglowek]'),pas=d.querySelector('[data-postep]'),osCss=w.CSS&&CSS.supports('animation-timeline','scroll()'),wej=d.querySelectorAll('.wejscie'),pokaz=e=>e.classList.add('wejscie--widoczne');let czeka=0;const przelicz=()=>{czeka=0;const y=w.scrollY;nag&&nag.toggleAttribute('data-przewiniety',y>40);if(pas&&!osCss){const h=r.scrollHeight-w.innerHeight;pas.style.setProperty('--postep',h>0?Math.min(1,y/h).toFixed(4):'0')}};w.addEventListener('scroll',()=>{czeka||(czeka=1,requestAnimationFrame(przelicz))},{passive:true});przelicz();if(w.matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver'in w)){wej.forEach(pokaz);return}const licz=e=>{const tekst=e.textContent,cel=+(e.dataset.licznik||tekst.replace(/\D/g,''));if(!cel)return;let t0;const krok=t=>{t0??=t;const p=Math.min(1,(t-t0)/900);e.textContent=p<1?String(Math.round(cel*(1-(1-p)**3))):tekst;p<1&&requestAnimationFrame(krok)};e.textContent='0';requestAnimationFrame(krok)},io=new IntersectionObserver(wpisy=>{for(const x of wpisy)if(x.isIntersecting){const e=x.target;io.unobserve(e);pokaz(e);e.hasAttribute('data-licznik')&&licz(e)}},{threshold:.15,rootMargin:'0px 0px -8% 0px'});wej.forEach(e=>io.observe(e));d.querySelectorAll('[data-licznik]').forEach(e=>io.observe(e))})();
+</script>

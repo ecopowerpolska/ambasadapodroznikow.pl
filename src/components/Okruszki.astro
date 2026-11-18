@@ -1,5 +1,6 @@
 ---
 // Okruszki: ostatnia pozycja bez odnośnika (aria-current). Ta sama lista idzie do BreadcrumbList w DaneStrukturalne.
+// Kolor dziedziczony (currentColor): na jasnym tle tekst strony, w ciemnym panelu hero wpisu — kolor panelu.
 import { t } from '../lib/tekst';
 
 interface Props {
@@ -11,13 +12,68 @@ const { pozycje } = Astro.props;
 <nav class="okruszki kontener" aria-label={t('interfejs.okruszki_aria')}>
   <ol>
     {
-      pozycje.map((p, i) =>
-        i === pozycje.length - 1 || !p.adres ? (
-          <li><span aria-current="page">{p.nazwa}</span></li>
-        ) : (
-          <li><a href={p.adres}>{p.nazwa}</a></li>
-        ),
-      )
+      pozycje.map((p, i) => (
+        <li>
+          {i > 0 && (
+            <svg class="okruszki__szewron" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true" focusable="false">
+              <path d="M6 3.5 10.5 8 6 12.5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          )}
+          {i === pozycje.length - 1 || !p.adres ? <span aria-current="page">{p.nazwa}</span> : <a href={p.adres}>{p.nazwa}</a>}
+        </li>
+      ))
     }
   </ol>
 </nav>
+
+<style>
+  .okruszki ol {
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    color: inherit;
+    font-size: var(--t-2);
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.06em;
+  }
+
+  /* separator z motyw.css („/”) zastępuje szewron SVG */
+  .okruszki li + li::before {
+    content: none;
+  }
+
+  .okruszki__szewron {
+    flex: none;
+    margin-inline: var(--o-2);
+    opacity: 0.6;
+  }
+
+  .okruszki a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+    text-underline-offset: 0.25em;
+  }
+
+  .okruszki a:hover {
+    color: inherit;
+    text-decoration-color: currentColor;
+  }
+
+  .okruszki a:focus-visible {
+    outline: 3px solid currentColor;
+    outline-offset: 2px;
+  }
+
+  .okruszki [aria-current='page'] {
+    color: inherit;
+    font-weight: 600;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .okruszki a {
+      transition: text-decoration-color var(--ruch-szybki, 160ms ease-out);
+    }
+  }
+</style>

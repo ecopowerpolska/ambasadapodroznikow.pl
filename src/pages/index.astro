@@ -1,21 +1,21 @@
 ---
-// Strona główna magazynu (WZORZEC-MAGAZYNU §3.2): zdjęcie z panelem (H1 + jedno zdanie), Najnowsze (1 duży + 3),
-// bloki działów (do 3 kart + „Więcej z działu”), Polecamy (3 zapowiedzi, odnośnik do /polecamy/).
-// Dział bez opublikowanych wpisów nie ma bloku.
+// Strona główna magazynu: hero pełnoekranowy ze szklanym panelem (Hero), pasek liczb z kolekcji (Liczby),
+// Najnowsze jako bento (1 duża karta 2×2 + 3 mniejsze), bloki działów na ciemnym morzu (do 3 kart + „Więcej z działu”),
+// Polecamy na tle aurora (3 zapowiedzi, odnośnik do /polecamy/). Dział bez opublikowanych wpisów nie ma bloku.
 import Bazowy from '../layouts/Bazowy.astro';
-import Foto from '../components/Foto.astro';
+import Hero from '../components/Hero.astro';
+import Liczby from '../components/Liczby.astro';
 import KartaWpisu from '../components/KartaWpisu.astro';
 import KartaPolecana from '../components/KartaPolecana.astro';
-import { t, lista, wstaw } from '../lib/tekst';
+import { t, wstaw } from '../lib/tekst';
 import { opublikowane, polecaneRozne, type Wpis } from '../lib/wpisy';
 import { DZIALY, adresDzialu, nazwaDzialu } from '../lib/dzialy';
-import { ZDJECIE_GLOWNE } from '../lib/zdjecia';
 import { organizacja, stronaWww } from '../lib/schemat';
 
 const wszystkie = await opublikowane();
 const najnowsze = wszystkie.slice(0, 4);
-const [glowny, ...pozostale] = najnowsze;
 const pokazane = new Set(najnowsze.map((w) => w.id));
+const POLA = ['a', 'b', 'c', 'd'] as const;
 
 // Blok działu: do 3 kart; gdy dział ma więcej niż 3 wpisy, najpierw te, których nie ma w „Najnowszych”.
 const bloki = DZIALY.map((dzial) => {
@@ -25,37 +25,31 @@ const bloki = DZIALY.map((dzial) => {
 }).filter((b) => b.wpisy.length > 0);
 
 const zapowiedzi = (await polecaneRozne(1)).slice(0, 3);
-const [zdanie] = lista('glowna.akapity');
 const schemat = [{ '@context': 'https://schema.org', '@graph': [stronaWww(), organizacja()] }];
 ---
 
-<Bazowy tytul={t('glowna.tytulKarty')} opis={t('glowna.opisMeta')} {schemat}>
-  <div class="hero__zdjecie">
-    <Foto nazwa={ZDJECIE_GLOWNE} widths={[640, 960, 1440, 1920, 2400]} sizes="100vw" proporcja={3 / 2} priorytet />
-  </div>
-  <div class="hero__rama kontener">
-    <div class="hero__panel">
-      <h1>{t('glowna.h1')}</h1>
-      <p class="hero__haslo">{zdanie ?? t('marka.haslo')}</p>
-    </div>
-  </div>
+<Bazowy tytul={t('glowna.tytulKarty')} opis={t('glowna.opisMeta')} {schemat} heroPelny>
+  <Hero />
+  <Liczby />
 
   <section class="sekcja" aria-labelledby="najnowsze">
     <div class="kontener">
       <div class="sekcja__glowa">
-        <h2 id="najnowsze">{t('glowna.najnowszeNaglowek')}</h2>
+        <div>
+          <p class="etykieta">{t('glowna.etykietaNajnowsze')}</p>
+          <h2 id="najnowsze" class="glowna__h2">{t('glowna.najnowszeNaglowek')}</h2>
+        </div>
         <a class="link-sekcji" href="/blog/">{t('glowna.najnowszeWszystkie')}</a>
       </div>
       {
-        glowny ? (
-          <>
-            <KartaWpisu wpis={glowny} glowna />
-            {pozostale.length > 0 && (
-              <ul class="karty">
-                {pozostale.map((w) => <li><KartaWpisu wpis={w} /></li>)}
-              </ul>
-            )}
-          </>
+        najnowsze.length > 0 ? (
+          <ul class:list={['bento', { 'bento--pelne': najnowsze.length === 4 }]}>
+            {najnowsze.map((w, i) => (
+              <li class={`wejscie bento__${POLA[i]}`} style={`--i:${i}`}>
+                <KartaWpisu wpis={w} glowna={i === 0} wyrozniona={i === 3} />
+              </li>
+            ))}
+          </ul>
         ) : (
           <p class="pusto">{t('interfejs.brakWpisow')}</p>
         )
@@ -65,30 +59,38 @@ const schemat = [{ '@context': 'https://schema.org', '@graph': [stronaWww(), org
 
   {
     bloki.length > 0 && (
-      <section class="sekcja sekcja--piasek" aria-labelledby="dzialy">
+      <section class="sekcja sekcja--morze" aria-labelledby="dzialy">
         <div class="kontener">
-          <h2 id="dzialy" class="dzialy__naglowek">{t('glowna.naglowekDzialy')}</h2>
-          {bloki.map((b) => (
-            <section class="dzial-blok" aria-labelledby={`dzial-${b.dzial}`}>
-              <h3 id={`dzial-${b.dzial}`} class="dzial-blok__nazwa"><a href={b.adres}>{b.nazwa}</a></h3>
-              <ul class="karty">
-                {b.wpisy.map((w) => <li><KartaWpisu wpis={w} bezDzialu poziom={4} /></li>)}
-              </ul>
-              <p class="dzial-blok__wiecej">
-                <a class="link-sekcji" href={b.adres}>{wstaw(t('interfejs.wiecejZDzialu'), { dzial: b.nazwa })}</a>
-              </p>
-            </section>
-          ))}
+          <div class="sekcja__glowa">
+            <div>
+              <p class="etykieta">{t('glowna.etykietaDzialy')}</p>
+              <h2 id="dzialy" class="glowna__h2">{t('glowna.naglowekDzialy')}</h2>
+            </div>
+          </div>
+          <div class="dzialy">
+            {bloki.map((b, i) => (
+              <section class="dzial-blok dzial-karta wejscie" style={`--i:${i}`} aria-labelledby={`dzial-${b.dzial}`}>
+                <h3 id={`dzial-${b.dzial}`} class="dzial-blok__nazwa"><a href={b.adres}>{b.nazwa}</a></h3>
+                <ul class="karty">
+                  {b.wpisy.map((w) => <li><KartaWpisu wpis={w} bezDzialu poziom={4} /></li>)}
+                </ul>
+                <p class="dzial-blok__wiecej">
+                  <a class="link-sekcji" href={b.adres}>{wstaw(t('interfejs.wiecejZDzialu'), { dzial: b.nazwa })}</a>
+                </p>
+              </section>
+            ))}
+          </div>
         </div>
       </section>
     )
   }
 
-  <section class="sekcja" aria-labelledby="polecamy">
+  <section class="sekcja sekcja--aurora" aria-labelledby="polecamy">
     <div class="kontener">
       <div class="sekcja__glowa">
         <div>
-          <h2 id="polecamy">{t('glowna.zNaszychStronNaglowek')}</h2>
+          <p class="etykieta">{t('glowna.etykietaPolecamy')}</p>
+          <h2 id="polecamy" class="glowna__h2">{t('glowna.zNaszychStronNaglowek')}</h2>
           <p class="sekcja__wstep">{t('glowna.zNaszychStronWstep')}</p>
         </div>
         <a class="link-sekcji" href="/polecamy/">{t('glowna.zNaszychStronWszystkie')}</a>
@@ -96,7 +98,7 @@ const schemat = [{ '@context': 'https://schema.org', '@graph': [stronaWww(), org
       {
         zapowiedzi.length > 0 ? (
           <ul class="karty">
-            {zapowiedzi.map((w) => <li><KartaPolecana wpis={w} /></li>)}
+            {zapowiedzi.map((w, i) => <li class="wejscie" style={`--i:${i}`}><KartaPolecana wpis={w} /></li>)}
           </ul>
         ) : (
           <p class="pusto">{t('interfejs.brakPolecanych')}</p>
@@ -105,3 +107,136 @@ const schemat = [{ '@context': 'https://schema.org', '@graph': [stronaWww(), org
     </div>
   </section>
 </Bazowy>
+
+<style>
+  .glowna__h2 {
+    margin-top: var(--o-2);
+    font-size: var(--t-sekcji, clamp(1.875rem, 4vw, 3.25rem));
+    line-height: 1.08;
+  }
+
+  /* ── Bento „Najnowsze”: kolejność w DOM = kolejność czytania; na telefonie jedna kolumna ── */
+  .bento {
+    display: grid;
+    gap: var(--o-6);
+    grid-template-columns: minmax(0, 1fr);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .bento > li {
+    display: flex;
+    min-width: 0;
+  }
+
+  .bento > li > :global(.karta) {
+    flex: 1;
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 48rem) {
+    .bento {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .bento__a {
+      grid-column: 1 / -1;
+    }
+  }
+
+  /* Komputer: duża karta 2×2 po lewej, dwie mniejsze obok, trzecia szeroka pod nimi. */
+  @media (min-width: 64rem) {
+    .bento--pelne {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-areas:
+        'a a b c'
+        'a a d d';
+    }
+
+    .bento--pelne .bento__a {
+      grid-area: a;
+    }
+    .bento--pelne .bento__b {
+      grid-area: b;
+    }
+    .bento--pelne .bento__c {
+      grid-area: c;
+    }
+    .bento--pelne .bento__d {
+      grid-area: d;
+    }
+
+    /* Duża karta w polu 2×2: zdjęcie we własnej proporcji 3:2 (bez rozciągania). Wysokość rzędów wyznaczają b, c i d;
+       nadmiar w karcie a bierze tekst: większy tytuł i lead, linia meta na dole tekstu. */
+    .bento--pelne .bento__a :global(.karta__tekst) {
+      padding: var(--o-6) var(--o-8) var(--o-8);
+    }
+
+    .bento--pelne .bento__a :global(.karta__tytul) {
+      font-size: var(--t-6);
+      line-height: 1.1;
+    }
+
+    .bento--pelne .bento__a :global(.karta__lead) {
+      font-size: var(--t-4);
+      line-height: 1.5;
+    }
+
+    /* Duża karta w polu 2×2 jest węższa niż 44rem, więc KartaWpisu (zapytanie kontenera) sama stawia zdjęcie nad tekstem.
+       Szeroka karta pod spodem (ciemna, wyróżniona): zdjęcie obok tekstu, w swojej proporcji 3:2. */
+    .bento--pelne .bento__d :global(.karta__uklad) {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      align-items: center;
+    }
+  }
+
+  /* ── Działy na ciemnym morzu: każdy blok to jasna karta (karty wpisów w środku na piasku, czytelne bez zmian) ── */
+  /* Na morzu efekty.css odwraca tokeny (--tekst jasny, --na-morzu ciemny), więc H2 bierze --tekst. */
+  .sekcja--morze .glowna__h2 {
+    color: var(--tekst);
+  }
+
+  .dzialy {
+    display: grid;
+    gap: var(--o-8);
+  }
+
+  /* Jasna wyspa na morzu: przywraca tokeny jasnego motywu (jak .sekcja--morze .karta w efekty.css), żeby nazwa działu,
+     kreska pod nią i „Więcej z działu” nie wzięły jasnych barw morza na jasnym tle. */
+  .dzial-karta {
+    --tekst: #1a2a2e;
+    --tekst-cichy: #4d5b5c;
+    --akcent: #a8452a;
+    --akcent-mocny: #8f3a22;
+    --linia: #cdbf9f;
+    --morze: #0f3e47;
+    --na-morzu: #f6f0e4;
+    --powierzchnia: #ece3d0;
+    --guzik-tlo: #a8452a;
+    --guzik-tlo-hover: #8f3a22;
+    --guzik-tekst: #f6f0e4;
+    padding: var(--o-6);
+    border: 1px solid rgb(255 255 255 / 0.25);
+    border-radius: var(--promien-karty, 6px);
+    background: var(--tlo);
+    box-shadow: var(--cien-uniesiony, 0 18px 40px rgb(26 42 46 / 0.18));
+    color: var(--tekst);
+  }
+
+  @media (min-width: 48rem) {
+    .dzial-karta {
+      padding: var(--o-8);
+    }
+  }
+
+  .dzial-karta :global(:focus-visible) {
+    outline-color: #0f3e47;
+  }
+
+  /* Odstęp daje siatka .dzialy; margines z motywu (.dzial-blok + .dzial-blok) zerowany. */
+  .dzial-karta + .dzial-karta {
+    margin-top: 0;
+  }
+</style>

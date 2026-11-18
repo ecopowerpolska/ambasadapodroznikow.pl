@@ -1,19 +1,188 @@
 ---
-// Stopka neutralna: nazwa redakcji, polityka prywatności, rok. Bez nazwy spółki (jest w polityce) i bez listy naszych stron.
-import { t, wstaw } from '../lib/tekst';
+// Stopka: duży napis marki, kolumny linków (działy; Polecamy, O nas, Polityka), „Do góry”, nazwa redakcji, rok.
+// Bez nazwy spółki (jest w polityce), bez listy naszych stron, bez „Kanał RSS” (RSS tylko w <link rel=alternate>).
+import { t, wstaw, pobierz } from '../lib/tekst';
+import { DZIALY, adresDzialu, nazwaDzialu } from '../lib/dzialy';
 
 // Rok BUDOWY (czas Warszawy). Codzienna przebudowa w Actions odświeża go po 1 stycznia.
 const rok = new Intl.DateTimeFormat('pl-PL', { year: 'numeric', timeZone: 'Europe/Warsaw' }).format(new Date());
+
+// Strony redakcji: pozycje menu spoza działów (Polecamy, O nas) + polityka prywatności.
+const adresyDzialow = new Set(DZIALY.map(adresDzialu));
+const redakcja = (Array.isArray(pobierz('menu')) ? (pobierz('menu') as { nazwa?: unknown; adres?: unknown }[]) : [])
+  .filter((p): p is { nazwa: string; adres: string } => typeof p?.nazwa === 'string' && typeof p?.adres === 'string')
+  .filter((p) => !adresyDzialow.has(p.adres) && p.adres !== '/');
 ---
 
 <footer class="stopka">
-  <div class="kontener stopka__pas">
-    <p class="stopka__nazwa">{t('stopka.redakcja')}</p>
-    <nav aria-label={t('stopka.redakcja')}>
-      <ul>
-        <li><a href="/polityka-prywatnosci/">{t('stopka.polityka')}</a></li>
-      </ul>
+  <div class="kontener stopka__wnetrze">
+    <div class="stopka__marka wejscie">
+      <p class="stopka__napis">{t('marka.nazwa')}</p>
+      <p class="stopka__haslo">{t('marka.haslo')}</p>
+    </div>
+
+    <nav class="stopka__kolumny" aria-label={t('stopka.redakcja')}>
+      <div class="stopka__kolumna wejscie" style="--i:1">
+        <p class="stopka__tytul" id="stopka-dzialy">{t('stopka.kolumnaDzialy', 'Działy')}</p>
+        <ul aria-labelledby="stopka-dzialy">
+          {DZIALY.map((d) => <li><a class="link-rosnacy" href={adresDzialu(d)}>{nazwaDzialu(d)}</a></li>)}
+        </ul>
+      </div>
+      <div class="stopka__kolumna wejscie" style="--i:2">
+        <p class="stopka__tytul" id="stopka-redakcja">{t('stopka.kolumnaRedakcja', 'Redakcja')}</p>
+        <ul aria-labelledby="stopka-redakcja">
+          {redakcja.map((p) => <li><a class="link-rosnacy" href={p.adres}>{p.nazwa}</a></li>)}
+          <li><a class="link-rosnacy" href="/polityka-prywatnosci/">{t('stopka.polityka')}</a></li>
+        </ul>
+      </div>
     </nav>
-    <p class="stopka__prawa">{wstaw(t('stopka.prawa'), { rok })}</p>
+
+    <div class="stopka__dol">
+      <div>
+        <p class="stopka__nazwa">{t('stopka.redakcja')}</p>
+        <p class="stopka__prawa">{wstaw(t('stopka.prawa'), { rok })}</p>
+      </div>
+      <a class="stopka__gora" href="#tresc">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 19V5M5 12l7-7 7 7"></path></svg>
+        <span>{t('interfejs.doGory', 'Do góry')}</span>
+      </a>
+    </div>
   </div>
 </footer>
+
+<style>
+  /* kontrast: #f6f0e4 na #082a31 tekst; #b9c9c6 na #082a31 tekst; #e9b48f na #082a31 tekst (dół gradientu; góra = #0f3e47, pary z motyw.css) */
+  .stopka {
+    padding-block: var(--o-16) var(--o-8);
+    background: linear-gradient(180deg, var(--morze), #082a31);
+  }
+
+  .stopka__wnetrze {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--o-12);
+  }
+
+  .stopka__napis {
+    font-family: var(--font-nagl);
+    font-size: clamp(2.5rem, 7vw, 5.5rem);
+    font-weight: 600;
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
+  }
+
+  .stopka__haslo {
+    margin-top: var(--o-3);
+    color: var(--na-morzu-cichy);
+    font-size: var(--t-3);
+  }
+
+  .stopka__kolumny {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    gap: var(--o-8);
+  }
+
+  .stopka__tytul {
+    margin-bottom: var(--o-2);
+    color: var(--na-morzu-akcent);
+    font-size: var(--t-1);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .stopka ul {
+    display: grid;
+    gap: 0;
+    list-style: none;
+  }
+
+  .stopka a {
+    text-decoration: none;
+  }
+
+  /* Link kolumny: blok o wysokości celu dotyku (25,6 + 2 × 10 px), linia .link-rosnacy pod tekstem, nie na dole pola. */
+  .stopka__kolumna a {
+    display: inline-block;
+    min-height: 0;
+    padding-block: 0.625rem;
+    background-origin: content-box;
+  }
+
+  .stopka a:focus-visible {
+    outline: 3px solid var(--na-morzu-akcent);
+    outline-offset: 2px;
+  }
+
+  .stopka__dol {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--o-4) var(--o-8);
+    padding-top: var(--o-6);
+    border-top: 1px solid var(--szklo-obrys);
+  }
+
+  .stopka__nazwa {
+    font-size: var(--t-3);
+  }
+
+  .stopka__prawa {
+    margin-top: var(--o-1);
+  }
+
+  .stopka__gora {
+    gap: var(--o-2);
+    padding: 0 var(--o-6);
+    border: 1px solid var(--na-morzu-cichy);
+    border-radius: var(--promien-pigulki);
+    font-weight: 600;
+  }
+
+  .stopka__gora:hover {
+    border-color: var(--na-morzu-akcent);
+  }
+
+  .stopka__gora svg {
+    width: 1.125rem;
+    height: 1.125rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  @media (min-width: 48rem) {
+    .stopka__wnetrze {
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      align-items: start;
+    }
+
+    .stopka__dol {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .stopka__gora {
+      transition: border-color var(--ruch-szybki), transform var(--ruch-szybki);
+    }
+
+    .stopka__gora:hover svg {
+      transform: translateY(-2px);
+    }
+
+    .stopka__gora svg {
+      transition: transform var(--ruch-szybki);
+    }
+
+    .stopka__gora:active {
+      transform: scale(0.98);
+    }
+  }
+</style>

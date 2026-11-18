@@ -7,9 +7,12 @@ import { opublikowane } from '../../lib/wpisy';
 import { okruszki } from '../../lib/schemat';
 
 const wpisy = await opublikowane();
-// Kandydat na LCP: pierwsza karta ze zdjęciem w pierwszym rzędzie (wpis bez zdjęcia ma planszę z CSS, bez obrazu)
-const pierwszeZdjecie = wpisy.findIndex((w) => w.data.zdjecie);
-const priorytetowy = pierwszeZdjecie >= 0 && pierwszeZdjecie < 3 ? pierwszeZdjecie : -1;
+// Najnowszy wpis = duża karta główna, reszta w siatce z wejściami (kaskada --i).
+// Kandydat na LCP: zdjęcie karty głównej; gdy główna jest planszą, pierwsza karta ze zdjęciem w pierwszym rzędzie siatki.
+const [wiodacy, ...reszta] = wpisy;
+const zdjecieWiodacego = Boolean(wiodacy?.data.zdjecie);
+const pierwszeZdjecie = reszta.findIndex((w) => w.data.zdjecie);
+const priorytetowy = !zdjecieWiodacego && pierwszeZdjecie >= 0 && pierwszeZdjecie < 3 ? pierwszeZdjecie : -1;
 const pozycje = [
   { nazwa: t('interfejs.okruszki_glowna'), adres: '/' },
   { nazwa: t('interfejs.okruszki_blog'), adres: '/blog/' },
@@ -19,19 +22,53 @@ const schemat = [okruszki(pozycje)];
 
 <Bazowy tytul={t('blog.tytulKarty')} opis={t('blog.opisMeta')} {schemat}>
   <Okruszki pozycje={pozycje} />
-  <div class="kontener podstrona-glowa">
-    <h1>{t('blog.h1')}</h1>
-    <p class="podstrona-glowa__wstep">{t('blog.wstep')}</p>
+  <div class="kontener podstrona-glowa glowa-listy">
+    <p class="etykieta">{t('blog.etykieta')}</p>
+    <h1 class="glowa-listy__tytul">{t('blog.h1')}</h1>
+    <p class="podstrona-glowa__wstep glowa-listy__wstep">{t('blog.wstep')}</p>
   </div>
   <section class="kontener sekcja sekcja--bez-gory" aria-label={t('blog.h1')}>
     {
-      wpisy.length > 0 ? (
-        <ul class="karty">
-          {wpisy.map((w, i) => <li><KartaWpisu wpis={w} priorytet={i === priorytetowy} poziom={2} /></li>)}
-        </ul>
+      wiodacy ? (
+        <>
+          <KartaWpisu wpis={wiodacy} glowna priorytet={zdjecieWiodacego} poziom={2} />
+          {reszta.length > 0 && (
+            <ul class="karty">
+              {reszta.map((w, i) => (
+                <li class="wejscie" style={`--i:${i % 3}`}>
+                  <KartaWpisu wpis={w} priorytet={i === priorytetowy} poziom={2} />
+                </li>
+              ))}
+            </ul>
+          )}
+        </>
       ) : (
         <p class="pusto">{t('interfejs.brakWpisow')}</p>
       )
     }
   </section>
 </Bazowy>
+
+<style>
+  /* odstęp między dużą kartą główną a siatką reszty */
+  .karty {
+    margin-top: var(--o-8);
+  }
+
+  /* Nagłówek listy: etykieta-pigułka nad H1 w skali sekcji; wstęp na pełną szerokość 76rem (bez miary wiersza). */
+  .glowa-listy__tytul {
+    margin-top: var(--o-3);
+    font-size: var(--t-sekcji, clamp(1.875rem, 4vw, 3.25rem));
+    line-height: 1.05;
+  }
+
+  @media (min-width: 48rem) {
+    .podstrona-glowa .glowa-listy__tytul {
+      font-size: var(--t-sekcji, clamp(1.875rem, 4vw, 3.25rem));
+    }
+  }
+
+  .glowa-listy__wstep {
+    max-width: none;
+  }
+</style>

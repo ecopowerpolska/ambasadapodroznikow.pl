@@ -1,6 +1,7 @@
 ---
 // Foto.astro — zdjęcie z src/assets/zdjecia/ przez astro:assets: WebP, srcset, wymiary, kadr 3:2 w PLIKU (fit cover).
 // Wymiary źródła NIE są czytane (Proxy importu kopiowałby oryginał do dist — pułapka ㉕); kadr liczy się z propsów.
+// `ramka`: obrys 1 px, miękki cień, promień ≤ 6 px (reguła Piotra 2026-11-06: zdjęcie we własnej proporcji, bez łuku).
 import { Image } from 'astro:assets';
 import { zdjecie, altZdjecia } from '../lib/zdjecia';
 
@@ -11,12 +12,14 @@ interface Props {
   widths: number[];
   sizes: string;
   proporcja?: number;
-  /** Jedno zdjęcie na stronę (kandydat na LCP). */
+  /** Jedno zdjęcie na stronę (kandydat na LCP): eager, fetchpriority=high. */
   priorytet?: boolean;
+  /** Obrys 1 px w kolorze linii, cień miękki, promień karty. */
+  ramka?: boolean;
   klasa?: string;
 }
 
-const { nazwa, alt, widths, sizes, proporcja = 3 / 2, priorytet = false, klasa } = Astro.props;
+const { nazwa, alt, widths, sizes, proporcja = 3 / 2, priorytet = false, ramka = false, klasa } = Astro.props;
 const obraz = zdjecie(nazwa);
 const maks = widths[widths.length - 1];
 ---
@@ -31,6 +34,15 @@ const maks = widths[widths.length - 1];
   fit="cover"
   loading={priorytet ? 'eager' : 'lazy'}
   fetchpriority={priorytet ? 'high' : undefined}
-  decoding={priorytet ? 'sync' : 'async'}
-  class={klasa}
+  decoding="async"
+  class:list={[klasa, { 'foto--ramka': ramka }]}
 />
+
+<style>
+  /* :global — klasa trafia na element img wyrenderowany przez komponent Image, poza zasięgiem atrybutu zakresu */
+  :global(img.foto--ramka) {
+    border: 1px solid var(--linia);
+    border-radius: min(var(--promien-karty, 6px), 6px);
+    box-shadow: var(--cien-miekki, 0 10px 30px rgb(26 42 46 / 0.12));
+  }
+</style>

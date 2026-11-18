@@ -73,7 +73,7 @@ const teksty = {
         <div class="komentarze__turnstile" data-turnstile></div>
 
         <div class="komentarze__akcje">
-          <button class="przycisk" type="submit" data-przycisk>{t('komentarze.przycisk')}</button>
+          <button class="guzik" type="submit" data-przycisk>{t('komentarze.przycisk')}</button>
         </div>
         <p class="komentarze__stan" data-stan role="status" aria-live="polite" tabindex="-1" hidden></p>
         <p class="komentarze__informacja">
@@ -83,6 +83,85 @@ const teksty = {
     </div>
   </div>
 </section>
+
+<style>
+  /* Karta komentarzy: ramka 1 px, miękki cień, promień karty; na komputerze lista po lewej, formularz po prawej
+     (tylko siatka CSS — kolejność DOM i mechanika bez zmian). Pary: #1a2a2e/#fbf8f1 14,00:1, #4d5b5c/#fbf8f1 6,67:1,
+     #a8452a/#fbf8f1 5,58:1 (fokus i obrys pola, nietekst ≥ 3:1), #f6f0e4/#a8452a 5,21:1 (guzik). */
+  .komentarze {
+    border-top: 0;
+    background: var(--powierzchnia);
+  }
+
+  .komentarze__rama {
+    max-width: none;
+    display: grid;
+    gap: 0 var(--o-12);
+    padding: var(--o-6);
+    border: 1px solid var(--linia);
+    border-radius: var(--promien-karty, 6px);
+    background: var(--karta-tlo, #fbf8f1);
+    box-shadow: var(--cien-miekki);
+  }
+
+  .komentarze__rama h2 {
+    font-size: var(--t-sekcji, clamp(1.875rem, 4vw, 3.25rem));
+    line-height: 1.05;
+  }
+
+  .komentarze__lista :global(.komentarz) {
+    padding: var(--o-3) var(--o-4);
+    border: 1px solid var(--linia);
+    border-left: 3px solid var(--akcent);
+    border-radius: var(--promien-karty, 6px);
+    background: var(--tlo);
+  }
+
+  .komentarze__formularz {
+    margin-top: var(--o-8);
+    border: 1px solid var(--linia);
+    border-radius: var(--promien-karty, 6px);
+    background: var(--tlo);
+  }
+
+  .komentarze__formularz input:not([type='hidden']),
+  .komentarze__formularz textarea {
+    border: 1px solid var(--tekst-cichy);
+    border-radius: var(--promien-karty, 6px);
+    background: var(--karta-tlo, #fbf8f1);
+  }
+
+  .komentarze__formularz input:not([type='hidden']):focus-visible,
+  .komentarze__formularz textarea:focus-visible,
+  .komentarze__formularz button:focus-visible,
+  .komentarze__formularz a:focus-visible {
+    outline: 3px solid var(--akcent);
+    outline-offset: 2px;
+  }
+
+  .komentarze__stan {
+    border-radius: var(--promien-karty, 6px);
+  }
+
+  @media (min-width: 56rem) {
+    .komentarze__rama {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      grid-template-rows: auto auto auto 1fr;
+      padding: var(--o-8) var(--o-12);
+    }
+
+    .komentarze__rama > :not(form) {
+      grid-column: 1;
+    }
+
+    .komentarze__formularz {
+      grid-column: 2;
+      grid-row: 1 / span 4;
+      align-self: start;
+      margin-top: 0;
+    }
+  }
+</style>
 
 <script>
   import { htmlKomentarza, liczbaKomentarzy, type Komentarz } from '../lib/komentarze';

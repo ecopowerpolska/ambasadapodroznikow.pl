@@ -1,0 +1,225 @@
+---
+// Hero strony głównej: na komputerze pełny ekran, na telefonie zdjęcie 3:2 z panelem wsuniętym na dolną krawędź. Zdjęcie główne na całą szerokość okna (to jest LCP: bez opacity 0 i bez transformu startowego na obrazie),
+// „oddech” (ken burns 1 → 1,06, 20 s) na OPAKOWANIU zdjęcia tylko bez reduced-motion, nakładka gradientowa od dołu,
+// szklany panel z etykietą, H1, hasłem i dwoma CTA, strzałka do „Najnowszych”. Treść w .kontener (76rem).
+import Foto from './Foto.astro';
+import { t, lista } from '../lib/tekst';
+import { ZDJECIE_GLOWNE } from '../lib/zdjecia';
+
+const [haslo] = lista('glowna.akapity');
+---
+
+<section class="hero" aria-labelledby="hero-tytul">
+  <div class="hero__tlo">
+    <div class="hero__oddech">
+      <Foto nazwa={ZDJECIE_GLOWNE} widths={[640, 960, 1440, 1920, 2400]} sizes="100vw" proporcja={3 / 2} priorytet />
+    </div>
+    <div class="hero__nakladka" aria-hidden="true"></div>
+  </div>
+
+  <div class="kontener hero__tresc">
+    <div class="szklo hero__szklo">
+      <p class="etykieta hero__etykieta">{t('marka.haslo')}</p>
+      <h1 id="hero-tytul" class="hero__tytul">{t('glowna.h1')}</h1>
+      {haslo && <p class="hero__podtytul">{haslo}</p>}
+      <p class="hero__cta">
+        <a class="guzik pigulka pigulka--akcent" href="/blog/">{t('glowna.ctaCzytaj')}</a>
+        <a class="guzik pigulka guzik--obrys" href="/polecamy/">{t('glowna.ctaPolecamy')}</a>
+      </p>
+    </div>
+  </div>
+
+  <a class="hero__przewin" href="#najnowsze" aria-label={t('glowna.najnowszeNaglowek')}>
+    <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" focusable="false">
+      <path d="M12 4v15M5 12l7 7 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+  </a>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 70vh;
+    min-height: 70svh;
+    /* Panel nigdy pod nagłówkiem (nagłówek leży nad hero): odstęp ≥ wysokość nagłówka + --o-4 (prośba W1); dajemy + --o-8. */
+    padding-top: calc(var(--wys-naglowka, 4rem) + var(--o-8));
+    padding-bottom: calc(var(--o-16) + var(--o-8));
+    overflow: hidden;
+    background: var(--morze);
+    color: var(--na-morzu);
+    isolation: isolate;
+  }
+
+  @media (min-width: 48rem) {
+    .hero {
+      min-height: 85vh;
+      min-height: 85svh;
+      padding-bottom: calc(var(--o-24) + var(--o-16));
+    }
+  }
+
+  .hero__tlo {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+  }
+
+  .hero__oddech {
+    position: absolute;
+    inset: 0;
+  }
+
+  /* Obraz LCP: widoczny od pierwszej klatki, bez opacity i bez transformu. */
+  .hero__oddech :global(img) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 40%;
+  }
+
+  .hero__nakladka {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgb(15 62 71 / 0.85), transparent 60%);
+  }
+
+  .hero__tresc {
+    position: relative;
+  }
+
+  /* Szkło mocne (--szklo-tlo-mocne, .9 w efekty.css), nie zwykłe: górę panelu nakładka już nie przyciemnia (sięga 60 % od dołu),
+     a pod nią może leżeć białe niebo zdjęcia. Próg: krycie ≥ .75 (teal .75 na bieli #4b6e75: #f6f0e4 4,87:1; .55: 2,80:1). */
+  .hero__szklo {
+    max-width: 44rem;
+    padding: var(--o-6);
+    border-radius: var(--promien-karty, 6px);
+    background: var(--szklo-tlo-mocne, rgb(15 62 71 / 0.9));
+    color: var(--na-morzu);
+  }
+
+  @media (min-width: 48rem) {
+    .hero__szklo {
+      padding: var(--o-8);
+    }
+  }
+
+  /* Etykieta jasna, nie #e9b48f: akcent na tym szkle nad bielą daje 3,28:1. */
+  /* Na szkle wyłącznie #f6f0e4 (efekty.css): etykieta, H1, podtytuł i obrys drugiego CTA. */
+  .hero__etykieta {
+    color: #f6f0e4;
+  }
+
+  .hero__tytul {
+    margin-top: var(--o-3);
+    color: var(--na-morzu);
+    font-size: var(--t-hero, clamp(2.5rem, 6vw, 5.5rem));
+    line-height: 1.02;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
+  }
+
+  .hero__podtytul {
+    margin-top: var(--o-4);
+    color: var(--na-morzu);
+    font-size: var(--t-3);
+    line-height: 1.5;
+  }
+
+  .hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--o-3);
+    margin-top: var(--o-6);
+  }
+
+  .hero__cta a {
+    min-height: var(--cel-dotyku);
+  }
+
+  .hero__przewin {
+    position: absolute;
+    left: 50%;
+    /* Nad paskiem liczb (nachodzi na hero o --o-24), pod panelem (padding dołu hero --o-24 + --o-16). */
+    bottom: calc(var(--o-24) + var(--o-2));
+    display: grid;
+    place-items: center;
+    width: var(--cel-dotyku);
+    height: var(--cel-dotyku);
+    margin-left: calc(var(--cel-dotyku) / -2);
+    border-radius: 999px;
+    color: var(--na-morzu);
+  }
+
+  .hero__przewin:hover {
+    color: var(--na-morzu-akcent);
+  }
+
+  .hero__przewin:focus-visible {
+    outline-color: var(--na-morzu);
+  }
+
+  /* Telefon (< 48rem): bez pełnego ekranu — poziome zdjęcie nigdy w pionowym kadrze (reguła Piotra). Zdjęcie we własnej
+     proporcji 3:2 na całą szerokość pod nagłówkiem, szklany panel wsunięty na jego dolną krawędź, na tle morza; strzałka zbędna. */
+  @media (max-width: 47.99rem) {
+    .hero {
+      display: block;
+      min-height: 0;
+      padding-top: var(--wys-naglowka, 4rem);
+    }
+
+    .hero__tlo {
+      position: relative;
+      inset: auto;
+      z-index: 0;
+      aspect-ratio: 3 / 2;
+    }
+
+    .hero__nakladka {
+      background: linear-gradient(to top, rgb(15 62 71 / 0.6), transparent 45%);
+    }
+
+    .hero__tresc {
+      z-index: 1;
+      margin-top: calc(-1 * var(--o-12));
+    }
+
+    .hero__przewin {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero__oddech {
+      animation: oddech 20s ease-in-out infinite alternate;
+      will-change: transform;
+    }
+
+    .hero__przewin svg {
+      animation: podskok 2.4s ease-in-out infinite;
+    }
+  }
+
+  @keyframes oddech {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.06);
+    }
+  }
+
+  @keyframes podskok {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(6px);
+    }
+  }
+</style>

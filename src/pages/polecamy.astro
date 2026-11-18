@@ -52,42 +52,50 @@ const schemat = [
 ---
 
 <Bazowy tytul={t('polecamy.tytulKarty')} opis={t('polecamy.opisMeta')} {schemat}>
-  <Okruszki pozycje={pozycje} />
-  <div class="kontener podstrona-glowa">
-    <h1>{t('polecamy.h1')}</h1>
-    {wstep !== '' && <p class="podstrona-glowa__wstep">{wstep}</p>}
-  </div>
+  <div class="sekcja--aurora polecamy-firmy">
+    <Okruszki pozycje={pozycje} />
+    <div class="kontener podstrona-glowa">
+      <p class="etykieta">{t('polecamy.etykieta')}</p>
+      <h1 class="polecamy__tytul">{t('polecamy.h1')}</h1>
+      {wstep !== '' && <p class="podstrona-glowa__wstep polecamy__wstep">{wstep}</p>}
+    </div>
 
-  <div class="kontener">
-    <ul class="firmy">
-      {
-        firmy.map((f) => (
-          <li class="firma">
-            <h2>{f.nazwa}</h2>
-            {f.coDlaNas && <p class="firma__dla-nas">{f.coDlaNas}</p>}
-            {f.opis && <p>{f.opis}</p>}
-            <p class="firma__strona">
-              <a class="przycisk przycisk--obrys" href={f.adres} rel="nofollow">{wstaw(napisOdwiedz, { nazwa: f.nazwa })}</a>
-              <span class="firma__host">{host(f.adres)}</span>
-            </p>
-          </li>
-        ))
-      }
-    </ul>
+    <div class="kontener polecamy-firmy__rama">
+      <ul class="firmy">
+        {
+          firmy.map((f, i) => (
+            <li class="firma szklo szklo--jasne wejscie" style={`--i:${i % 3}`}>
+              <h2>{f.nazwa}</h2>
+              {f.coDlaNas && <p class="firma__dla-nas">{f.coDlaNas}</p>}
+              {f.opis && <p>{f.opis}</p>}
+              <p class="firma__strona">
+                <a class="guzik guzik--twardy" href={f.adres} rel="nofollow">{wstaw(napisOdwiedz, { nazwa: f.nazwa })}</a>
+                <span class="firma__host">{host(f.adres)}</span>
+              </p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
   </div>
 
   <section class="sekcja" aria-labelledby="zapowiedzi">
     <div class="kontener">
-      <div class="sekcja__glowa">
+      <div class="sekcja__glowa wejscie">
         <div>
-          <h2 id="zapowiedzi">{t('polecamy.naglowekZapowiedzi')}</h2>
-          <p class="sekcja__wstep">{t('polecamy.wstepZapowiedzi')}</p>
+          <p class="etykieta">{t('polecamy.etykietaZapowiedzi')}</p>
+          <h2 id="zapowiedzi" class="polecamy__tytul-sekcji">{t('polecamy.naglowekZapowiedzi')}</h2>
+          <p class="sekcja__wstep polecamy__wstep">{t('polecamy.wstepZapowiedzi')}</p>
         </div>
       </div>
       {
         zapowiedzi.length > 0 ? (
           <ul class="karty">
-            {zapowiedzi.map((w) => <li><KartaPolecana wpis={w} napis={t('polecamy.czytajDalej', t('interfejs.czytajDalejNa'))} /></li>)}
+            {zapowiedzi.map((w, i) => (
+              <li class="wejscie" style={`--i:${i % 3}`}>
+                <KartaPolecana wpis={w} napis={t('polecamy.czytajDalej', t('interfejs.czytajDalejNa'))} />
+              </li>
+            ))}
           </ul>
         ) : (
           <p class="pusto">{t('interfejs.brakPolecanych')}</p>
@@ -96,3 +104,71 @@ const schemat = [
     </div>
   </section>
 </Bazowy>
+
+<style>
+  /* Firmy: szklane jasne karty na tle aurora, 2–3 kolumny; odnośnik do firmy = guzik pigułka z twardym cieniem.
+     href, napis i rel="nofollow" bez zmian (strażnik scripts/sprawdz-linki-firm.mjs). */
+  .polecamy-firmy {
+    padding-bottom: var(--o-16);
+  }
+
+  .polecamy__tytul {
+    margin-top: var(--o-3);
+    font-size: var(--t-sekcji, clamp(1.875rem, 4vw, 3.25rem));
+    line-height: 1.05;
+  }
+
+  @media (min-width: 48rem) {
+    .podstrona-glowa .polecamy__tytul {
+      font-size: var(--t-sekcji, clamp(1.875rem, 4vw, 3.25rem));
+    }
+  }
+
+  .polecamy__tytul-sekcji {
+    font-size: var(--t-sekcji, clamp(1.875rem, 4vw, 3.25rem));
+    line-height: 1.05;
+  }
+
+  .polecamy__wstep {
+    max-width: none;
+  }
+
+  .firmy {
+    gap: var(--o-6);
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+    margin: 0;
+    padding: 0;
+  }
+
+  /* kontrast: #1a2a2e na szkle jasnym .7 nad najciemniejszym punktem aurory (W1: nad czernią #aca8a0 6,27:1) */
+  .firma {
+    padding: var(--o-6);
+    border: 1px solid rgb(255 255 255 / 0.5);
+    box-shadow: var(--cien-miekki);
+  }
+
+  .firma h2 {
+    font-size: var(--t-5);
+    line-height: 1.15;
+  }
+
+  .firma p {
+    max-width: none;
+  }
+
+  .firma__host {
+    color: #1a2a2e;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .firma {
+      transition: transform var(--ruch-plynny, 320ms ease), box-shadow var(--ruch-plynny, 320ms ease), opacity var(--ruch-wejscia, 600ms ease);
+    }
+
+    .firma.wejscie--widoczne:hover {
+      transition-delay: 0s;
+      transform: translateY(-4px);
+      box-shadow: var(--cien-uniesiony);
+    }
+  }
+</style>

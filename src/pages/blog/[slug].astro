@@ -1,6 +1,7 @@
 ---
-// Wpis (WZORZEC-MAGAZYNU §3.5): okruszki Strona główna › Dział › Tytuł, etykieta działu, H1, linia meta (data, podpis redakcji
-// z odnośnikiem do /o-nas/, czas czytania), zdjęcie, treść Markdown, tagi, „Więcej z działu” (3 karty), poprzedni i następny.
+// Wpis (WZORZEC-MAGAZYNU §3.5): hero ze zdjęciem wpisu (LCP, bez opacity 0) i szklanym panelem: okruszki Strona główna › Dział › Tytuł,
+// pigułka działu, H1, linia meta (data, podpis redakcji z odnośnikiem do /o-nas/, czas czytania); pasek postępu rysuje layout (postep).
+// Treść Markdown (pierwszy akapit = lead większym krojem), tagi, „Więcej z działu” (3 karty z wejściem), poprzedni i następny.
 import { getImage } from 'astro:assets';
 import { render } from 'astro:content';
 import Bazowy from '../../layouts/Bazowy.astro';
@@ -72,36 +73,43 @@ const schemat = [
 ];
 ---
 
-<Bazowy tytul={tytulStrony} opis={d.opis} typOg="article" {obrazOg} obrazOgAlt={d.alt ?? t('marka.nazwa')} {schemat} podswietl={adresD}>
-  <Okruszki pozycje={pozycje} />
+<Bazowy tytul={tytulStrony} opis={d.opis} typOg="article" {obrazOg} obrazOgAlt={d.alt ?? t('marka.nazwa')} {schemat} podswietl={adresD} heroPelny postep>
   <article class:list={['wpis', { 'wpis--bez-zdjecia': !d.zdjecie }]}>
-    <header class="wpis__glowa kontener">
-      <p class="wpis__dzial"><a href={adresD}>{nazwaD}</a></p>
-      <h1>{d.tytul}</h1>
-      <p class="wpis__meta">
-        <span>
-          {t('interfejs.opublikowano')}{' '}
-          <time datetime={dataIso(d.data)}>{dataPoPolsku(d.data)}</time>
-        </span>
-        <a class="wpis__podpis" href="/o-nas/">{t('interfejs.podpisRedakcji')}</a>
-        <span>{wstaw(t('interfejs.minCzytania'), { n: String(minuty) })}</span>
-      </p>
+    <header class:list={['wpis-hero', { 'wpis-hero--bez-zdjecia': !d.zdjecie }]}>
+      {
+        d.zdjecie && (
+          <div class="wpis-hero__tlo">
+            <div class="wpis-hero__oddech">
+              <Foto
+                nazwa={d.zdjecie}
+                alt={d.alt}
+                widths={[640, 960, 1280, 1600, 1920]}
+                sizes="100vw"
+                priorytet
+              />
+            </div>
+            <div class="wpis-hero__nakladka" aria-hidden="true"></div>
+          </div>
+        )
+      }
+      <div class="kontener wpis-hero__rama">
+        <div class="szklo wpis-hero__panel">
+          <Okruszki pozycje={pozycje} />
+          <p class="wpis__dzial wpis-hero__dzial"><a href={adresD}>{nazwaD}</a></p>
+          <h1 class="wpis-hero__tytul">{d.tytul}</h1>
+          <p class="wpis__meta wpis-hero__meta">
+            <span>
+              {t('interfejs.opublikowano')}{' '}
+              <time datetime={dataIso(d.data)}>{dataPoPolsku(d.data)}</time>
+            </span>
+            <a class="wpis__podpis" href="/o-nas/">{t('interfejs.podpisRedakcji')}</a>
+            <span>{wstaw(t('interfejs.minCzytania'), { n: String(minuty) })}</span>
+          </p>
+        </div>
+      </div>
     </header>
-    {
-      d.zdjecie && (
-        <figure class="wpis__zdjecie">
-          <Foto
-            nazwa={d.zdjecie}
-            alt={d.alt}
-            widths={[640, 960, 1280, 1600]}
-            sizes="(min-width: 64rem) 60rem, 100vw"
-            priorytet
-          />
-        </figure>
-      )
-    }
     <div class="kontener">
-      <div class="tresc">
+      <div class="tresc wpis-tresc">
         <Content />
       </div>
       {
@@ -118,13 +126,16 @@ const schemat = [
 
   {
     wiecej.length > 0 && (
-      <section class="sekcja sekcja--piasek wiecej" aria-labelledby="wiecej-z-dzialu">
+      <section class="sekcja sekcja--aurora wiecej" aria-labelledby="wiecej-z-dzialu">
         <div class="kontener">
-          <div class="sekcja__glowa">
-            <h2 id="wiecej-z-dzialu">{wstaw(t('interfejs.wiecejZDzialu'), { dzial: nazwaD })}</h2>
+          <div class="sekcja__glowa wejscie">
+            <div>
+              <p class="etykieta">{nazwaD}</p>
+              <h2 id="wiecej-z-dzialu" class="wiecej__tytul">{wstaw(t('interfejs.wiecejZDzialu'), { dzial: nazwaD })}</h2>
+            </div>
           </div>
           <ul class="karty">
-            {wiecej.map((w) => <li><KartaWpisu wpis={w} bezDzialu={w.data.dzial === d.dzial} /></li>)}
+            {wiecej.map((w, i) => <li class="wejscie" style={`--i:${i}`}><KartaWpisu wpis={w} bezDzialu={w.data.dzial === d.dzial} /></li>)}
           </ul>
         </div>
       </section>
@@ -154,3 +165,210 @@ const schemat = [
     )
   }
 </Bazowy>
+
+<style>
+  /* Hero wpisu: ten sam gest co hero głównej, niższy. Na komputerze zdjęcie pod całym hero (kadr poziomy w poziomym oknie),
+     na telefonie zdjęcie we własnej proporcji 3:2 u góry i szklany panel wsunięty na jego dolną krawędź (bez pionowego kadru). */
+  .wpis-hero {
+    position: relative;
+    isolation: isolate;
+    background: var(--morze);
+    color: var(--na-morzu);
+  }
+
+  .wpis-hero__tlo {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 3 / 2;
+  }
+
+  .wpis-hero__oddech {
+    position: absolute;
+    inset: 0;
+  }
+
+  /* Obraz LCP: widoczny od pierwszej klatki, bez opacity i bez transformu (oddech jest na opakowaniu). */
+  .wpis-hero__oddech :global(img) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .wpis-hero__nakladka {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgb(15 62 71 / 0.85), rgb(15 62 71 / 0.15) 55%, rgb(15 62 71 / 0.35));
+  }
+
+  /* Telefon: zdjęcie zaczyna się POD nagłówkiem (nagłówek leży nad hero), panel wsunięty o --o-12 — jak na stronie głównej;
+     wcześniej nagłówek i panel zasłaniały razem połowę kadru 3:2 (zrzut 390, 2026-11-18). */
+  .wpis-hero:not(.wpis-hero--bez-zdjecia) {
+    padding-top: var(--wys-naglowka);
+  }
+
+  .wpis-hero__rama {
+    position: relative;
+    margin-top: calc(-1 * var(--o-12));
+    padding-bottom: var(--o-8);
+  }
+
+  .wpis-hero--bez-zdjecia .wpis-hero__rama {
+    margin-top: 0;
+    padding-top: calc(var(--wys-naglowka) + var(--o-8));
+  }
+
+  /* Panel = .szklo z efekty.css (tło --szklo-tlo .75, rozmycie, obrys, cień; fallback bez backdrop-filter tam).
+     Na szkle wyłącznie #f6f0e4: nad białym pikselem zdjęcia #4b6e75 = 4,89:1 (W1); cichy i akcent tu nie zdają. */
+  .wpis-hero__panel {
+    max-width: 52rem;
+    padding: var(--o-4) var(--o-6) var(--o-6);
+    color: var(--na-morzu);
+  }
+
+  .wpis-hero__panel :global(.okruszki) {
+    padding: 0;
+    max-width: none;
+  }
+
+  .wpis-hero__panel :global(.okruszki ol) {
+    color: var(--na-morzu);
+  }
+
+  .wpis-hero__panel :global(.okruszki [aria-current='page']) {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+  }
+
+  .wpis-hero__dzial {
+    margin: var(--o-2) 0 0;
+  }
+
+  .wpis-hero__dzial a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--cel-dotyku);
+    padding: 0 var(--o-4);
+    border: 1px solid var(--szklo-obrys, rgb(255 255 255 / 0.25));
+    border-radius: var(--promien-pigulki, 999px);
+    background: rgb(246 240 228 / 0.08);
+    color: var(--na-morzu);
+    font-size: var(--t-1);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .wpis-hero__dzial a:hover {
+    background: rgb(246 240 228 / 0.18);
+    color: var(--na-morzu);
+  }
+
+  .wpis-hero__tytul {
+    margin-top: var(--o-3);
+    color: var(--na-morzu);
+    font-size: clamp(2rem, 4.5vw, 4rem);
+    /* 1,15: przy 1,05 ogonki (p, y) dotykały polskich znaków nad literami wiersza niżej (zrzut 390, 2026-11-18) */
+    line-height: 1.15;
+  }
+
+  .wpis-hero__meta {
+    margin-top: var(--o-4);
+    color: var(--na-morzu);
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.04em;
+  }
+
+  .wpis-hero__meta a {
+    color: var(--na-morzu);
+  }
+
+  .wpis-hero a:focus-visible {
+    outline: 3px solid var(--na-morzu);
+    outline-offset: 2px;
+  }
+
+  @media (min-width: 48rem) {
+    .wpis-hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: min(60vh, 46rem);
+      min-height: min(60svh, 46rem);
+      padding-top: calc(var(--wys-naglowka) + var(--o-8));
+      overflow: hidden;
+    }
+
+    .wpis-hero--bez-zdjecia {
+      min-height: 40vh;
+      min-height: 40svh;
+      background: radial-gradient(60% 80% at 85% 10%, rgb(168 69 42 / 0.35), transparent 70%), var(--morze);
+    }
+
+    .wpis-hero__tlo {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      aspect-ratio: auto;
+    }
+
+    .wpis-hero:not(.wpis-hero--bez-zdjecia) {
+      padding-top: calc(var(--wys-naglowka) + var(--o-8));
+    }
+
+    .wpis-hero__rama {
+      margin-top: 0;
+      padding-bottom: var(--o-12);
+    }
+
+    .wpis-hero--bez-zdjecia .wpis-hero__rama {
+      padding-top: 0;
+    }
+
+    .wpis-hero__panel {
+      padding: var(--o-6) var(--o-8) var(--o-8);
+    }
+  }
+
+  /* Oddech zdjęcia tylko na komputerze i bez reduced-motion; na telefonie zdjęcie stoi. */
+  @media (min-width: 48rem) and (prefers-reduced-motion: no-preference) {
+    .wpis-hero__oddech {
+      animation: wpis-oddech 20s ease-in-out infinite alternate;
+      will-change: transform;
+    }
+  }
+
+  @keyframes wpis-oddech {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.06);
+    }
+  }
+
+  .wpis-tresc {
+    padding-top: var(--o-12);
+  }
+
+  /* tagi nie dotykają sekcji komentarzy */
+  .wpis__tagi {
+    margin-bottom: var(--o-12);
+  }
+
+  /* Lead: pierwszy akapit treści większym krojem (treść wpisu bez zmian, tylko wygląd). */
+  .wpis-tresc :global(> p:first-child) {
+    font-size: var(--t-4);
+    line-height: 1.5;
+    color: var(--tekst);
+  }
+
+  .wiecej__tytul {
+    margin-top: var(--o-2);
+    font-size: var(--t-sekcji, clamp(1.875rem, 4vw, 3.25rem));
+    line-height: 1.05;
+  }
+</style>
